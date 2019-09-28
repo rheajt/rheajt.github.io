@@ -1,9 +1,9 @@
 import React, { ReactNode } from 'react';
 import { Helmet } from 'react-helmet';
-import Footer from './footer';
+import Footer from './Footer';
 import styles from './layout.module.scss';
 import './global.scss';
-import Header from './header';
+import Header from './Header';
 
 export default ({
   children,

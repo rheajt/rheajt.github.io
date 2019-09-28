@@ -27,6 +27,7 @@
     "@typescript-eslint/eslint-plugin": "^2.2.0",
     "@typescript-eslint/parser": "^2.2.0",
     "eslint": "^6.4.0",
+    "gh-pages": "^2.1.1",
     "prettier": "^1.18.2",
     "typescript": "^3.6.3"
   },
@@ -40,6 +41,7 @@
     "format": "prettier --write src/**/*.{js,jsx}",
     "start": "npm run develop",
     "serve": "gatsby serve",
+    "deploy": "gatsby build && gh-pages -d public",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\""
   },
   "repository": {

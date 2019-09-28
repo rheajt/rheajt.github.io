@@ -3,8 +3,8 @@ import Layout from '../layout';
 
 interface Props {}
 
-const ProjectsPage: Props = () => {
-  return <Layout title="Projects">projects page</Layout>;
+const ContactPage: Props = () => {
+  return <Layout title="Contact">Contact page</Layout>;
 };
 
-export default ProjectsPage;
+export default ContactPage;

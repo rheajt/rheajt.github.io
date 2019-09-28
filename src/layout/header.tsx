@@ -1,14 +1,14 @@
 import React from 'react';
 import styles from './header.module.scss';
-import logo from '../images/jordan-rhea-logo.png';
 import { Link } from 'gatsby';
 import Hamburger from '../components/Hamburger';
+import Logo from '../components/Logo';
 
 export default () => {
   const sticky = false;
   return (
     <header className={styles.header}>
-      <img src={logo} alt="jordan rhea logo" />
+      <Logo />
       <nav className={sticky ? 'fixed-nav' : ''}>
         <Hamburger open={false} setOpen={() => console.log('open')} />
         <ul className="desktop-nav">

@@ -26,4 +26,7 @@
     transform: rotate(-45deg);
     top: 12px;
   }
+  @media (min-width: 400px) {
+    display: none;
+  }
 }
