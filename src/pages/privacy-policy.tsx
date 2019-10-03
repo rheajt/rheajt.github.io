@@ -1,16 +1,12 @@
 import React from 'react';
 import Layout from '../layout';
+import SEO from '../components/SEO';
 
 const PrivacyPolicyPage = () => {
   return(
-<Layout title="Privacy Policy">
+<Layout>
+  <SEO title="Privacy Policy"  />
     <div>
-      <style
-        dangerouslySetInnerHTML={{
-          __html:
-            '\n  #ppBody {\n    font-size: 11pt;\n    width: 100%;\n    margin: 0 auto;\n    text-align: justify;\n  }\n\n  #ppHeader {\n    font-family: verdana;\n    font-size: 21pt;\n    width: 100%;\n    margin: 0 auto;\n  }\n\n  .ppConsistencies {\n    display: none;\n  }\n'
-        }}
-      />
 
       <div className="container">
         <div className="content">

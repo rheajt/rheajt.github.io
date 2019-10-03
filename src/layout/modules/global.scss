@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto|Syncopate:700');
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  color: #2c3e50;
+  font-weight: 400;
+  font-size: 1.1rem;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+.section-padding {
+  padding: 100px 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Syncopate', sans-serif;
+}
+
+p {
+  line-height: 1.7;
+  margin: 0;
+  font-size: 1.3rem;
+  color: #7e7e7e;
+}
+
+.sm-title {
+  text-transform: uppercase;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+.bg-img {
+  background-size: cover;
+}
+.button-top {
+  position: fixed;
+  bottom: -200px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  border-radius: 50%;
+  font-size: 16px;
+  color: #fff;
+  background: #515a5f;
+  z-index: 99999999;
+  opacity: 0.5;
+  transition: all 0.5s;
+  cursor: pointer;
+}
+.button-top:hover {
+  opacity: 0.8;
+}
+.button-show {
+  bottom: 20px;
+}
+.button-bg {
+  background: #025002;
+  color: #fff;
+}
+.button {
+  width: auto;
+  margin-top: 1rem;
+  padding: 10px 30px;
+  color: #fff;
+  border: 1px solid #025002;
+  background: #025002;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: all 0.5s;
+}
+.button:hover {
+  background: transparent;
+  color: #025002;
+}

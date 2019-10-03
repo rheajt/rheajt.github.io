@@ -1,0 +1,9 @@
+.layout {
+  display: grid;
+  min-height: 100vh;
+  grid-auto-rows: auto 1fr auto;
+}
+
+main {
+  padding: 3rem;
+}

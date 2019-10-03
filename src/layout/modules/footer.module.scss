@@ -1,0 +1,65 @@
+@import '../../colors.scss';
+
+footer {
+  padding: 3rem 1rem;
+  text-align: center;
+  background-image: url(../../images/grid-header.jpg);
+  background-size: cover;
+
+  .container {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 400px;
+
+    img {
+      width: 100%;
+    }
+
+    ul.social-icons {
+      list-style: none;
+      padding: 1rem 0;
+      margin: 0;
+      color: white;
+      font-family: 'Syncopate', sans-serif;
+      display: flex;
+      justify-content: space-around;
+
+      li {
+        font-size: 3rem;
+      }
+
+      a {
+        text-decoration: none;
+        color: white;
+
+        &:hover {
+          &.youtube {
+            color: $youtube;
+          }
+          &.twitter {
+            color: $twitter;
+          }
+          &.github {
+            color: $github;
+          }
+          &.linkedin {
+            color: $linkedin;
+          }
+        }
+      }
+    }
+  }
+
+  a {
+    text-decoration: none;
+    color: white;
+
+    &:hover {
+      color: $secondaryColor;
+    }
+  }
+
+  @media (max-width: 400px) {
+    padding: 0;
+  }
+}

@@ -1,16 +1,16 @@
-import React from 'react'
+import React from 'react';
 import Layout from '../layout';
+import SEO from '../components/SEO';
 
-interface Props {
-
-}
+interface Props {}
 
 const ProjectsPage: Props = () => {
   return (
-    <Layout title="Projects">
+    <Layout>
+      <SEO title="Projects" />
       projects page
     </Layout>
-  )
-}
+  );
+};
 
-export default ProjectsPage
+export default ProjectsPage;

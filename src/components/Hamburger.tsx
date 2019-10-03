@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './hamburger.module.scss';
+import styles from './modules/hamburger.module.scss';
 
 interface Props {
   open: boolean;
@@ -7,7 +7,6 @@ interface Props {
 }
 
 const Hamburger: React.FC<Props> = ({ open = false, setOpen }) => {
-  console.log(open);
   return (
     <div
       className={styles.hamburger}
