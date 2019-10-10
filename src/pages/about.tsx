@@ -5,13 +5,13 @@ import IFrame from '../components/IFrame';
 
 interface Props {}
 
-const ContactPage: Props = () => {
+const About: React.FC<Props> = () => {
   return (
     <Layout>
-      <SEO title="Contact" />
-      <IFrame src="https://script.google.com/macros/s/AKfycbznGrEM-Fu78vZZJk8VtJcsk-fHQvFhM0UvgmiaTxC8Z6XsCkM/exec" />
+      <SEO title="about" />
+      <IFrame src="https://datastudio.google.com/embed/reporting/1doWmfgdgUulgIHIyMTo1R2lGHoFxHfMZ/page/tdk0" />
     </Layout>
   );
 };
 
-export default ContactPage;
+export default About;

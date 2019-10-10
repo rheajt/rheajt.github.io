@@ -1,17 +1,65 @@
 import React from 'react';
-
-import Layout from '../layout';
+import Img from 'gatsby-image';
+import Layout from '../components/Layout';
 import SEO from '../components/SEO';
-import IFrame from '../components/IFrame';
+import styles from './styles.module.scss';
+import { Link, graphql } from 'gatsby';
+import { FaAddressCard, FaTasks, FaPaperPlane } from 'react-icons/fa';
 
-const IndexPage = () => {
+interface Props {
+  data: {
+    [key: string]: any;
+  };
+}
+const IndexPage: React.FC<Props> = ({ data }) => {
   return (
     <Layout>
-      <SEO title="Home" />
+      <SEO title="jordan rhea" />
 
-      <IFrame src="https://datastudio.google.com/embed/reporting/1doWmfgdgUulgIHIyMTo1R2lGHoFxHfMZ/page/tdk0" />
+      <div className={styles.container}>
+        <div className={styles.left}>
+          <Img
+            fixed={data.profileImage.childImageSharp.fixed}
+            style={{ overflow: 0 }}
+          />
+        </div>
+
+        <div className={styles.right}>
+          <ul className={styles.links}>
+            <Link to="/about">
+              <li>
+                <FaAddressCard /> About
+              </li>
+            </Link>
+            <Link to="/projects">
+              <li>
+                <FaTasks /> Projects
+              </li>
+            </Link>
+            <Link to="/contact">
+              <li>
+                <FaPaperPlane /> Contact
+              </li>
+            </Link>
+          </ul>
+        </div>
+
+        {/* <div className={styles.bottom}>bottom</div> */}
+      </div>
     </Layout>
   );
 };
 
 export default IndexPage;
+
+export const query = graphql`
+  query {
+    profileImage: file(relativePath: { eq: "new-profile.png" }) {
+      childImageSharp {
+        fixed(width: 3500) {
+          ...GatsbyImageSharpFixed
+        }
+      }
+    }
+  }
+`;

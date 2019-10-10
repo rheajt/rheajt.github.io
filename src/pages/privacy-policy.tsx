@@ -1,12 +1,14 @@
 import React from 'react';
-import Layout from '../layout';
+import Layout from '../components/Layout';
 import SEO from '../components/SEO';
+import IFrame from '../components/IFrame';
 
 const PrivacyPolicyPage = () => {
-  return(
-<Layout>
-  <SEO title="Privacy Policy"  />
-    <div>
+  return (
+    <Layout>
+      <SEO title="privacy policy" />
+      <IFrame src="https://docs.google.com/document/d/e/2PACX-1vQu8qEO-akZuQfWfi0475QF3oOlzP_Hjuonsl3PQ03UI_Ki5M8zXSqUCoL0ZXhH0Gp6uwdEfMu1Rp6a/pub?embedded=true" />
+      {/* <div>
 
       <div className="container">
         <div className="content">
@@ -560,9 +562,9 @@ correspondence.
           </div>
         </div>
       </div>
-    </div>
-  </Layout>
+    </div> */}
+    </Layout>
   );
-}
+};
 
 export default PrivacyPolicyPage;

@@ -1,13 +1,19 @@
 import React from 'react';
+import { FaYoutube, FaTwitter, FaGithub, FaLinkedin } from 'react-icons/fa';
 import { Link } from 'gatsby';
-import { FaTwitter, FaGithub, FaLinkedin, FaYoutube } from 'react-icons/fa';
-import styles from './modules/footer.module.scss';
-// import jordanrhea from '../images/jordan-rhea-logo.png';
-
-export default () => {
+import styles from './layout.module.scss';
+import Logo from '../Logo';
+import './global.scss';
+const Layout = (props: React.PropsWithChildren<{}>) => {
   return (
-    <footer className={styles.footer}>
+    <>
       <div className={styles.container}>
+        <Logo />
+
+        <div>{props.children}</div>
+      </div>
+
+      <footer className={styles.footer}>
         <ul className={styles.socialIcons}>
           <a href="https://youtube.com/jordanrhea" className={styles.youtube}>
             <li>
@@ -30,12 +36,14 @@ export default () => {
             </li>
           </a>
         </ul>
-        {/* <img src={jordanrhea} alt="jordan rhea logo" /> */}
+
         <div className={styles.copyright}>
           <Link to="/privacy-policy">Privacy Policy</Link> |{' '}
           <Link to="/terms-of-service">Terms of Service</Link>
         </div>
-      </div>
-    </footer>
+      </footer>
+    </>
   );
 };
+
+export default Layout;

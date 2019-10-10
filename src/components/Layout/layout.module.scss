@@ -1,0 +1,73 @@
+@import '../../colors.scss';
+
+.container {
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+  background-image: linear-gradient(
+      220deg,
+      rgba($mainColor, 0.8),
+      rgba($secondaryColor, 0.6)
+    ),
+    url(../../images/spreadsheet.jpg);
+  display: grid;
+  grid-template-rows: auto 1fr;
+}
+
+footer {
+  padding: 3rem 1rem;
+  text-align: center;
+  background-color: #1f1f1f;
+
+  img {
+    width: 100%;
+  }
+
+  ul.social-icons {
+    margin: 0 auto;
+    max-width: 400px;
+    list-style: none;
+    padding: 1rem 0;
+    color: white;
+    font-family: 'Syncopate', sans-serif;
+    display: flex;
+    justify-content: space-around;
+
+    li {
+      font-size: 3rem;
+    }
+
+    a {
+      text-decoration: none;
+      color: white;
+
+      &:hover {
+        &.youtube {
+          color: $youtube;
+        }
+        &.twitter {
+          color: $twitter;
+        }
+        &.github {
+          color: $github;
+        }
+        &.linkedin {
+          color: $linkedin;
+        }
+      }
+    }
+  }
+
+  a {
+    text-decoration: none;
+    color: white;
+
+    &:hover {
+      color: $secondaryColor;
+    }
+  }
+
+  @media (max-width: 400px) {
+    padding: 0;
+  }
+}

@@ -1,3 +1,5 @@
+@import '../../colors.scss';
+
 .container {
   display: grid;
   grid-gap: 0 1rem;
@@ -8,10 +10,13 @@
   margin: 0 auto;
   text-align: center;
   color: white;
-
+  &:hover {
+    cursor: pointer;
+  }
   img {
     width: 100%;
     height: auto;
+    @include ds;
   }
 
   .right {
@@ -22,7 +27,9 @@
     .motto {
       font-family: 'Syncopate', sans-serif;
       height: 1.5vw;
-      font-size: 2vw;
+      font-size: 1rem;
+
+      @include ts;
       @media (max-width: 499px) {
         height: 3vw;
         font-size: 3vw;

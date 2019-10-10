@@ -1,0 +1,65 @@
+@import '../colors.scss';
+
+.container {
+  display: grid;
+  grid-template-areas: 'left right' 'bottom bottom';
+  grid-template-rows: auto auto;
+  grid-template-columns: 1fr 1fr;
+  justify-items: center;
+  max-width: 800px;
+  margin: 0 auto;
+  .left {
+    grid-area: left;
+    img {
+      @include ds;
+    }
+  }
+
+  .right {
+    grid-area: right;
+  }
+
+  .bottom {
+    grid-area: bottom;
+    @include ds;
+  }
+
+  @media (max-width: 400px) {
+    grid-template-columns: 1fr;
+    grid-template-areas: 'left' 'right' 'bottom';
+    grid-auto-rows: auto;
+  }
+}
+
+.links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+
+  li {
+    width: 300px;
+    text-align: center;
+    background-color: white;
+    padding: 1rem;
+    border-radius: 3px;
+    @include ds;
+  }
+
+  a {
+    text-decoration: none;
+    color: #1f1f1f;
+    transition: transform 200ms ease-in-out;
+    &:hover {
+      perspective-origin: right;
+      transform: perspective(400px) rotateY(15deg);
+    }
+
+    @media (max-width: 400px) {
+      margin: 10px;
+    }
+  }
+}
