@@ -4,12 +4,16 @@
   height: 100vh;
   overflow: hidden;
   position: relative;
-  background-image: linear-gradient(
-      220deg,
-      rgba($mainColor, 0.8),
-      rgba($secondaryColor, 0.6)
-    ),
-    url(../../images/spreadsheet.jpg);
+  // background-image: linear-gradient(
+  //   140deg,
+  //   rgba(navy, 1) 40%,
+  //   rgba(#4848a3, 1) 90%
+  // );
+  background-image: radial-gradient(
+    ellipse at bottom,
+    lighten(navy, 60%),
+    navy
+  );
   display: grid;
   grid-template-rows: auto 1fr;
 }
