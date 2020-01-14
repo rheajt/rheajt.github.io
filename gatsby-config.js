@@ -1,36 +1,84 @@
+const path = require('path');
+
+require('dotenv').config({
+  path: `.env.${process.env.NODE_ENV}`,
+});
+
 module.exports = {
   siteMetadata: {
-    title: `jordanrhea.com`,
-    description: `Professional Portfolio of Projects Build with Google Apps Script`,
-    author: `@rheajt`,
+    title: `Jordan Rhea`,
+    description: `Jordan Rhea Portfolio Site`,
+    author: `Jordan Rhea`,
   },
   plugins: [
-    `gatsby-plugin-sass`,
-    `gatsby-plugin-typescript`,
-    `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `images`,
-        path: `${__dirname}/src/images`,
+        path: path.join(__dirname, 'src', 'images'),
       },
     },
-    `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-flow`,
+    `gatsby-transformer-remark`,
+    `gatsby-plugin-react-helmet`,
+    {
+      resolve: `gatsby-plugin-material-ui`,
+      options: {
+        // stylesProvider: {
+        //   injectFirst: true,
+        // },
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-module-resolver',
+      options: {
+        root: './src',
+        aliases: {
+          components: './components',
+          containers: './containers',
+          images: './images',
+          state: './state',
+          styles: './styles',
+          utils: './utils',
+          static: {
+            root: './public',
+            alias: './static',
+          },
+        },
+      },
+    },
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `gatsby-starter-default`,
-        short_name: `starter`,
+        name: `Jordan Rhea Portfolio`,
+        short_name: `Jordan Rhea`,
         start_url: `/`,
-        background_color: `#663399`,
-        theme_color: `#663399`,
+        background_color: `black`,
+        theme_color: `black`,
         display: `minimal-ui`,
-        icon: `src/images/isotope.png`, // This path is relative to the root of the site.
+        icon: `src/images/jr-icon.png`,
       },
     },
-    // this (optional) plugin enables Progressive Web App + Offline functionality
-    // To learn more, visit: https://gatsby.dev/offline
-    // `gatsby-plugin-offline`,
+    {
+      resolve: `gatsby-plugin-react-redux`,
+      options: {
+        pathToCreateStoreModule: './src/state/store',
+        serialize: {
+          space: 0,
+          isJSON: true,
+          unsafe: false,
+        },
+      },
+    },
+    {
+      resolve: 'gatsby-source-youtube-v2',
+      options: {
+        channelId: ['UCwqNP1r17-2xJFweoACbW8g'],
+        apiKey: process.env.YOUTUBE_DATA_API,
+        maxVideos: 10,
+      },
+    },
   ],
 };
