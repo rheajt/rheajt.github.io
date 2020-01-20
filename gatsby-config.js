@@ -77,7 +77,7 @@ module.exports = {
       options: {
         channelId: ['UCwqNP1r17-2xJFweoACbW8g'],
         apiKey: process.env.YOUTUBE_DATA_API,
-        maxVideos: 10,
+        maxVideos: 7,
       },
     },
   ],

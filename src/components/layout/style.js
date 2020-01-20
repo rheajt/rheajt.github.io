@@ -30,8 +30,7 @@ const styles = ({ app, breakpoints, typography }) => ({
     width: '100%',
   },
   background: {
-    // backgroundColor: 'cream',
-    backgroundSize: '40px 40px',
+    backgroundSize: `${typography.pxToRem(40)} ${typography.pxToRem(40)}`,
     backgroundImage:
       'linear-gradient(to right, lightgrey 1px, transparent 1px), linear-gradient(to bottom, lightgrey 1px, transparent 1px)',
   },

@@ -37,6 +37,7 @@
   "devDependencies": {
     "@hot-loader/react-dom": "^16.11.0",
     "chalk": "^3.0.0",
+    "gh-pages": "^2.2.0",
     "inquirer": "^7.0.1",
     "prettier": "^1.19.1",
     "redux-devtools-extension": "^2.13.2",
@@ -51,13 +52,14 @@
     "format": "prettier --write src/**/*.{js,jsx}",
     "develop": "gatsby develop",
     "build": "gatsby build",
-    "serve": "gatsby serve"
+    "serve": "gatsby serve",
+    "deploy": "gatsby build && gh-pages -b master -d public"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/chronisp/gatsby-starter"
+    "url": "https://github.com/rheajt/rheajt.github.io"
   },
   "bugs": {
-    "url": "https://github.com/chronisp/gatsby-starter/issues"
+    "url": "https://github.com/rheajt/rheajt.github.io/issues"
   }
 }
