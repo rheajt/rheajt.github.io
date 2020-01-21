@@ -1,0 +1,2 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[5],{iwTS:function(e,t,a){"use strict";a.r(t);var r=a("q1tI"),n=a.n(r),o=a("ofer"),c=a("Kvkj");t.default=function(){return n.a.createElement(c.d,{noBackground:!0},n.a.createElement(c.g,{title:"Courses"}),n.a.createElement(o.a,{variant:"h1",color:"textPrimary"},"Courses"),n.a.createElement(o.a,{variant:"h3",color:"textPrimary"},"Coming soon..."))}}}]);
+//# sourceMappingURL=component---src-pages-courses-js-c204b6405f8c5895a6ff.js.map
