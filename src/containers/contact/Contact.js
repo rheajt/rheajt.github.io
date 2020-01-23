@@ -1,5 +1,4 @@
 import React from 'react';
-import Typography from '@material-ui/core/Typography';
 import Fade from '@material-ui/core/Fade';
 import ContactForm from '../../components/contact-form';
 import styles from './style';
@@ -7,17 +6,15 @@ import About from '../about';
 import { withStyles } from '@material-ui/styles';
 
 const Contact = ({ classes }) => (
-  <div className={classes.columns}>
-    <div>
-      <Fade in timeout={1000}>
+  <Fade in timeout={1000}>
+    <div className={classes.columns}>
+      <div>
         <About />
-      </Fade>
-    </div>
+      </div>
 
-    <Fade in timeout={1000}>
       <ContactForm />
-    </Fade>
-  </div>
+    </div>
+  </Fade>
 );
 
 export default withStyles(styles)(Contact);
