@@ -17,7 +17,6 @@ const styles = ({ app, breakpoints, typography }) => ({
   pageContainer: {
     display: 'flex',
     flexDirection: 'column',
-    justifyContent: 'space-between',
     margin: '0 auto',
     minHeight: '100%',
     padding: `${typography.pxToRem(16)} ${typography.pxToRem(48)}`,
@@ -25,7 +24,7 @@ const styles = ({ app, breakpoints, typography }) => ({
     boxSizing: 'border-box',
   },
   content: {
-    margin: 'auto',
+    margin: '0 auto',
     maxWidth: app.maxWidth,
     width: '100%',
   },

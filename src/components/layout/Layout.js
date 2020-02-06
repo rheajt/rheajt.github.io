@@ -10,7 +10,7 @@ import styles from './style';
 
 require('typeface-roboto');
 
-const Layout = ({ classes, children, noBackground }) => (
+const Layout = ({ classes, children, noBackground, ...props }) => (
   <Scrollbars
     autoHide
     autoHideTimeout={1000}
@@ -24,7 +24,11 @@ const Layout = ({ classes, children, noBackground }) => (
       )}>
       <Header />
       <Fade in mountOnEnter unmountOnExit>
-        <main className={classes.content}>{children}</main>
+        <main
+          className={classNames(classes.content, props.className)}
+          style={props.style}>
+          {children}
+        </main>
       </Fade>
     </div>
   </Scrollbars>
