@@ -3,7 +3,7 @@ import { Layout, SEO } from 'components';
 import { Portfolio } from '../containers';
 
 const PortfolioPage = () => (
-  <Layout>
+  <Layout noBackground>
     <SEO title="Portfolio" />
     <Portfolio />
   </Layout>

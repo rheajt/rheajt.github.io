@@ -6,6 +6,7 @@ import { withStyles } from '@material-ui/styles';
 import Img from 'gatsby-image';
 import styles from './style';
 import content from './content';
+import SubTitle from './SubTitle';
 
 const { title, subtitle } = content;
 
@@ -19,9 +20,7 @@ const Welcome = ({ classes }) => {
             {title}
           </Typography>
         </Fade>
-        <Typography variant="h3" color="textPrimary">
-          {subtitle}
-        </Typography>
+        <SubTitle />
       </div>
       <Img fluid={data.file.childImageSharp.fluid} />
     </div>

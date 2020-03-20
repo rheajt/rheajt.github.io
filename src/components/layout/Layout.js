@@ -8,7 +8,8 @@ import { Header } from 'components';
 
 import styles from './style';
 
-require('typeface-roboto');
+import 'react-typist/dist/Typist.css';
+import 'typeface-roboto';
 
 const Layout = ({ classes, children, noBackground, ...props }) => (
   <Scrollbars

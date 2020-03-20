@@ -4,7 +4,7 @@ import { Layout, SEO } from 'components';
 import Contact from '../containers/contact';
 
 const ContactPage = () => (
-  <Layout noBackground>
+  <Layout>
     <SEO title="Contact" />
 
     <Contact />
