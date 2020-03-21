@@ -6,10 +6,10 @@ require('dotenv').config({
 
 module.exports = {
   siteMetadata: {
-    title: `Jordan Rhea`,
+    title: `jordanrhea.com`,
     description: `Jordan Rhea Portfolio Site`,
     author: `Jordan Rhea`,
-    siteUrl: 'https://jordanrhea.com',
+    siteUrl: 'https://jordanrhea.com/',
   },
   plugins: [
     {
@@ -65,9 +65,9 @@ module.exports = {
     {
       resolve: `gatsby-plugin-material-ui`,
       options: {
-        // stylesProvider: {
-        //   injectFirst: true,
-        // },
+        stylesProvider: {
+          injectFirst: true,
+        },
       },
     },
     {

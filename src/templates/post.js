@@ -1,14 +1,13 @@
-import { graphql, Link } from 'gatsby';
-import Img from 'gatsby-image';
-import _ from 'lodash';
-import { setLightness } from 'polished';
-import React from 'react';
-import styled from '@emotion/styled';
 import { css } from '@emotion/core';
-import { Helmet } from 'react-helmet';
-import { Layout } from 'components';
+import styled from '@emotion/styled';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
+import { Layout } from 'components';
+import { graphql } from 'gatsby';
+import { setLightness } from 'polished';
+import React from 'react';
+import { Helmet } from 'react-helmet';
+import rehypeReact from 'rehype-react';
 
 const PageTemplate = props => {
   const { siteUrl } = props.data.site.siteMetadata;
@@ -25,11 +24,14 @@ const PageTemplate = props => {
     );
   }
 
-  console.log(post);
+  const renderAst = new rehypeReact({
+    createElement: React.createElement,
+  }).Compiler;
+
   return (
     <div css={PostTemplate}>
       <Helmet>
-        <html lang="eng" />
+        <html lang="en" />
         <title>{post.frontmatter.title}</title>
 
         <meta name="description" content={post.excerpt} />
@@ -72,50 +74,12 @@ const PageTemplate = props => {
 
       <Layout>
         <Paper elevation={3}>
-          <main id="site-main" className="site-main" css={[SiteMain, outer]}>
-            <div css={inner}>
-              {/* TODO: no-image css tag? */}
-              {/* <article css={[PostFull, !post.frontmatter.image && NoImage]}> */}
-              <PostFullHeader>
-                {/* <PostFullMeta>
-                  <PostFullMetaDate dateTime={post.fields.date}>
-                    {post.frontmatter.userDate}
-                  </PostFullMetaDate>
-                  {post.frontmatter.tags && post.frontmatter.tags.length > 0 && (
-                    <>
-                      <DateDivider>/</DateDivider>
-                      <Link
-                        to={`/${_.kebabCase(post.frontmatter.tags[0])}/`}>
-                        {post.frontmatter.tags[0]}
-                      </Link>
-                    </>
-                  )}
-                </PostFullMeta> */}
-                {/* <PostFullTitle>{post.frontmatter.title}</PostFullTitle> */}
-              </PostFullHeader>
+          <main className="site-main">
+            <Typography variant="h2" gutterBottom>
+              {post.frontmatter.title}
+            </Typography>
 
-              {post.frontmatter.image &&
-                post.frontmatter.image.childImageSharp && (
-                  <PostFullImage>
-                    <Img
-                      style={{ height: '100%' }}
-                      fluid={post.frontmatter.image.childImageSharp.fluid}
-                    />
-                  </PostFullImage>
-                )}
-
-              <Typography variant="h2" gutterBottom>
-                {post.frontmatter.title}
-              </Typography>
-              <div
-                css={PostTemplate}
-                dangerouslySetInnerHTML={{ __html: post.html }}
-              />
-
-              {/* The big email subscribe modal content */}
-              {/* {config.showSubscribe && <Subscribe title={config.title} />} */}
-              {/* </article> */}
-            </div>
+            {renderAst(post.htmlAst)}
           </main>
         </Paper>
       </Layout>
@@ -161,7 +125,7 @@ export const query = graphql`
 const PostTemplate = css`
   .site-main {
     background: #fff;
-    padding-bottom: 4vw;
+    padding: 4vw;
   }
 `;
 
@@ -192,48 +156,11 @@ export const PostFullHeader = styled.header`
   }
 `;
 
-const PostFullMeta = styled.section`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: grey;
-  font-size: 1.4rem;
-  font-weight: 600;
-  text-transform: uppercase;
-
-  @media (max-width: 500px) {
-    font-size: 1.2rem;
-    line-height: 1.3em;
-  }
-`;
-
 export const PostFullTitle = styled.h1`
   margin: 0;
   color: ${setLightness('0.05', 'grey')};
   @media (max-width: 500px) {
     font-size: 2.9rem;
-  }
-`;
-
-const PostFullImage = styled.figure`
-  margin: 0 -10vw -165px;
-  height: 800px;
-  background: lightgrey center center;
-  background-size: cover;
-  border-radius: 5px;
-
-  @media (max-width: 1170px) {
-    margin: 0 -4vw -100px;
-    height: 600px;
-    border-radius: 0;
-  }
-
-  @media (max-width: 800px) {
-    height: 400px;
-  }
-  @media (max-width: 500px) {
-    margin-bottom: 4vw;
-    height: 350px;
   }
 `;
 
@@ -252,5 +179,5 @@ export const SiteMain = css`
   z-index: 100;
   flex-grow: 1;
   background-color: white;
-  padding-bottom: 3rem;
+  padding: 4rem;
 `;

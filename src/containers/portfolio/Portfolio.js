@@ -4,6 +4,7 @@ import Fade from '@material-ui/core/Fade';
 import { withStyles } from '@material-ui/styles';
 import PortfolioCard from '../../components/portfolio-card';
 import { graphql, useStaticQuery } from 'gatsby';
+import { Grid } from '@material-ui/core';
 
 const Portfolio = ({ classes }) => {
   const data = useStaticQuery(portfolioQuery);
@@ -32,11 +33,11 @@ const Portfolio = ({ classes }) => {
   ];
 
   return (
-    <div className={classes.container}>
+    <>
       <div className={classes.main}>
         <Fade in timeout={1000}>
           <Typography variant="h1" color="textPrimary">
-            Portfolio.
+            Projects.
           </Typography>
         </Fade>
         <Typography variant="h3" color="textPrimary">
@@ -44,28 +45,21 @@ const Portfolio = ({ classes }) => {
         </Typography>
       </div>
       <Fade in timeout={1000}>
-        <>
+        <Grid container spacing={3}>
           {cards.map(card => (
-            <PortfolioCard card={card} key={card.title} />
+            <Grid item xs={12} key={card.title}>
+              <PortfolioCard card={card} />
+            </Grid>
           ))}
-        </>
+        </Grid>
       </Fade>
-    </div>
+    </>
   );
 };
 
-const styles = ({ breakpoints }) => ({
-  container: {
-    display: `grid`,
-    gridTemplateColumns: '1fr 1fr 1fr',
-    gridGap: '1rem',
-    alignItems: 'center',
-    [`${breakpoints.down('sm')}`]: {
-      gridTemplateColumns: '1fr',
-    },
-  },
+const styles = () => ({
   main: {
-    gridColumn: '1 / -1',
+    paddingBottom: '1rem',
   },
 });
 

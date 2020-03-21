@@ -1,13 +1,5 @@
 import React from 'react';
-import {
-  select,
-  scaleBand,
-  axisBottom,
-  axisLeft,
-  scaleLinear,
-  min,
-  max,
-} from 'd3';
+import { select, scaleBand, axisBottom, axisLeft, scaleLinear } from 'd3';
 
 function CurvedLineChart() {
   const containerRef = React.useRef();

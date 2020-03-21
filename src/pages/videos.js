@@ -3,7 +3,7 @@ import { Layout, SEO } from 'components';
 import VideoList from '../containers/video-list';
 
 const VideoPage = () => (
-  <Layout noBackground>
+  <Layout centered>
     <SEO title="Videos" />
     <VideoList />
   </Layout>

@@ -11,7 +11,7 @@ import styles from './style';
 import 'react-typist/dist/Typist.css';
 import 'typeface-roboto';
 
-const Layout = ({ classes, children, noBackground, ...props }) => (
+const Layout = ({ classes, children, noBackground, centered, ...props }) => (
   <Scrollbars
     autoHide
     autoHideTimeout={1000}
@@ -26,7 +26,10 @@ const Layout = ({ classes, children, noBackground, ...props }) => (
       <Header />
       <Fade in mountOnEnter unmountOnExit>
         <main
-          className={classNames(classes.content, props.className)}
+          className={classNames(
+            centered ? classes.centeredContent : classes.content,
+            props.className
+          )}
           style={props.style}>
           {children}
         </main>

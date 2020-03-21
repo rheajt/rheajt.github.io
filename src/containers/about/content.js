@@ -1,8 +1,8 @@
 import { FaGithub, FaLinkedin, FaYoutube } from 'react-icons/fa';
 
 const content = {
-  title: 'Contact Me',
-  subtitle: 'Find out more on the Socials!',
+  title: 'About',
+  subtitle: 'I write code that solves problems.',
   links: [
     {
       to: 'https://youtube.com/jordanrhea',

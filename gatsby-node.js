@@ -40,7 +40,7 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
         slug =
           separatorPosition === 1
             ? null
-            : `/${filePath.substring(slugBeginning)}`;
+            : `/blog/${filePath.substring(slugBeginning)}`;
         prefix = filePath.substring(7, separatorPosition);
 
         if (prefix) {
@@ -54,7 +54,7 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
       }
 
       if (!slug) {
-        slug = `/${relativePath.replace('.md', '')}/`;
+        slug = `/blog/${relativePath.replace('.md', '')}/`;
       }
 
       if (node.frontmatter.youtube) {

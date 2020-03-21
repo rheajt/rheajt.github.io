@@ -3,11 +3,10 @@ import Helmet from 'react-helmet';
 import { graphql, useStaticQuery } from 'gatsby';
 import { withStyles } from '@material-ui/styles';
 import styles from './style';
-import VideoCard from 'components/video-card';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 
-const VideoList = ({ classes }) => {
+const VideoList = () => {
   const { allYoutubeVideo: videos } = useStaticQuery(VideoQuery);
 
   return (
@@ -34,14 +33,6 @@ const VideoList = ({ classes }) => {
           />
         </div>
       </Grid>
-
-      <>
-        {videos.edges.map(({ node: video }) => (
-          <Grid item sm={4} xs={12} key={video.id}>
-            <VideoCard video={video} />
-          </Grid>
-        ))}
-      </>
     </Grid>
   );
 };

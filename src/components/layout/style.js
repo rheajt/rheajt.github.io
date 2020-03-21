@@ -28,6 +28,11 @@ const styles = ({ app, breakpoints, typography }) => ({
     maxWidth: app.maxWidth,
     width: '100%',
   },
+  centeredContent: {
+    margin: 'auto',
+    maxWidth: app.maxWidth,
+    width: '100%',
+  },
   background: {
     backgroundSize: `${typography.pxToRem(40)} ${typography.pxToRem(40)}`,
     backgroundImage:
