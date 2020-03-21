@@ -3,13 +3,13 @@ title: 'ClassDojo Chrome Extension'
 subtitle: 'Taking attendance with the cute little monsters of ClassDojo'
 author: jordan
 categories:
+  - Projects
+tags:
   - Teacher Tools
   - Data Automations
   - Portfolio
-tags:
-  - Projects
   - gmail
-  - chrome browser
+  - chrome extension
   - javascript
   - extensions
   - google apps script

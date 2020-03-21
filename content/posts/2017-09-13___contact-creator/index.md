@@ -3,11 +3,12 @@ title: 'Contact Creator'
 subtitle: 'Tie together multiple services to create powerful tools for yourself'
 author: jordan
 categories:
-  - Productivity
-  - Portfolio
+  - G Suite
 tags:
-  - Projects
-  - Google Classroom
+  - productivity
+  - portfolio
+  - projects
+  - google classroom
   - feedback
 youtube: 'https://www.youtube.com/watch?v=QY66_junLK4'
 ---

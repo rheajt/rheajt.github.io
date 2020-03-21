@@ -3,11 +3,12 @@ title: Caption Creator for Google Drive
 subTitle: Create captions for the videos on your drive without sharing them to YouTube
 author: jordan
 categories:
-  - Productivity
-  - Teacher Tools
-  - Portfolio
+  - G Suite
 tags:
-  - Projects
+  - google apps script
+  - productivity
+  - teacher tools
+  - Portfolio
   - google drive
   - google docs
   - accessibility
