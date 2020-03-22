@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Paper,
   Grid,
@@ -18,6 +18,7 @@ import {
 import { withStyles } from '@material-ui/styles';
 import DoneOutlineIcon from '@material-ui/icons/DoneOutline';
 import style from './style';
+import { useLocation } from '@reach/router';
 
 const initialForm = {
   fullName: '',
@@ -43,9 +44,19 @@ function isInvalid(form) {
 }
 
 function ContactForm({ classes }) {
+  const [isWindow, setIsWindow] = useState(false);
   const [form, setForm] = useState(initialForm);
   const [sending, setSending] = useState(false);
   const [complete, setComplete] = useState(false);
+  const location = useLocation();
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      setIsWindow(true);
+    }
+
+    setForm({ ...form, subject: location.state.subject });
+  }, [form, location.state]);
 
   const handleChange = e => {
     const newValue =
@@ -114,6 +125,11 @@ function ContactForm({ classes }) {
                 <MenuItem value={'Projects'}>Projects</MenuItem>
                 <MenuItem value={'GSuite Help'}>GSuite Help</MenuItem>
                 <MenuItem value={'Web Development'}>Web Development</MenuItem>
+                {!isWindow && !!location.state && !!location.state.subject && (
+                  <MenuItem value={location.state.subject}>
+                    {location.state.subject}
+                  </MenuItem>
+                )}
               </Select>
             </FormControl>
           </Grid>

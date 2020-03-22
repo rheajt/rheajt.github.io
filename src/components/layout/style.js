@@ -19,7 +19,9 @@ const styles = ({ app, breakpoints, typography }) => ({
     flexDirection: 'column',
     margin: '0 auto',
     minHeight: '100%',
-    padding: `${typography.pxToRem(16)} ${typography.pxToRem(48)}`,
+    padding: `${typography.pxToRem(16)} ${typography.pxToRem(
+      32
+    )} ${typography.pxToRem(16)} ${typography.pxToRem(16)}`,
     transition: 'filter .5s, opacity .5s',
     boxSizing: 'border-box',
   },

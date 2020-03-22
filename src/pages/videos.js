@@ -1,11 +1,11 @@
 import React from 'react';
 import { Layout, SEO } from 'components';
-import VideoList from '../containers/video-list';
+import Videos from '../containers/videos';
 
 const VideoPage = () => (
   <Layout centered>
     <SEO title="Videos" />
-    <VideoList />
+    <Videos />
   </Layout>
 );
 

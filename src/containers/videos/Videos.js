@@ -5,14 +5,18 @@ import { withStyles } from '@material-ui/styles';
 import styles from './style';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
+import { Button, Paper } from '@material-ui/core';
+import { Link } from 'gatsby';
 
-const VideoList = () => {
+function Videos() {
   const { allYoutubeVideo: videos } = useStaticQuery(VideoQuery);
+
+  console.log(videos);
 
   return (
     <Grid container spacing={2}>
       <Helmet>
-        <script src="https://apis.google.com/js/platform.js"></script>
+        <script src="//apis.google.com/js/platform.js"></script>
       </Helmet>
 
       <Grid item sm={8} xs={12}>
@@ -22,8 +26,10 @@ const VideoList = () => {
         <Typography variant="h3" color="textPrimary">
           Find more videos on my channel...
         </Typography>
+      </Grid>
 
-        <div style={{ marginTop: 16 }}>
+      <Grid item sm={4} xs={12}>
+        <Paper align="center" style={{ padding: '2rem' }}>
           <div
             className="g-ytsubscribe"
             data-channelid="UCwqNP1r17-2xJFweoACbW8g"
@@ -31,13 +37,24 @@ const VideoList = () => {
             data-count="default"
             style={{ textAlign: 'center', margin: '0 auto' }}
           />
-        </div>
+        </Paper>
+      </Grid>
+
+      <Grid item sm={12} xs={12} align="center">
+        <Button
+          variant="contained"
+          color="primary"
+          component={Link}
+          to="/contact"
+          state={{ subject: 'Video Suggestion' }}>
+          Make a Suggestion
+        </Button>
       </Grid>
     </Grid>
   );
-};
+}
 
-export default withStyles(styles)(VideoList);
+export default withStyles(styles)(Videos);
 
 const VideoQuery = graphql`
   query {

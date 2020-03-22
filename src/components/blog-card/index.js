@@ -30,10 +30,6 @@ const useStyles = makeStyles(theme => ({
     paddingLeft: theme.spacing(1),
     paddingBottom: theme.spacing(1),
   },
-  playIcon: {
-    height: 38,
-    width: 38,
-  },
 }));
 
 export default function BlogCard({ post }) {
@@ -52,6 +48,7 @@ export default function BlogCard({ post }) {
         </CardContent>
         <CardActions>
           <Button
+            size="small"
             variant="outlined"
             color="primary"
             className={classes.button}
@@ -61,6 +58,7 @@ export default function BlogCard({ post }) {
             Read More
           </Button>
           <Button
+            size="small"
             variant="outlined"
             color="secondary"
             className={classes.button}

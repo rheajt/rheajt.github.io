@@ -2,7 +2,6 @@ import React from 'react';
 import { graphql, useStaticQuery, Link } from 'gatsby';
 import Typography from '@material-ui/core/Typography';
 import Fade from '@material-ui/core/Fade';
-import { withStyles } from '@material-ui/styles';
 import Img from 'gatsby-image';
 import content from './content';
 import { Grid, ButtonGroup, Button } from '@material-ui/core';
