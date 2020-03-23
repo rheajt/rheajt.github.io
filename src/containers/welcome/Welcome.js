@@ -1,10 +1,10 @@
-import React from 'react';
-import { graphql, useStaticQuery, Link } from 'gatsby';
-import Typography from '@material-ui/core/Typography';
+import { Grid } from '@material-ui/core';
 import Fade from '@material-ui/core/Fade';
+import Typography from '@material-ui/core/Typography';
+import { graphql, useStaticQuery } from 'gatsby';
 import Img from 'gatsby-image';
+import React from 'react';
 import content from './content';
-import { Grid, ButtonGroup, Button } from '@material-ui/core';
 
 const { title, subtitle } = content;
 
@@ -21,7 +21,7 @@ const Welcome = () => {
             <Typography variant="h3" color="textPrimary" gutterBottom>
               {subtitle}
             </Typography>
-            <ButtonGroup
+            {/* <ButtonGroup
               fullWidth
               color="primary"
               size="large"
@@ -31,7 +31,7 @@ const Welcome = () => {
               </Button>
               <Button>Blog</Button>
               <Button>Videos</Button>
-            </ButtonGroup>
+            </ButtonGroup> */}
           </>
         </Fade>
       </Grid>

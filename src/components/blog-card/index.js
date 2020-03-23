@@ -8,7 +8,7 @@ import LinkIcon from '@material-ui/icons/Link';
 import React from 'react';
 import YouTubeIcon from '@material-ui/icons/YouTube';
 import { Link } from 'gatsby';
-
+import { format } from 'date-fns';
 const useStyles = makeStyles(theme => ({
   root: {
     display: 'flex',
@@ -30,6 +30,10 @@ const useStyles = makeStyles(theme => ({
     paddingLeft: theme.spacing(1),
     paddingBottom: theme.spacing(1),
   },
+  titleRow: {
+    display: 'grid',
+    gridTemplateColumns: '1fr auto',
+  },
 }));
 
 export default function BlogCard({ post }) {
@@ -39,11 +43,19 @@ export default function BlogCard({ post }) {
     <Card className={classes.root}>
       <div className={classes.details}>
         <CardContent className={classes.content}>
-          <Typography component="h5" variant="h5">
-            {post.frontmatter.title}
-          </Typography>
-          <Typography variant="subtitle1" color="textSecondary">
+          <div className={classes.titleRow}>
+            <Typography variant="h5">{post.frontmatter.title} </Typography>
+            <Typography variant="caption" fontStyle="oblique">
+              {format(new Date(post.fields.date), 'MMM do, Y')}
+            </Typography>
+          </div>
+          <Typography variant="subtitle1" color="textSecondary" gutterBottom>
             {post.excerpt}
+          </Typography>
+          <Typography variant="caption" display="block">
+            {post.frontmatter.categories &&
+              post.frontmatter.categories.join(', ')}
+            , {post.frontmatter.tags && post.frontmatter.tags.join(', ')}
           </Typography>
         </CardContent>
         <CardActions>
@@ -57,14 +69,18 @@ export default function BlogCard({ post }) {
             startIcon={<LinkIcon />}>
             Read More
           </Button>
-          <Button
-            size="small"
-            variant="outlined"
-            color="secondary"
-            className={classes.button}
-            startIcon={<YouTubeIcon />}>
-            Watch
-          </Button>
+          {post.frontmatter.youtube && (
+            <Button
+              component="a"
+              href={post.frontmatter.youtube}
+              size="small"
+              variant="outlined"
+              color="secondary"
+              className={classes.button}
+              startIcon={<YouTubeIcon />}>
+              Watch
+            </Button>
+          )}
         </CardActions>
       </div>
     </Card>

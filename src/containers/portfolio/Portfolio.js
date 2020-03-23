@@ -32,6 +32,8 @@ const Portfolio = ({ classes }) => {
     },
   ];
 
+  console.log(data.projects);
+
   return (
     <>
       <div className={classes.main}>
@@ -44,7 +46,23 @@ const Portfolio = ({ classes }) => {
           I write code for people to use.
         </Typography>
       </div>
-      <Fade in timeout={1000}>
+      <Grid container spacing={3}>
+        {data.projects.edges.map(({ node }) => (
+          <Fade in timeout={1000} key={node.id}>
+            <Grid item xs={12}>
+              <PortfolioCard
+                card={{
+                  title: node.frontmatter.title,
+                  description: node.excerpt,
+                  image: node.frontmatter.image,
+                  more: node.fields.slug,
+                }}
+              />
+            </Grid>
+          </Fade>
+        ))}
+      </Grid>
+      {/* <Fade in timeout={1000}>
         <Grid container spacing={3}>
           {cards.map(card => (
             <Grid item xs={12} key={card.title}>
@@ -52,7 +70,7 @@ const Portfolio = ({ classes }) => {
             </Grid>
           ))}
         </Grid>
-      </Fade>
+      </Fade> */}
     </>
   );
 };
@@ -89,6 +107,32 @@ const portfolioQuery = graphql`
       childImageSharp {
         fixed(width: 345) {
           ...GatsbyImageSharpFixed
+        }
+      }
+    }
+
+    projects: allMarkdownRemark(
+      filter: { frontmatter: { categories: { in: "Projects" } } }
+      sort: { fields: fields___date, order: DESC }
+    ) {
+      edges {
+        node {
+          id
+          excerpt
+          fields {
+            slug
+            date
+          }
+          frontmatter {
+            title
+            image {
+              childImageSharp {
+                fixed(width: 345) {
+                  ...GatsbyImageSharpFixed
+                }
+              }
+            }
+          }
         }
       }
     }

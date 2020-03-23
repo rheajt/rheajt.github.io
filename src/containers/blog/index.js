@@ -47,7 +47,7 @@ function Blog() {
                       key={node.id}
                       mountOnEnter
                       unmountOnExit
-                      timeout={300 * ind}
+                      timeout={200 * ind}
                       in>
                       <Grid item sm={12}>
                         <BlogCard post={node} />
@@ -71,7 +71,10 @@ export default Blog;
 
 const BlogQuery = graphql`
   query BlogQuery {
-    allMarkdownRemark(filter: { fields: { draft: { ne: true } } }) {
+    allMarkdownRemark(
+      filter: { fields: { draft: { ne: true } } }
+      sort: { fields: fields___date, order: DESC }
+    ) {
       edges {
         node {
           id
@@ -80,6 +83,7 @@ const BlogQuery = graphql`
             categories
             tags
             title
+            youtube
           }
           fields {
             slug

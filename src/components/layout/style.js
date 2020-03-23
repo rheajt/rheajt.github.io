@@ -19,11 +19,14 @@ const styles = ({ app, breakpoints, typography }) => ({
     flexDirection: 'column',
     margin: '0 auto',
     minHeight: '100%',
-    padding: `${typography.pxToRem(16)} ${typography.pxToRem(
-      32
-    )} ${typography.pxToRem(16)} ${typography.pxToRem(16)}`,
+    padding: `${typography.pxToRem(16)} ${typography.pxToRem(48)}`,
     transition: 'filter .5s, opacity .5s',
     boxSizing: 'border-box',
+    [breakpoints.down('sm')]: {
+      padding: `${typography.pxToRem(16)} ${typography.pxToRem(
+        32
+      )} ${typography.pxToRem(16)} ${typography.pxToRem(16)}`,
+    },
   },
   content: {
     margin: '0 auto',

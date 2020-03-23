@@ -28,12 +28,14 @@ export default function MediaCard({ card }) {
 
   return (
     <Card className={classes.root}>
-      <CardMedia
-        component={Img}
-        className={classes.media}
-        fixed={card.image.childImageSharp.fixed}
-        title={card.title}
-      />
+      {card.image && (
+        <CardMedia
+          component={Img}
+          className={classes.media}
+          fixed={card.image.childImageSharp.fixed}
+          title={card.title}
+        />
+      )}
       <div className={classes.content}>
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
@@ -51,7 +53,7 @@ export default function MediaCard({ card }) {
             color="primary"
             variant="outlined"
             endIcon={<ExitToAppIcon />}>
-            Visit
+            More info
           </Button>
         </CardActions>
       </div>

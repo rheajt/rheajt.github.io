@@ -8,8 +8,32 @@ import { setLightness } from 'polished';
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import rehypeReact from 'rehype-react';
-
+import { Button } from '@material-ui/core';
+import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
+import { makeStyles } from '@material-ui/styles';
+import {
+  EmailShareButton,
+  FacebookShareButton,
+  LinkedinShareButton,
+  PinterestShareButton,
+  RedditShareButton,
+  TwitterShareButton,
+  WeiboShareButton,
+  WhatsappShareButton,
+} from 'react-share';
+import {
+  EmailIcon,
+  FacebookIcon,
+  LinkedinIcon,
+  PinterestIcon,
+  RedditIcon,
+  TwitterIcon,
+  WeiboIcon,
+  WhatsappIcon,
+} from 'react-share';
 const PageTemplate = props => {
+  const classes = useStyles();
+
   const { siteUrl } = props.data.site.siteMetadata;
   const post = props.data.markdownRemark;
   let width = '';
@@ -29,7 +53,7 @@ const PageTemplate = props => {
   }).Compiler;
 
   return (
-    <div css={PostTemplate}>
+    <div>
       <Helmet>
         <html lang="en" />
         <title>{post.frontmatter.title}</title>
@@ -39,7 +63,7 @@ const PageTemplate = props => {
         <meta property="og:type" content="article" />
         <meta property="og:title" content={post.frontmatter.title} />
         <meta property="og:description" content={post.excerpt} />
-        <meta property="og:url" content={siteUrl + props.pathContext.slug} />
+        <meta property="og:url" content={siteUrl + props.pageContext.slug} />
         {post.frontmatter.image && post.frontmatter.image.childImageSharp && (
           <meta
             property="og:image"
@@ -55,7 +79,7 @@ const PageTemplate = props => {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={post.frontmatter.title} />
         <meta name="twitter:description" content={post.excerpt} />
-        <meta name="twitter:url" content={siteUrl + props.pathContext.slug} />
+        <meta name="twitter:url" content={siteUrl + props.pageContext.slug} />
         {post.frontmatter.image && post.frontmatter.image.childImageSharp && (
           <meta
             name="twitter:image"
@@ -74,7 +98,42 @@ const PageTemplate = props => {
 
       <Layout>
         <Paper elevation={3}>
-          <main className="site-main">
+          <main className={classes.siteMain}>
+            <div className={classes.postButtons}>
+              <div>
+                <Button variant="outlined" color="primary">
+                  <ArrowBackIosIcon /> Back
+                </Button>
+              </div>
+
+              <div>
+                <EmailShareButton url={siteUrl + props.pageContext.slug}>
+                  <EmailIcon size={36} />
+                </EmailShareButton>
+                <FacebookShareButton url={siteUrl + props.pageContext.slug}>
+                  <FacebookIcon size={36} />
+                </FacebookShareButton>
+                <LinkedinShareButton url={siteUrl + props.pageContext.slug}>
+                  <LinkedinIcon size={36} />
+                </LinkedinShareButton>
+                <PinterestShareButton url={siteUrl + props.pageContext.slug}>
+                  <PinterestIcon size={36} />
+                </PinterestShareButton>
+                <RedditShareButton url={siteUrl + props.pageContext.slug}>
+                  <RedditIcon size={36} />
+                </RedditShareButton>
+                <TwitterShareButton url={siteUrl + props.pageContext.slug}>
+                  <TwitterIcon size={36} />
+                </TwitterShareButton>
+                <WeiboShareButton url={siteUrl + props.pageContext.slug}>
+                  <WeiboIcon size={36} />
+                </WeiboShareButton>
+                <WhatsappShareButton url={siteUrl + props.pageContext.slug}>
+                  <WhatsappIcon size={36} />
+                </WhatsappShareButton>
+              </div>
+            </div>
+
             <Typography variant="h2" gutterBottom>
               {post.frontmatter.title}
             </Typography>
@@ -87,6 +146,17 @@ const PageTemplate = props => {
   );
 };
 
+const useStyles = makeStyles({
+  siteMain: {
+    background: '#fff',
+    padding: '4vw',
+  },
+  postButtons: {
+    margin: '2rem 0',
+    display: 'grid',
+    gridTemplateColumns: '1fr auto',
+  },
+});
 export default PageTemplate;
 
 export const query = graphql`
@@ -102,7 +172,6 @@ export const query = graphql`
       }
       frontmatter {
         title
-        # userDate: date(formatString: "D MMMM YYYY")
         tags
         image {
           childImageSharp {
@@ -120,64 +189,4 @@ export const query = graphql`
       }
     }
   }
-`;
-
-const PostTemplate = css`
-  .site-main {
-    background: #fff;
-    padding: 4vw;
-  }
-`;
-
-export const PostFull = css`
-  position: relative;
-  z-index: 50;
-`;
-
-export const NoImage = css`
-  .post-full-content {
-    padding-top: 0;
-  }
-
-  .post-full-content:before,
-  .post-full-content:after {
-    display: none;
-  }
-`;
-
-export const PostFullHeader = styled.header`
-  margin: 0 auto;
-  padding: 6vw 3vw 3vw;
-  max-width: 1040px;
-  text-align: center;
-
-  @media (max-width: 500px) {
-    padding: 14vw 3vw 10vw;
-  }
-`;
-
-export const PostFullTitle = styled.h1`
-  margin: 0;
-  color: ${setLightness('0.05', 'grey')};
-  @media (max-width: 500px) {
-    font-size: 2.9rem;
-  }
-`;
-
-export const outer = css`
-  position: relative;
-  padding: 0 4vw;
-`;
-
-export const inner = css`
-  margin: 0 auto;
-  max-width: 1040px;
-  width: 100%;
-`;
-
-export const SiteMain = css`
-  z-index: 100;
-  flex-grow: 1;
-  background-color: white;
-  padding: 4rem;
 `;

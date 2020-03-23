@@ -16,7 +16,9 @@ function Videos() {
   return (
     <Grid container spacing={2}>
       <Helmet>
-        <script src="//apis.google.com/js/platform.js"></script>
+        <script
+          src="//apis.google.com/js/platform.js"
+          crossorigin="anonymous"></script>
       </Helmet>
 
       <Grid item sm={8} xs={12}>
@@ -29,7 +31,7 @@ function Videos() {
       </Grid>
 
       <Grid item sm={4} xs={12}>
-        <Paper align="center" style={{ padding: '2rem' }}>
+        <Paper align="center" style={{ padding: '1rem', minHeight: 83 }}>
           <div
             className="g-ytsubscribe"
             data-channelid="UCwqNP1r17-2xJFweoACbW8g"

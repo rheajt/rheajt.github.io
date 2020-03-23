@@ -3,10 +3,11 @@ title: Shunyi Today
 subTitle: My first big GraphQL project
 author: jordan
 categories:
+  - Projects
+tags:
   - Portfolio
   - Web Development
   - GraphQL
-tags:
   - Projects
   - solutions
 youtube: ''

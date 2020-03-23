@@ -3,9 +3,10 @@ title: 'Multi-DropDown DataValidation'
 subtitle: 'A tool I created to make it easier to create dropdown data validations in Google Sheets'
 author: jordan
 categories:
+  - Projects
+tags:
   - Productivity
   - Portfolio
-tags:
   - Projects
   - google apps script
   - data validation

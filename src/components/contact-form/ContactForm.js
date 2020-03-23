@@ -17,7 +17,6 @@ import {
 } from '@material-ui/core';
 import { withStyles } from '@material-ui/styles';
 import DoneOutlineIcon from '@material-ui/icons/DoneOutline';
-import style from './style';
 import { useLocation } from '@reach/router';
 
 const initialForm = {
@@ -43,20 +42,17 @@ function isInvalid(form) {
   return false;
 }
 
-function ContactForm({ classes }) {
-  const [isWindow, setIsWindow] = useState(false);
+function ContactForm() {
   const [form, setForm] = useState(initialForm);
   const [sending, setSending] = useState(false);
   const [complete, setComplete] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
-    if (typeof window !== 'undefined') {
-      setIsWindow(true);
+    if (location.state.subject) {
+      setForm(form => ({ ...form, subject: location.state.subject }));
     }
-
-    setForm({ ...form, subject: location.state.subject });
-  }, [form, location.state]);
+  }, [location.state]);
 
   const handleChange = e => {
     const newValue =
@@ -96,7 +92,7 @@ function ContactForm({ classes }) {
       </Slide>
       <form onSubmit={handleSubmit}>
         <Grid container spacing={3}>
-          <Grid item sm={6}>
+          <Grid item sm={6} xs={12}>
             <TextField
               label="Full Name"
               name="fullName"
@@ -105,7 +101,7 @@ function ContactForm({ classes }) {
               fullWidth
             />
           </Grid>
-          <Grid item sm={6}>
+          <Grid item sm={6} xs={12}>
             <TextField
               label="Email"
               name="email"
@@ -115,7 +111,7 @@ function ContactForm({ classes }) {
               fullWidth
             />
           </Grid>
-          <Grid item sm={12}>
+          <Grid item xs={12}>
             <FormControl fullWidth>
               <InputLabel>Subject</InputLabel>
               <Select
@@ -125,7 +121,7 @@ function ContactForm({ classes }) {
                 <MenuItem value={'Projects'}>Projects</MenuItem>
                 <MenuItem value={'GSuite Help'}>GSuite Help</MenuItem>
                 <MenuItem value={'Web Development'}>Web Development</MenuItem>
-                {!isWindow && !!location.state && !!location.state.subject && (
+                {!!location.state && !!location.state.subject && (
                   <MenuItem value={location.state.subject}>
                     {location.state.subject}
                   </MenuItem>
@@ -197,4 +193,4 @@ const SendingMessage = withStyles({
   },
 })(Paper);
 
-export default withStyles(style)(ContactForm);
+export default ContactForm;

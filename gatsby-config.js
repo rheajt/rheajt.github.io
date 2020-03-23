@@ -100,17 +100,17 @@ module.exports = {
         icon: `src/images/jr-icon.png`,
       },
     },
-    {
-      resolve: `gatsby-plugin-react-redux`,
-      options: {
-        pathToCreateStoreModule: './src/state/store',
-        serialize: {
-          space: 0,
-          isJSON: true,
-          unsafe: false,
-        },
-      },
-    },
+    // {
+    //   resolve: `gatsby-plugin-react-redux`,
+    //   options: {
+    //     pathToCreateStoreModule: './src/state/store',
+    //     serialize: {
+    //       space: 0,
+    //       isJSON: true,
+    //       unsafe: false,
+    //     },
+    //   },
+    // },
     {
       resolve: 'gatsby-source-youtube-v2',
       options: {

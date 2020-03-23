@@ -50,8 +50,7 @@ export default function BlogTags({ tags, setTagFilter }) {
           <Chip
             key={key}
             size="small"
-            // icon={icon}
-            label={key}
+            label={key.toLowerCase()}
             color={data.active ? 'secondary' : 'primary'}
             deleteIcon={data.active ? null : <DoneIcon />}
             onDelete={handleDelete(key)}
