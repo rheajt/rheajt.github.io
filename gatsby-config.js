@@ -100,17 +100,6 @@ module.exports = {
         icon: `src/images/jr-icon.png`,
       },
     },
-    // {
-    //   resolve: `gatsby-plugin-react-redux`,
-    //   options: {
-    //     pathToCreateStoreModule: './src/state/store',
-    //     serialize: {
-    //       space: 0,
-    //       isJSON: true,
-    //       unsafe: false,
-    //     },
-    //   },
-    // },
     {
       resolve: 'gatsby-source-youtube-v2',
       options: {
@@ -127,6 +116,69 @@ module.exports = {
         head: true,
         anonymize: true,
         respectDNT: true,
+      },
+    },
+    {
+      resolve: `gatsby-plugin-feed`,
+      options: {
+        query: `
+          {
+            site {
+              siteMetadata {
+                title
+                description
+                siteUrl
+                site_url: siteUrl
+              }
+            }
+          }
+        `,
+        feeds: [
+          {
+            serialize: ({ query: { site, allMarkdownRemark } }) => {
+              return allMarkdownRemark.edges.map(({ node }) => {
+                console.log(node);
+                return {
+                  ...node.frontmatter,
+                  description: node.excerpt,
+                  date: node.fields.date,
+                  url: site.siteMetadata.siteUrl + node.fields.slug,
+                  guid: site.siteMetadata.siteUrl + node.fields.slug,
+                  custom_elements: [
+                    {
+                      'content:encoded': node.html,
+                      tags: node.frontmatter.tags,
+                      categories: node.frontmatter.categories,
+                    },
+                  ],
+                };
+              });
+            },
+            query: `
+              {
+                allMarkdownRemark(
+                  sort: { order: DESC, fields: [fields___date] },
+                ) {
+                  edges {
+                    node {
+                      excerpt
+                      html
+                      fields {
+                        slug
+                        date
+                      }
+                      frontmatter {
+                        title
+                      }
+                    }
+                  }
+                }
+              }
+            `,
+            output: '/rss.xml',
+            title: 'jordanrhea.com',
+          },
+        ],
       },
     },
   ],

@@ -1,9 +1,10 @@
-import { Grid } from '@material-ui/core';
+import Grid from '@material-ui/core/Grid';
 import Fade from '@material-ui/core/Fade';
 import Typography from '@material-ui/core/Typography';
 import { graphql, useStaticQuery } from 'gatsby';
 import Img from 'gatsby-image';
 import React from 'react';
+import { LinkList } from 'components';
 import content from './content';
 
 const { title, subtitle } = content;
@@ -21,6 +22,7 @@ const Welcome = () => {
             <Typography variant="h3" color="textPrimary" gutterBottom>
               {subtitle}
             </Typography>
+            <LinkList />
           </>
         </Fade>
       </Grid>
