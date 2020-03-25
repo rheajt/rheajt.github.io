@@ -12,9 +12,11 @@ import Markdown from './markdown';
 import D3Chart from './d3-chart';
 import BlogCard from './blog-card';
 import ContactForm from './contact-form';
+import AuthorCard from './author-card';
 
 export {
   Animated,
+  AuthorCard,
   Avatar,
   BlogPost,
   BlogCard,

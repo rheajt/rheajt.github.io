@@ -56,6 +56,7 @@
     "redux": "^4.0.5",
     "redux-actions": "^2.6.5",
     "rehype-react": "^5.0.0",
+    "slugify": "^1.4.0",
     "typeface-roboto": "^0.0.75"
   },
   "devDependencies": {
@@ -74,6 +75,7 @@
   "scripts": {
     "clean": "rm -rf node_modules",
     "format": "prettier --write src/**/*.{js,jsx}",
+    "post": "node ./lib/createPost.js",
     "dev": "gatsby develop",
     "build": "gatsby build",
     "serve": "gatsby serve",

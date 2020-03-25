@@ -1,36 +1,16 @@
-import { css } from '@emotion/core';
-import styled from '@emotion/styled';
-import Paper from '@material-ui/core/Paper';
-import Typography from '@material-ui/core/Typography';
-import { Layout } from 'components';
-import { graphql } from 'gatsby';
-import { setLightness } from 'polished';
+import { graphql, Link } from 'gatsby';
 import React from 'react';
 import { Helmet } from 'react-helmet';
-import rehypeReact from 'rehype-react';
-import { Button } from '@material-ui/core';
+import Button from '@material-ui/core/Button';
+import Paper from '@material-ui/core/Paper';
+import Typography from '@material-ui/core/Typography';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
-import { makeStyles } from '@material-ui/styles';
-import {
-  EmailShareButton,
-  FacebookShareButton,
-  LinkedinShareButton,
-  PinterestShareButton,
-  RedditShareButton,
-  TwitterShareButton,
-  WeiboShareButton,
-  WhatsappShareButton,
-} from 'react-share';
-import {
-  EmailIcon,
-  FacebookIcon,
-  LinkedinIcon,
-  PinterestIcon,
-  RedditIcon,
-  TwitterIcon,
-  WeiboIcon,
-  WhatsappIcon,
-} from 'react-share';
+import makeStyles from '@material-ui/styles/makeStyles';
+import { Layout, AuthorCard } from 'components';
+
+import rehypeReact from 'rehype-react';
+import ShareButtons from '../components/share-buttons';
+
 const PageTemplate = props => {
   const classes = useStyles();
 
@@ -101,44 +81,25 @@ const PageTemplate = props => {
           <main className={classes.siteMain}>
             <div className={classes.postButtons}>
               <div>
-                <Button variant="outlined" color="primary">
+                <Button
+                  variant="outlined"
+                  color="primary"
+                  component={Link}
+                  to="/blog">
                   <ArrowBackIosIcon /> Back
                 </Button>
               </div>
 
-              <div>
-                <EmailShareButton url={siteUrl + props.pageContext.slug}>
-                  <EmailIcon size={36} />
-                </EmailShareButton>
-                <FacebookShareButton url={siteUrl + props.pageContext.slug}>
-                  <FacebookIcon size={36} />
-                </FacebookShareButton>
-                <LinkedinShareButton url={siteUrl + props.pageContext.slug}>
-                  <LinkedinIcon size={36} />
-                </LinkedinShareButton>
-                <PinterestShareButton url={siteUrl + props.pageContext.slug}>
-                  <PinterestIcon size={36} />
-                </PinterestShareButton>
-                <RedditShareButton url={siteUrl + props.pageContext.slug}>
-                  <RedditIcon size={36} />
-                </RedditShareButton>
-                <TwitterShareButton url={siteUrl + props.pageContext.slug}>
-                  <TwitterIcon size={36} />
-                </TwitterShareButton>
-                <WeiboShareButton url={siteUrl + props.pageContext.slug}>
-                  <WeiboIcon size={36} />
-                </WeiboShareButton>
-                <WhatsappShareButton url={siteUrl + props.pageContext.slug}>
-                  <WhatsappIcon size={36} />
-                </WhatsappShareButton>
-              </div>
+              <ShareButtons url={siteUrl + post.slug} />
             </div>
 
-            <Typography variant="h2" gutterBottom>
+            <Typography variant="h1" gutterBottom>
               {post.frontmatter.title}
             </Typography>
 
             {renderAst(post.htmlAst)}
+
+            <AuthorCard />
           </main>
         </Paper>
       </Layout>

@@ -21,17 +21,6 @@ const Welcome = () => {
             <Typography variant="h3" color="textPrimary" gutterBottom>
               {subtitle}
             </Typography>
-            {/* <ButtonGroup
-              fullWidth
-              color="primary"
-              size="large"
-              aria-label="large outlined button group">
-              <Button component={Link} to="/projects">
-                Projects
-              </Button>
-              <Button>Blog</Button>
-              <Button>Videos</Button>
-            </ButtonGroup> */}
           </>
         </Fade>
       </Grid>
