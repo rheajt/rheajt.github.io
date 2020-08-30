@@ -1,5 +1,6 @@
 const styles = ({ app, typography }) => ({
   container: {
+    zIndex: 1,
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',

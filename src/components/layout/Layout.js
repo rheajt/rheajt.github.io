@@ -10,6 +10,7 @@ import styles from './style';
 
 import 'react-typist/dist/Typist.css';
 import 'typeface-roboto';
+import CurvedLineChart from '../d3-chart';
 
 const Layout = ({ classes, children, noBackground, centered, ...props }) => (
   <Scrollbars
@@ -30,10 +31,11 @@ const Layout = ({ classes, children, noBackground, centered, ...props }) => (
             centered ? classes.centeredContent : classes.content,
             props.className
           )}
-          style={props.style}>
+          style={{ ...props.style, zIndex: 1 }}>
           {children}
         </main>
       </Fade>
+      <CurvedLineChart />
     </div>
   </Scrollbars>
 );
