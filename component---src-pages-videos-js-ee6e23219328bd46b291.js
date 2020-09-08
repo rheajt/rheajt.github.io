@@ -1,2 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[11],{"5AIy":function(e,t,n){"use strict";n.r(t);n("q1tI");var c=n("Kvkj"),b=n("4SXp"),i=n("qKvR");t.default=function(){return Object(i.b)(c.g,{centered:!0},Object(i.b)(c.j,{title:"Videos"}),Object(i.b)(b.a,null))}}}]);
-//# sourceMappingURL=component---src-pages-videos-js-ee6e23219328bd46b291.js.map
