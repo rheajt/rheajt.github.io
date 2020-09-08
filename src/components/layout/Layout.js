@@ -35,7 +35,7 @@ const Layout = ({ classes, children, noBackground, centered, ...props }) => (
           {children}
         </main>
       </Fade>
-      <CurvedLineChart />
+      {/* <CurvedLineChart /> */}
     </div>
   </Scrollbars>
 );
