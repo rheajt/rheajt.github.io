@@ -1,6 +1,6 @@
-import React from 'react';
 import { Layout, SEO } from 'components';
 import { Welcome } from 'containers';
+import React from 'react';
 
 const IndexPage = () => (
   <Layout centered>
