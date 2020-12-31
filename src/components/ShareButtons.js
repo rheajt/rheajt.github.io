@@ -18,7 +18,7 @@ import {
   WhatsappShareButton,
 } from 'react-share';
 
-export default function ShareButtons({ url }) {
+export function ShareButtons({ url }) {
   return (
     <div>
       <EmailShareButton url={url}>

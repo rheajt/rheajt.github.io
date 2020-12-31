@@ -1,12 +1,9 @@
 import React from 'react';
-
 import { Layout, SEO } from 'components';
-import Contact from '../containers/contact';
 
 const ContactPage = () => (
   <Layout centered>
-    <SEO title="Contact" />
-    <Contact />
+    <h1>Contact Page</h1>
   </Layout>
 );
 

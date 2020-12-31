@@ -22,11 +22,7 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
     case 'MarkdownRemark': {
       const { permalink, layout, primaryTag } = node.frontmatter;
       const { relativePath } = getNode(node.parent);
-      const fileNode = getNode(node.parent);
       const filePath = createFilePath({ node, getNode });
-
-      const source = fileNode.sourceInstanceName;
-
       const isPost = ~filePath.indexOf(POSTS_DIRECTORY);
       const separatorExists = ~filePath.indexOf(SLUG_SEPARATOR);
 
@@ -40,7 +36,7 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
         slug =
           separatorPosition === 1
             ? null
-            : `/blog/${filePath.substring(slugBeginning)}`;
+            : `${filePath.substring(slugBeginning)}`;
         prefix = filePath.substring(7, separatorPosition);
 
         if (prefix) {
@@ -54,7 +50,7 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
       }
 
       if (!slug) {
-        slug = `/blog/${relativePath.replace('.md', '')}/`;
+        slug = `/${relativePath.replace('.md', '')}/`;
       }
 
       if (node.frontmatter.youtube) {

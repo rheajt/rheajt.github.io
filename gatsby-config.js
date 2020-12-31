@@ -5,6 +5,7 @@ require('dotenv').config({
 });
 
 module.exports = {
+  pathPrefix: '/blog',
   siteMetadata: {
     title: `jordanrhea.com`,
     description: `Jordan Rhea Portfolio Site`,
@@ -28,10 +29,11 @@ module.exports = {
     },
     `gatsby-plugin-sitemap`,
     `gatsby-plugin-sharp`,
-    `gatsby-transformer-sharp`,
     `gatsby-plugin-flow`,
-    `gatsby-transformer-remark`,
     `gatsby-plugin-react-helmet`,
+    'gatsby-transformer-json',
+    'gatsby-transformer-yaml',
+    `gatsby-transformer-sharp`,
     {
       resolve: 'gatsby-transformer-remark',
       options: {
@@ -54,20 +56,6 @@ module.exports = {
             },
           },
         ],
-      },
-    },
-    'gatsby-transformer-json',
-    'gatsby-plugin-emotion',
-    'gatsby-plugin-typescript',
-    'gatsby-transformer-sharp',
-    'gatsby-plugin-react-helmet',
-    'gatsby-transformer-yaml',
-    {
-      resolve: `gatsby-plugin-material-ui`,
-      options: {
-        stylesProvider: {
-          injectFirst: true,
-        },
       },
     },
     {
@@ -98,14 +86,6 @@ module.exports = {
         theme_color: `black`,
         display: `minimal-ui`,
         icon: `src/images/jr-icon.png`,
-      },
-    },
-    {
-      resolve: 'gatsby-source-youtube-v2',
-      options: {
-        channelId: ['UCwqNP1r17-2xJFweoACbW8g'],
-        apiKey: process.env.YOUTUBE_DATA_API,
-        maxVideos: 7,
       },
     },
     {

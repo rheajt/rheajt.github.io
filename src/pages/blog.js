@@ -1,15 +1,37 @@
 import React from 'react';
-import { Layout, SEO } from 'components';
-import { Blog } from '../containers';
-// import { Welcome } from 'containers';
+import { Layout } from 'components';
+import { graphql, Link } from 'gatsby';
 
-function BlogPage() {
+export default function BlogPage({ data }) {
+  const pages = data.allMarkdownRemark.edges.map(edge => edge.node);
   return (
-    <Layout centered>
-      <SEO title="Blog" />
-      <Blog />
+    <Layout>
+      <h1>Blog Page</h1>
+      {pages.map(page => (
+        <div>
+          <Link key={page.fields.slug} to={`/blog/${page.fields.slug}`}>
+            {page.fields.slug}
+          </Link>
+        </div>
+      ))}
     </Layout>
   );
 }
 
-export default BlogPage;
+export const pageQuery = graphql`
+  query {
+    allMarkdownRemark {
+      edges {
+        node {
+          fields {
+            slug
+            youtubeId
+          }
+          frontmatter {
+            title
+          }
+        }
+      }
+    }
+  }
+`;

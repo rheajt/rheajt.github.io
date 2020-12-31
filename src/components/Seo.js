@@ -1,6 +1,6 @@
 import React from 'react';
 import Helmet from 'react-helmet';
-import useSiteMetadata from './useSiteMetadata';
+import useSiteMetadata from '../hooks/useSiteMetadata';
 
 // type Props = {
 //   description?: String,
@@ -9,7 +9,7 @@ import useSiteMetadata from './useSiteMetadata';
 //   title: String,
 // };
 
-function SEO({ description, lang, meta, title }) {
+export function SEO({ description, lang, meta, title }) {
   const siteMetadata = useSiteMetadata();
 
   const metaDescription = description || siteMetadata.description;
@@ -43,10 +43,10 @@ function SEO({ description, lang, meta, title }) {
   );
 }
 
-SEO.defaultProps = {
-  lang: `en`,
-  meta: [],
-  description: ``,
-};
+// SEO.defaultProps = {
+//   lang: `en`,
+//   meta: [],
+//   description: ``,
+// };
 
-export default SEO;
+// export default SEO;

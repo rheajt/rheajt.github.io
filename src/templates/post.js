@@ -1,19 +1,10 @@
-import { graphql, Link } from 'gatsby';
+import { graphql } from 'gatsby';
 import React from 'react';
 import { Helmet } from 'react-helmet';
-import Button from '@material-ui/core/Button';
-import Paper from '@material-ui/core/Paper';
-import Typography from '@material-ui/core/Typography';
-import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
-import makeStyles from '@material-ui/styles/makeStyles';
-import { Layout, AuthorCard } from 'components';
-
+import { Layout, ShareButtons } from 'components';
 import rehypeReact from 'rehype-react';
-import ShareButtons from '../components/share-buttons';
 
 const PageTemplate = props => {
-  const classes = useStyles();
-
   const { siteUrl } = props.data.site.siteMetadata;
   const post = props.data.markdownRemark;
   let width = '';
@@ -77,47 +68,16 @@ const PageTemplate = props => {
       </Helmet>
 
       <Layout>
-        <Paper elevation={3}>
-          <main className={classes.siteMain}>
-            <div className={classes.postButtons}>
-              <div>
-                <Button
-                  variant="outlined"
-                  color="primary"
-                  component={Link}
-                  to="/blog">
-                  <ArrowBackIosIcon /> Back
-                </Button>
-              </div>
+        <section>
+          <h1>{post.frontmatter.title}</h1>
 
-              <ShareButtons url={siteUrl + post.slug} />
-            </div>
-
-            <Typography variant="h1" gutterBottom>
-              {post.frontmatter.title}
-            </Typography>
-
-            {renderAst(post.htmlAst)}
-
-            <AuthorCard />
-          </main>
-        </Paper>
+          {renderAst(post.htmlAst)}
+        </section>
       </Layout>
     </div>
   );
 };
 
-const useStyles = makeStyles({
-  siteMain: {
-    background: '#fff',
-    padding: '4vw',
-  },
-  postButtons: {
-    margin: '2rem 0',
-    display: 'grid',
-    gridTemplateColumns: '1fr auto',
-  },
-});
 export default PageTemplate;
 
 export const query = graphql`
