@@ -2,51 +2,35 @@ import React from 'react';
 import Helmet from 'react-helmet';
 import useSiteMetadata from '../hooks/useSiteMetadata';
 
-// type Props = {
-//   description?: String,
-//   lang?: String,
-//   meta: [],
-//   title: String,
-// };
-
 export function SEO({ description, lang, meta, title }) {
-  const siteMetadata = useSiteMetadata();
+    const siteMetadata = useSiteMetadata();
+    const metaDescription = description || siteMetadata.description;
 
-  const metaDescription = description || siteMetadata.description;
-
-  return (
-    <Helmet
-      htmlAttributes={{
-        lang,
-      }}
-      title={title}
-      titleTemplate={`%s | ${siteMetadata.title}`}
-      meta={[
-        {
-          name: `description`,
-          content: metaDescription,
-        },
-        {
-          property: `og:title`,
-          content: title,
-        },
-        {
-          property: `og:description`,
-          content: metaDescription,
-        },
-        {
-          property: `og:type`,
-          content: `website`,
-        },
-      ].concat(meta)}
-    />
-  );
+    return (
+        <Helmet
+            htmlAttributes={{
+                lang,
+            }}
+            title={title}
+            titleTemplate={`%s | ${siteMetadata.title}`}
+            meta={[
+                {
+                    name: `description`,
+                    content: metaDescription,
+                },
+                {
+                    property: `og:title`,
+                    content: title,
+                },
+                {
+                    property: `og:description`,
+                    content: metaDescription,
+                },
+                {
+                    property: `og:type`,
+                    content: `website`,
+                },
+            ]}
+        />
+    );
 }
-
-// SEO.defaultProps = {
-//   lang: `en`,
-//   meta: [],
-//   description: ``,
-// };
-
-// export default SEO;
