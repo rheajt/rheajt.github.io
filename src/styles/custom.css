@@ -1,0 +1,44 @@
+header.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-right: 12.5%;
+}
+
+.header a {
+    background: none;
+}
+
+.header nav {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    text-transform: uppercase;
+}
+
+.header nav a {
+    padding-right: 1rem;
+}
+
+.columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.gatsby-highlight {
+    width: 90%;
+}
+
+.gatsby-highlight > pre > code {
+    width: inherit;
+    overflow-x: inherit;
+}
+
+@media (max-width: 400px) {
+    .gatsby-highlight {
+        width: 100%;
+    }
+}

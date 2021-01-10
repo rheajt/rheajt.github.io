@@ -1,9 +1,9 @@
 import { graphql } from 'gatsby';
 import React from 'react';
 import { Helmet } from 'react-helmet';
-import { Layout, ShareButtons } from 'components';
 import rehypeReact from 'rehype-react';
-import 'tufte-css/tufte.min.css';
+import renderTufte from '../utils/renderTufte';
+import { Layout } from '../components/Layout';
 
 const PageTemplate = props => {
     const { siteUrl } = props.data.site.siteMetadata;
@@ -23,10 +23,15 @@ const PageTemplate = props => {
 
     const renderAst = new rehypeReact({
         createElement: React.createElement,
+        Fragment: React.Fragment,
     }).Compiler;
 
+    const ast = renderTufte(post.htmlAst);
+
+    console.log('new', ast);
+
     return (
-        <div>
+        <Layout>
             <Helmet>
                 <html lang="en" />
                 <title>{post.frontmatter.title}</title>
@@ -87,13 +92,10 @@ const PageTemplate = props => {
             </Helmet>
 
             <article>
-                <section>
-                    <h1>{post.frontmatter.title}</h1>
-
-                    {renderAst(post.htmlAst)}
-                </section>
+                <h1>{post.frontmatter.title}</h1>
+                {renderAst(ast)}
             </article>
-        </div>
+        </Layout>
     );
 };
 

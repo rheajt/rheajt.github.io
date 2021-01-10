@@ -1,12 +1,12 @@
 ---
 title: Covid-19 Query Time
 categories:
-  - Blog
+    - Blog
 tags:
-  - Projects
-  - google apps script
-  - javascript
-  - solutions
+    - Projects
+    - google apps script
+    - javascript
+    - solutions
 youtube: <<YOUTUBE_URL>>
 image: thumbnail.png
 ---

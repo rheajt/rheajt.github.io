@@ -3,19 +3,20 @@ import { Layout, SEO } from 'components';
 import React from 'react';
 
 const IndexPage = ({ data }) => {
-    console.log(data);
     return (
-        <Layout centered>
-            <section>
-                <SEO />
+        <Layout>
+            <SEO />
+            <div className="columns">
+                <div>
+                    <h1>Jordan Rhea</h1> <h2>Web Development</h2>
+                </div>
                 <div>
                     <Img
                         fluid={data.header.childImageSharp.fluid}
                         alt="header image"
                     />
                 </div>
-                <h1>jordan rhea</h1>
-            </section>
+            </div>
         </Layout>
     );
 };
