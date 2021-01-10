@@ -6,17 +6,15 @@ const IndexPage = ({ data }) => {
     return (
         <Layout>
             <SEO />
-            <div className="columns">
-                <div>
-                    <h1>Jordan Rhea</h1> <h2>Web Development</h2>
-                </div>
-                <div>
+            <section>
+                <h1>Jordan Rhea</h1> <h2>Web Development</h2>
+                <figure>
                     <Img
                         fluid={data.header.childImageSharp.fluid}
                         alt="header image"
                     />
-                </div>
-            </div>
+                </figure>
+            </section>
         </Layout>
     );
 };
