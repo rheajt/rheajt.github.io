@@ -10,7 +10,7 @@ const IndexPage = ({ data }) => {
                 <h1>Jordan Rhea</h1> <h2>Web Development</h2>
                 <figure>
                     <Img
-                        fluid={data.header.childImageSharp.fluid}
+                        fixed={data.header.childImageSharp.fixed}
                         alt="header image"
                     />
                 </figure>
@@ -25,8 +25,8 @@ export const query = graphql`
     query {
         header: file(name: { eq: "jordan-rhea-header" }) {
             childImageSharp {
-                fluid(maxWidth: 600) {
-                    ...GatsbyImageSharpFluid
+                fixed(width: 400) {
+                    ...GatsbyImageSharpFixed
                 }
             }
         }

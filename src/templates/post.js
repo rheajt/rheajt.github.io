@@ -4,6 +4,7 @@ import { Helmet } from 'react-helmet';
 import rehypeReact from 'rehype-react';
 import renderTufte from '../utils/renderTufte';
 import { Layout } from '../components/Layout';
+import { ShareButtons } from '../components/ShareButtons';
 
 const PageTemplate = props => {
     const { siteUrl } = props.data.site.siteMetadata;
@@ -93,6 +94,8 @@ const PageTemplate = props => {
 
             <article>
                 <h1>{post.frontmatter.title}</h1>
+                <ShareButtons />
+
                 {renderAst(ast)}
             </article>
         </Layout>

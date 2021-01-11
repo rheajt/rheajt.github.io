@@ -8,14 +8,18 @@ export default function BlogPage({ data }) {
         <Layout>
             <section>
                 <h1>Blog Page</h1>
+
                 <p>
                     Documenting some of the projects I have worked on and am
                     still working on. The learning process never stops in the
                     wonder world of web development
                 </p>
+
                 {pages.map(page => (
                     <div>
-                        <Link key={page.fields.slug} to={`${page.fields.slug}`}>
+                        <Link
+                            key={page.fields.slug}
+                            to={`/${page.fields.slug}`}>
                             {page.frontmatter.title}
                         </Link>
                     </div>
