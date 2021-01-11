@@ -60,7 +60,7 @@
         "prettier": "^1.19.1",
         "redux-devtools-extension": "^2.13.2",
         "unist-util-map": "^2.0.1",
-        "yargs-parser": "^16.1.0"
+        "yargs-parser": "^18.1.2"
     },
     "keywords": [
         "gatsby"
