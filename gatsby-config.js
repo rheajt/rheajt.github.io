@@ -110,7 +110,6 @@ module.exports = {
                     {
                         serialize: ({ query: { site, allMarkdownRemark } }) => {
                             return allMarkdownRemark.edges.map(({ node }) => {
-                                console.log(node);
                                 return {
                                     ...node.frontmatter,
                                     description: node.excerpt,
