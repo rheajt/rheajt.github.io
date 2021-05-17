@@ -1,29 +1,52 @@
 import React from 'react';
 import { Layout } from 'components';
 import { graphql, Link } from 'gatsby';
+import { format } from 'date-fns';
 
 export default function BlogPage({ data }) {
     const pages = data.allMarkdownRemark.edges.map(edge => edge.node);
+
+    console.log(pages);
+    const byMonth = pages.reduce((acc, page) => {
+        if (!page.fields.date) return acc;
+
+        const monthYear = format(new Date(page.fields.date), 'MMMM yyyy');
+        if (acc[monthYear]) {
+            acc[monthYear].push(page);
+        } else {
+            acc[monthYear] = [page];
+        }
+
+        return acc;
+    }, {});
+
+    console.log(byMonth);
     return (
-        <Layout>
+        <Layout title="Blog">
             <section>
                 <h1>Blog Page</h1>
 
                 <p>
-                    Documenting some of the projects I have worked on and am
-                    still working on. The learning process never stops in the
-                    wonder world of web development
+                    I build things for the web. Sometimes for Google Workspaces.
+                    Sometimes for Microsoft Sharepoint. Always with code.
                 </p>
 
-                {pages.map(page => (
-                    <div>
-                        <Link
-                            key={page.fields.slug}
-                            to={`/${page.fields.slug}`}>
-                            {page.frontmatter.title}
-                        </Link>
-                    </div>
-                ))}
+                {Object.keys(byMonth).map(month => {
+                    return (
+                        <>
+                            <h3>{month}</h3>
+                            {byMonth[month].map(page => (
+                                <div>
+                                    <Link
+                                        key={page.fields.slug}
+                                        to={`/${page.fields.slug}`}>
+                                        {page.frontmatter.title}
+                                    </Link>
+                                </div>
+                            ))}
+                        </>
+                    );
+                })}
             </section>
         </Layout>
     );
@@ -31,12 +54,13 @@ export default function BlogPage({ data }) {
 
 export const pageQuery = graphql`
     query {
-        allMarkdownRemark {
+        allMarkdownRemark(sort: { order: DESC, fields: fields___date }) {
             edges {
                 node {
                     fields {
                         slug
                         youtubeId
+                        date
                     }
                     frontmatter {
                         title
