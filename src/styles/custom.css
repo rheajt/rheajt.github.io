@@ -2,7 +2,7 @@ header.header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-right: 12.5%;
+    /*margin-right: 12.5%;*/
 }
 
 .header a {

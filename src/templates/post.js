@@ -29,8 +29,6 @@ const PageTemplate = props => {
 
     const ast = renderTufte(post.htmlAst);
 
-    console.log('new', ast);
-
     return (
         <Layout>
             <Helmet>

@@ -1,18 +1,17 @@
-import Img from 'gatsby-image';
 import { Layout, SEO } from 'components';
 import React from 'react';
 
 const IndexPage = ({ data }) => {
+    console.log(data.header.childImageSharp);
     return (
         <Layout>
             <SEO />
             <section>
-                <h1>Jordan Rhea</h1> <h2>Web Development</h2>
+                <h1>Jordan Rhea</h1>
+                <h3>Solutions Development</h3>
+
                 <figure>
-                    <Img
-                        fixed={data.header.childImageSharp.fixed}
-                        alt="header image"
-                    />
+                    <img src={data.header.childImageSharp.fixed.src} alt="jordans face" />
                 </figure>
             </section>
         </Layout>

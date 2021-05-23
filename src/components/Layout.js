@@ -10,11 +10,12 @@ export function Layout(props) {
     }
 
     return (
-        <div>
+        <>
             <Helmet title={title} />
 
             <Header />
+
             {props.children}
-        </div>
+        </>
     );
 }

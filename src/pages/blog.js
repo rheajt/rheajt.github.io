@@ -6,7 +6,6 @@ import { format } from 'date-fns';
 export default function BlogPage({ data }) {
     const pages = data.allMarkdownRemark.edges.map(edge => edge.node);
 
-    console.log(pages);
     const byMonth = pages.reduce((acc, page) => {
         if (!page.fields.date) return acc;
 
