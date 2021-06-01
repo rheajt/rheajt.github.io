@@ -18,7 +18,7 @@ const PageTemplate = props => {
             .split('px')[0];
         height = String(
             Number(width) /
-                post.frontmatter.image.childImageSharp.fluid.aspectRatio
+            post.frontmatter.image.childImageSharp.fluid.aspectRatio
         );
     }
 
@@ -42,7 +42,7 @@ const PageTemplate = props => {
                 <meta property="og:description" content={post.excerpt} />
                 <meta
                     property="og:url"
-                    content={siteUrl + props.pageContext.slug}
+                    content={siteUrl + "/" + props.pageContext.slug}
                 />
                 {post.frontmatter.image &&
                     post.frontmatter.image.childImageSharp && (
@@ -68,7 +68,7 @@ const PageTemplate = props => {
                 <meta name="twitter:description" content={post.excerpt} />
                 <meta
                     name="twitter:url"
-                    content={siteUrl + props.pageContext.slug}
+                    content={siteUrl + "/" + props.pageContext.slug}
                 />
                 {post.frontmatter.image &&
                     post.frontmatter.image.childImageSharp && (
@@ -92,7 +92,11 @@ const PageTemplate = props => {
 
             <article>
                 <h1>{post.frontmatter.title}</h1>
-                <ShareButtons />
+
+                <ShareButtons url={siteUrl + '/' + props.pageContext.slug}
+                    title={post.frontmatter.title}
+                    description={post.exerpt}
+                />
 
                 {renderAst(ast)}
             </article>

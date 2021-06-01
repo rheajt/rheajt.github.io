@@ -1,50 +1,41 @@
 import React from 'react';
 import {
-  EmailIcon,
-  EmailShareButton,
-  FacebookIcon,
-  FacebookShareButton,
-  LinkedinIcon,
-  LinkedinShareButton,
-  PinterestIcon,
-  PinterestShareButton,
-  RedditIcon,
-  RedditShareButton,
-  TwitterIcon,
-  TwitterShareButton,
-  WeiboIcon,
-  WeiboShareButton,
-  WhatsappIcon,
-  WhatsappShareButton,
+    EmailIcon,
+    EmailShareButton,
+    FacebookIcon,
+    FacebookShareButton,
+    LinkedinIcon,
+    LinkedinShareButton,
+    PinterestIcon,
+    PinterestShareButton,
+    RedditIcon,
+    RedditShareButton,
+    TwitterIcon,
+    TwitterShareButton,
 } from 'react-share';
 
-export function ShareButtons({ url }) {
-  return (
-    <div>
-      <EmailShareButton url={url}>
-        <EmailIcon size={36} />
-      </EmailShareButton>
-      <FacebookShareButton url={url}>
-        <FacebookIcon size={36} />
-      </FacebookShareButton>
-      <LinkedinShareButton url={url}>
-        <LinkedinIcon size={36} />
-      </LinkedinShareButton>
-      <PinterestShareButton url={url}>
-        <PinterestIcon size={36} />
-      </PinterestShareButton>
-      <RedditShareButton url={url}>
-        <RedditIcon size={36} />
-      </RedditShareButton>
-      <TwitterShareButton url={url}>
-        <TwitterIcon size={36} />
-      </TwitterShareButton>
-      <WeiboShareButton url={url}>
-        <WeiboIcon size={36} />
-      </WeiboShareButton>
-      <WhatsappShareButton url={url}>
-        <WhatsappIcon size={36} />
-      </WhatsappShareButton>
-    </div>
-  );
+export function ShareButtons({ url, title, description }) {
+    console.log(url);
+    return (
+        <div>
+            <EmailShareButton url={url} subject={title} body={description}>
+                <EmailIcon size={36} />
+            </EmailShareButton>
+            <FacebookShareButton url={url} quote={description}>
+                <FacebookIcon size={36} />
+            </FacebookShareButton>
+            <LinkedinShareButton url={url} title={title} summary={description} source={`https://jordanrhea.com`}>
+                <LinkedinIcon size={36} />
+            </LinkedinShareButton>
+            <PinterestShareButton url={url} description={description}>
+                <PinterestIcon size={36} />
+            </PinterestShareButton>
+            <RedditShareButton url={url} title={title}>
+                <RedditIcon size={36} />
+            </RedditShareButton>
+            <TwitterShareButton url={url} title={title} via={'https://jordanrhea.com'} related={['@rheajt']}>
+                <TwitterIcon size={36} />
+            </TwitterShareButton>
+        </div>
+    );
 }

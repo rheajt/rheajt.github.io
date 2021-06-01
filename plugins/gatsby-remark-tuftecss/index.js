@@ -5,28 +5,28 @@ const toString = require('mdast-util-to-string');
 
 module.exports = (props, opts) => {
     console.log('props', props);
-    const markdownAST = props.markdownAST;
+    //const markdownAST = props.markdownAST;
 
-    const mapped = map(markdownAST, node => {
-        if (node.type === 'code') {
-            return node;
-        }
+    //const mapped = map(markdownAST, node => {
+        //if (node.type === 'code') {
+            //return node;
+        //}
 
-        if (node.type === 'html' && node.value.includes('<iframe')) {
-            return makeFigure(node);
-        }
+        //if (node.type === 'html' && node.value.includes('<iframe')) {
+            //return makeFigure(node);
+        //}
 
-        if (node.type === 'paragraph') {
-            return makeSection(node);
-        }
+        //if (node.type === 'paragraph') {
+            //return makeSection(node);
+        //}
 
-        return node;
-    });
+        //return node;
+    //});
 
-    console.log(JSON.stringify(mapped, null, 2));
+    //console.log(JSON.stringify(mapped, null, 2));
 
-    return u('html', [mapped]);
-    return mapped;
+    //return u('html', [mapped]);
+    //return mapped;
 };
 
 function makeArticle(node) {
