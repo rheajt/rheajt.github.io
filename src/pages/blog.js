@@ -19,11 +19,10 @@ export default function BlogPage({ data }) {
         return acc;
     }, {});
 
-    console.log(byMonth);
     return (
         <Layout title="Blog">
-            <section>
                 <h1>Blog Page</h1>
+            <section>
 
                 <p>
                     I build things for the web. Sometimes for Google Workspaces.

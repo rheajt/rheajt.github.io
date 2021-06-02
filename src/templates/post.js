@@ -90,16 +90,14 @@ const PageTemplate = props => {
                 {height && <meta property="og:image:height" content={height} />}
             </Helmet>
 
-            <article>
-                <h1>{post.frontmatter.title}</h1>
+            <h1>{post.frontmatter.title}</h1>
 
-                <ShareButtons url={siteUrl + '/' + props.pageContext.slug}
-                    title={post.frontmatter.title}
-                    description={post.exerpt}
-                />
+            <ShareButtons url={siteUrl + '/' + props.pageContext.slug}
+                title={post.frontmatter.title}
+                description={post.exerpt}
+            />
 
-                {renderAst(ast)}
-            </article>
+            {renderAst(ast)}
         </Layout>
     );
 };

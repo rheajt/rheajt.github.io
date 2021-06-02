@@ -4,7 +4,7 @@ import React from 'react';
 const IndexPage = ({ data }) => {
     console.log(data.header.childImageSharp);
     return (
-        <Layout>
+        <Layout title="jordanrhea.com">
             <SEO />
             <section>
                 <h1>Jordan Rhea</h1>
