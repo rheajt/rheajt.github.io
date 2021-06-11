@@ -2,7 +2,6 @@ import { Layout, SEO } from 'components';
 import React from 'react';
 
 const IndexPage = ({ data }) => {
-    console.log(data.header.childImageSharp);
     return (
         <Layout title="jordanrhea.com">
             <SEO />

@@ -15,7 +15,7 @@ export function Layout(props) {
 
             <Header />
 
-            {props.children}
+            <div style={{ minHeight: '100%' }}>{props.children}</div>
         </>
     );
 }
