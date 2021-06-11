@@ -2,14 +2,16 @@ import { useEffect, useState } from 'react';
 
 // Hook
 function useGetSize(isClient) {
-    return {
-        width: window.innerWidth,
-        height: window.innerHeight
-    }
+    console.log('is client', isClient);
+
     //return {
-    //width: isClient ? window.innerWidth : undefined,
-    //height: isClient ? window.innerHeight : undefined,
-    //};
+    //width: window.innerWidth,
+    //height: window.innerHeight
+    //}
+    return {
+        width: isClient ? window.innerWidth : undefined,
+        height: isClient ? window.innerHeight : undefined,
+    };
 }
 
 export default function useWindowSize() {
