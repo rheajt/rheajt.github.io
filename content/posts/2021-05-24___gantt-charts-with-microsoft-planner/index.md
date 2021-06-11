@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Gantt Charts with Microsoft Planner
 categories:
   - Blog

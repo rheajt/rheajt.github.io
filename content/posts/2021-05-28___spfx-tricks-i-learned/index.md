@@ -1,5 +1,4 @@
 ---
-draft: true
 title: SPFx Tricks I Learned
 categories:
   - Blog

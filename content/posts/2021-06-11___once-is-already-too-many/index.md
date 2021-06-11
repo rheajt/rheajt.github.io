@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Once is already too many
 categories:
   - Blog

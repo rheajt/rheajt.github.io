@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Shoot your best screenshot
 categories:
   - Blog
@@ -9,7 +8,7 @@ tags:
   - chrome browser
   - javascript
   - solutions
-youtube: <<YOUTUBE_URL>>
+youtube: ""
 image: full-page.gif
 ---
 
