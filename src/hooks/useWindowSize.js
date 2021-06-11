@@ -2,12 +2,6 @@ import { useEffect, useState } from 'react';
 
 // Hook
 function useGetSize(isClient) {
-    console.log('is client', isClient);
-
-    //return {
-    //width: window.innerWidth,
-    //height: window.innerHeight
-    //}
     return {
         width: isClient ? window.innerWidth : undefined,
         height: isClient ? window.innerHeight : undefined,
@@ -26,7 +20,7 @@ export default function useWindowSize() {
         }
 
         function handleResize() {
-            setWindowSize(getSize());
+            setWindowSize(getSize);
         }
 
         window.addEventListener('resize', handleResize);
