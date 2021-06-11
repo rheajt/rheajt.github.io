@@ -68,5 +68,6 @@
 <url> <loc>https://jordanrhea.com/blog/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://jordanrhea.com/contact/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://jordanrhea.com/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>https://jordanrhea.com/privacy-policy/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://jordanrhea.com/privacy/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://jordanrhea.com/terms/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 </urlset>
