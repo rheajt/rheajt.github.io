@@ -27,7 +27,15 @@ module.exports = {
             },
         },
         `gatsby-plugin-sitemap`,
-        `gatsby-plugin-sharp`,
+        `gatsby-plugin-image`,
+        {
+            resolve: `gatsby-plugin-sharp`,
+            options: {
+                defaults: {
+                    placeholder: 'none'
+                }
+            }
+        },
         `gatsby-plugin-flow`,
         `gatsby-plugin-react-helmet`,
         'gatsby-transformer-json',
@@ -40,7 +48,6 @@ module.exports = {
                     'gatsby-remark-prismjs',
                     'gatsby-remark-copy-linked-files',
                     'gatsby-remark-smartypants',
-                    'gatsby-remark-abbr',
                     {
                         resolve: 'gatsby-remark-images',
                         options: {

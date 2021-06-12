@@ -1,3 +1,3 @@
 export { Layout } from './Layout';
-export { SEO } from './Seo';
+export { Seo } from './Seo';
 export { ShareButtons } from './ShareButtons';

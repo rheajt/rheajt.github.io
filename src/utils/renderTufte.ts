@@ -1,4 +1,4 @@
-export default function renderTufte(ast) {
+export default function renderTufte(ast: any) {
     return {
         ...ast,
         children: [
@@ -10,8 +10,9 @@ export default function renderTufte(ast) {
         ],
     };
 }
-function parseASTChildren(children) {
-    return children.map(child => {
+
+function parseASTChildren(children: any) {
+    return children.map((child: any) => {
         if (child.tagName === 'iframe') {
             return {
                 type: 'element',

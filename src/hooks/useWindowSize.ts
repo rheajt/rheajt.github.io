@@ -1,7 +1,8 @@
+//@ts-nocheck
 import { useEffect, useState } from 'react';
 
 // Hook
-function useGetSize(isClient) {
+function useGetSize(isClient: boolean) {
     return {
         width: isClient ? window.innerWidth : undefined,
         height: isClient ? window.innerHeight : undefined,

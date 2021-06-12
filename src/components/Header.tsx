@@ -1,6 +1,7 @@
 import { Link, useStaticQuery } from 'gatsby';
 import Img from 'gatsby-image';
 import React from 'react';
+import { graphql } from 'gatsby';
 
 const iconQuery = graphql`
     query IconImage {

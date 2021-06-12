@@ -2,7 +2,7 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import Header from './Header';
 
-export function Layout(props) {
+export function Layout(props: { title?: string; children: any }) {
     let title = 'jordanrhea.com';
 
     if (props.title) {
@@ -15,7 +15,7 @@ export function Layout(props) {
 
             <Header />
 
-            <div style={{ minHeight: '100%' }}>{props.children}</div>
+            <article>{props.children}</article>
         </>
     );
 }

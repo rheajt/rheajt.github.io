@@ -1,16 +1,18 @@
-import { Layout, SEO } from 'components';
+import {Layout} from '../components/Layout';
+import { Seo } from '../components/Seo';
+import {StaticImage} from 'gatsby-plugin-image';
 import React from 'react';
 
-const IndexPage = ({ data }) => {
+const IndexPage = () => {
     return (
         <Layout title="jordanrhea.com">
-            <SEO />
+            <Seo />
             <section>
                 <h1>Jordan Rhea</h1>
                 <h3>Cloud Solutions Development</h3>
 
                 <figure>
-                    <img src={data.header.childImageSharp.fixed.src} alt="jordans face" />
+			<StaticImage src="../images/jordan-rhea-header.png" alt="header image" layout="constrained" />
                 </figure>
             </section>
 
@@ -23,15 +25,3 @@ const IndexPage = ({ data }) => {
 };
 
 export default IndexPage;
-
-export const query = graphql`
-    query {
-        header: file(name: { eq: "jordan-rhea-header" }) {
-            childImageSharp {
-                fixed(width: 400) {
-                    ...GatsbyImageSharpFixed
-                }
-            }
-        }
-    }
-`;
