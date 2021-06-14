@@ -4,6 +4,9 @@ import rehypeReact from 'rehype-react';
 
 import { renderTufte } from '../utils';
 import { Layout, Seo, ShareButtons } from '../components';
+import Warning from '../components/Warning';
+import { isDate } from 'date-fns';
+import { format, isAfter, isBefore } from 'date-fns/esm';
 
 interface PostPageProps extends PageProps {
     data: {
@@ -65,6 +68,11 @@ const PageTemplate: React.FC<PostPageProps> = (props) => {
 
     const html = renderAst(renderTufte(post.htmlAst));
 
+    const hasImage = () =>
+        post.frontmatter.image && post.frontmatter.image.childImageSharp
+            ? post.frontmatter.image.childImageSharp.fluid.src
+            : '';
+
     const meta = [
         { name: 'description', content: post.excerpt },
         { property: 'og:site_name', content: siteUrl },
@@ -74,7 +82,7 @@ const PageTemplate: React.FC<PostPageProps> = (props) => {
         { property: 'og:url', content: siteUrl + '/' + slug },
         {
             property: 'og:image',
-            content: siteUrl + post.frontmatter.image.childImageSharp.fluid.src,
+            content: hasImage(),
         },
         { property: 'article:published_time', content: post.fields.date },
         { property: 'article:tag', content: post.frontmatter.tags[0] },
@@ -84,7 +92,7 @@ const PageTemplate: React.FC<PostPageProps> = (props) => {
         { property: 'twitter:url', content: siteUrl + '/' + slug },
         {
             property: 'twitter:image',
-            content: siteUrl + post.frontmatter.image.childImageSharp.fluid.src,
+            content: hasImage(),
         },
         { property: 'twitter:label1', content: 'Written by' },
         { property: 'twitter:data1', content: '@rheajt' },
@@ -100,6 +108,10 @@ const PageTemplate: React.FC<PostPageProps> = (props) => {
         meta.push({ property: 'og:image:height', content: height });
     }
 
+    const postDate = new Date(post.fields.date);
+    const yearAgo = new Date().setFullYear(new Date().getFullYear() - 1);
+    const isOld = isAfter(yearAgo, postDate);
+
     return (
         <Layout>
             <Seo
@@ -109,6 +121,15 @@ const PageTemplate: React.FC<PostPageProps> = (props) => {
                 meta={meta}
             />
 
+            {isOld && (
+                <Warning
+                    date={postDate}
+                    url={siteUrl + '/' + slug}
+                    title={post.frontmatter.title}
+                />
+            )}
+
+            <h3>{format(new Date(post.fields.date), 'MMMM dd, yyyy')}</h3>
             <h1>{post.frontmatter.title}</h1>
 
             <ShareButtons
@@ -139,7 +160,7 @@ export const query = graphql`
             excerpt
             timeToRead
             fields {
-                date(formatString: "D MMMM YYYY")
+                date
                 slug
             }
             frontmatter {
