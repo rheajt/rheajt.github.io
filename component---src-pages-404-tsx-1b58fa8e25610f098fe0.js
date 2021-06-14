@@ -1,0 +1,2 @@
+(self.webpackChunkjordanrhea=self.webpackChunkjordanrhea||[]).push([[218],{938:function(e,n,t){"use strict";t.r(n);var r=t(7294),a=t(6105);n.default=function(){return r.createElement(a.Ar,null,r.createElement(a.pQ,{title:"Page not found"}),r.createElement("h1",null,"NOT FOUND"))}}}]);
+//# sourceMappingURL=component---src-pages-404-tsx-1b58fa8e25610f098fe0.js.map
