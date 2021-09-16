@@ -1,2 +1,0 @@
-(self.webpackChunkjordanrhea=self.webpackChunkjordanrhea||[]).push([[831],{3487:function(e,t,r){"use strict";r.r(t);var a=r(7294),n=r(6105);t.default=function(){return a.createElement(n.Ar,null,a.createElement("iframe",{title:"contact-form",name:"contact-form",width:"100%",height:800,frameBorder:"0",src:"https://docs.google.com/document/d/e/2PACX-1vQu8qEO-akZuQfWfi0475QF3oOlzP_Hjuonsl3PQ03UI_Ki5M8zXSqUCoL0ZXhH0Gp6uwdEfMu1Rp6a/pub?embedded=true"}))}}}]);
-//# sourceMappingURL=component---src-pages-privacy-tsx-3719d2011d97ae3f8352.js.map

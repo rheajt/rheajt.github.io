@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkjordanrhea=self.webpackChunkjordanrhea||[]).push([[218],{938:function(e,t,n){n.r(t);var r=n(7294),a=n(6105);t.default=function(){return r.createElement(a.Ar,null,r.createElement(a.pQ,{title:"Page not found"}),r.createElement("h1",null,"NOT FOUND"),r.createElement("p",null,"Going to be honest with you... I probably broke it."),r.createElement("p",null,"Let me know on ",r.createElement("a",{href:"https://twitter.com/rheajt"},"my twitter page @rheajt")))}}}]);
+//# sourceMappingURL=component---src-pages-404-tsx-71a3534228bccce31bcb.js.map

@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkjordanrhea=self.webpackChunkjordanrhea||[]).push([[389],{931:function(e,r,t){t.r(r);var n=t(7294),a=t(6105);r.default=function(){return n.createElement(a.Ar,null,n.createElement("iframe",{title:"terms-of-service",name:"terms",width:"100%",height:800,frameBorder:"0",src:"https://docs.google.com/document/d/e/2PACX-1vTfE-k4i9mOSCz_ZZunZTmOYROZIgPjXdvp7GiOupqSet-cgeYBUIvalf_n-08OMX1vM6UHLw8zx4-d/pub?embedded=true"}))}}}]);
+//# sourceMappingURL=component---src-pages-terms-tsx-d1d71b523620884ca4c8.js.map
