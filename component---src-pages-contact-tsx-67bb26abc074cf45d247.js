@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunkjordanrhea=self.webpackChunkjordanrhea||[]).push([[650],{5424:function(e,n,r){r.r(n);var t=r(7294),a=r(6105);n.default=function(){return t.createElement(a.Ar,{centered:!0},t.createElement("h1",null,"Contact Page"))}}}]);
-//# sourceMappingURL=component---src-pages-contact-tsx-67bb26abc074cf45d247.js.map
