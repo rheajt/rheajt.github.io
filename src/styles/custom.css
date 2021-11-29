@@ -1,0 +1,23 @@
+.header {
+       display: flex;
+    /* justify-content: space-between; */
+    align-items: center;
+    /* margin-right: 12.5%; */
+}
+
+.header a {
+    background: none;
+    padding-right: 2rem;
+    text-decoration: none;
+}
+
+.header nav {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    text-transform: uppercase;
+}
+
+.header nav a {
+    padding-right: 1rem;
+}

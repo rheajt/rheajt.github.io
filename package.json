@@ -1,13 +1,14 @@
 {
-  "name": "gatsby-starter-blog",
+  "name": "rheajt.github.io",
   "private": true,
-  "description": "A starter for a blog powered by Gatsby and Markdown",
-  "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "description": "static blog site built with gatsby",
+  "version": "3.0.0",
+  "author": "jordan rhea <rheajt@gmail.com>",
   "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
+    "url": "https://github.com/rheajt/rheajt.github.io"
   },
   "dependencies": {
+    "date-fns": "^2.26.0",
     "gatsby": "^4.2.0",
     "gatsby-plugin-feed": "^4.2.0",
     "gatsby-plugin-gatsby-cloud": "^4.2.0",
@@ -29,21 +30,26 @@
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-helmet": "^6.1.0",
+    "slugify": "^1.6.3",
     "typeface-merriweather": "0.0.72",
-    "typeface-montserrat": "0.0.75"
+    "typeface-montserrat": "0.0.75",
+    "typeface-shadows-into-light": "^1.1.13"
   },
   "devDependencies": {
+    "gh-pages": "^3.2.3",
     "prettier": "^2.4.1"
   },
-  "homepage": "https://github.com/gatsbyjs/gatsby-starter-blog#readme",
+  "homepage": "https://jordanrhea.com",
   "keywords": [
-    "gatsby"
+    "gatsby",
+    "portfolio",
+    "blog"
   ],
   "license": "0BSD",
   "main": "n/a",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/gatsbyjs/gatsby-starter-blog.git"
+    "url": "git+https://github.com/rheajt/rheajt.github.io.git"
   },
   "scripts": {
     "build": "gatsby build",
@@ -52,6 +58,7 @@
     "start": "gatsby develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
+    "deploy": "gatsby build && gh-pages -b master -d public"
   }
 }

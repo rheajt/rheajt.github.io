@@ -4,12 +4,14 @@ import { Link, graphql } from "gatsby"
 import Bio from "../components/bio"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
+import { format } from "date-fns"
 
 const BlogPostTemplate: React.FC<any> = ({ data, location }) => {
     const post = data.markdownRemark
     const siteTitle = data.site.siteMetadata?.title || `Title`
     const { previous, next } = data
 
+    console.log(post);
     return (
         <Layout location={location} title={siteTitle}>
             <Seo
@@ -23,7 +25,7 @@ const BlogPostTemplate: React.FC<any> = ({ data, location }) => {
             >
                 <header>
                     <h1 itemProp="headline">{post.frontmatter.title}</h1>
-                    <p>{post.frontmatter.date}</p>
+                    <p>{format(new Date(post.fields.date), 'PPP')}</p>
                 </header>
                 <section
                     dangerouslySetInnerHTML={{ __html: post.html }}
@@ -85,6 +87,9 @@ export const pageQuery = graphql`
         title
         date(formatString: "MMMM DD, YYYY")
         description
+      }
+      fields {
+        date
       }
     }
     previous: markdownRemark(id: { eq: $previousPostId }) {
