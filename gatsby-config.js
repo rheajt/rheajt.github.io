@@ -3,13 +3,15 @@ module.exports = {
         title: `jordan rhea`,
         author: {
             name: `jordan rhea`,
-            summary: `cloud solutions development`,
+            summary: `a developer focused on building solutions in the cloud`,
         },
         description: `a place to try and document the projects i have been working on`,
         siteUrl: `https://jordanrhea.com/`,
         social: {
             twitter: `rheajt`,
-            github: `rheajt`
+            github: `rheajt`,
+            linkedin: `rheajt`,
+            youtube: `jordanrhea`
         },
     },
     plugins: [

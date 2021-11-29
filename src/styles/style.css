@@ -79,7 +79,7 @@ html {
   -moz-osx-font-smoothing: grayscale;
   background-color: #fffff8;
   background-size: 2rem 2rem;
-  background-image: radial-gradient(circle, #aaa5af, rgba(0, 0, 0, 0) 1px);
+  background-image: radial-gradient(circle, #340b54, rgba(0, 0, 0, 0) 1px);
 }
 
 body {
@@ -243,6 +243,10 @@ a:focus {
   text-decoration: none;
 }
 
+img {
+    filter: drop-shadow(0px 0px 1px black);
+}
+
 /* Custom classes */
 
 .global-wrapper {
@@ -293,6 +297,7 @@ a:focus {
 
 .bio {
   display: flex;
+  margin-top: var(--spacing-16);
   margin-bottom: var(--spacing-16);
 }
 
