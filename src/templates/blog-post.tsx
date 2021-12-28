@@ -1,17 +1,58 @@
-import * as React from "react"
-import { Link, graphql } from "gatsby"
+import * as React from "react";
+import { Link, graphql } from "gatsby";
 
-import Bio from "../components/bio"
-import Layout from "../components/layout"
-import Seo from "../components/seo"
-import { format } from "date-fns"
+import Bio from "../components/bio";
+import Layout from "../components/layout";
+import Seo from "../components/seo";
+import { format } from "date-fns";
 
-const BlogPostTemplate: React.FC<any> = ({ data, location }) => {
-    const post = data.markdownRemark
-    const siteTitle = data.site.siteMetadata?.title || `Title`
-    const { previous, next } = data
+interface Props {
+    data: Data;
+    location: Location;
+}
 
-    console.log(post);
+interface Data {
+    site: {
+        siteMetadata: {
+            title: string;
+        };
+    };
+    markdownRemark: {
+        id: string;
+        excerpt: string;
+        html: string;
+        frontmatter: {
+            title: string;
+            date: string;
+            description: string;
+        };
+        fields: {
+            date: string;
+        };
+    };
+    previous: {
+        fields: {
+            slug: string;
+        };
+        frontmatter: {
+            title: string;
+        };
+    };
+    next: {
+        fields: {
+            slug: string;
+        };
+        frontmatter: {
+            title: string;
+        };
+    };
+}
+
+const BlogPostTemplate: React.FC<Props> = ({ data, location }) => {
+    const post = data.markdownRemark;
+    const siteTitle = data.site.siteMetadata?.title || `Title`;
+    const { previous, next } = data;
+
     return (
         <Layout location={location} title={siteTitle}>
             <Seo
@@ -25,7 +66,7 @@ const BlogPostTemplate: React.FC<any> = ({ data, location }) => {
             >
                 <header>
                     <h1 itemProp="headline">{post.frontmatter.title}</h1>
-                    <p>{format(new Date(post.fields.date), 'PPP')}</p>
+                    <p>{format(new Date(post.fields.date), "PPP")}</p>
                 </header>
                 <section
                     dangerouslySetInnerHTML={{ __html: post.html }}
@@ -63,50 +104,50 @@ const BlogPostTemplate: React.FC<any> = ({ data, location }) => {
                 </ul>
             </nav>
         </Layout>
-    )
-}
+    );
+};
 
-export default BlogPostTemplate
+export default BlogPostTemplate;
 
 export const pageQuery = graphql`
-  query BlogPostBySlug(
-    $id: String!
-    $previousPostId: String
-    $nextPostId: String
-  ) {
-    site {
-      siteMetadata {
-        title
-      }
+    query BlogPostBySlug(
+        $id: String!
+        $previousPostId: String
+        $nextPostId: String
+    ) {
+        site {
+            siteMetadata {
+                title
+            }
+        }
+        markdownRemark(id: { eq: $id }) {
+            id
+            excerpt(pruneLength: 160)
+            html
+            frontmatter {
+                title
+                date(formatString: "MMMM DD, YYYY")
+                description
+            }
+            fields {
+                date
+            }
+        }
+        previous: markdownRemark(id: { eq: $previousPostId }) {
+            fields {
+                slug
+            }
+            frontmatter {
+                title
+            }
+        }
+        next: markdownRemark(id: { eq: $nextPostId }) {
+            fields {
+                slug
+            }
+            frontmatter {
+                title
+            }
+        }
     }
-    markdownRemark(id: { eq: $id }) {
-      id
-      excerpt(pruneLength: 160)
-      html
-      frontmatter {
-        title
-        date(formatString: "MMMM DD, YYYY")
-        description
-      }
-      fields {
-        date
-      }
-    }
-    previous: markdownRemark(id: { eq: $previousPostId }) {
-      fields {
-        slug
-      }
-      frontmatter {
-        title
-      }
-    }
-    next: markdownRemark(id: { eq: $nextPostId }) {
-      fields {
-        slug
-      }
-      frontmatter {
-        title
-      }
-    }
-  }
-`
+`;

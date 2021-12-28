@@ -1,5 +1,6 @@
 import * as React from "react";
 import Layout from "../components/layout";
+import { buildMapboxSrc } from "../utils/buildMapboxSrc";
 
 const About: React.FC<{ location: any }> = ({ location }) => {
     return (
@@ -9,10 +10,7 @@ const About: React.FC<{ location: any }> = ({ location }) => {
             <section>
                 <p>
                     <figure className="marginnote">
-                        <img
-                            src="https://api.mapbox.com/styles/v1/mapbox/dark-v10/static/-77.4469,37.5628,11.64,0/500x400?access_token=pk.eyJ1IjoicmhlYWp0IiwiYSI6ImNqNjR1MWd0YTF2ZTIzM3E3OHVzNXh6YXQifQ.aDdsJcGnpBi5982--JQZVA"
-                            alt="map"
-                        />
+                        <img src={buildMapboxSrc()} alt="map" />
                     </figure>
                 </p>
 

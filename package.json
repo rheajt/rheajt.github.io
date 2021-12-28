@@ -36,6 +36,7 @@
     "typeface-shadows-into-light": "^1.1.13"
   },
   "devDependencies": {
+    "@types/react-helmet": "^6.1.5",
     "gh-pages": "^3.2.3",
     "prettier": "^2.4.1"
   },
