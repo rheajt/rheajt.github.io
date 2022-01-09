@@ -25,6 +25,9 @@ interface Data {
             title: string;
             date: string;
             description: string;
+            image: {
+                publicURL: string;
+            };
         };
         fields: {
             date: string;
@@ -52,12 +55,18 @@ const BlogPostTemplate: React.FC<Props> = ({ data, location }) => {
     const post = data.markdownRemark;
     const siteTitle = data.site.siteMetadata?.title || `Title`;
     const { previous, next } = data;
+    let image = null;
+
+    if (post.frontmatter.image) {
+        image = post.frontmatter.image.publicURL;
+    }
 
     return (
         <Layout location={location} title={siteTitle}>
             <Seo
                 title={post.frontmatter.title}
                 description={post.frontmatter.description || post.excerpt}
+                image={image}
             />
             <article
                 className="blog-post"
@@ -128,6 +137,9 @@ export const pageQuery = graphql`
                 title
                 date(formatString: "MMMM DD, YYYY")
                 description
+                image {
+                    publicURL
+                }
             }
             fields {
                 date

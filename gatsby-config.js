@@ -6,12 +6,12 @@ module.exports = {
             summary: `a developer focused on building solutions in the cloud`,
         },
         description: `a place to try and document the projects i have been working on`,
-        siteUrl: `https://jordanrhea.com/`,
+        siteUrl: `https://jordanrhea.com`,
         social: {
             twitter: `rheajt`,
             github: `rheajt`,
             linkedin: `rheajt`,
-            youtube: `jordanrhea`
+            youtube: `jordanrhea`,
         },
     },
     plugins: [
@@ -57,7 +57,7 @@ module.exports = {
         {
             resolve: `gatsby-plugin-google-analytics`,
             options: {
-                trackingId: 'UA-71835937-1',
+                trackingId: "UA-71835937-1",
                 head: true,
                 anonymize: true,
                 respectDNT: true,
@@ -85,11 +85,17 @@ module.exports = {
                                 return Object.assign({}, node.frontmatter, {
                                     description: node.excerpt,
                                     date: node.frontmatter.date,
-                                    url: site.siteMetadata.siteUrl + node.fields.slug,
-                                    guid: site.siteMetadata.siteUrl + node.fields.slug,
-                                    custom_elements: [{ "content:encoded": node.html }],
-                                })
-                            })
+                                    url:
+                                        site.siteMetadata.siteUrl +
+                                        node.fields.slug,
+                                    guid:
+                                        site.siteMetadata.siteUrl +
+                                        node.fields.slug,
+                                    custom_elements: [
+                                        { "content:encoded": node.html },
+                                    ],
+                                });
+                            });
                         },
                         query: `
               {
@@ -130,4 +136,4 @@ module.exports = {
         },
         `gatsby-plugin-react-helmet`,
     ],
-}
+};

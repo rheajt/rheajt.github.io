@@ -7,6 +7,7 @@ interface Props {
     lang?: string;
     meta?: { name?: string; property?: string; content: string }[];
     title?: string;
+    image?: string;
 }
 
 const Seo: React.FC<Props> = ({
@@ -14,6 +15,7 @@ const Seo: React.FC<Props> = ({
     lang = "en",
     meta = [],
     title = "jordanrhea.com",
+    image,
 }) => {
     const { site } = useStaticQuery(
         graphql`
@@ -22,6 +24,7 @@ const Seo: React.FC<Props> = ({
                     siteMetadata {
                         title
                         description
+                        siteUrl
                         social {
                             twitter
                         }
@@ -33,6 +36,21 @@ const Seo: React.FC<Props> = ({
 
     const metaDescription = description || site.siteMetadata.description;
     const defaultTitle = site.siteMetadata?.title;
+
+    if (image) {
+        const content = site.siteMetadata.siteUrl + image;
+        meta = [
+            ...meta,
+            {
+                property: `og:image`,
+                content,
+            },
+            {
+                name: `twitter:image`,
+                content,
+            },
+        ];
+    }
 
     return (
         <Helmet
