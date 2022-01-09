@@ -55,7 +55,7 @@ const BlogPostTemplate: React.FC<Props> = ({ data, location }) => {
     const post = data.markdownRemark;
     const siteTitle = data.site.siteMetadata?.title || `Title`;
     const { previous, next } = data;
-    let image = null;
+    let image = undefined;
 
     if (post.frontmatter.image) {
         image = post.frontmatter.image.publicURL;
