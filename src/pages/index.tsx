@@ -24,12 +24,13 @@ const Home: React.FC<{ data: any; location: any }> = ({ data, location }) => {
                 />
             </div>
 
-            <p style={{ margin: `2rem 0 1rem 0` }}>My name is</p>
-            <h1 style={{ margin: `0 0 2rem` }}>Jordan Rhea</h1>
+            <h2 style={{ margin: `0 0 2rem` }}>Jordan Rhea</h2>
+
             <p>
-                I use web technology to build solutions to problems. Primarily
-                written in Typescript to automate tasks that slow people down.
+                Data and Systems Developer. I am using web technologies to build
+                custom solutions using both Google and Microsoft clouds.
             </p>
+
             <p>
                 This site is primarily a scratch pad for me to jot things down
                 as I learn them, do them, or build them. I also used to{" "}

@@ -1,6 +1,6 @@
-import { Link } from 'gatsby';
-import React from 'react';
-import { StaticImage } from 'gatsby-plugin-image';
+import { Link } from "gatsby";
+import React from "react";
+import { StaticImage } from "gatsby-plugin-image";
 
 const Header = () => {
     return (
@@ -24,6 +24,10 @@ const Header = () => {
                 <Link className="sans" to="/blog">
                     Blog
                 </Link>
+
+                <a className="sans" href="https://jordanrhea.com/consulting">
+                    Consulting
+                </a>
             </nav>
         </header>
     );
