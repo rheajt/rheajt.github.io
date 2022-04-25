@@ -29,6 +29,7 @@ interface Data {
         };
         fields: {
             date: string;
+            thumbnail: string;
         };
     };
     previous: {
@@ -55,7 +56,7 @@ const BlogPostTemplate: React.FC<Props> = ({ data, location }) => {
     const { previous, next } = data;
     let image = undefined;
 
-    if (post.frontmatter.image) {
+    if (post.fields.thumbnail) {
         image = post.frontmatter.image;
     }
 
@@ -139,6 +140,7 @@ export const pageQuery = graphql`
             }
             fields {
                 date
+                thumbnail
             }
         }
         previous: markdownRemark(id: { eq: $previousPostId }) {
