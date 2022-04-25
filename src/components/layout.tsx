@@ -17,10 +17,6 @@ const Layout: React.FC<{ location: any; title: string }> = ({
             <main>{children}</main>
             <PopupWidget
                 url="https://calendly.com/jordanrhea/30min"
-                /*
-                 * react-calendly uses React's Portal feature (https://reactjs.org/docs/portals.html) to render the popup modal. As a result, you'll need to
-                 * specify the rootElement property to ensure that the modal is inserted into the correct domNode.
-                 */
                 rootElement={document.querySelector("body") as HTMLElement}
                 text="LET'S TALK"
                 textColor="#ffffff"
