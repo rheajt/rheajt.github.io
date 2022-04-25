@@ -1,19 +1,19 @@
 ---
-title: 'Cart Scheduler'
-subtitle: 'A project that turns a form into a way to schedule shared resources in a school'
+title: "Cart Scheduler"
+subtitle: "A project that turns a form into a way to schedule shared resources in a school"
 author: jordan
 categories:
-  - Productivity
-  - Portfolio
+    - Productivity
+    - Projects
 tags:
-  - Projects
-  - google apps script
-  - google forms
-  - javascript
-  - coding
-  - scheduling
-  - automation
-youtube: 'https://www.youtube.com/watch?v=D4CcFBflzyE'
+    - Projects
+    - google apps script
+    - google forms
+    - javascript
+    - coding
+    - scheduling
+    - automation
+youtube: "https://www.youtube.com/watch?v=D4CcFBflzyE"
 image: maxresdefault.jpg
 ---
 

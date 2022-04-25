@@ -25,9 +25,9 @@ const Header = () => {
                     Blog
                 </Link>
 
-                <a className="sans" href="https://jordanrhea.com/consulting">
+                {/*<a className="sans" href="https://jordanrhea.com/consulting">
                     Consulting
-                </a>
+                </a>*/}
             </nav>
         </header>
     );

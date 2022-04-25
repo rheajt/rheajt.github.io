@@ -1,5 +1,4 @@
 /* CSS Custom Properties Definitions */
-@import url("https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap");
 
 :root {
     --maxWidth-none: "none";
@@ -28,7 +27,7 @@
     --spacing-20: 5rem;
     --spacing-24: 6rem;
     --spacing-32: 8rem;
-    --fontFamily-cursive: "Shadows Into Light", cursive;
+    --fontFamily-cursive: cursive;
     --fontFamily-sans: Montserrat, system-ui, -apple-system, BlinkMacSystemFont,
         "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
         "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
@@ -36,7 +35,7 @@
     --fontFamily-serif: "Merriweather", "Georgia", Cambria, "Times New Roman",
         Times, serif;
     --font-body: var(--fontFamily-sans);
-    --font-heading: var(--fontFamily-cursive);
+    --font-heading: var(--fontFamily-serif);
     --fontWeight-normal: 400;
     --fontWeight-medium: 500;
     --fontWeight-semibold: 600;

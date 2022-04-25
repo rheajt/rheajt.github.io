@@ -25,9 +25,7 @@ interface Data {
             title: string;
             date: string;
             description: string;
-            image: {
-                publicURL: string;
-            };
+            image: string;
         };
         fields: {
             date: string;
@@ -58,7 +56,7 @@ const BlogPostTemplate: React.FC<Props> = ({ data, location }) => {
     let image = undefined;
 
     if (post.frontmatter.image) {
-        image = post.frontmatter.image.publicURL;
+        image = post.frontmatter.image;
     }
 
     return (
@@ -137,9 +135,7 @@ export const pageQuery = graphql`
                 title
                 date(formatString: "MMMM DD, YYYY")
                 description
-                image {
-                    publicURL
-                }
+                image
             }
             fields {
                 date

@@ -1,5 +1,6 @@
 const path = require(`path`);
 const { createFilePath } = require(`gatsby-source-filesystem`);
+const { getYoutubeId } = require("./utils/getYoutubeId");
 
 exports.createPages = async ({ graphql, actions, reporter }) => {
     const { createPage } = actions;
@@ -63,6 +64,8 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
     const { createNodeField } = actions;
 
     if (node.internal.type === `MarkdownRemark`) {
+        console.log(node.frontmatter.title);
+
         const value = createFilePath({ node, getNode });
         const [dt, slug] = value.slice(1).split("___");
 
@@ -76,6 +79,12 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
             name: `date`,
             node,
             value: new Date(dt),
+        });
+
+        createNodeField({
+            name: `thumbnail`,
+            node,
+            value: getYoutubeId(node.frontmatter.youtube),
         });
     }
 };
@@ -116,15 +125,13 @@ exports.createSchemaCustomization = ({ actions }) => {
       title: String
       description: String
       date: Date @dateformat
-        image: Image
+      image: String
     }
 
-    type Image {
-        publicURL: String
-    }
     type Fields {
       slug: String
       date: Date
+      thumbnail: String
     }
   `);
 };
