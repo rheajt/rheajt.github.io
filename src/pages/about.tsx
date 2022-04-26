@@ -9,12 +9,6 @@ const About: React.FC<{ location: any }> = ({ location }) => {
 
             <section>
                 <p>
-                    <figure className="marginnote">
-                        <img src={buildMapboxSrc()} alt="map" />
-                    </figure>
-                </p>
-
-                <p>
                     I am a solutions developer working with both Google
                     Workspaces and Microsoft 365. I like building tools to make
                     our digital work lives easier.
@@ -25,6 +19,12 @@ const About: React.FC<{ location: any }> = ({ location }) => {
                     school English in Richmond, VA. I became a self-taught
                     computer programmer in Izmir, Turkey. Now I am doing
                     development work in Beijing, China.
+                </p>
+
+                <p>
+                    <figure className="marginnote">
+                        <img src={buildMapboxSrc()} alt="map" />
+                    </figure>
                 </p>
 
                 <p>
