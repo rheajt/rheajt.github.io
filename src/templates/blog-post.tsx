@@ -14,6 +14,7 @@ interface Props {
 interface Data {
     site: {
         siteMetadata: {
+            siteUrl: string;
             title: string;
         };
     };
@@ -25,7 +26,13 @@ interface Data {
             title: string;
             date: string;
             description: string;
-            image: string;
+            image: {
+                childImageSharp: {
+                    fixed: {
+                        src: string;
+                    };
+                };
+            };
         };
         fields: {
             date: string;
@@ -56,8 +63,13 @@ const BlogPostTemplate: React.FC<Props> = ({ data, location }) => {
     const { previous, next } = data;
     let image = undefined;
 
-    if (post.fields.thumbnail) {
-        image = post.frontmatter.image;
+    if (post.frontmatter.image) {
+        console.log(post.frontmatter.image);
+        image =
+            data.site.siteMetadata?.siteUrl +
+            post.frontmatter.image.childImageSharp.fixed.src;
+    } else if (post.fields.thumbnail) {
+        image = post.fields.thumbnail;
     }
 
     return (
@@ -126,6 +138,7 @@ export const pageQuery = graphql`
         site {
             siteMetadata {
                 title
+                siteUrl
             }
         }
         markdownRemark(id: { eq: $id }) {
@@ -136,7 +149,13 @@ export const pageQuery = graphql`
                 title
                 date(formatString: "MMMM DD, YYYY")
                 description
-                image
+                image {
+                    childImageSharp {
+                        fixed(quality: 95) {
+                            src
+                        }
+                    }
+                }
             }
             fields {
                 date

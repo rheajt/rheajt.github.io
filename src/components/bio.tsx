@@ -40,7 +40,7 @@ const Bio = () => {
                 />
 
                 {author?.name && (
-                    <p>
+                    <div>
                         Written by <strong>{author.name}</strong>{" "}
                         {author?.summary || null}
                         {` `}
@@ -69,7 +69,7 @@ const Bio = () => {
                                 or even on LinkedIn
                             </a>
                         </p>
-                    </p>
+                    </div>
                 )}
             </div>
         </>

@@ -64,8 +64,7 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
     const { createNodeField } = actions;
 
     if (node.internal.type === `MarkdownRemark`) {
-        console.log(node.frontmatter.title);
-
+        // console.log(node.frontmatter.title);
         const value = createFilePath({ node, getNode });
         const [dt, slug] = value.slice(1).split("___");
 
@@ -125,7 +124,6 @@ exports.createSchemaCustomization = ({ actions }) => {
       title: String
       description: String
       date: Date @dateformat
-      image: String
     }
 
     type Fields {

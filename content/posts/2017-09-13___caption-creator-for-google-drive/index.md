@@ -4,18 +4,18 @@ title: Caption Creator for Google Drive
 subTitle: Create captions for the videos on your drive without sharing them to YouTube
 author: jordan
 categories:
-  - G Suite
+    - G Suite
 tags:
-  - google apps script
-  - productivity
-  - teacher tools
-  - Portfolio
-  - google drive
-  - google docs
-  - accessibility
-  - javascript
-  - video
-youtube: 'https://www.youtube.com/watch?v=BdG-5dn5Bkc'
+    - google apps script
+    - productivity
+    - teacher tools
+    - Portfolio
+    - google drive
+    - google docs
+    - accessibility
+    - javascript
+    - video
+youtube: https://www.youtube.com/watch?v=BdG-5dn5Bkc
 ---
 
 This project was born from the brain child of Melissa Oliver and her passion project, [to create accessibility in classrooms](http://www.createaccessibility.com/).
