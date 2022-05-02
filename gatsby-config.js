@@ -26,6 +26,13 @@ module.exports = {
         {
             resolve: `gatsby-source-filesystem`,
             options: {
+                path: `${__dirname}/content/projects`,
+                name: `projects`,
+            },
+        },
+        {
+            resolve: `gatsby-source-filesystem`,
+            options: {
                 name: `images`,
                 path: `${__dirname}/content/img`,
             },
@@ -52,7 +59,7 @@ module.exports = {
                 ],
             },
         },
-        `gatsby-transformer-sharp`,
+        // `gatsby-transformer-sharp`,
         `gatsby-plugin-sharp`,
         {
             resolve: `gatsby-plugin-google-analytics`,
@@ -67,17 +74,17 @@ module.exports = {
             resolve: `gatsby-plugin-feed`,
             options: {
                 query: `
-          {
-            site {
-              siteMetadata {
-                title
-                description
-                siteUrl
-                site_url: siteUrl
-              }
-            }
-          }
-        `,
+                  {
+                    site {
+                      siteMetadata {
+                        title
+                        description
+                        siteUrl
+                        site_url: siteUrl
+                      }
+                    }
+                  }
+                `,
                 feeds: [
                     {
                         serialize: ({ query: { site, allMarkdownRemark } }) => {
@@ -98,24 +105,25 @@ module.exports = {
                             });
                         },
                         query: `
-              {
-                allMarkdownRemark(
-                  sort: { order: DESC, fields: [frontmatter___date] },
-                ) {
-                  nodes {
-                    excerpt
-                    html
-                    fields {
-                      slug
-                    }
-                    frontmatter {
-                      title
-                      date
-                    }
-                  }
-                }
-              }
-            `,
+                          {
+                            allMarkdownRemark(
+                                filter: {fields: {eq: "blog"}}
+                                sort: { order: DESC, fields: [frontmatter___date] },
+                            ) {
+                              nodes {
+                                excerpt
+                                html
+                                fields {
+                                  slug
+                                }
+                                frontmatter {
+                                  title
+                                  date
+                                }
+                              }
+                            }
+                          }
+                        `,
                         output: "/rss.xml",
                         title: "jordanrhea.com RSS feed",
                     },

@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Link, graphql } from "gatsby";
+import { graphql } from "gatsby";
 
 import Bio from "../components/bio";
 import Layout from "../components/layout";
@@ -20,15 +20,13 @@ interface Data {
     };
     markdownRemark: {
         id: string;
-        excerpt: string;
         html: string;
+        excerpt: string;
         frontmatter: {
             title: string;
-            date: string;
-            description: string;
             image: {
                 childImageSharp: {
-                    gatsbyImageData: any;
+                    gatsbyImageData: string;
                 };
             };
         };
@@ -37,28 +35,11 @@ interface Data {
             thumbnail: string;
         };
     };
-    previous: {
-        fields: {
-            slug: string;
-        };
-        frontmatter: {
-            title: string;
-        };
-    };
-    next: {
-        fields: {
-            slug: string;
-        };
-        frontmatter: {
-            title: string;
-        };
-    };
 }
 
-const BlogPostTemplate: React.FC<Props> = ({ data, location }) => {
+const ProjectPageTemplate: React.FC<Props> = ({ data, location }) => {
     const post = data.markdownRemark;
     const siteTitle = data.site.siteMetadata?.title || `Title`;
-    const { previous, next } = data;
     let image = undefined;
 
     if (post.frontmatter.image) {
@@ -74,9 +55,10 @@ const BlogPostTemplate: React.FC<Props> = ({ data, location }) => {
         <Layout location={location} title={siteTitle}>
             <Seo
                 title={post.frontmatter.title}
-                description={post.frontmatter.description || post.excerpt}
+                description={post.excerpt}
                 image={image}
             />
+
             <article
                 className="blog-post"
                 itemScope
@@ -95,43 +77,15 @@ const BlogPostTemplate: React.FC<Props> = ({ data, location }) => {
                     <Bio />
                 </footer>
             </article>
-            <nav className="blog-post-nav">
-                <ul
-                    style={{
-                        display: `flex`,
-                        flexWrap: `wrap`,
-                        justifyContent: `space-between`,
-                        listStyle: `none`,
-                        padding: 0,
-                    }}
-                >
-                    <li>
-                        {previous && (
-                            <Link to={previous.fields.slug} rel="prev">
-                                ← {previous.frontmatter.title}
-                            </Link>
-                        )}
-                    </li>
-                    <li>
-                        {next && (
-                            <Link to={next.fields.slug} rel="next">
-                                {next.frontmatter.title} →
-                            </Link>
-                        )}
-                    </li>
-                </ul>
-            </nav>
         </Layout>
     );
 };
 
-export default BlogPostTemplate;
+export default ProjectPageTemplate;
 
-export const pageQuery = graphql`
-    query BlogPostBySlug(
+export const projectsQuery = graphql`
+    query ProjectPagesById(
         $id: String!
-        $previousPostId: String
-        $nextPostId: String
     ) {
         site {
             siteMetadata {
@@ -141,12 +95,10 @@ export const pageQuery = graphql`
         }
         markdownRemark(id: { eq: $id }) {
             id
-            excerpt(pruneLength: 160)
             html
+            excerpt
             frontmatter {
                 title
-                date(formatString: "MMMM DD, YYYY")
-                description
                 image {
                     childImageSharp {
                         gatsbyImageData(layout: FIXED)
@@ -156,22 +108,6 @@ export const pageQuery = graphql`
             fields {
                 date
                 thumbnail
-            }
-        }
-        previous: markdownRemark(id: { eq: $previousPostId }) {
-            fields {
-                slug
-            }
-            frontmatter {
-                title
-            }
-        }
-        next: markdownRemark(id: { eq: $nextPostId }) {
-            fields {
-                slug
-            }
-            frontmatter {
-                title
             }
         }
     }

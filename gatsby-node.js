@@ -1,18 +1,21 @@
 const path = require(`path`);
 const { createFilePath } = require(`gatsby-source-filesystem`);
 const { getYoutubeId } = require("./utils/getYoutubeId");
+const { getCategory } = require("./utils/getCategory");
 
 exports.createPages = async ({ graphql, actions, reporter }) => {
     const { createPage } = actions;
 
     // Define a template for blog post
     const blogPost = path.resolve(`./src/templates/blog-post.tsx`);
+    const projectPage = path.resolve(`./src/templates/project-page.tsx`);
 
     // Get all markdown blog posts sorted by date
-    const result = await graphql(
+    const postNodes = await graphql(
         `
             {
                 allMarkdownRemark(
+                    filter: { fields: { category: {eq: "blog" }} }
                     sort: { fields: [frontmatter___date], order: ASC }
                     limit: 1000
                 ) {
@@ -27,7 +30,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         `
     );
 
-    if (result.errors) {
+    if (postNodes.errors) {
         reporter.panicOnBuild(
             `There was an error loading your blog posts`,
             result.errors
@@ -35,7 +38,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         return;
     }
 
-    const posts = result.data.allMarkdownRemark.nodes;
+    const posts = postNodes.data.allMarkdownRemark.nodes;
 
     // Create blog posts pages
     // But only if there's at least one markdown file found at "content/blog" (defined in gatsby-config.js)
@@ -54,6 +57,44 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
                     id: post.id,
                     previousPostId,
                     nextPostId,
+                },
+            });
+        });
+    }
+
+    const projectNodes = await graphql(
+        `
+            {
+                allMarkdownRemark(
+                    filter: { fields: { category: {eq: "project" }} }
+                    limit: 1000
+                ) {
+                    nodes {
+                        id
+                        fields {
+                            slug
+                        }
+                    }
+                }
+            }
+        `
+    );
+
+    const projects = projectNodes.data.allMarkdownRemark.nodes;
+
+    if(projects.length > 0) {
+        projects.forEach((post) => {
+            // const previousPostId = index === 0 ? null : posts[index - 1].id;
+            // const nextPostId =
+            //     index === posts.length - 1 ? null : posts[index + 1].id;
+
+            createPage({
+                path: "/projects/" + post.fields.slug,
+                component: projectPage,
+                context: {
+                    id: post.id,
+                    // previousPostId,
+                    // nextPostId,
                 },
             });
         });
@@ -84,6 +125,12 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
             name: `thumbnail`,
             node,
             value: getYoutubeId(node.frontmatter.youtube),
+        });
+
+        createNodeField({
+            name: `category`,
+            node,
+            value: getCategory(node.fileAbsolutePath),
         });
     }
 };
@@ -130,6 +177,7 @@ exports.createSchemaCustomization = ({ actions }) => {
       slug: String
       date: Date
       thumbnail: String
+        category: String
     }
   `);
 };

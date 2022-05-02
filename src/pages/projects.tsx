@@ -4,7 +4,6 @@ import { Link, graphql } from "gatsby";
 import Bio from "../components/bio";
 import Layout from "../components/layout";
 import Seo from "../components/seo";
-// import { Post } from "../typings/Post";
 import { format } from "date-fns";
 
 interface Props {
@@ -12,23 +11,21 @@ interface Props {
     location: Location;
 }
 
-interface Post {
+interface Project {
     fields: {
         slug: string;
         date: string;
     };
     frontmatter: {
         title: string;
-        description: string;
     };
-    excerpt: string;
 }
 
-const Blog: React.FC<Props> = ({ data, location }) => {
+const Projects: React.FC<Props> = ({ data, location }) => {
     const siteTitle = data.site.siteMetadata?.title || `Title`;
-    const posts = data.allMarkdownRemark.nodes;
+    const projects = data.allMarkdownRemark.nodes;
 
-    if (posts.length === 0) {
+    if (projects.length === 0) {
         return (
             <Layout location={location} title={siteTitle}>
                 <Seo title="All posts" />
@@ -40,14 +37,15 @@ const Blog: React.FC<Props> = ({ data, location }) => {
 
     return (
         <Layout location={location} title={siteTitle}>
-            <Seo title="All posts" />
+            <Seo title="All Projects" />
             <Bio />
             <ol style={{ listStyle: `none` }}>
-                {posts.map((post: Post) => {
-                    const title = post.frontmatter.title || post.fields.slug;
+                {projects.map((project: Project) => {
+                    const title =
+                        project.frontmatter.title || project.fields.slug;
 
                     return (
-                        <li key={post.fields.slug}>
+                        <li key={project.fields.slug}>
                             <article
                                 className="post-list-item"
                                 itemScope
@@ -56,7 +54,7 @@ const Blog: React.FC<Props> = ({ data, location }) => {
                                 <header>
                                     <h2>
                                         <Link
-                                            to={post.fields.slug}
+                                            to={project.fields.slug}
                                             itemProp="url"
                                         >
                                             <span itemProp="headline">
@@ -66,21 +64,11 @@ const Blog: React.FC<Props> = ({ data, location }) => {
                                     </h2>
                                     <small>
                                         {format(
-                                            new Date(post.fields.date),
+                                            new Date(project.fields.date),
                                             "PPP"
                                         )}
                                     </small>
                                 </header>
-                                <section>
-                                    <p
-                                        dangerouslySetInnerHTML={{
-                                            __html:
-                                                post.frontmatter.description ||
-                                                post.excerpt,
-                                        }}
-                                        itemProp="description"
-                                    />
-                                </section>
                             </article>
                         </li>
                     );
@@ -90,7 +78,7 @@ const Blog: React.FC<Props> = ({ data, location }) => {
     );
 };
 
-export default Blog;
+export default Projects;
 
 export const pageQuery = graphql`
     query {
@@ -100,18 +88,16 @@ export const pageQuery = graphql`
             }
         }
         allMarkdownRemark(
-            filter: { fields: { category: { eq: "blog" } } }
+            filter: { fields: { category: { eq: "project" } } }
             sort: { fields: [fields___date], order: DESC }
         ) {
             nodes {
-                excerpt
                 fields {
                     slug
                     date
                 }
                 frontmatter {
                     title
-                    description
                 }
             }
         }
