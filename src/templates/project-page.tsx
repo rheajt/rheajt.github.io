@@ -4,7 +4,8 @@ import { graphql } from "gatsby";
 import Bio from "../components/bio";
 import Layout from "../components/layout";
 import Seo from "../components/seo";
-import { format } from "date-fns";
+import { GatsbyImage, IGatsbyImageData } from "gatsby-plugin-image";
+import Blockquote from "../components/blockquote";
 
 interface Props {
     data: Data;
@@ -24,9 +25,18 @@ interface Data {
         excerpt: string;
         frontmatter: {
             title: string;
+            quote: {
+                author: string;
+                text: string;
+                employer: string;
+                position: string;
+                excerpt: string;
+                email?: string;
+            };
             image: {
+                publicURL: string;
                 childImageSharp: {
-                    gatsbyImageData: string;
+                    gatsbyImageData: IGatsbyImageData;
                 };
             };
         };
@@ -38,24 +48,23 @@ interface Data {
 }
 
 const ProjectPageTemplate: React.FC<Props> = ({ data, location }) => {
-    const post = data.markdownRemark;
+    const project = data.markdownRemark;
     const siteTitle = data.site.siteMetadata?.title || `Title`;
     let image = undefined;
 
-    if (post.frontmatter.image) {
-        console.log(post.frontmatter.image);
+    if (project.frontmatter.image) {
         image =
             data.site.siteMetadata?.siteUrl +
-            post.frontmatter.image.childImageSharp.gatsbyImageData;
-    } else if (post.fields.thumbnail) {
-        image = post.fields.thumbnail;
+            project.frontmatter.image.publicURL;
+    } else if (project.fields.thumbnail) {
+        image = project.fields.thumbnail;
     }
 
     return (
         <Layout location={location} title={siteTitle}>
             <Seo
-                title={post.frontmatter.title}
-                description={post.excerpt}
+                title={project.frontmatter.title}
+                description={project.excerpt}
                 image={image}
             />
 
@@ -64,15 +73,29 @@ const ProjectPageTemplate: React.FC<Props> = ({ data, location }) => {
                 itemScope
                 itemType="http://schema.org/Article"
             >
-                <header>
-                    <h1 itemProp="headline">{post.frontmatter.title}</h1>
-                    <p>{format(new Date(post.fields.date), "PPP")}</p>
+                <header className="project-image">
+                    <GatsbyImage
+                        image={
+                            project.frontmatter.image.childImageSharp
+                                .gatsbyImageData
+                        }
+                        alt="project image"
+                    />
+
+                    <h1 itemProp="headline">{project.frontmatter.title}</h1>
                 </header>
+
+                <section>
+                    <Blockquote quote={project.frontmatter.quote} />
+                </section>
+
                 <section
-                    dangerouslySetInnerHTML={{ __html: post.html }}
+                    dangerouslySetInnerHTML={{ __html: project.html }}
                     itemProp="articleBody"
                 />
+
                 <hr />
+
                 <footer>
                     <Bio />
                 </footer>
@@ -84,9 +107,7 @@ const ProjectPageTemplate: React.FC<Props> = ({ data, location }) => {
 export default ProjectPageTemplate;
 
 export const projectsQuery = graphql`
-    query ProjectPagesById(
-        $id: String!
-    ) {
+    query ProjectPagesById($id: String!) {
         site {
             siteMetadata {
                 title
@@ -100,9 +121,17 @@ export const projectsQuery = graphql`
             frontmatter {
                 title
                 image {
+                    publicURL
                     childImageSharp {
-                        gatsbyImageData(layout: FIXED)
+                        gatsbyImageData(layout: CONSTRAINED)
                     }
+                }
+                quote {
+                    author
+                    position
+                    employer
+                    text
+                    excerpt
                 }
             }
             fields {

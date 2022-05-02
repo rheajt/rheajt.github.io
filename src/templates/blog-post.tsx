@@ -5,6 +5,7 @@ import Bio from "../components/bio";
 import Layout from "../components/layout";
 import Seo from "../components/seo";
 import { format } from "date-fns";
+import { IGatsbyImageData } from "gatsby-plugin-image";
 
 interface Props {
     data: Data;
@@ -27,8 +28,9 @@ interface Data {
             date: string;
             description: string;
             image: {
+                publicURL: string;
                 childImageSharp: {
-                    gatsbyImageData: any;
+                    gatsbyImageData: IGatsbyImageData;
                 };
             };
         };
@@ -65,7 +67,7 @@ const BlogPostTemplate: React.FC<Props> = ({ data, location }) => {
         console.log(post.frontmatter.image);
         image =
             data.site.siteMetadata?.siteUrl +
-            post.frontmatter.image.childImageSharp.gatsbyImageData;
+            post.frontmatter.image.publicURL;
     } else if (post.fields.thumbnail) {
         image = post.fields.thumbnail;
     }
@@ -148,8 +150,9 @@ export const pageQuery = graphql`
                 date(formatString: "MMMM DD, YYYY")
                 description
                 image {
+                    publicURL
                     childImageSharp {
-                        gatsbyImageData(layout: FIXED)
+                        gatsbyImageData(layout: CONSTRAINED)
                     }
                 }
             }

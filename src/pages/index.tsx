@@ -8,11 +8,11 @@ import quotes from "../../content/data/quotes.json";
 
 export interface Quote {
     author: string;
-    email: string;
+    email?: string;
     position: string;
     employer: string;
     text: string;
-    excerpt: string;
+    excerpt?: string;
 }
 
 const Home: React.FC<{ data: any; location: any }> = ({ data, location }) => {

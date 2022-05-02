@@ -1,6 +1,5 @@
 import * as React from "react";
 import { PopupWidget } from "react-calendly";
-// import { Link } from "gatsby"
 import Header from "./header";
 
 const Layout: React.FC<{ location: any; title: string }> = ({

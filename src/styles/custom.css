@@ -20,6 +20,10 @@
     padding-right: 1rem;
 }
 
+.project-image {
+    margin-top: var(--spacing-8); 
+}
+
 blockquote {
     background: #f9f9f9;
     border-left: 10px solid #ccc;

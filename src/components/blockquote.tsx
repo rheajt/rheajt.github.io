@@ -4,7 +4,7 @@ import { Quote } from "../pages";
 const Blockquote: React.FC<{ quote: Quote }> = ({ quote }) => {
     return (
         <blockquote>
-            <p>{quote.text}</p>
+            <p>{quote.excerpt}</p>
             <span className="author">
                 <b>{quote.author}</b> <br />
                 {quote.position}

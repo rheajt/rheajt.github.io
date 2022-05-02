@@ -12,6 +12,7 @@ interface Props {
 }
 
 interface Project {
+    excerpt: string;
     fields: {
         slug: string;
         date: string;
@@ -99,6 +100,7 @@ export const pageQuery = graphql`
                 frontmatter {
                     title
                 }
+                excerpt
             }
         }
     }
