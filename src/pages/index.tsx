@@ -4,7 +4,7 @@ import { graphql } from "gatsby";
 import Layout from "../components/layout";
 import Seo from "../components/seo";
 import { StaticImage } from "gatsby-plugin-image";
-import quotes from "../../content/data/quotes.json";
+import ProjectCard from "../components/project-card";
 
 export interface Quote {
     author: string;
@@ -17,6 +17,7 @@ export interface Quote {
 
 const Home: React.FC<{ data: any; location: any }> = ({ data, location }) => {
     const siteTitle = data.site.siteMetadata?.title || `jordanrhea.com`;
+    const projects = data.allMarkdownRemark.nodes;
 
     return (
         <Layout location={location} title={siteTitle}>
@@ -43,18 +44,13 @@ const Home: React.FC<{ data: any; location: any }> = ({ data, location }) => {
                 education with a future in development.
             </p>
 
-            <h3>Testimonials</h3>
-            {quotes.map((quote: Quote) => {
-                return (
-                    <blockquote key={quote.author}>
-                        <p>{quote.excerpt}</p>
-                        <span className="author">
-                            <b>{quote.author}</b> <br />
-                            {quote.position} at {quote.employer}
-                        </span>
-                    </blockquote>
-                );
+            <h3>Projects</h3>
+
+            <div className="project-cards">
+            {projects.map((p: any) => {
+                return <ProjectCard key={p.id} project={p} />
             })}
+            </div>
         </Layout>
     );
 };
@@ -66,6 +62,21 @@ export const pageQuery = graphql`
         site {
             siteMetadata {
                 title
+            }
+        }
+
+        allMarkdownRemark(filter: { fields: { category: { eq: "project" } } }) {
+            nodes {
+                id
+                frontmatter {
+                    title
+                    image {
+                        childImageSharp {
+                            gatsbyImageData(width: 200 height: 160 layout: CONSTRAINED)
+                        }
+                    }
+                }
+                excerpt
             }
         }
     }
