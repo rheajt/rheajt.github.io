@@ -1,3 +1,4 @@
+import { Link } from "gatsby";
 import * as React from "react";
 import { PopupWidget } from "react-calendly";
 import Header from "./header";
@@ -26,8 +27,14 @@ const Layout: React.FC<{ location: any; title: string }> = ({
             )}
 
             <footer>
-                © {new Date().getFullYear()}{" "}
-                <a href="https://jordanrhea.com">jordan rhea</a>
+                <div>
+                    © {new Date().getFullYear()}{" "}
+                    <a href="https://jordanrhea.com">jordan rhea</a>
+                </div>
+                <div>
+                    <Link to="/privacy">privacy policy</Link>
+                    <Link to="/terms">terms of service</Link>
+                </div>
             </footer>
         </div>
     );
