@@ -47,9 +47,9 @@ const Home: React.FC<{ data: any; location: any }> = ({ data, location }) => {
             <h3>Projects</h3>
 
             <div className="project-cards">
-            {projects.map((p: any) => {
-                return <ProjectCard key={p.id} project={p} />
-            })}
+                {projects.map((p: any) => {
+                    return <ProjectCard key={p.id} project={p} />;
+                })}
             </div>
         </Layout>
     );
@@ -72,9 +72,14 @@ export const pageQuery = graphql`
                     title
                     image {
                         childImageSharp {
-                            gatsbyImageData(width: 200 height: 160 layout: CONSTRAINED)
+                            gatsbyImageData(
+                                layout: CONSTRAINED
+                            )
                         }
                     }
+                }
+                fields {
+                    slug
                 }
                 excerpt
             }

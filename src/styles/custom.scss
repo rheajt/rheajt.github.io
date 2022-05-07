@@ -52,5 +52,24 @@ blockquote span.author {
 /* blockquote span b { */
 /* } */
 .project-cards {
-    dispay: grid;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-gap: 1em;
+
+    a {
+        text-decoration: none;
+    }
+
+    .project-card {
+        background-color:white;
+        text-align: center;
+        border: 1px solid lightgray;
+        min-height: 220px;
+        transition: all 150ms ease-in;
+
+        &:hover {
+            transform: scale(1.1);
+        }
+    }
 }
+
