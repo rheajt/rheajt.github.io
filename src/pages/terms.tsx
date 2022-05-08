@@ -36,7 +36,7 @@ const TermsPage: React.FC<Props> = ({ data, location }) => {
             <p>
                 Links To Other Web Sites Our Service may contain links to
                 third-party web sites or services that are not owned or
-                controlled by <b>jordanrhea.co</b>m.
+                controlled by <b>jordanrhea.com</b>.
             </p>
             <p>
                 <b>jordanrhea.com</b> has no control over, and assumes no

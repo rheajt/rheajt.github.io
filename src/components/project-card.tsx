@@ -20,7 +20,10 @@ const ProjectCard: React.FC<{ project: ProjectFrontmatter }> = ({
                         />
                     </div>
                 )}
-                <p>{project.frontmatter.title}</p>
+                <div className="description">
+                    <h6>{project.frontmatter.title}</h6>
+                    <p>{project.excerpt}</p>
+                </div>
             </div>
         </Link>
     );

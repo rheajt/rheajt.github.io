@@ -5,6 +5,7 @@ import Layout from "../components/layout";
 import Seo from "../components/seo";
 import { StaticImage } from "gatsby-plugin-image";
 import ProjectCard from "../components/project-card";
+import Blockquote from "../components/blockquote";
 
 export interface Quote {
     author: string;
@@ -23,7 +24,7 @@ const Home: React.FC<{ data: any; location: any }> = ({ data, location }) => {
         <Layout location={location} title={siteTitle}>
             <Seo title="jordanrhea.com" />
 
-            <div style={{ maxWidth: 450 }}>
+            <div className="hero">
                 <StaticImage
                     layout="fullWidth"
                     formats={["auto", "webp", "avif"]}
@@ -31,6 +32,7 @@ const Home: React.FC<{ data: any; location: any }> = ({ data, location }) => {
                     quality={95}
                     alt="jordan rhea header"
                 />
+                <h1>Build your own tools with the technology you already use</h1>
             </div>
 
             <h2 style={{ margin: `0 0 2rem` }}>

@@ -29,10 +29,10 @@ const PrivacyPage: React.FC<Props> = ({ data, location }) => {
                 with our website.
             </p>
 
-            <p>
+            <h5>
                 What personal information do we collect from the people that
                 visit our blog, website or app?
-            </p>
+            </h5>
 
             <p>
                 When ordering or registering on our site, as appropriate, you
@@ -40,14 +40,14 @@ const PrivacyPage: React.FC<Props> = ({ data, location }) => {
                 to help you with your experience.
             </p>
 
-            <p>When do we collect information?</p>
+            <h5>When do we collect information?</h5>
 
             <p>
                 We collect information from you when you subscribe to a
                 newsletter or enter information on our site.
             </p>
 
-            <p>How do we use your information?</p>
+            <h5>How do we use your information?</h5>
 
             <p>
                 We may use the information we collect from you when you
@@ -68,7 +68,7 @@ const PrivacyPage: React.FC<Props> = ({ data, location }) => {
                 </li>
             </ul>
 
-            <p>How do we protect your information?</p>
+            <h5>How do we protect your information?</h5>
 
             <p>
                 Our website is scanned on a regular basis for security holes and
@@ -97,9 +97,10 @@ const PrivacyPage: React.FC<Props> = ({ data, location }) => {
                 are not stored or processed on our servers.
             </p>
 
-            <p>Do we use 'cookies'?</p>
+            <h5>Do we use 'cookies'?</h5>
 
             <p>We do not use cookies for tracking purposes</p>
+
             <p>
                 Compile aggregate data about site traffic and site interactions
                 in order to offer better site experiences and tools in the
@@ -116,17 +117,17 @@ const PrivacyPage: React.FC<Props> = ({ data, location }) => {
             </p>
 
             <p>
-                If you turn cookies off, It won't affect the user's experience .
+                If you turn cookies off, It won't affect the user's experience.
             </p>
 
-            <p>Third-party disclosure</p>
+            <h5>Third-party disclosure</h5>
 
             <p>
                 We do not sell, trade, or otherwise transfer to outside parties
                 your Personally Identifiable Information.
             </p>
 
-            <p>Third-party links</p>
+            <h5>Third-party links</h5>
 
             <p>
                 Occasionally, at our discretion, we may include or offer
@@ -138,13 +139,15 @@ const PrivacyPage: React.FC<Props> = ({ data, location }) => {
                 feedback about these sites.
             </p>
 
-            <p>Google</p>
+            <h5>Google</h5>
 
             <p>
                 Google's advertising requirements can be summed up by Google's
-                Advertising Principles. They are put in place to provide a
-                positive experience for users.
-                https://support.google.com/adwordspolicy/answer/1316548?hl=en
+                Advertising Principles.{" "}
+                <a href="https://support.google.com/adwordspolicy/answer/1316548?hl=en">
+                    They are put in place to provide a positive experience for
+                    users.
+                </a>
             </p>
 
             <p>We use Google AdSense Advertising on our website.</p>
@@ -188,8 +191,10 @@ const PrivacyPage: React.FC<Props> = ({ data, location }) => {
                 Personally Identifiable Information from California consumers to
                 post a conspicuous privacy policy on its website stating exactly
                 the information being collected and those individuals or
-                companies with whom it is being shared. - See more at:
-                http://consumercal.org/california-online-privacy-protection-act-caloppa/#sthash.0FdRbT51.dpuf
+                companies with whom it is being shared. -{" "}
+                <a href="http://consumercal.org/california-online-privacy-protection-act-caloppa/#sthash.0FdRbT51.dpuf">
+                    See more here
+                </a>
             </p>
 
             <p>According to CalOPPA, we agree to the following:</p>
@@ -205,11 +210,14 @@ const PrivacyPage: React.FC<Props> = ({ data, location }) => {
             </p>
 
             <p>You will be notified of any Privacy Policy changes:</p>
-            <p>• On our Privacy Policy Page</p>
-            <p>Can change your personal information:</p>
-            <p>• By logging in to your account</p>
+            <ul>
+                <li>On our Privacy Policy Page</li>
+                <li>Can change your personal information:</li>
+                <li>By logging in to your account</li>
+            </ul>
 
             <p>How does our site handle Do Not Track signals?</p>
+
             <p>
                 We honor Do Not Track signals and Do Not Track, plant cookies,
                 or use advertising when a Do Not Track (DNT) browser mechanism
@@ -217,6 +225,7 @@ const PrivacyPage: React.FC<Props> = ({ data, location }) => {
             </p>
 
             <p>Does our site allow third-party behavioral tracking?</p>
+
             <p>
                 It's also important to note that we do not allow third-party
                 behavioral tracking
@@ -239,7 +248,7 @@ const PrivacyPage: React.FC<Props> = ({ data, location }) => {
                 years old.
             </p>
 
-            <p>Fair Information Practices</p>
+            <h5>Fair Information Practices</h5>
 
             <p>
                 The Fair Information Practices Principles form the backbone of
@@ -256,8 +265,7 @@ const PrivacyPage: React.FC<Props> = ({ data, location }) => {
                 take the following responsive action, should a data breach
                 occur:
             </p>
-            <p>We will notify the users via in-site notification</p>
-            <p>Within 7 business days</p>
+            <p>We will notify the users via in-site notificatio within 7 business days.</p>
 
             <p>
                 We also agree to the Individual Redress Principle which requires
@@ -269,7 +277,7 @@ const PrivacyPage: React.FC<Props> = ({ data, location }) => {
                 investigate and/or prosecute non-compliance by data processors.
             </p>
 
-            <p>CAN SPAM Act</p>
+            <h5>CAN SPAM Act</h5>
 
             <p>
                 The CAN-SPAM Act is a law that sets the rules for commercial
@@ -325,7 +333,7 @@ const PrivacyPage: React.FC<Props> = ({ data, location }) => {
                 correspondence.
             </p>
 
-            <p>Contacting Us</p>
+            <h5>Contacting Us</h5>
 
             <p>
                 If there are any questions regarding this privacy policy, you
