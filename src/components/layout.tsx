@@ -20,7 +20,7 @@ const Layout: React.FC<{ location: any; title: string }> = ({
                 <PopupWidget
                     url="https://calendly.com/jordanrhea/30min"
                     rootElement={document.querySelector("body") as HTMLElement}
-                    text="LET'S TALK"
+                    text="Schedule a meeting"
                     textColor="#ffffff"
                     color="#00a2ff"
                 />

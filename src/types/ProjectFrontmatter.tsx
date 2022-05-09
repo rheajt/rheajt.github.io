@@ -6,6 +6,7 @@ export interface ProjectFrontmatter {
     frontmatter: {
         title: string;
         image: IGatsbyImageData;
+        tags: string[];
     };
     fields: {
         slug: string;

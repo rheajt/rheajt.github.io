@@ -39,7 +39,6 @@ const Seo: React.FC<Props> = ({
 
     if (image) {
         const content = image;
-        // const content = site.siteMetadata.siteUrl + image;
         meta = [
             ...meta,
             {

@@ -8,14 +8,18 @@ tags:
     - planning
     - communication
     - outlook
+    - calendar
+    - outlook calendar
     - microsoft graph api
-quote: 
-    author: Sandra Chow
-    email: sandra.chow@keystoneacademy.cn
-    position: Director of Innovative Learning
-    employer: Keystone Academy
-    text: 
-    excerpt: 
+<!-- quote:  -->
+<!--     author: Sandra Chow -->
+<!--     email: sandra.chow@keystoneacademy.cn -->
+<!--     position: Director of Innovative Learning -->
+<!--     employer: Keystone Academy -->
+<!--     text:  -->
+<!--     excerpt:  -->
 ---
 
-Lorem ipsum dolor sit amet, officia excepteur ex fugiat reprehenderit enim labore culpa sint ad nisi Lorem pariatur mollit ex esse exercitation amet. Nisi anim cupidatat excepteur officia. Reprehenderit nostrud nostrud ipsum Lorem est aliquip amet voluptate voluptate dolor minim nulla est proident. Nostrud officia pariatur ut officia. Sit irure elit esse ea nulla sunt ex occaecat reprehenderit commodo officia dolor Lorem duis laboris cupidatat officia voluptate. Culpa proident adipisicing id nulla nisi laboris ex in Lorem sunt duis officia eiusmod. Aliqua reprehenderit commodo ex non excepteur duis sunt velit enim. Voluptate laboris sint cupidatat ullamco ut ea consectetur et est culpa et culpa duis.
+Powerschool contains all of the data that your staff is generating and using on a daily basis. It only makes sense to use that data to inform the decisions you are making on a daily basis. 
+
+Often, it makes sense to build tools that leverage this data directly into the other digital spaces where you are spending time. In this case I needed a way to take Powerschool schedules to create Outlook Calendar events.

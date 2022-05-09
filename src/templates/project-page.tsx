@@ -85,9 +85,11 @@ const ProjectPageTemplate: React.FC<Props> = ({ data, location }) => {
                     <h1 itemProp="headline">{project.frontmatter.title}</h1>
                 </header>
 
-                <section>
-                    <Blockquote quote={project.frontmatter.quote} />
-                </section>
+                {project.frontmatter.quote && (
+                    <section>
+                        <Blockquote quote={project.frontmatter.quote} />
+                    </section>
+                )}
 
                 <section
                     dangerouslySetInnerHTML={{ __html: project.html }}

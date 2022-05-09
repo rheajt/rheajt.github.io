@@ -3,9 +3,9 @@ module.exports = {
         title: `jordan rhea`,
         author: {
             name: `jordan rhea`,
-            summary: `a developer focused on building solutions in the cloud`,
+            summary: `Building tools and connecting systems`,
         },
-        description: `a place to try and document the projects i have been working on`,
+        description: `Education focused systems developer, building tools and connecting services`,
         siteUrl: `https://jordanrhea.com`,
         social: {
             twitter: `rheajt`,
