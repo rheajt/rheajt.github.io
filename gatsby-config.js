@@ -5,7 +5,7 @@ module.exports = {
             name: `jordan rhea`,
             summary: `Building tools and connecting systems`,
         },
-        description: `Education focused systems developer, building tools and connecting services`,
+        description: `Education focused systems developer, building tools and connecting services such as Powerschool and Managebac to Microsoft Office 365 and Google Workspaces`,
         siteUrl: `https://jordanrhea.com`,
         social: {
             twitter: `rheajt`,
@@ -108,7 +108,7 @@ module.exports = {
                         query: `
                           {
                             allMarkdownRemark(
-                                filter: {fields: {eq: "blog"}}
+                                filter: {fields: {category: { eq: "blog"}}}
                                 sort: { order: DESC, fields: [frontmatter___date] },
                             ) {
                               nodes {

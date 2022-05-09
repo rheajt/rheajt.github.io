@@ -19,21 +19,7 @@ export interface Quote {
 const Home: React.FC<{ data: any; location: any }> = ({ data, location }) => {
     const siteTitle = data.site.siteMetadata?.title || `jordanrhea.com`;
     const projects = data.projects.nodes;
-    // const blog = data.blog.nodes;
-
-    // const projectKeywords = projects
-    //     .map((p: ProjectFrontmatter) => {
-    //         return p.frontmatter.tags;
-    //     })
-    //     .flat();
-
-    // const blogTags = blog
-    //     .map((b: any) => {
-    //         return b.frontmatter.tags;
-    //     })
-    //     .flat();
-
-    // console.log({ projectKeywords, blogTags });
+    const headerImageSrc = data.headerImage.resize.src;
 
     return (
         <Layout location={location} title={siteTitle}>
@@ -41,7 +27,7 @@ const Home: React.FC<{ data: any; location: any }> = ({ data, location }) => {
                 title="jordanrhea.com"
                 image={
                     data.site.siteMetadata.siteUrl +
-                    "/static/blackboard-bg-shadow.jpg"
+                    headerImageSrc
                 }
             />
 
@@ -90,6 +76,12 @@ export const pageQuery = graphql`
                 siteUrl
             }
         }
+
+        headerImage: imageSharp(resize: {originalName: {eq: "jordanrhea-header.png"}}) {
+            resize {
+              src
+            }
+          }
 
         projects: allMarkdownRemark(
             filter: { fields: { category: { eq: "project" } } }
