@@ -1,9 +1,8 @@
 import { Link } from "gatsby";
 import React from "react";
 import { StaticImage } from "gatsby-plugin-image";
-import { FaGithub, FaLinkedin, FaYoutube } from "react-icons/fa";
 
-const Header = () => {
+const Header = ({ showLinks = true }) => {
     return (
         <header className="header">
             <Link to="/">
@@ -18,21 +17,19 @@ const Header = () => {
                 />
             </Link>
 
-            <nav>
+            <nav className={showLinks ? `` : `is-hidden`}>
                 <div className="page-links">
-                    <Link className="sans" to="/about">
-                        About
+                    <Link className="sans" to="/projects">
+                        Projects
                     </Link>
 
                     <Link className="sans" to="/blog">
                         Blog
                     </Link>
-                </div>
 
-                <div className="social-links">
-                    <a href="https://github.com/rheajt"><FaGithub /></a>
-                    <a href="https://linkedin.com/in/rheajt"><FaLinkedin /></a>
-                    <a href="https://youtube.com/jordanrhea"><FaYoutube /></a>
+                    <Link className="sans" to="/contact">
+                        Contact
+                    </Link>
                 </div>
             </nav>
         </header>

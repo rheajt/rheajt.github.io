@@ -66,6 +66,8 @@
 
 /* HTML elements */
 
+@import "icon-container";
+
 *,
 :after,
 :before {
@@ -93,8 +95,10 @@ footer {
     display: flex;
     justify-content: space-between;
 
-    a {
-        padding-left: 1em;
+    .legals {
+        a {
+            padding-left: 1em;
+        }
     }
 }
 

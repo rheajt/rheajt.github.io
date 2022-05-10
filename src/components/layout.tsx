@@ -16,11 +16,12 @@ const Layout: React.FC<{ location: any; title: string }> = ({
             <Header />
 
             <main>{children}</main>
+
             {isBrowser && (
                 <PopupWidget
                     url="https://calendly.com/jordanrhea/30min"
                     rootElement={document.querySelector("body") as HTMLElement}
-                    text="Schedule a meeting"
+                    text="SCHEDULE A MEETING"
                     textColor="#ffffff"
                     color="#00a2ff"
                 />
@@ -31,9 +32,10 @@ const Layout: React.FC<{ location: any; title: string }> = ({
                     © {new Date().getFullYear()}{" "}
                     <a href="https://jordanrhea.com">jordan rhea</a>
                 </div>
-                <div>
-                    <Link to="/privacy">privacy policy</Link>
-                    <Link to="/terms">terms of service</Link>
+
+                <div className="legals">
+                    <Link to="/privacy">privacy</Link>
+                    <Link to="/terms">terms</Link>
                 </div>
             </footer>
         </div>

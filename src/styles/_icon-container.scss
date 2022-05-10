@@ -1,0 +1,10 @@
+.icon-container {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    text-decoration: none;
+
+    .icon {
+        text-align: center;
+        font-size: 3em;
+    }
+}

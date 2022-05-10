@@ -1,6 +1,7 @@
 import * as React from "react";
 import { useStaticQuery, graphql } from "gatsby";
 import { StaticImage } from "gatsby-plugin-image";
+import { FaGithub, FaLinkedin, FaYoutube } from "react-icons/fa";
 
 const Bio = () => {
     const data = useStaticQuery(graphql`
@@ -44,31 +45,18 @@ const Bio = () => {
                         Written by <strong>{author.name}</strong>{" "}
                         {author?.summary || null}
                         {` `}
-                        <p>
-                            <a
-                                href={`https://twitter.com/${
-                                    social?.twitter || ``
-                                }`}
-                            >
-                                You should follow me on Twitter
+
+                        <div className="social-links">
+                            <a href="https://github.com/rheajt">
+                                <FaGithub />
                             </a>
-                            {`, `}
-                            <a
-                                href={`https://github.com/${
-                                    social?.github || ``
-                                }`}
-                            >
-                                or Github
+                            <a href="https://linkedin.com/in/rheajt">
+                                <FaLinkedin />
                             </a>
-                            {`, `}
-                            <a
-                                href={`https://linkedin.com/in/${
-                                    social?.linkedin || ``
-                                }`}
-                            >
-                                or even on LinkedIn
+                            <a href="https://youtube.com/jordanrhea">
+                                <FaYoutube />
                             </a>
-                        </p>
+                        </div>
                     </div>
                 )}
             </div>
