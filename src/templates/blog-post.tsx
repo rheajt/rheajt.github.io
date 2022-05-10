@@ -102,6 +102,7 @@ const BlogPostTemplate: React.FC<Props> = ({ data, location }) => {
                     <Bio />
                 </footer>
             </article>
+
             <nav className="blog-post-nav">
                 <ul
                     style={{
@@ -114,14 +115,17 @@ const BlogPostTemplate: React.FC<Props> = ({ data, location }) => {
                 >
                     <li>
                         {previous && (
-                            <Link to={previous.fields.slug} rel="prev">
+                            <Link
+                                to={"/blog/" + previous.fields.slug}
+                                rel="prev"
+                            >
                                 ← {previous.frontmatter.title}
                             </Link>
                         )}
                     </li>
                     <li>
                         {next && (
-                            <Link to={next.fields.slug} rel="next">
+                            <Link to={"/blog/" + next.fields.slug} rel="next">
                                 {next.frontmatter.title} →
                             </Link>
                         )}
