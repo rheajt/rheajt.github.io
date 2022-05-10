@@ -1,11 +1,13 @@
 import * as React from "react";
 import { Link, graphql } from "gatsby";
+import { Disqus } from "gatsby-plugin-disqus";
 
 import Bio from "../components/bio";
 import Layout from "../components/layout";
 import Seo from "../components/seo";
 import { format } from "date-fns";
 import { IGatsbyImageData } from "gatsby-plugin-image";
+import Share from "../components/share";
 
 interface Props {
     data: Data;
@@ -37,6 +39,7 @@ interface Data {
         fields: {
             date: string;
             thumbnail: string;
+            slug: string;
         };
     };
     previous: {
@@ -60,14 +63,13 @@ interface Data {
 const BlogPostTemplate: React.FC<Props> = ({ data, location }) => {
     const post = data.markdownRemark;
     const siteTitle = data.site.siteMetadata?.title || `Title`;
+    const url = data.site.siteMetadata.siteUrl + "/blog/" + post.fields.slug;
     const { previous, next } = data;
     let image = undefined;
 
     if (post.frontmatter.image) {
-        console.log(post.frontmatter.image);
         image =
-            data.site.siteMetadata?.siteUrl +
-            post.frontmatter.image.publicURL;
+            data.site.siteMetadata?.siteUrl + post.frontmatter.image.publicURL;
     } else if (post.fields.thumbnail) {
         image = post.fields.thumbnail;
     }
@@ -88,6 +90,9 @@ const BlogPostTemplate: React.FC<Props> = ({ data, location }) => {
                     <h1 itemProp="headline">{post.frontmatter.title}</h1>
                     <p>{format(new Date(post.fields.date), "PPP")}</p>
                 </header>
+
+                <Share url={url} />
+
                 <section
                     dangerouslySetInnerHTML={{ __html: post.html }}
                     itemProp="articleBody"
@@ -123,6 +128,17 @@ const BlogPostTemplate: React.FC<Props> = ({ data, location }) => {
                     </li>
                 </ul>
             </nav>
+
+            <Disqus
+                config={{
+                    /* Replace PAGE_URL with your post's canonical URL variable */
+                    url: url,
+                    /* Replace PAGE_IDENTIFIER with your page's unique identifier variable */
+                    identifier: post.fields.slug,
+                    /* Replace PAGE_TITLE with the title of the page */
+                    title: post.frontmatter.title,
+                }}
+            />
         </Layout>
     );
 };
@@ -159,6 +175,7 @@ export const pageQuery = graphql`
             fields {
                 date
                 thumbnail
+                slug
             }
         }
         previous: markdownRemark(id: { eq: $previousPostId }) {

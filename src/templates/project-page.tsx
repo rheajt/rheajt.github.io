@@ -6,6 +6,7 @@ import Layout from "../components/layout";
 import Seo from "../components/seo";
 import { GatsbyImage, IGatsbyImageData } from "gatsby-plugin-image";
 import Blockquote from "../components/blockquote";
+import Share from "../components/share";
 
 interface Props {
     data: Data;
@@ -43,6 +44,7 @@ interface Data {
         fields: {
             date: string;
             thumbnail: string;
+            slug: string;
         };
     };
 }
@@ -50,6 +52,9 @@ interface Data {
 const ProjectPageTemplate: React.FC<Props> = ({ data, location }) => {
     const project = data.markdownRemark;
     const siteTitle = data.site.siteMetadata?.title || `Title`;
+    const url =
+        data.site.siteMetadata.siteUrl + "/projects/" + project.fields.slug;
+
     let image = undefined;
 
     if (project.frontmatter.image) {
@@ -73,6 +78,7 @@ const ProjectPageTemplate: React.FC<Props> = ({ data, location }) => {
                 itemScope
                 itemType="http://schema.org/Article"
             >
+                <Share url={url} />
                 <header className="project-image">
                     <GatsbyImage
                         image={
@@ -139,6 +145,7 @@ export const projectsQuery = graphql`
             fields {
                 date
                 thumbnail
+                slug
             }
         }
     }

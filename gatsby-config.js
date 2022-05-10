@@ -144,5 +144,11 @@ module.exports = {
             },
         },
         `gatsby-plugin-react-helmet`,
+        {
+            resolve: `gatsby-plugin-disqus`,
+            options: {
+                shortname: `http-jordanrhea-com`,
+            },
+        },
     ],
 };
