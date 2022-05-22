@@ -26,12 +26,16 @@ const PokerCardSelector: React.FC = () => {
             <div>
                 <div>
                     {cards.map(card => (
-                        <button onClick={() => setCard(card)}>{card}</button>
+                        <button onClick={() => setCard(card)} key={card}>
+                            {card}
+                        </button>
                     ))}
                 </div>
                 <div>
                     {suits.map(suit => (
-                        <button onClick={() => setSuit(suit[0])}>{suit}</button>
+                        <button onClick={() => setSuit(suit[0])} key={suit}>
+                            {suit}
+                        </button>
                     ))}
                 </div>
             </div>

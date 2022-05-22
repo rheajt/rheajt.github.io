@@ -76,6 +76,7 @@ const PokerPage: React.FC = () => {
                 <h1>all hands</h1>
             </PokerPanel>
             <footer>
+                <b>Poker Hand Notes</b>
                 <Link to="/">
                     <StaticImage
                         layout="fixed"
@@ -87,7 +88,6 @@ const PokerPage: React.FC = () => {
                         alt="jordan rhea header"
                     />
                 </Link>
-                Poker Hand Notes
             </footer>
         </div>
     );

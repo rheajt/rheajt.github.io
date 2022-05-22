@@ -1,9 +1,14 @@
 .poker-page {
     margin: 0 auto;
     max-width: 400px;
+
     footer {
         position: fixed;
         bottom: 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px;
     }
 }
 

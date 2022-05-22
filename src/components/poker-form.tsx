@@ -12,6 +12,8 @@ const PokerForm: React.FC<{ seats: PokerSeat[] }> = ({ seats }) => {
 
     function handleSubmit(e: FormEvent<HTMLFormElement>) {
         e.preventDefault();
+
+        console.log(handActions);
     }
 
     return (
@@ -20,6 +22,112 @@ const PokerForm: React.FC<{ seats: PokerSeat[] }> = ({ seats }) => {
                 <span>Dealt:</span>
                 <PokerCardSelector />
                 <PokerCardSelector />
+                <ActionSelect
+                    seats={seats}
+                    handleClick={() => {
+                        const updatedActions = [
+                            ...handActions,
+                            { round: "pre-flop", action: `stuff` },
+                        ];
+                        setHandActions(updatedActions);
+                    }}
+                >
+                    <div>
+                        {handActions
+                            .filter(ha => ha.round === "pre-flop")
+                            .map(ha => {
+                                return <p>{ha.action}</p>;
+                            })}
+                    </div>
+                </ActionSelect>
+            </div>
+            <div className="flop">
+                <span>Flop</span>
+                <PokerCardSelector />
+                <PokerCardSelector />
+                <PokerCardSelector />
+
+                <ActionSelect
+                    seats={seats}
+                    handleClick={() => {
+                        const updatedActions = [
+                            ...handActions,
+                            { round: "flop", action: `stuff` },
+                        ];
+                        setHandActions(updatedActions);
+                    }}
+                >
+                    <div>
+                        {handActions
+                            .filter(ha => ha.round === "flop")
+                            .map(ha => {
+                                return <p>{ha.action}</p>;
+                            })}
+                    </div>
+                </ActionSelect>
+            </div>
+
+            <div className="turn">
+                <span>Turn</span>
+                <PokerCardSelector />
+
+                <ActionSelect
+                    seats={seats}
+                    handleClick={() => {
+                        const updatedActions = [
+                            ...handActions,
+                            { round: "turn", action: `stuff` },
+                        ];
+                        setHandActions(updatedActions);
+                    }}
+                >
+                    <div>
+                        {handActions
+                            .filter(ha => ha.round === "turn")
+                            .map(ha => {
+                                return <p>{ha.action}</p>;
+                            })}
+                    </div>
+                </ActionSelect>
+            </div>
+
+            <div className="river">
+                <span>River</span>
+                <PokerCardSelector />
+
+                <ActionSelect
+                    seats={seats}
+                    handleClick={() => {
+                        const updatedActions = [
+                            ...handActions,
+                            { round: "river", action: `stuff` },
+                        ];
+                        setHandActions(updatedActions);
+                    }}
+                >
+                    <div>
+                        {handActions
+                            .filter(ha => ha.round === "river")
+                            .map(ha => {
+                                return <p>{ha.action}</p>;
+                            })}
+                    </div>
+                </ActionSelect>
+            </div>
+
+            <div className="showdown">
+                <button type="submit">Save Hand</button>
+            </div>
+        </form>
+    );
+};
+
+export default PokerForm;
+
+const ActionSelect: React.FC<{ seats: PokerSeat[]; handleClick: () => void }> =
+    ({ seats, handleClick, children }) => {
+        return (
+            <>
                 <div className="poker-action">
                     <select>
                         <option value="UTG">UTG</option>
@@ -52,45 +160,9 @@ const PokerForm: React.FC<{ seats: PokerSeat[] }> = ({ seats }) => {
 
                     <input type="number" />
                 </div>
-                <button
-                    onClick={() => {
-                        const updatedActions = [
-                            ...handActions,
-                            { round: "pre-flop", action: `stuff` },
-                        ];
-                        setHandActions(updatedActions);
-                    }}
-                >
-                    +
-                </button>
+                <button onClick={handleClick}>+</button>
 
-                <div>
-                    {handActions
-                        .filter(ha => ha.round === "pre-flop")
-                        .map(ha => {
-                            return <p>{ha.action}</p>;
-                        })}
-                </div>
-            </div>
-
-            <div className="flop">
-                <span>Flop</span>
-                <PokerCardSelector />
-                <PokerCardSelector />
-                <PokerCardSelector />
-            </div>
-
-            <div className="turn">
-                <span>Turn</span>
-                <PokerCardSelector />
-            </div>
-
-            <div className="river">
-                <span>River</span>
-                <PokerCardSelector />
-            </div>
-        </form>
-    );
-};
-
-export default PokerForm;
+                {children}
+            </>
+        );
+    };
