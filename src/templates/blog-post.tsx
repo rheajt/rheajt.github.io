@@ -1,12 +1,12 @@
 import * as React from "react";
 import { Link, graphql } from "gatsby";
+import { IGatsbyImageData } from "gatsby-plugin-image";
 import { Disqus } from "gatsby-plugin-disqus";
 
 import Bio from "../components/bio";
 import Layout from "../components/layout";
 import Seo from "../components/seo";
 import { format } from "date-fns";
-import { IGatsbyImageData } from "gatsby-plugin-image";
 import Share from "../components/share";
 
 interface Props {
@@ -135,11 +135,8 @@ const BlogPostTemplate: React.FC<Props> = ({ data, location }) => {
 
             <Disqus
                 config={{
-                    /* Replace PAGE_URL with your post's canonical URL variable */
                     url: url,
-                    /* Replace PAGE_IDENTIFIER with your page's unique identifier variable */
                     identifier: post.fields.slug,
-                    /* Replace PAGE_TITLE with the title of the page */
                     title: post.frontmatter.title,
                 }}
             />

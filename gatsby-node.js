@@ -15,7 +15,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         `
             {
                 allMarkdownRemark(
-                    filter: { fields: { category: {eq: "blog" }} }
+                    filter: { fields: { category: { eq: "blog" } } }
                     sort: { fields: [frontmatter___date], order: ASC }
                     limit: 1000
                 ) {
@@ -66,7 +66,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         `
             {
                 allMarkdownRemark(
-                    filter: { fields: { category: {eq: "project" }} }
+                    filter: { fields: { category: { eq: "project" } } }
                     limit: 1000
                 ) {
                     nodes {
@@ -82,8 +82,8 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
     const projects = projectNodes.data.allMarkdownRemark.nodes;
 
-    if(projects.length > 0) {
-        projects.forEach((post) => {
+    if (projects.length > 0) {
+        projects.forEach(post => {
             // const previousPostId = index === 0 ? null : posts[index - 1].id;
             // const nextPostId =
             //     index === posts.length - 1 ? null : posts[index + 1].id;
@@ -144,7 +144,7 @@ exports.createSchemaCustomization = ({ actions }) => {
     // Also explicitly define the Markdown frontmatter
     // This way the "MarkdownRemark" queries will return `null` even when no
     // blog posts are stored inside "content/blog" instead of returning an error
-    createTypes(`
+    const typeDefs = `
     type SiteSiteMetadata {
       author: Author
       siteUrl: String
@@ -168,6 +168,7 @@ exports.createSchemaCustomization = ({ actions }) => {
     }
 
     type Frontmatter {
+        draft: Boolean
       title: String
       description: String
       date: Date @dateformat
@@ -179,5 +180,6 @@ exports.createSchemaCustomization = ({ actions }) => {
       thumbnail: String
         category: String
     }
-  `);
+  `;
+    createTypes(typeDefs);
 };

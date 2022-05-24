@@ -1,13 +1,13 @@
 ---
-draft: true
+draft: false
 title: Organize those Organizational Emails
 categories:
-  - Blog
+    - Blog
 tags:
-  - Projects
-  - google apps script
-  - javascript
-  - solutions
+    - Projects
+    - google apps script
+    - javascript
+    - solutions
 youtube: <<YOUTUBE_URL>>
 image: ./promote-button.png
 ---
@@ -41,4 +41,3 @@ Create the rule! To get into the view below you will probably have to click on a
 That is it! You now have a rule that will put all of the emails that are not sent to you, into a folder all of their own. How can you possibly improve this flow? Well, maybe you can add category tags to each of the emails that come in. Or, you could try marking them all as read automatically. Maybe, you want different sub-folders for different people.
 
 There is no end to the possibilities!
-

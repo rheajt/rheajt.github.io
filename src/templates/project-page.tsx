@@ -1,10 +1,10 @@
 import * as React from "react";
 import { graphql } from "gatsby";
+import { GatsbyImage, IGatsbyImageData } from "gatsby-plugin-image";
 
 import Bio from "../components/bio";
 import Layout from "../components/layout";
 import Seo from "../components/seo";
-import { GatsbyImage, IGatsbyImageData } from "gatsby-plugin-image";
 import Blockquote from "../components/blockquote";
 import Share from "../components/share";
 
