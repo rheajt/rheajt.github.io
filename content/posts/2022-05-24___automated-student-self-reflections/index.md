@@ -18,9 +18,9 @@ youtube: https://youtu.be/da2PN23xnUM
 image: ./student-self-reflections-thumbnail.jpg
 ---
 
-![Flow from forms to OneNote](./flow-1.png)
+## The greatest trick of saving time is gathering information effectively
 
-## The greatest trick of classroom time saving is how to gather information from your students.
+<iframe width="560" height="315" src="https://www.youtube.com/embed/da2PN23xnUM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 Whether it is how you are collecting their homework, assessments, or feedback, you are just trying to take their input and handle it with efficiency. Microsoft Forms allows you to do that in a standardized way.
 
