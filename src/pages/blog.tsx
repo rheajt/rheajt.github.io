@@ -20,6 +20,7 @@ interface Post {
     frontmatter: {
         title: string;
         description: string;
+        tags: string;
     };
     excerpt: string;
 }
@@ -38,11 +39,58 @@ const Blog: React.FC<Props> = ({ data, location }) => {
         );
     }
 
+    const byMonth = posts.reduce((acc: any, page: any) => {
+        if (!page.fields.date) return acc;
+
+        const monthYear = format(new Date(page.fields.date), "MMMM yyyy");
+
+        if (acc[monthYear]) {
+            acc[monthYear].push(page);
+        } else {
+            acc[monthYear] = [page];
+        }
+
+        return acc;
+    }, {});
+
+    console.log(byMonth);
     return (
         <Layout location={location} title={siteTitle}>
             <Seo title="All posts" />
             <Bio />
-            <ol style={{ listStyle: `none` }}>
+
+            {Object.keys(byMonth).map(month => {
+                return (
+                    <section key={month}>
+                        <h3>{month}</h3>
+                        {byMonth[month].map((page: any) => (
+                            <div key={page.fields.slug}>
+                                <Link
+                                    key={page.fields.slug}
+                                    to={`/blog/${page.fields.slug}`}
+                                >
+                                    <b>{page.frontmatter.title}</b>
+                                </Link>
+
+                                <p key={page.fields.slug}>
+                                    <i>
+                                        {format(
+                                            new Date(page.fields.date),
+                                            "PPP"
+                                        )}
+                                    </i>{" "}
+                                    -{page.excerpt}
+                                </p>
+                                <p>
+                                    Tags in this post:{" "}
+                                    <i>{page.frontmatter.tags.join(", ")}</i>
+                                </p>
+                            </div>
+                        ))}
+                    </section>
+                );
+            })}
+            {/*<ol style={{ listStyle: `none` }}>
                 {posts.map((post: Post) => {
                     const title = post.frontmatter.title || post.fields.slug;
 
@@ -85,7 +133,7 @@ const Blog: React.FC<Props> = ({ data, location }) => {
                         </li>
                     );
                 })}
-            </ol>
+            </ol>*/}
         </Layout>
     );
 };
@@ -112,6 +160,7 @@ export const pageQuery = graphql`
                 frontmatter {
                     title
                     description
+                    tags
                 }
             }
         }

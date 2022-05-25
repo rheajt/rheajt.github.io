@@ -4,10 +4,9 @@ title: Organize those Organizational Emails
 categories:
     - Blog
 tags:
-    - Projects
-    - google apps script
-    - javascript
     - solutions
+    - microsoft outlook
+    - inbox zero
 youtube: <<YOUTUBE_URL>>
 image: ./promote-button.png
 ---
