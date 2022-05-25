@@ -81,6 +81,7 @@ const BlogPostTemplate: React.FC<Props> = ({ data, location }) => {
                 description={post.frontmatter.description || post.excerpt}
                 image={image}
             />
+
             <article
                 className="blog-post"
                 itemScope
@@ -97,7 +98,9 @@ const BlogPostTemplate: React.FC<Props> = ({ data, location }) => {
                     dangerouslySetInnerHTML={{ __html: post.html }}
                     itemProp="articleBody"
                 />
+
                 <hr />
+
                 <footer>
                     <Bio />
                 </footer>

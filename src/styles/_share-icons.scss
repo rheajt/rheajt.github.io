@@ -5,7 +5,7 @@ ul.share-icons {
     position: fixed;
     transform: translateX(-40px);
 
-    @media (max-width: 400px) {
+    @media (max-width: 375px) {
         transform: none;
         list-style: none;
         padding: 0;
