@@ -5,6 +5,9 @@ import Layout from "../components/layout";
 import Seo from "../components/seo";
 import { StaticImage } from "gatsby-plugin-image";
 import ProjectCard from "../components/project-card";
+import { CloudTech } from "../components/cloud-tech";
+import Blockquote from "../components/blockquote";
+import { QuoteCarousel } from "../components/quote-carousel";
 // import { ProjectFrontmatter } from "../types/ProjectFrontmatter";
 
 export interface Quote {
@@ -21,14 +24,20 @@ const Home: React.FC<{ data: any; location: any }> = ({ data, location }) => {
     const projects = data.projects.nodes;
     const headerImageSrc = data.headerImage.resize.src;
 
+    const quotes = projects.reduce((acc, p) => {
+        console.log("p", p);
+        if (p.frontmatter.quote) {
+            acc.push(p.frontmatter.quote);
+        }
+        return acc;
+    }, []);
+
+    console.log({ quotes });
     return (
         <Layout location={location} title={siteTitle}>
             <Seo
                 title="jordanrhea.com"
-                image={
-                    data.site.siteMetadata.siteUrl +
-                    headerImageSrc
-                }
+                image={data.site.siteMetadata.siteUrl + headerImageSrc}
             />
 
             <div className="hero">
@@ -40,7 +49,7 @@ const Home: React.FC<{ data: any; location: any }> = ({ data, location }) => {
                     alt="jordan rhea header"
                 />
                 <h1>
-                    Build your own tools with the technology you already use
+                    Build your own tech with <br /> <CloudTech />
                 </h1>
             </div>
 
@@ -55,7 +64,22 @@ const Home: React.FC<{ data: any; location: any }> = ({ data, location }) => {
                 education with a future in development.
             </p>
 
+            <QuoteCarousel>
+                {quotes.map((q: Quote) => {
+                    return (
+                        <div style={{ width: 350 }}>
+                            <Blockquote quote={q} />
+                        </div>
+                    );
+                })}
+            </QuoteCarousel>
+
             <h3>Projects</h3>
+
+            <p>
+                I have done a number of different projects. Learn more about
+                them below
+            </p>
 
             <div className="project-cards">
                 {projects.map((p: any) => {
@@ -77,11 +101,13 @@ export const pageQuery = graphql`
             }
         }
 
-        headerImage: imageSharp(resize: {originalName: {eq: "jordanrhea-header.png"}}) {
+        headerImage: imageSharp(
+            resize: { originalName: { eq: "jordanrhea-header.png" } }
+        ) {
             resize {
-              src
+                src
             }
-          }
+        }
 
         projects: allMarkdownRemark(
             filter: { fields: { category: { eq: "project" } } }
@@ -95,6 +121,14 @@ export const pageQuery = graphql`
                         childImageSharp {
                             gatsbyImageData(layout: CONSTRAINED)
                         }
+                    }
+                    quote {
+                        author
+                        email
+                        employer
+                        excerpt
+                        position
+                        text
                     }
                 }
                 fields {

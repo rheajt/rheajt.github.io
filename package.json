@@ -8,9 +8,6 @@
         "url": "https://github.com/rheajt/rheajt.github.io"
     },
     "dependencies": {
-        "@fortawesome/fontawesome-svg-core": "^6.1.1",
-        "@fortawesome/free-solid-svg-icons": "^6.1.1",
-        "@fortawesome/react-fontawesome": "^0.1.18",
         "date-fns": "^2.26.0",
         "gatsby": "^4.2.0",
         "gatsby-plugin-disqus": "^1.2.4",
@@ -32,21 +29,21 @@
         "gatsby-transformer-remark": "^5.2.0",
         "gatsby-transformer-sharp": "^4.2.0",
         "prismjs": "^1.25.0",
-        "react": "^17.0.1",
+        "react": "^18.1.0",
         "react-calendly": "^4.0.0",
-        "react-dom": "^17.0.1",
+        "react-dom": "^18.1.0",
         "react-helmet": "^6.1.0",
         "react-icons": "^4.3.1",
         "react-share": "^4.4.0",
+        "react-simply-carousel": "^7.0.0",
+        "react-text-transition": "^2.0.0",
         "sass": "^1.51.0",
         "slugify": "^1.6.3",
         "typeface-merriweather": "0.0.72",
-        "typeface-montserrat": "0.0.75",
-        "typeface-shadows-into-light": "^1.1.13"
+        "typeface-montserrat": "0.0.75"
     },
     "devDependencies": {
         "@types/react-helmet": "^6.1.5",
-        "@types/react-icons": "^3.0.0",
         "gh-pages": "^3.2.3",
         "prettier": "^2.4.1"
     },

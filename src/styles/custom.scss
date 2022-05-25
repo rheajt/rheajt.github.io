@@ -1,7 +1,8 @@
 .header {
     display: flex;
     align-items: center;
-
+    text-align: center;
+    justify-content: center;
     nav.is-hidden {
         display: none;
     }
@@ -9,7 +10,6 @@
 
 .header a {
     background: none;
-    padding-right: 2rem;
     text-decoration: none;
 }
 
@@ -20,17 +20,32 @@
     text-transform: uppercase;
     justify-content: space-between;
     width: 100%;
+    margin-left: 1em;
+
+    a {
+        padding: 0 1em 0.4em;
+        &:hover {
+            border-bottom: 1px solid gray;
+        }
+
+        &.active {
+            border-bottom: 2px solid black;
+        }
+    }
 }
 
 .social-links {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 0.25em;
+    display: flex;
     font-size: 2em;
+
+    a {
+        margin-right: 0.5em;
+    }
 }
 
-.header nav a {
-    padding-right: 1rem;
+.cloud-text {
+    padding: 0.5em 0;
+    font-family: var(--fontFamily-sans);
 }
 
 .hero {
@@ -53,6 +68,14 @@ blockquote {
 blockquote:before {
     color: #ccc;
     content: open-quote;
+    font-size: 4em;
+    line-height: 0.1em;
+    margin-right: 0.25em;
+    vertical-align: -0.4em;
+}
+blockquote:after {
+    color: transparent;
+    content: close-quote;
     font-size: 4em;
     line-height: 0.1em;
     margin-right: 0.25em;

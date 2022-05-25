@@ -1,7 +1,7 @@
 import { Link } from "gatsby";
 import * as React from "react";
 import { PopupWidget } from "react-calendly";
-import Header from "./header";
+import { Header } from "./header";
 
 const Layout: React.FC<{ location: any; title: string }> = ({
     location,
@@ -13,7 +13,7 @@ const Layout: React.FC<{ location: any; title: string }> = ({
 
     return (
         <div className="global-wrapper" data-is-root-path={isRootPath}>
-            <Header />
+            <Header pathname={location.pathname} />
 
             <main>{children}</main>
 
