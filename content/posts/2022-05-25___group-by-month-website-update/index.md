@@ -19,6 +19,7 @@ My current goal is to continue to post some parts, demos, and other miscellaneou
 
 No clue about that, however, time to rectify some of that. In the future I want to:
 
+-   [x] group posts by month
 -   [ ] add some robustness to the tag system.
 -   [ ] I want to add to the posts a notice that it is over a year old, with a link to post on social media that it needs to be updated.
 -   [ ] I also want to include some pictures on the projects list, basically just redesign the way the cards are formatted.
