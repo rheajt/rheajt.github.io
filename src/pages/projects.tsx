@@ -4,25 +4,11 @@ import { Link, graphql } from "gatsby";
 import Bio from "../components/bio";
 import Layout from "../components/layout";
 import Seo from "../components/seo";
-import { format } from "date-fns";
+// import { format } from "date-fns";
+import { ProjectPageProps } from "../types/ProjectPage";
+import ProjectCard from "../components/project-card";
 
-interface Props {
-    data: any;
-    location: Location;
-}
-
-interface Project {
-    excerpt: string;
-    fields: {
-        slug: string;
-        date: string;
-    };
-    frontmatter: {
-        title: string;
-    };
-}
-
-const Projects: React.FC<Props> = ({ data, location }) => {
+const Projects: React.FC<ProjectPageProps> = ({ data, location }) => {
     const siteTitle = data.site.siteMetadata?.title || `Title`;
     const projects = data.allMarkdownRemark.nodes;
 
@@ -40,8 +26,14 @@ const Projects: React.FC<Props> = ({ data, location }) => {
         <Layout location={location} title={siteTitle}>
             <Seo title="All Projects" />
             <Bio />
-            <ol style={{ listStyle: `none` }}>
-                {projects.map((project: Project) => {
+
+            <div className="project-cards">
+                {projects.map((p: any) => {
+                    return <ProjectCard key={p.id} project={p} />;
+                })}
+            </div>
+            {/*<ol style={{ listStyle: `none` }}>
+                {projects.map((project: ProjectPage) => {
                     const title =
                         project.frontmatter.title || project.fields.slug;
 
@@ -75,6 +67,7 @@ const Projects: React.FC<Props> = ({ data, location }) => {
                     );
                 })}
             </ol>
+        */}
         </Layout>
     );
 };
@@ -99,6 +92,11 @@ export const pageQuery = graphql`
                 }
                 frontmatter {
                     title
+                    image {
+                        childImageSharp {
+                            gatsbyImageData(layout: CONSTRAINED)
+                        }
+                    }
                 }
                 excerpt
             }

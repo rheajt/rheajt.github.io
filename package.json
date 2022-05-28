@@ -37,6 +37,7 @@
         "react-share": "^4.4.0",
         "react-simply-carousel": "^7.0.0",
         "react-text-transition": "^2.0.0",
+        "rehype-react": "^7.1.1",
         "sass": "^1.51.0",
         "slugify": "^1.6.3",
         "typeface-merriweather": "0.0.72",

@@ -1,18 +1,18 @@
 ---
-title: 'Easy Grader'
-subtitle: 'Make the tedious task of marking grades on a spreadsheet a little easier'
+title: "Easy Grader"
+subtitle: "Make the tedious task of marking grades on a spreadsheet a little easier"
 author: jordan
 categories:
-  - Productivity
-  - Portfolio
+    - Productivity
+    - Portfolio
 tags:
-  - Projects
-  - teacher tasks
-  - teacher tools
-  - google apps script
-  - google add-ons
-  - needs update
-youtube: 'https://www.youtube.com/watch?v=SOImg-iwT6c'
+    - Projects
+    - teacher tasks
+    - teacher tools
+    - google apps script
+    - google add-ons
+    - needs update
+youtube: "https://www.youtube.com/watch?v=SOImg-iwT6c"
 ---
 
 ## Entering student marks... the easy way!
@@ -39,15 +39,15 @@ Using the methods is as easy as below!
 
 ```javascript
 function getStudents() {
-  //get the student names from the spreadsheet for fuzzy search
-  google.script.run
-    .withSuccessHandler(function(availableTags) {
-      $('#tags').autocomplete({
-        source: availableTags,
-        autoFocus: true,
-      });
-    })
-    .getAvailableTags();
+    //get the student names from the spreadsheet for fuzzy search
+    google.script.run
+        .withSuccessHandler(function (availableTags) {
+            $("#tags").autocomplete({
+                source: availableTags,
+                autoFocus: true,
+            });
+        })
+        .getAvailableTags();
 }
 ```
 

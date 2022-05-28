@@ -1,12 +1,9 @@
 import React from "react";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
-import { ProjectFrontmatter } from "../types/ProjectFrontmatter";
 import { Link } from "gatsby";
+import { ProjectPage } from "../types/ProjectPage";
 
-const ProjectCard: React.FC<{ project: ProjectFrontmatter }> = ({
-    project,
-}) => {
-    console.log({ project });
+const ProjectCard: React.FC<{ project: ProjectPage }> = ({ project }) => {
     const image = getImage(project.frontmatter.image);
 
     return (

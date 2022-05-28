@@ -1,6 +1,5 @@
 import * as React from "react";
 import { Link, graphql } from "gatsby";
-import { IGatsbyImageData } from "gatsby-plugin-image";
 import { Disqus } from "gatsby-plugin-disqus";
 
 import Bio from "../components/bio";
@@ -8,59 +7,10 @@ import Layout from "../components/layout";
 import Seo from "../components/seo";
 import { format } from "date-fns";
 import Share from "../components/share";
+import { BlogPostProps } from "../types/BlogPost";
+import { renderAst } from "../components/custom";
 
-interface Props {
-    data: Data;
-    location: Location;
-}
-
-interface Data {
-    site: {
-        siteMetadata: {
-            siteUrl: string;
-            title: string;
-        };
-    };
-    markdownRemark: {
-        id: string;
-        excerpt: string;
-        html: string;
-        frontmatter: {
-            title: string;
-            date: string;
-            description: string;
-            image: {
-                publicURL: string;
-                childImageSharp: {
-                    gatsbyImageData: IGatsbyImageData;
-                };
-            };
-        };
-        fields: {
-            date: string;
-            thumbnail: string;
-            slug: string;
-        };
-    };
-    previous: {
-        fields: {
-            slug: string;
-        };
-        frontmatter: {
-            title: string;
-        };
-    };
-    next: {
-        fields: {
-            slug: string;
-        };
-        frontmatter: {
-            title: string;
-        };
-    };
-}
-
-const BlogPostTemplate: React.FC<Props> = ({ data, location }) => {
+const BlogPostTemplate: React.FC<BlogPostProps> = ({ data, location }) => {
     const post = data.markdownRemark;
     const siteTitle = data.site.siteMetadata?.title || `Title`;
     const url = data.site.siteMetadata.siteUrl + "/blog/" + post.fields.slug;
@@ -94,10 +44,9 @@ const BlogPostTemplate: React.FC<Props> = ({ data, location }) => {
 
                 <Share url={url} />
 
-                <section
-                    dangerouslySetInnerHTML={{ __html: post.html }}
-                    itemProp="articleBody"
-                />
+                <section itemProp="articleBody">
+                    {renderAst(post.htmlAst)}
+                </section>
 
                 <hr />
 
@@ -165,6 +114,7 @@ export const pageQuery = graphql`
             id
             excerpt(pruneLength: 160)
             html
+            htmlAst
             frontmatter {
                 title
                 date(formatString: "MMMM DD, YYYY")
