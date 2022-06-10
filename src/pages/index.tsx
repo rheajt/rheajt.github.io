@@ -32,7 +32,6 @@ const Home: React.FC<{ data: any; location: any }> = ({ data, location }) => {
         return acc;
     }, []);
 
-    console.log({ quotes });
     return (
         <Layout location={location} title={siteTitle}>
             <Seo
@@ -59,9 +58,9 @@ const Home: React.FC<{ data: any; location: any }> = ({ data, location }) => {
 
             <p>
                 Extending the capabilities of <b>Office 365</b> and{" "}
-                <b>Google Workspaces</b>
-                so that your team makes the most of your systems. Background in
-                education with a future in development.
+                <b>Google Workspaces</b> so that your team makes the most of
+                your systems. Background in education with a future in
+                development.
             </p>
 
             <QuoteCarousel>
