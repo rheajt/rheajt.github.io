@@ -14,11 +14,6 @@ export const QuoteCarousel: React.FC = ({ children }) => {
                 },
             }}
             activeSlideIndex={activeSlide}
-            // activeSlideProps={{
-            //     style: {
-            //         width: 200,
-            //     },
-            // }}
             onRequestChange={setActiveSlide}
             forwardBtnProps={{
                 children: <FaArrowCircleRight />,

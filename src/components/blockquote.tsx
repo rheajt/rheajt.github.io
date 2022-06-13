@@ -3,7 +3,7 @@ import { Quote } from "../pages";
 
 const Blockquote: React.FC<{ quote: Quote }> = ({ quote }) => {
     return (
-        <blockquote style={{ maxWidth: 340 }}>
+        <blockquote className="blockquote">
             <p>{quote.excerpt}</p>
             <span className="author">
                 <b>{quote.author}</b> <br />

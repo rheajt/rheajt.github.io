@@ -8,7 +8,6 @@ import ProjectCard from "../components/project-card";
 import { CloudTech } from "../components/cloud-tech";
 import Blockquote from "../components/blockquote";
 import { QuoteCarousel } from "../components/quote-carousel";
-// import { ProjectFrontmatter } from "../types/ProjectFrontmatter";
 
 export interface Quote {
     author: string;
@@ -25,7 +24,6 @@ const Home: React.FC<{ data: any; location: any }> = ({ data, location }) => {
     const headerImageSrc = data.headerImage.resize.src;
 
     const quotes = projects.reduce((acc, p) => {
-        console.log("p", p);
         if (p.frontmatter.quote) {
             acc.push(p.frontmatter.quote);
         }
@@ -48,7 +46,9 @@ const Home: React.FC<{ data: any; location: any }> = ({ data, location }) => {
                     alt="jordan rhea header"
                 />
                 <h1>
-                    Build your own tech with <br /> <CloudTech />
+                    Build your own <br />
+                    tech solutions <br />
+                    with <br /> <CloudTech />
                 </h1>
             </div>
 
