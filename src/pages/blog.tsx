@@ -4,25 +4,11 @@ import { Link, graphql } from "gatsby";
 import Bio from "../components/bio";
 import Layout from "../components/layout";
 import Seo from "../components/seo";
-// import { Post } from "../typings/Post";
 import { format } from "date-fns";
 
 interface Props {
     data: any;
     location: Location;
-}
-
-interface Post {
-    fields: {
-        slug: string;
-        date: string;
-    };
-    frontmatter: {
-        title: string;
-        description: string;
-        tags: string;
-    };
-    excerpt: string;
 }
 
 const Blog: React.FC<Props> = ({ data, location }) => {
