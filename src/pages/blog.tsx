@@ -53,7 +53,6 @@ const Blog: React.FC<Props> = ({ data, location }) => {
         return acc;
     }, {});
 
-    console.log(byMonth);
     return (
         <Layout location={location} title={siteTitle}>
             <Seo title="All posts" />
@@ -64,15 +63,12 @@ const Blog: React.FC<Props> = ({ data, location }) => {
                     <section key={month}>
                         <h3>{month}</h3>
                         {byMonth[month].map((page: any) => (
-                            <div key={page.fields.slug}>
-                                <Link
-                                    key={page.fields.slug}
-                                    to={`/blog/${page.fields.slug}`}
-                                >
+                            <div key={`${month}-${page.fields.slug}`}>
+                                <Link to={`/blog/${page.fields.slug}`}>
                                     <b>{page.frontmatter.title}</b>
                                 </Link>
 
-                                <p key={page.fields.slug}>
+                                <p>
                                     <i>
                                         {format(
                                             new Date(page.fields.date),
@@ -90,50 +86,6 @@ const Blog: React.FC<Props> = ({ data, location }) => {
                     </section>
                 );
             })}
-            {/*<ol style={{ listStyle: `none` }}>
-                {posts.map((post: Post) => {
-                    const title = post.frontmatter.title || post.fields.slug;
-
-                    return (
-                        <li key={post.fields.slug}>
-                            <article
-                                className="post-list-item"
-                                itemScope
-                                itemType="http://schema.org/Article"
-                            >
-                                <header>
-                                    <h2>
-                                        <Link
-                                            to={post.fields.slug}
-                                            itemProp="url"
-                                        >
-                                            <span itemProp="headline">
-                                                {title}
-                                            </span>
-                                        </Link>
-                                    </h2>
-                                    <small>
-                                        {format(
-                                            new Date(post.fields.date),
-                                            "PPP"
-                                        )}
-                                    </small>
-                                </header>
-                                <section>
-                                    <p
-                                        dangerouslySetInnerHTML={{
-                                            __html:
-                                                post.frontmatter.description ||
-                                                post.excerpt,
-                                        }}
-                                        itemProp="description"
-                                    />
-                                </section>
-                            </article>
-                        </li>
-                    );
-                })}
-            </ol>*/}
         </Layout>
     );
 };

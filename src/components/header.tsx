@@ -6,8 +6,6 @@ export const Header: React.FC<{ pathname: string; showLinks?: boolean }> = ({
     pathname,
     showLinks = true,
 }) => {
-    // const { location } = useRouter();
-    console.log(pathname);
     return (
         <header className="header">
             <Link to="/">
