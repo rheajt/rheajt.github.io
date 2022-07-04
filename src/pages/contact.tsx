@@ -3,10 +3,6 @@ import { FaGithub, FaLinkedin, FaTwitter, FaYoutube } from "react-icons/fa";
 import Layout from "../components/layout";
 import Seo from "../components/seo";
 import YoutubeSubscribe from "../components/youtube-subscribe";
-// import { graphql } from "gatsby";
-
-// import Layout from "../components/layout";
-// import Seo from "../components/seo";
 
 interface Props {
     location: Location;
@@ -18,6 +14,16 @@ const ContactPage: React.FC<Props> = ({ location }) => {
     return (
         <Layout location={location} title={siteTitle}>
             <Seo title="Contact" />
+
+            <form className="contact-form">
+                <input placeholder="Your name" />
+                <input placeholder="Your email" />
+                <select>
+                    <option>Google</option>
+                    <option>Microsoft</option>
+                </select>
+                <textarea></textarea>
+            </form>
 
             <a className="icon-container" href="https://youtube.com/jordanrhea">
                 <div className="icon">
