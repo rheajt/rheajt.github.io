@@ -1,5 +1,6 @@
 import * as React from "react";
 import { FaGithub, FaLinkedin, FaTwitter, FaYoutube } from "react-icons/fa";
+import { ContactForm } from "../components/contact-form";
 import Layout from "../components/layout";
 import Seo from "../components/seo";
 import YoutubeSubscribe from "../components/youtube-subscribe";
@@ -15,15 +16,7 @@ const ContactPage: React.FC<Props> = ({ location }) => {
         <Layout location={location} title={siteTitle}>
             <Seo title="Contact" />
 
-            <form className="contact-form">
-                <input placeholder="Your name" />
-                <input placeholder="Your email" />
-                <select>
-                    <option>Google</option>
-                    <option>Microsoft</option>
-                </select>
-                <textarea></textarea>
-            </form>
+            <ContactForm />
 
             <a className="icon-container" href="https://youtube.com/jordanrhea">
                 <div className="icon">
