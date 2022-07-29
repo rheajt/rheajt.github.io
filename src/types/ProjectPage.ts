@@ -1,4 +1,5 @@
 import { IGatsbyImageData } from "gatsby-plugin-image";
+import { Quote } from "../pages";
 
 export interface ProjectPageProps {
     data: any;
@@ -16,5 +17,6 @@ export interface ProjectPage {
         title: string;
         image: IGatsbyImageData;
         tags: string[];
+        quote: Quote;
     };
 }

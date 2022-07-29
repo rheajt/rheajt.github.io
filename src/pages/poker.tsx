@@ -1,6 +1,6 @@
 import { Link } from "gatsby";
 import { StaticImage } from "gatsby-plugin-image";
-import React, { useReducer, useState } from "react";
+import React, { ReactNode, useReducer, useState } from "react";
 import PokerForm from "../components/poker-form";
 import PokerSeats from "../components/poker-seats";
 import Seo from "../components/seo";
@@ -10,6 +10,7 @@ const PokerPanel: React.FC<{
     title: string;
     isActive: boolean;
     handleClick: () => void;
+    children: ReactNode;
 }> = ({ title, isActive, handleClick, children }) => {
     return (
         <>

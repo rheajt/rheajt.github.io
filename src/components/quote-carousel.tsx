@@ -1,47 +1,20 @@
 import React from "react";
-import { FaArrowCircleLeft, FaArrowCircleRight } from "react-icons/fa";
-import Carousel from "react-simply-carousel";
+import { Splide, SplideSlide as Slide } from "@splidejs/react-splide";
+import Blockquote from "./blockquote";
+import { Quote } from "../pages";
 
-export const QuoteCarousel: React.FC = ({ children }) => {
-    const [activeSlide, setActiveSlide] = React.useState(0);
+interface Props {
+    quotes: Quote[];
+}
+
+export const QuoteCarousel: React.FC<Props> = ({ quotes }) => {
     return (
-        <Carousel
-            updateOnItemClick
-            containerProps={{
-                style: {
-                    width: "100%",
-                    justifyContent: "space-between",
-                },
-            }}
-            activeSlideIndex={activeSlide}
-            onRequestChange={setActiveSlide}
-            forwardBtnProps={{
-                children: <FaArrowCircleRight />,
-                style: {
-                    width: 30,
-                    height: 60,
-                    alignSelf: "center",
-                    backgroundColor: "transparent",
-                    border: 0,
-                    fontSize: 30,
-                },
-            }}
-            backwardBtnProps={{
-                children: <FaArrowCircleLeft />,
-                style: {
-                    width: 30,
-                    height: 60,
-                    alignSelf: "center",
-                    backgroundColor: "transparent",
-                    border: 0,
-                    fontSize: 30,
-                    transform: `translateX(-.5em)`,
-                },
-            }}
-            itemsToShow={1}
-            speed={200}
-        >
-            {children}
-        </Carousel>
+        <Splide aria-label="Project quotes">
+            {quotes.map((quote, idx: number) => (
+                <Slide key={quote.author + idx}>
+                    <Blockquote quote={quote} />
+                </Slide>
+            ))}
+        </Splide>
     );
 };

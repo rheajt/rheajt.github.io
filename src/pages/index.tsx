@@ -8,6 +8,7 @@ import ProjectCard from "../components/project-card";
 import { CloudTech } from "../components/cloud-tech";
 import Blockquote from "../components/blockquote";
 import { QuoteCarousel } from "../components/quote-carousel";
+import { ProjectPage } from "../types/ProjectPage";
 
 export interface Quote {
     author: string;
@@ -20,10 +21,10 @@ export interface Quote {
 
 const Home: React.FC<{ data: any; location: any }> = ({ data, location }) => {
     const siteTitle = data.site.siteMetadata?.title || `jordanrhea.com`;
-    const projects = data.projects.nodes;
+    const projects: ProjectPage[] = data.projects.nodes;
     const headerImageSrc = data.headerImage.resize.src;
 
-    const quotes = projects.reduce((acc, p) => {
+    const quotes = projects.reduce<Quote[]>((acc, p) => {
         if (p.frontmatter.quote) {
             acc.push(p.frontmatter.quote);
         }
@@ -63,15 +64,7 @@ const Home: React.FC<{ data: any; location: any }> = ({ data, location }) => {
                 development.
             </p>
 
-            <QuoteCarousel>
-                {quotes.map((q: Quote) => {
-                    return (
-                        <div style={{ width: 350 }}>
-                            <Blockquote quote={q} />
-                        </div>
-                    );
-                })}
-            </QuoteCarousel>
+            <QuoteCarousel quotes={quotes} />
 
             <h3>Projects</h3>
 

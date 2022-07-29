@@ -22,6 +22,7 @@ const PokerForm: React.FC<{ seats: PokerSeat[] }> = ({ seats }) => {
                 <span>Dealt:</span>
                 <PokerCardSelector />
                 <PokerCardSelector />
+
                 <ActionSelect
                     seats={seats}
                     handleClick={() => {
@@ -124,45 +125,47 @@ const PokerForm: React.FC<{ seats: PokerSeat[] }> = ({ seats }) => {
 
 export default PokerForm;
 
-const ActionSelect: React.FC<{ seats: PokerSeat[]; handleClick: () => void }> =
-    ({ seats, handleClick, children }) => {
-        return (
-            <>
-                <div className="poker-action">
-                    <select>
-                        <option value="UTG">UTG</option>
-                        <option value="UTG+1">UTG+1</option>
-                        <option value="MP">MP</option>
-                        <option value="HJ">HJ</option>
-                        <option value="CO">CO</option>
-                        <option value="BTN">BTN</option>
-                        <option value="SB">SB</option>
-                        <option value="BB">BB</option>
-                    </select>
+const ActionSelect: React.FC<{
+    seats: PokerSeat[];
+    handleClick: () => void;
+}> = ({ seats, handleClick, children }) => {
+    return (
+        <>
+            <div className="poker-action">
+                <select>
+                    <option value="UTG">UTG</option>
+                    <option value="UTG+1">UTG+1</option>
+                    <option value="MP">MP</option>
+                    <option value="HJ">HJ</option>
+                    <option value="CO">CO</option>
+                    <option value="BTN">BTN</option>
+                    <option value="SB">SB</option>
+                    <option value="BB">BB</option>
+                </select>
 
-                    <select>
-                        {seats.map((s, idx) => {
-                            return (
-                                <option value={s.name} key={"pre-flop-" + idx}>
-                                    {s.name}
-                                </option>
-                            );
-                        })}
-                    </select>
+                <select>
+                    {seats.map((s, idx) => {
+                        return (
+                            <option value={s.name} key={"pre-flop-" + idx}>
+                                {s.name}
+                            </option>
+                        );
+                    })}
+                </select>
 
-                    <select>
-                        <option value="check">check</option>
-                        <option value="bet">bet</option>
-                        <option value="raise">raise</option>
-                        <option value="call">call</option>
-                        <option value="fold">fold</option>
-                    </select>
+                <select>
+                    <option value="check">check</option>
+                    <option value="bet">bet</option>
+                    <option value="raise">raise</option>
+                    <option value="call">call</option>
+                    <option value="fold">fold</option>
+                </select>
 
-                    <input type="number" />
-                </div>
-                <button onClick={handleClick}>+</button>
+                <input type="number" />
+            </div>
+            <button onClick={handleClick}>+</button>
 
-                {children}
-            </>
-        );
-    };
+            {children}
+        </>
+    );
+};

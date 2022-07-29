@@ -1,7 +1,10 @@
 import React from "react";
 import TextTransition, { presets } from "react-text-transition";
 
-const texts = ["Microsoft Office 365", "Google Workspaces"];
+const texts = [
+    { name: "Microsoft Office 365", color: "#01A6F0" },
+    { name: "Google Workspaces", color: "#EA4335" },
+];
 
 export const CloudTech: React.FC = () => {
     const [index, setIndex] = React.useState(0);
@@ -9,17 +12,18 @@ export const CloudTech: React.FC = () => {
     React.useEffect(() => {
         const intervalId = setInterval(
             () => setIndex(index => index + 1),
-            6000 // every 3 seconds
+            6000 // every 6 seconds
         );
         return () => clearTimeout(intervalId);
     }, []);
 
     return (
         <span className="cloud-text">
-            <TextTransition
-                text={texts[index % texts.length]}
-                springConfig={presets.wobbly}
-            />
+            <TextTransition springConfig={presets.wobbly}>
+                <span style={{ color: texts[index % texts.length].color }}>
+                    {texts[index % texts.length].name}
+                </span>
+            </TextTransition>
         </span>
     );
 };

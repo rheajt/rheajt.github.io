@@ -1,12 +1,14 @@
 import { Link } from "gatsby";
 import * as React from "react";
+import { ReactNode } from "react";
 // import { PopupWidget } from "react-calendly";
 import { Header } from "./header";
 
-const Layout: React.FC<{ location: any; title: string }> = ({
-    location,
-    children,
-}) => {
+const Layout: React.FC<{
+    children: ReactNode;
+    location: any;
+    title: string;
+}> = ({ location, children }) => {
     const rootPath = `/`;
     const isRootPath = location.pathname === rootPath;
     // const isBrowser = typeof window !== "undefined";
