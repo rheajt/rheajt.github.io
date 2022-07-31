@@ -1,17 +1,60 @@
+import { navigate } from "gatsby";
 import React from "react";
 import { InlineWidget } from "react-calendly";
-import Layout from "../components/layout";
+import { Location } from "../components/layout";
 import Seo from "../components/seo";
 
 interface Props {
     location: Location;
 }
 
+interface Prefill {
+    customAnswers: {
+        a1: string;
+        a2: string;
+        a3: string;
+    };
+    date: Date;
+    email: string;
+    firstName: string;
+    lastName: string;
+    name: string;
+}
+
+interface ParamsObject {
+    dts: string;
+}
+
+function parseQueryParams(str: string): ParamsObject {
+    return str
+        .substring(1)
+        .split("&")
+        .reduce<any>((acc: any, el: string) => {
+            const [key, val] = el.split("=");
+            acc[key] = val;
+            return acc;
+        }, {});
+}
+
+function parsePrefill(str: string): Prefill {
+    return JSON.parse(decodeURI(str));
+}
+
 const SchedulePage: React.FC<Props> = ({ location }) => {
     const siteTitle = "jordanrhea.com";
+    const params = parseQueryParams(location.search);
+
+    if (!params.hasOwnProperty("dts")) {
+        navigate("/");
+    }
+
+    const prefill = parsePrefill(params.dts);
+
+    console.log("query", prefill);
+
     return (
-        <Layout location={location} title={siteTitle}>
-            <Seo title="Schedule Page" />
+        <>
+            <Seo title={`Schedule Page | ${siteTitle}`} />
 
             <InlineWidget
                 iframeTitle="Jordan's Scheduling Page"
@@ -23,30 +66,11 @@ const SchedulePage: React.FC<Props> = ({ location }) => {
                     primaryColor: "00a2ff",
                     textColor: "4d5055",
                 }}
-                prefill={{
-                    customAnswers: {
-                        a1: "a1",
-                        a10: "a10",
-                        a2: "a2",
-                        a3: "a3",
-                        a4: "a4",
-                        a5: "a5",
-                        a6: "a6",
-                        a7: "a7",
-                        a8: "a8",
-                        a9: "a9",
-                    },
-                    date: new Date(),
-                    email: "rheajt@gmail.com",
-                    firstName: "Jordan",
-                    guests: ["janedoe@example.com", "johndoe@example.com"],
-                    lastName: "Rhea",
-                    name: "Jordan Rhea",
-                }}
+                prefill={prefill}
                 styles={{
                     height: "1000px",
                 }}
-                url="https://calendly.com/jordanrhea"
+                url="https://calendly.com/jordanrhea/30min"
                 utm={{
                     utmCampaign: "Spring Sale 2019",
                     utmContent: "Shoe and Shirts",
@@ -55,7 +79,7 @@ const SchedulePage: React.FC<Props> = ({ location }) => {
                     utmTerm: "Spring",
                 }}
             />
-        </Layout>
+        </>
     );
 };
 

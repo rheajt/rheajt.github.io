@@ -4,9 +4,16 @@ import { ReactNode } from "react";
 // import { PopupWidget } from "react-calendly";
 import { Header } from "./header";
 
+export interface Location {
+    key: string;
+    pathname: string;
+    search: string;
+    hash: string;
+}
+
 const Layout: React.FC<{
     children: ReactNode;
-    location: any;
+    location: Location;
     title: string;
 }> = ({ location, children }) => {
     const rootPath = `/`;
@@ -19,7 +26,7 @@ const Layout: React.FC<{
 
             <main>{children}</main>
 
-            {/* isBrowser && (
+            {/*TODO:  isBrowser && (
                 <PopupWidget
                     url="https://calendly.com/jordanrhea/30min"
                     rootElement={document.querySelector("body") as HTMLElement}
