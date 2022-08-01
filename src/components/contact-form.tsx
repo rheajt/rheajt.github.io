@@ -89,13 +89,13 @@ export const ContactForm: React.FC = () => {
 
             <FormInput
                 name="your_name"
-                placeholder="Your Name Here"
+                placeholder="Name"
                 handleChange={handleChange}
             />
 
             <FormInput
                 name="your_email"
-                placeholder="Your Email Here"
+                placeholder="Email"
                 handleChange={handleChange}
             />
 

@@ -44,18 +44,18 @@ const Home: React.FC<{ data: any; location: any }> = ({ data, location }) => {
                     formats={["auto", "webp", "avif"]}
                     src="../../content/img/jordan-rhea-header.png"
                     quality={95}
+                    height={100}
                     alt="jordan rhea header"
                 />
-                <h1>
-                    Build your own <br />
-                    tech solutions <br />
-                    with <br /> <CloudTech />
-                </h1>
+                <div>
+                    <h1>
+                        Jordan Rhea. <small>EDU Developer</small>
+                    </h1>
+                    <h2>
+                        Build your own tech solutions with <br /> <CloudTech />
+                    </h2>
+                </div>
             </div>
-
-            <h2 style={{ margin: `0 0 2rem` }}>
-                Jordan Rhea. <small>Systems and Data Consultant</small>
-            </h2>
 
             <p>
                 Extending the capabilities of <b>Office 365</b> and{" "}
