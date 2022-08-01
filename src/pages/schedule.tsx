@@ -25,6 +25,8 @@ interface ParamsObject {
     dts: string;
 }
 
+const isBrowser = typeof window !== "undefined";
+
 function parseQueryParams(str: string): ParamsObject {
     return str
         .substring(1)
@@ -41,6 +43,10 @@ function parsePrefill(str: string): Prefill {
 }
 
 const SchedulePage: React.FC<Props> = ({ location }) => {
+    if (!isBrowser) {
+        return null;
+    }
+
     const siteTitle = "jordanrhea.com";
     const params = parseQueryParams(location.search);
 
@@ -50,35 +56,37 @@ const SchedulePage: React.FC<Props> = ({ location }) => {
 
     const prefill = parsePrefill(params.dts);
 
-    console.log("query", prefill);
+    // console.log("query", prefill);
 
     return (
         <>
             <Seo title={`Schedule Page | ${siteTitle}`} />
 
-            <InlineWidget
-                iframeTitle="Jordan's Scheduling Page"
-                pageSettings={{
-                    backgroundColor: "ffffff",
-                    hideEventTypeDetails: false,
-                    hideGdprBanner: true,
-                    hideLandingPageDetails: false,
-                    primaryColor: "00a2ff",
-                    textColor: "4d5055",
-                }}
-                prefill={prefill}
-                styles={{
-                    height: "1000px",
-                }}
-                url="https://calendly.com/jordanrhea/30min"
-                utm={{
-                    utmCampaign: "Spring Sale 2019",
-                    utmContent: "Shoe and Shirts",
-                    utmMedium: "Ad",
-                    utmSource: "Facebook",
-                    utmTerm: "Spring",
-                }}
-            />
+            {isBrowser && (
+                <InlineWidget
+                    iframeTitle="Jordan's Scheduling Page"
+                    pageSettings={{
+                        backgroundColor: "ffffff",
+                        hideEventTypeDetails: false,
+                        hideGdprBanner: true,
+                        hideLandingPageDetails: false,
+                        primaryColor: "00a2ff",
+                        textColor: "4d5055",
+                    }}
+                    prefill={prefill}
+                    styles={{
+                        height: "1000px",
+                    }}
+                    url="https://calendly.com/jordanrhea/30min"
+                    utm={{
+                        utmCampaign: "Spring Sale 2019",
+                        utmContent: "Shoe and Shirts",
+                        utmMedium: "Ad",
+                        utmSource: "Facebook",
+                        utmTerm: "Spring",
+                    }}
+                />
+            )}
         </>
     );
 };
