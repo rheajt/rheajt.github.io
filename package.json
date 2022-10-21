@@ -66,6 +66,7 @@
     "scripts": {
         "build": "gatsby build",
         "dev": "gatsby develop",
+        "post": "ts-node utils/post.ts",
         "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
         "start": "gatsby develop",
         "serve": "gatsby serve",

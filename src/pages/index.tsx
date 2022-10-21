@@ -52,7 +52,10 @@ const Home: React.FC<{ data: any; location: any }> = ({ data, location }) => {
                         Jordan Rhea. <small>EDU Developer</small>
                     </h1>
                     <h2>
-                        Build your own tech solutions with <br /> <CloudTech />
+                        Build your own tech solutions with <br />{" "}
+                        <div style={{ paddingTop: "1em" }}>
+                            <CloudTech />
+                        </div>
                     </h2>
                 </div>
             </div>

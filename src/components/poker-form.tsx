@@ -128,6 +128,7 @@ export default PokerForm;
 const ActionSelect: React.FC<{
     seats: PokerSeat[];
     handleClick: () => void;
+    children: JSX.Element;
 }> = ({ seats, handleClick, children }) => {
     return (
         <>

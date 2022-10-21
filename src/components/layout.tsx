@@ -5,7 +5,6 @@ import { ReactNode } from "react";
 import { Header } from "./header";
 
 export interface Location {
-    key: string;
     pathname: string;
     search: string;
     hash: string;
@@ -25,16 +24,6 @@ const Layout: React.FC<{
             <Header pathname={location.pathname} />
 
             <main>{children}</main>
-
-            {/*TODO:  isBrowser && (
-                <PopupWidget
-                    url="https://calendly.com/jordanrhea/30min"
-                    rootElement={document.querySelector("body") as HTMLElement}
-                    text="SCHEDULE A MEETING"
-                    textColor="#ffffff"
-                    color="#00a2ff"
-                />
-            )*/}
 
             <footer>
                 <div>
