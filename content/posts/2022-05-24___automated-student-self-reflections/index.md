@@ -1,5 +1,5 @@
 ---
-draft: true
+draft: false
 date: 2022-05-24
 title: Automated Student Self-Reflections
 categories:

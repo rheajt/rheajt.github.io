@@ -1,5 +1,5 @@
 ---
-draft: true
+draft: false
 date: 2022-05-25
 title: Tagging Images in a Document Library
 categories:

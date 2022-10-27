@@ -5,6 +5,7 @@
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     grid-gap: 1em;
     justify-content: space-between;
+    justify-items: center;
 }
 
 .icon-container {

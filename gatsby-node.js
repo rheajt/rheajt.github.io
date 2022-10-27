@@ -15,8 +15,13 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         `
             {
                 allMarkdownRemark(
-                    filter: { fields: { category: { eq: "blog" } } }
-                    sort: { fields: [frontmatter___date], order: ASC }
+                    filter: {
+                        fields: {
+                            category: { eq: "blog" }
+                            draft: { eq: false }
+                        }
+                    }
+                    sort: { fields: [fields___date], order: DESC }
                     limit: 1000
                 ) {
                     nodes {
@@ -109,6 +114,17 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
         const value = createFilePath({ node, getNode });
         const [dt, slug] = value.slice(1).split("___");
 
+        let isDraft = false;
+        if (node.frontmatter.draft && node.frontmatter.draft === true) {
+            isDraft = true;
+        }
+
+        createNodeField({
+            name: `draft`,
+            node,
+            value: isDraft,
+        });
+
         createNodeField({
             name: `slug`,
             node,
@@ -175,6 +191,7 @@ exports.createSchemaCustomization = ({ actions }) => {
     }
 
     type Fields {
+        draft: Boolean
       slug: String
       date: Date
       thumbnail: String
