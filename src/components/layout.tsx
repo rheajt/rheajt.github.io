@@ -17,7 +17,7 @@ const Layout: React.FC<{
 }> = ({ location, children }) => {
     const rootPath = `/`;
     const isRootPath = location.pathname === rootPath;
-    // const isBrowser = typeof window !== "undefined";
+    const isBrowser = typeof window !== "undefined";
 
     return (
         <div className="global-wrapper" data-is-root-path={isRootPath}>
@@ -31,13 +31,15 @@ const Layout: React.FC<{
                     <a href="https://jordanrhea.com">jordan rhea</a>
                 </div>
 
-                <PopupWidget
-                    url="https://calendly.com/jordan-rhea/30min"
-                    rootElement={document.getElementById("___gatsby")!}
-                    text="Let's talk solutions!"
-                    textColor="#ffffff"
-                    color="#283597"
-                />
+                {isBrowser && (
+                    <PopupWidget
+                        url="https://calendly.com/jordan-rhea/30min"
+                        rootElement={document.getElementById("___gatsby")!}
+                        text="Let's talk solutions!"
+                        textColor="#ffffff"
+                        color="#283597"
+                    />
+                )}
 
                 <div className="legals">
                     <Link to="/privacy">privacy</Link>
