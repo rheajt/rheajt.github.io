@@ -1,7 +1,7 @@
 import { Link } from "gatsby";
 import * as React from "react";
 import { ReactNode } from "react";
-// import { PopupWidget } from "react-calendly";
+import { PopupWidget } from "react-calendly";
 import { Header } from "./header";
 
 export interface Location {
@@ -30,6 +30,14 @@ const Layout: React.FC<{
                     © {new Date().getFullYear()}{" "}
                     <a href="https://jordanrhea.com">jordan rhea</a>
                 </div>
+
+                <PopupWidget
+                    url="https://calendly.com/jordan-rhea/30min"
+                    rootElement={document.getElementById("___gatsby")!}
+                    text="Let's talk solutions!"
+                    textColor="#ffffff"
+                    color="#283597"
+                />
 
                 <div className="legals">
                     <Link to="/privacy">privacy</Link>
