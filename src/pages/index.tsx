@@ -6,7 +6,7 @@ import Seo from "../components/seo";
 import { StaticImage } from "gatsby-plugin-image";
 import ProjectCard from "../components/project-card";
 import { CloudTech } from "../components/cloud-tech";
-import Blockquote from "../components/blockquote";
+// import Blockquote from "../components/blockquote";
 import { QuoteCarousel } from "../components/quote-carousel";
 import { ProjectPage } from "../types/ProjectPage";
 
