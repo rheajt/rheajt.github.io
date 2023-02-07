@@ -70,7 +70,6 @@ export const ContactForm: React.FC = () => {
             if (json.status === "done") {
                 setSent(true);
             }
-            console.log("resp", json);
         } catch (err) {
             console.log(err);
         }
