@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[jordanrhea.com RSS feed]]></title><description><![CDATA[Education focused systems developer, building tools and connecting services such as Powerschool and Managebac to Microsoft Office 365 and Google Workspaces]]></description><link>https://jordanrhea.com</link><generator>GatsbyJS</generator><lastBuildDate>Wed, 01 Feb 2023 13:41:16 GMT</lastBuildDate><item><title><![CDATA[ClassDojo Chrome Extension]]></title><description><![CDATA[I love ClassDojo and so do primary students! In this project my goal was to make it easier for me to track attendance data from ClassDojo in…]]></description><link>https://jordanrhea.comclassdojo-chrome-extension/</link><guid isPermaLink="false">https://jordanrhea.comclassdojo-chrome-extension/</guid><content:encoded>&lt;h2&gt;I love &lt;a href=&quot;https://classdojo.com&quot;&gt;ClassDojo&lt;/a&gt; and so do primary students!&lt;/h2&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[jordanrhea.com RSS feed]]></title><description><![CDATA[Education focused systems developer, building tools and connecting services such as Powerschool and Managebac to Microsoft Office 365 and Google Workspaces]]></description><link>https://jordanrhea.com</link><generator>GatsbyJS</generator><lastBuildDate>Tue, 07 Feb 2023 06:54:15 GMT</lastBuildDate><item><title><![CDATA[ClassDojo Chrome Extension]]></title><description><![CDATA[I love ClassDojo and so do primary students! In this project my goal was to make it easier for me to track attendance data from ClassDojo in…]]></description><link>https://jordanrhea.comclassdojo-chrome-extension/</link><guid isPermaLink="false">https://jordanrhea.comclassdojo-chrome-extension/</guid><content:encoded>&lt;h2&gt;I love &lt;a href=&quot;https://classdojo.com&quot;&gt;ClassDojo&lt;/a&gt; and so do primary students!&lt;/h2&gt;
 &lt;p&gt;In this project my goal was to make it easier for me to track attendance data from ClassDojo in a spreadsheet. Since, I hate the idea of copy/pasting or manually transferring that info each day, I had to learn how to work with Chrome Extensions.&lt;/p&gt;
 &lt;p&gt;​&lt;div class=&quot;gatsby-resp-iframe-wrapper&quot; style=&quot;padding-bottom: 56.25%; position: relative; height: 0; overflow: hidden; margin-bottom: 1.0725rem&quot; &gt; &lt;iframe src=&quot;https://www.youtube.com/embed/gxWLyeKf4JY&quot; frameborder=&quot;0&quot; allow=&quot;autoplay; encrypted-media&quot; allowfullscreen=&quot;&quot; style=&quot; position: absolute; top: 0; left: 0; width: 100%; height: 100%; &quot;&gt;&lt;/iframe&gt; &lt;/div&gt;&lt;/iframe&gt;&lt;/p&gt;
 &lt;h2&gt;There is no better way to engage your classroom at the beginning of the period than to show your student’s names with little monster avatars.&lt;/h2&gt;
@@ -2319,7 +2319,116 @@ Part 3: Design the dashboard and embed in a website&lt;/p&gt;
     &lt;span class=&quot;token function&quot;&gt;expect&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;hh&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;toEqual&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token boolean&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
     &lt;span class=&quot;token function&quot;&gt;expect&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;hh&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;toEqual&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token boolean&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
   &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content:encoded></item><item><title><![CDATA[Cascading a PowerSchool Schedule]]></title><description><![CDATA[PowerSchool has a super extensive customization system, however learning how to use it effectively takes a considerable amount of overhead…]]></description><link>https://jordanrhea.comcascading-a-powerschool-schedule/</link><guid isPermaLink="false">https://jordanrhea.comcascading-a-powerschool-schedule/</guid><pubDate>Thu, 27 Oct 2022 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;&lt;span
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content:encoded></item><item><title><![CDATA[Activate Your Cells]]></title><description><![CDATA[I was getting annoyed with a spreadsheet that I use to track gym sessions. Getting the screen to focus on the correct cell was not working…]]></description><link>https://jordanrhea.comactivate-your-cells/</link><guid isPermaLink="false">https://jordanrhea.comactivate-your-cells/</guid><pubDate>Tue, 07 Feb 2023 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/6a8eadec8d50ffbc0bdc171933b3df5b/a242d/header.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 46.835443037974684%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAJCAIAAAC9o5sfAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAB5ElEQVR42j3NW2+aUAAAYH7/npZtWZa0D0uXpTbRqkyZ4hQoKHhDVJRzuHktchG5HYqXNi7Llr19bx8WeIY2nkKaWgnCkueXnfaEJCHXXnUFhaJ5vAxoeiUIc5oWcBxQrXWnM2+1+GJRYWgs8s0EHZPzJTidw+wYnM5gvbG8Q3y6BMcT0E37EMXnS/iSQXNpIxRdr9HbG9hunb2PeTsVqDOjdG895qxfP8zc1/HtZ+Op7v18XBcfJkTBrOTd/Pd1KSdXC8rtt92HG/jxpvfuk8y2MM+CcGnqVM1u1pw+5zYILX+/6HNOn7OIcreOr7jmvt1aMWSXKBn5sn/3YNzl2u+/zKQBFnoGStLslMUZSlASviTqwrBdB2VplCHd0FzfQ1kap4luaE4cJNfX5PWkW2vPc7DYXwhAwQWWmk8pIBPDXoFlGuMRpcjkqI9324Q4+O/qoEfPJqTYK3fYqvhnNhVz05sp8401X1vzjcVKU0lbgK09Us06y4vQAFtbhAbBcEOgw2dHhHqFehpCHfMdLUwylGVhgsIEeX4wU+Cz7cZp6oeRArWd60Uo9cMYaPpfH6JYUTXb22ORv1Dl0ZDGp3zdlGgg1CQGB/3mUqJBvzHiqjOhvhwzoNcQ2YrM/7PEVZUu+RsiYcIWSPpzAwAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;header image&quot;
+        title=&quot;&quot;
+        src=&quot;/static/6a8eadec8d50ffbc0bdc171933b3df5b/f058b/header.png&quot;
+        srcset=&quot;/static/6a8eadec8d50ffbc0bdc171933b3df5b/c26ae/header.png 158w,
+/static/6a8eadec8d50ffbc0bdc171933b3df5b/6bdcf/header.png 315w,
+/static/6a8eadec8d50ffbc0bdc171933b3df5b/f058b/header.png 630w,
+/static/6a8eadec8d50ffbc0bdc171933b3df5b/a242d/header.png 724w&quot;
+        sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;I was getting annoyed with a spreadsheet that I use to track gym sessions. Getting the screen to focus on the correct cell was not working the way that I wanted.&lt;/p&gt;
+&lt;p&gt;Well turns out, I can code that into the sheet myself&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;javascript&quot;&gt;&lt;pre class=&quot;language-javascript&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;focus&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; sheet &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; SpreadsheetApp&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;getActive&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;getSheetByName&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token constant&quot;&gt;SHEET_NAME&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; range &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; sheet&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;getDataRange&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; vals &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; range&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;getValues&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; today &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;Date&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  
+  &lt;span class=&quot;token keyword&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;let&lt;/span&gt; y &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; y &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt; vals&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;length&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; y&lt;span class=&quot;token operator&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; x &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; vals&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;y&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;findIndex&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token parameter&quot;&gt;cell&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&gt;&lt;/span&gt; cell &lt;span class=&quot;token keyword&quot;&gt;instanceof&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;Date&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; cell&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;toDateString&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;===&lt;/span&gt; today&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;toDateString&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;x &lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;token comment&quot;&gt;// this ends the for loop at the first instance of the date that is found&lt;/span&gt;
+      &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; sheet&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;getRange&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;y &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; x &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;activate&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Once you have this in your script editor, just set it to a macro. You can even add a keybinding to that macro!&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/cdfd32005b5af7f3a26d3137387da4ec/160a3/import-macro.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 39.87341772151899%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAICAIAAAB2/0i6AAAACXBIWXMAAA7EAAAOxAGVKw4bAAABOklEQVR42nXPTW/bMAwGYP//f9RDP5BDgV0HZF17aJM6iWLJlGRSlChbsoYlS4Ee9uA9vSRAsHOT36m+10fjgC+maSIiRIwxrv/T/upCCNqOx0EhUa015ywi+SYxI2JrjZnTBTNfFxCxy8sy6HH/2Ts/pZyjSJR8DQa2I6hhsM477ykwhUDMgWMpdVlKRwjWwVEpM44xpaWUeVm+EjiOYM0IGILkOUmWPMckh8P+cNh1b79/xjRPExLR7Zd/1nUVEQALYEXk2rTWSik/np82j3fdr/v7IBUAiKitl/lNrTXGaIzRWltrv/oyz/1m0z88dNvtljn4CT2iAUCi69m6rqWUPM+BY/uu1qrO55NS3fvLy3hUbEwwxnz2ardP1opzXp1OHx+kjT+fxVk7GByGZK3pe9SaAXavr38AfrLHKp56DbAAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;import macro&quot;
+        title=&quot;&quot;
+        src=&quot;/static/cdfd32005b5af7f3a26d3137387da4ec/f058b/import-macro.png&quot;
+        srcset=&quot;/static/cdfd32005b5af7f3a26d3137387da4ec/c26ae/import-macro.png 158w,
+/static/cdfd32005b5af7f3a26d3137387da4ec/6bdcf/import-macro.png 315w,
+/static/cdfd32005b5af7f3a26d3137387da4ec/f058b/import-macro.png 630w,
+/static/cdfd32005b5af7f3a26d3137387da4ec/160a3/import-macro.png 682w&quot;
+        sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 457px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/896dc085eb6492c6c0cb8207c9ea8430/34f1d/keybind.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 77.21518987341771%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAPCAIAAABr+ngCAAAACXBIWXMAAA7EAAAOxAGVKw4bAAACK0lEQVR42p2RTW8SQRjH51to/Ap679U0ITYV20o4CFWgCGTZhqW7lWjiwXg0MT14qRftwYSDiRdRXkow6sl4qUdJkJUu3S0v+8LbArsz85hdErQpB/WXZyYzk5nn/3/mQbc2b77KHpQrxfeFt/lirlwplD8UnblSyJdyhcN3s8iXcrNtvpQ7rBRev8luhvwoHk/IsjwcDnu9fr/fH7qMHMaEEDgHpRQAdF3nOA5Fo1FJkhqN4+/V6tHRN/GnWBfFWq1Wr4vm2CSE4D8AijG2AaDb7bIsi5hk7PRUmac8L+IunEEI1U06mDh2dEPnhRTy+P3NE9myrBNZHo1MSp3kxIVS2uv1NU1TVbXdbiltrd4aNdWpbeOupm2EQiiwFZMVR3kymWCM6Vlmbm2XqWV3BrhnYgDQdP0um0LRSERRFtteyPzDttkkSjCMopz+5WMKQNxrhmGkeR7djoRlRf5XZU3XE8kk2lpfVprH7ilZKDWDUGITjAm23VbpWnc7eAPFY7H/q5lLpVA4HJLlBbYpUBtbo6k5nIwA4POPrw/zT/c+vXhcerb/JdvV1CTLoGSCUWRH2e0u/R2YDsdmvS2JHQkA9j6+vPBoyfM8fPnJtav7wVans5sW0J3AFUmqOlURCwCfDRsAUyAAZDDtS4YkGVJDa2hjVVWbbHwJ+XwXGWY5nV7jOC/PXxcE7zx2Be/OziqXWuG4FT69mhHWMsL6/XsbDzI+jvMEgpd+Aejo+m3bMfxMAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;keybind&quot;
+        title=&quot;&quot;
+        src=&quot;/static/896dc085eb6492c6c0cb8207c9ea8430/34f1d/keybind.png&quot;
+        srcset=&quot;/static/896dc085eb6492c6c0cb8207c9ea8430/c26ae/keybind.png 158w,
+/static/896dc085eb6492c6c0cb8207c9ea8430/6bdcf/keybind.png 315w,
+/static/896dc085eb6492c6c0cb8207c9ea8430/34f1d/keybind.png 457w&quot;
+        sizes=&quot;(max-width: 457px) 100vw, 457px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Cascading a PowerSchool Schedule]]></title><description><![CDATA[PowerSchool has a super extensive customization system, however learning how to use it effectively takes a considerable amount of overhead…]]></description><link>https://jordanrhea.comcascading-a-powerschool-schedule/</link><guid isPermaLink="false">https://jordanrhea.comcascading-a-powerschool-schedule/</guid><pubDate>Thu, 27 Oct 2022 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
       style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; &quot;
     &gt;
