@@ -1,7 +1,7 @@
 import { Link } from "gatsby";
 import * as React from "react";
 import { ReactNode } from "react";
-import { PopupWidget } from "react-calendly";
+// import { PopupWidget } from "react-calendly";
 import { Header } from "./header";
 
 export interface Location {
