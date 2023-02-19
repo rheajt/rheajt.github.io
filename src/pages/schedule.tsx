@@ -39,7 +39,7 @@ function parseQueryParams(str: string): ParamsObject {
 }
 
 function parsePrefill(str: string): Prefill {
-    return JSON.parse(decodeURI(str));
+    return JSON.parse(window.atob(str));
 }
 
 const SchedulePage: React.FC<Props> = ({ location }) => {
@@ -51,12 +51,15 @@ const SchedulePage: React.FC<Props> = ({ location }) => {
     const params = parseQueryParams(location.search);
 
     if (!params.hasOwnProperty("dts")) {
-        navigate("/");
+        return navigate("/");
     }
 
-    const prefill = parsePrefill(params.dts);
-
-    // console.log("query", prefill);
+    let prefill;
+    try {
+        prefill = parsePrefill(params.dts);
+    } catch (err) {
+        return navigate("/");
+    }
 
     return (
         <>
@@ -68,7 +71,7 @@ const SchedulePage: React.FC<Props> = ({ location }) => {
                     pageSettings={{
                         backgroundColor: "ffffff",
                         hideEventTypeDetails: false,
-                        hideGdprBanner: true,
+                        hideGdprBanner: false,
                         hideLandingPageDetails: false,
                         primaryColor: "00a2ff",
                         textColor: "4d5055",
@@ -77,13 +80,9 @@ const SchedulePage: React.FC<Props> = ({ location }) => {
                     styles={{
                         height: "1000px",
                     }}
-                    url="https://calendly.com/jordanrhea/30min"
+                    url="https://calendly.com/jordan-rhea/30min"
                     utm={{
-                        utmCampaign: "Spring Sale 2019",
-                        utmContent: "Shoe and Shirts",
-                        utmMedium: "Ad",
-                        utmSource: "Facebook",
-                        utmTerm: "Spring",
+                        utmSource: "website",
                     }}
                 />
             )}

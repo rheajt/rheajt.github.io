@@ -31,7 +31,7 @@ const Layout: React.FC<{
                     <a href="https://jordanrhea.com">jordan rhea</a>
                 </div>
 
-                {isBrowser && (
+                {/*isBrowser && (
                     <PopupWidget
                         url="https://calendly.com/jordan-rhea/30min"
                         rootElement={document.getElementById("___gatsby")!}
@@ -39,7 +39,7 @@ const Layout: React.FC<{
                         textColor="#ffffff"
                         color="#283597"
                     />
-                )}
+                )*/}
 
                 <div className="legals">
                     <Link to="/privacy">privacy</Link>
