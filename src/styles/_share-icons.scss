@@ -1,10 +1,4 @@
 ul.share-icons {
-    // list-style: none;
-    // padding: 0;
-    // margin: 0;
-    // position: fixed;
-    // transform: translateX(-40px);
-
     transform: none;
     list-style: none;
     padding: 0;
@@ -12,6 +6,9 @@ ul.share-icons {
     position: relative;
     display: flex;
     flex-direction: row;
-    // @media (max-width: 375px) {
-    // }
+
+    li {
+        padding: 0;
+        margin: 0;
+    }
 }

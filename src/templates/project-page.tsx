@@ -78,7 +78,6 @@ const ProjectPageTemplate: React.FC<Props> = ({ data, location }) => {
                 itemScope
                 itemType="http://schema.org/Article"
             >
-                <Share url={url} />
                 <header className="project-image">
                     <GatsbyImage
                         image={
@@ -88,7 +87,12 @@ const ProjectPageTemplate: React.FC<Props> = ({ data, location }) => {
                         alt="project image"
                     />
 
-                    <h1 itemProp="headline">{project.frontmatter.title}</h1>
+                    <div style={{ display: "flex", alignItems: "center" }}>
+                        <h1 itemProp="headline" style={{ flex: 1 }}>
+                            {project.frontmatter.title}
+                        </h1>
+                        <Share url={url} />
+                    </div>
                 </header>
 
                 {project.frontmatter.quote && (

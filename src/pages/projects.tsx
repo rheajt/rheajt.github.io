@@ -25,6 +25,7 @@ const Projects: React.FC<ProjectPageProps> = ({ data, location }) => {
     return (
         <Layout location={location} title={siteTitle}>
             <Seo title="All Projects" />
+
             <Bio />
 
             <div className="project-cards">
@@ -32,42 +33,6 @@ const Projects: React.FC<ProjectPageProps> = ({ data, location }) => {
                     return <ProjectCard key={p.id} project={p} />;
                 })}
             </div>
-            {/*<ol style={{ listStyle: `none` }}>
-                {projects.map((project: ProjectPage) => {
-                    const title =
-                        project.frontmatter.title || project.fields.slug;
-
-                    return (
-                        <li key={project.fields.slug}>
-                            <article
-                                className="post-list-item"
-                                itemScope
-                                itemType="http://schema.org/Article"
-                            >
-                                <header>
-                                    <h2>
-                                        <Link
-                                            to={project.fields.slug}
-                                            itemProp="url"
-                                        >
-                                            <span itemProp="headline">
-                                                {title}
-                                            </span>
-                                        </Link>
-                                    </h2>
-                                    <small>
-                                        {format(
-                                            new Date(project.fields.date),
-                                            "PPP"
-                                        )}
-                                    </small>
-                                </header>
-                            </article>
-                        </li>
-                    );
-                })}
-            </ol>
-        */}
         </Layout>
     );
 };
