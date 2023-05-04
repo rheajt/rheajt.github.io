@@ -17,26 +17,17 @@ export const ContactIcons: React.FC = () => {
                         <FaYoutube />
                     </div>
 
-                    <p>
+                    <p className="description">
                         I turned my learning into a channel that some people
                         have found useful. Come and join! <br />
                     </p>
-                    <YoutubeSubscribe
-                        channelId="UCwqNP1r17-2xJFweoACbW8g"
-                        layout="default"
-                        count="default"
-                    />
-                </a>
-
-                <a className="icon-container" href="https://twitter.com/rheajt">
-                    <div className="icon">
-                        <FaTwitter />
+                    <div>
+                        <YoutubeSubscribe
+                            channelId="UCwqNP1r17-2xJFweoACbW8g"
+                            layout="default"
+                            count="default"
+                        />
                     </div>
-
-                    <p className="description">
-                        Twitter is a place I go sometimes
-                    </p>
-                    <TwitterSubscribe />
                 </a>
 
                 <a className="icon-container" href="">
@@ -47,7 +38,10 @@ export const ContactIcons: React.FC = () => {
                     <p className="description">
                         Github is where I share the code
                     </p>
-                    <GithubSubscribe />
+
+                    <div>
+                        <GithubSubscribe />
+                    </div>
                 </a>
 
                 <a className="icon-container" href="">
@@ -63,3 +57,16 @@ export const ContactIcons: React.FC = () => {
         </>
     );
 };
+
+/*
+                <a className="icon-container" href="https://twitter.com/rheajt">
+                    <div className="icon">
+                        <FaTwitter />
+                    </div>
+
+                    <p className="description">
+                        Twitter is a place I go sometimes
+                    </p>
+                    <TwitterSubscribe />
+                </a>
+ * */

@@ -23,13 +23,43 @@
     margin-left: 1em;
 
     a {
-        padding: 0 1em 0.4em;
+        padding: 0 1em;
         &:hover {
-            border-bottom: 1px solid gray;
+            font-style: italic;
+            // border-bottom: 1px solid gray;
         }
 
         &.active {
-            border-bottom: 2px solid black;
+            // border-bottom: 2px solid black;
+            font-weight: bold;
+        }
+    }
+
+    .page-links {
+        display: flex;
+    }
+
+    // simple button styles
+    .page-button {
+        background: none;
+        border: none;
+        padding: 0.5em 1em;
+        font: inherit;
+        cursor: pointer;
+        outline: inherit;
+        text-decoration: none;
+        color: white;
+        font-size: inherit;
+        font-weight: bold;
+        font-family: inherit;
+        border: 1px solid lightgray;
+        border-radius: 3px;
+        background-color: var(--color-primary);
+
+        &:hover {
+            $purple: var(--color-primary);
+            background-color: lighten(#283597, 10%);
+            // background-color: lightgray;
         }
     }
 }

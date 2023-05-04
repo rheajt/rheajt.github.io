@@ -2,7 +2,7 @@
     margin-top: 1em;
     margin-bottom: 1em;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
     grid-gap: 1em;
     justify-content: space-between;
     justify-items: center;
@@ -20,6 +20,10 @@
     .icon {
         text-align: center;
         font-size: 3em;
+    }
+
+    .description {
+        flex: 1;
     }
 
     &:hover {

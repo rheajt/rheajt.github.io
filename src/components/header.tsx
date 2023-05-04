@@ -23,7 +23,7 @@ export const Header: React.FC<{ pathname: string; showLinks?: boolean }> = ({
             <nav className={showLinks ? `` : `is-hidden`}>
                 <div className="page-links">
                     <Link
-                        className={`sans ${pathname.includes("projects") && "active"
+                        className={`page-link sans ${pathname.includes("projects") && "active"
                             }`}
                         to="/projects"
                     >
@@ -31,15 +31,16 @@ export const Header: React.FC<{ pathname: string; showLinks?: boolean }> = ({
                     </Link>
 
                     <Link
-                        className={`sans ${pathname.includes("blog") && "active"
+                        className={`page-link sans ${pathname.includes("blog") && "active"
                             }`}
                         to="/blog"
                     >
                         Blog
                     </Link>
-
+                </div>
+                <div className="page-buttons">
                     <Link
-                        className={`sans ${pathname.includes("contact") && "active"
+                        className={`page-button sans ${pathname.includes("contact") && "active"
                             }`}
                         to="/contact"
                     >

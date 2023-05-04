@@ -49,10 +49,15 @@ export const ContactForm: React.FC = () => {
         }
     }, [vals]);
 
+    function handleClear() {
+        setVals(initialVals);
+    }
+
     async function handleSubmit(e: React.FormEvent<CustomFormElement>) {
         e.preventDefault();
+
         const deploymentId =
-            "AKfycbxEjDRw-68mO5RYeaarxwcMxt9QIPiKrXSSXO47ZkbWnXfDJJAPApy7DFGuqH2089kg";
+            "AKfycbyhUP2UI4NOia08Ey5yykiLYERXLRyHF_fBZVBiH9rKYeWDLOmy4AdRtmPuMzS7Dsg";
 
         const endpoint = `https://script.google.com/macros/s/${deploymentId}/exec`;
 
@@ -80,25 +85,39 @@ export const ContactForm: React.FC = () => {
     }
 
     if (isSent) {
-        return <p>Sent!</p>;
+        return (
+            <div
+                style={{
+                    display: "grid",
+                    placeItems: "center",
+                    width: "100%",
+                    height: 200,
+                }}
+            >
+                <b>Sent!</b>
+            </div>
+        );
     }
+
     return (
         <form className="contact-form" onSubmit={handleSubmit}>
-            <FormService active={vals.service} handleChange={handleChange} />
-
             <FormInput
                 name="your_name"
                 placeholder="Name"
+                value={vals.your_name}
                 handleChange={handleChange}
             />
 
             <FormInput
                 name="your_email"
+                type="email"
+                value={vals.your_email}
                 placeholder="Email"
                 handleChange={handleChange}
             />
 
             <FormSelect
+                value={vals.topic}
                 name="topic"
                 label="What Can I help you with?"
                 options={[
@@ -111,9 +130,18 @@ export const ContactForm: React.FC = () => {
                 handleChange={handleChange}
             />
 
+            <FormSelect
+                name="service"
+                value={vals.service}
+                label="What service are you using?"
+                options={["Microsoft", "Google"]}
+                handleChange={handleChange}
+            />
+
             <FormText
                 name="message"
                 label="Send me some words"
+                value={vals.message}
                 val={percentage}
                 handleChange={handleChange}
             />
@@ -132,11 +160,12 @@ export const ContactForm: React.FC = () => {
                 isChecked={vals.isAnonymous}
             />
 
-            <div className="actions">
+            <div className="actions full-width">
                 <button type="submit" disabled={isDisabled}>
                     Send
                 </button>
-                <button type="button" onClick={() => setVals(initialVals)}>
+
+                <button type="button" onClick={handleClear}>
                     Clear
                 </button>
             </div>
@@ -156,6 +185,7 @@ const FormCheckbox: React.FC<{
         <div>
             <input
                 type="checkbox"
+                id={name}
                 name={name}
                 onChange={e => handleChange(name, e.target.checked)}
                 checked={isChecked}
@@ -168,15 +198,19 @@ const FormCheckbox: React.FC<{
 
 const FormInput: React.FC<{
     name: string;
+    type?: string;
+    value: string;
     placeholder: string;
     handleChange: HandleChange;
-}> = ({ name, placeholder, handleChange }) => {
+}> = ({ name, type = "text", value, placeholder, handleChange }) => {
     return (
         <div className="form-input">
             <label htmlFor={name}>{placeholder}</label>
             <input
+                type={type}
                 placeholder={placeholder}
                 name={name}
+                value={value}
                 onChange={e => handleChange(e.target.name, e.target.value)}
             />
         </div>
@@ -185,15 +219,17 @@ const FormInput: React.FC<{
 
 const FormSelect: React.FC<{
     name: string;
+    value: string;
     label: string;
     handleChange: HandleChange;
     options: string[];
-}> = ({ name, label, options, handleChange }) => {
+}> = ({ name, value, label, options, handleChange }) => {
     return (
-        <div className="form-input full-width">
+        <div className="form-input">
             <label htmlFor={name}>{label}</label>
             <select
                 name={name}
+                value={value}
                 onChange={e => handleChange(e.target.name, e.target.value)}
             >
                 <option value=""></option>
@@ -209,51 +245,22 @@ const FormSelect: React.FC<{
 
 const FormText: React.FC<{
     name: string;
+    value: string;
     label: string;
     val: number;
     handleChange: HandleChange;
-}> = ({ name, label, val, handleChange }) => {
+}> = ({ name, value, label, val, handleChange }) => {
     return (
         <div className="form-input full-width">
             <label htmlFor={name}>{label}</label>
             <textarea
                 className="full-width"
                 name={name}
+                value={value}
                 onChange={e => handleChange(e.target.name, e.target.value)}
                 rows={7}
             ></textarea>
-            <Progress val={val} />
-        </div>
-    );
-};
-
-const FormService: React.FC<{ active: string; handleChange: HandleChange }> = ({
-    active,
-    handleChange,
-}) => {
-    return (
-        <div className="services full-width">
-            <span
-                className={`service ${active === "google" && "active"}`}
-                onClick={() => handleChange("service", "google")}
-            >
-                <StaticImage
-                    src="../../content/img/google-logo.png"
-                    alt="google logo"
-                    height={100}
-                />
-            </span>
-
-            <span
-                className={`service ${active === "microsoft" && "active"}`}
-                onClick={() => handleChange("service", "microsoft")}
-            >
-                <StaticImage
-                    src="../../content/img/microsoft-logo.png"
-                    alt="microsoft logo"
-                    height={100}
-                />
-            </span>
+            <Progress val={val > 1 ? val : 0} />
         </div>
     );
 };
@@ -271,3 +278,5 @@ const Progress: React.FC<{ val: number }> = ({ val }) => {
         </div>
     );
 };
+
+// <FormService active={vals.service} handleChange={handleChange} />
