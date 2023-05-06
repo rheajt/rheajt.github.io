@@ -16,11 +16,15 @@ const initialVals = {
     isNewsletter: true,
 };
 
-export const ContactForm: React.FC = () => {
+interface ContactFormProps {
+    data: Partial<typeof initialVals>;
+}
+
+export const ContactForm: React.FC<ContactFormProps> = props => {
     const [isDisabled, setIsDisabled] = React.useState(true);
     const [isSent, setSent] = React.useState(false);
     const [percentage, setPercentage] = React.useState(0);
-    const [vals, setVals] = React.useState(initialVals);
+    const [vals, setVals] = React.useState({ ...initialVals, ...props.data });
 
     React.useEffect(() => {
         const wordCount = vals.message.split(" ").length;
@@ -39,9 +43,7 @@ export const ContactForm: React.FC = () => {
         if (
             percentage === 100 &&
             vals.your_name.length !== 0 &&
-            vals.service.length !== 0 &&
-            vals.your_email.length !== 0 &&
-            vals.topic.length !== 0
+            vals.your_email.length !== 0
         ) {
             setIsDisabled(false);
         } else {
@@ -49,9 +51,9 @@ export const ContactForm: React.FC = () => {
         }
     }, [vals]);
 
-    function handleClear() {
-        setVals(initialVals);
-    }
+    // function handleClear() {
+    //     setVals(initialVals);
+    // }
 
     async function handleSubmit(e: React.FormEvent<CustomFormElement>) {
         e.preventDefault();
@@ -100,23 +102,26 @@ export const ContactForm: React.FC = () => {
     }
 
     return (
-        <form className="contact-form" onSubmit={handleSubmit}>
-            <FormInput
-                name="your_name"
-                placeholder="Name"
-                value={vals.your_name}
-                handleChange={handleChange}
-            />
+        <>
+            <i>Lets talk more about </i>
+            <b>{vals.topic}</b>
+            <form className="contact-form" onSubmit={handleSubmit}>
+                <FormInput
+                    name="your_name"
+                    placeholder="Name"
+                    value={vals.your_name}
+                    handleChange={handleChange}
+                />
 
-            <FormInput
-                name="your_email"
-                type="email"
-                value={vals.your_email}
-                placeholder="Email"
-                handleChange={handleChange}
-            />
+                <FormInput
+                    name="your_email"
+                    type="email"
+                    value={vals.your_email}
+                    placeholder="Email"
+                    handleChange={handleChange}
+                />
 
-            <FormSelect
+                {/* <FormSelect
                 value={vals.topic}
                 name="topic"
                 label="What Can I help you with?"
@@ -130,46 +135,46 @@ export const ContactForm: React.FC = () => {
                 handleChange={handleChange}
             />
 
+                <button type="button" onClick={handleClear}>
+                    Clear
+                </button>
             <FormSelect
                 name="service"
                 value={vals.service}
                 label="What service are you using?"
                 options={["Microsoft", "Google"]}
                 handleChange={handleChange}
-            />
+            /> */}
 
-            <FormText
-                name="message"
-                label="Send me some words"
-                value={vals.message}
-                val={percentage}
-                handleChange={handleChange}
-            />
+                <FormText
+                    name="message"
+                    label="Send me some words"
+                    value={vals.message + "\n\n" + "..."}
+                    val={percentage}
+                    handleChange={handleChange}
+                />
 
-            <FormCheckbox
-                name="isNewsletter"
-                label="Subscribe to any mail I might send?"
-                handleChange={handleChange}
-                isChecked={vals.isNewsletter}
-            />
+                <div className="actions full-width">
+                    <button type="submit" disabled={isDisabled}>
+                        Send
+                    </button>
 
-            <FormCheckbox
-                name="isAnonymous"
-                label="Can I use your name to give you credit for video ideas?"
-                handleChange={handleChange}
-                isChecked={vals.isAnonymous}
-            />
+                    <FormCheckbox
+                        name="isNewsletter"
+                        label="Newsletter?"
+                        handleChange={handleChange}
+                        isChecked={vals.isNewsletter}
+                    />
 
-            <div className="actions full-width">
-                <button type="submit" disabled={isDisabled}>
-                    Send
-                </button>
-
-                <button type="button" onClick={handleClear}>
-                    Clear
-                </button>
-            </div>
-        </form>
+                    <FormCheckbox
+                        name="isAnonymous"
+                        label="Stay anonymous?"
+                        handleChange={handleChange}
+                        isChecked={vals.isAnonymous}
+                    />
+                </div>
+            </form>
+        </>
     );
 };
 
@@ -182,7 +187,7 @@ const FormCheckbox: React.FC<{
     handleChange: HandleChange;
 }> = ({ name, label, isChecked, handleChange }) => {
     return (
-        <div>
+        <div className="checkbox">
             <input
                 type="checkbox"
                 id={name}
@@ -258,6 +263,7 @@ const FormText: React.FC<{
                 name={name}
                 value={value}
                 onChange={e => handleChange(e.target.name, e.target.value)}
+                placeholder="this is some placeholder text to get things started"
                 rows={7}
             ></textarea>
             <Progress val={val > 1 ? val : 0} />

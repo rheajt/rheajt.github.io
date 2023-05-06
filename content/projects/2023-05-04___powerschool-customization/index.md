@@ -1,6 +1,7 @@
 ---
 title: PowerSchool Customization
 image: ./powerschool-data-flow.png
+message: I am interested in customizing the PowerSchool experience at my school
 tags:
     - powerschool
     - web development

@@ -7,6 +7,7 @@ import Layout from "../components/layout";
 import Seo from "../components/seo";
 import Blockquote from "../components/blockquote";
 import Share from "../components/share";
+import { ContactForm } from "../components/contact-form";
 
 interface Props {
     data: Data;
@@ -26,6 +27,8 @@ interface Data {
         excerpt: string;
         frontmatter: {
             title: string;
+            message: string;
+            tags: string[];
             quote: {
                 author: string;
                 text: string;
@@ -52,9 +55,11 @@ interface Data {
 const ProjectPageTemplate: React.FC<Props> = ({ data, location }) => {
     const project = data.markdownRemark;
     const siteTitle = data.site.siteMetadata?.title || `Title`;
+
     const url =
         data.site.siteMetadata.siteUrl + "/projects/" + project.fields.slug;
 
+    console.log(project.frontmatter);
     let image = undefined;
 
     if (project.frontmatter.image) {
@@ -106,6 +111,17 @@ const ProjectPageTemplate: React.FC<Props> = ({ data, location }) => {
                     itemProp="articleBody"
                 />
 
+                <ContactForm
+                    data={{
+                        topic: project.frontmatter.tags.length
+                            ? project.frontmatter.tags.join(" ")
+                            : "",
+                        message: project.frontmatter.message
+                            ? project.frontmatter.message
+                            : "",
+                    }}
+                />
+
                 <hr />
 
                 <footer>
@@ -132,12 +148,14 @@ export const projectsQuery = graphql`
             excerpt
             frontmatter {
                 title
+                message
                 image {
                     publicURL
                     childImageSharp {
                         gatsbyImageData(layout: CONSTRAINED)
                     }
                 }
+                tags
                 quote {
                     author
                     position
