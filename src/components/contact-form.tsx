@@ -83,6 +83,7 @@ export const ContactForm: React.FC<ContactFormProps> = props => {
     }
 
     function handleChange(name: string, val: string | boolean) {
+        console.log(name, val);
         setVals({ ...vals, [name]: val });
     }
 
@@ -148,8 +149,9 @@ export const ContactForm: React.FC<ContactFormProps> = props => {
 
                 <FormText
                     name="message"
-                    label="Send me some words"
-                    value={vals.message + "\n\n" + "..."}
+                    label="Send me a message! I love meeting new people and talking about data systems."
+                    placeholder={vals.message}
+                    value={vals.message}
                     val={percentage}
                     handleChange={handleChange}
                 />
@@ -250,11 +252,12 @@ const FormSelect: React.FC<{
 
 const FormText: React.FC<{
     name: string;
+    placeholder: string;
     value: string;
     label: string;
     val: number;
     handleChange: HandleChange;
-}> = ({ name, value, label, val, handleChange }) => {
+}> = ({ name, placeholder, value, label, val, handleChange }) => {
     return (
         <div className="form-input full-width">
             <label htmlFor={name}>{label}</label>
@@ -263,7 +266,7 @@ const FormText: React.FC<{
                 name={name}
                 value={value}
                 onChange={e => handleChange(e.target.name, e.target.value)}
-                placeholder="this is some placeholder text to get things started"
+                placeholder={placeholder}
                 rows={7}
             ></textarea>
             <Progress val={val > 1 ? val : 0} />
