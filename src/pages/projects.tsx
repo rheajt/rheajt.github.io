@@ -1,10 +1,9 @@
 import * as React from "react";
-import { Link, graphql } from "gatsby";
+import { graphql } from "gatsby";
 
 import Bio from "../components/bio";
 import Layout from "../components/layout";
 import Seo from "../components/seo";
-// import { format } from "date-fns";
 import { ProjectPageProps } from "../types/ProjectPage";
 import ProjectCard from "../components/project-card";
 
@@ -51,6 +50,7 @@ export const pageQuery = graphql`
             sort: { fields: [fields___date], order: DESC }
         ) {
             nodes {
+                id
                 fields {
                     slug
                     date

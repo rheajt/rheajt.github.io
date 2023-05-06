@@ -44,7 +44,6 @@ const Home: React.FC<{ data: any; location: any }> = ({ data, location }) => {
                     formats={["auto", "webp", "avif"]}
                     src="../../content/img/jordan-rhea-header.png"
                     quality={95}
-                    height={100}
                     alt="jordan rhea header"
                 />
                 <div>

@@ -1,7 +1,6 @@
 import React from "react";
-import { FaGithub, FaLinkedin, FaTwitter, FaYoutube } from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaYoutube } from "react-icons/fa";
 import { GithubSubscribe } from "./github-subscribe";
-import { TwitterSubscribe } from "./twitter-subscribe";
 import YoutubeSubscribe from "./youtube-subscribe";
 
 export const ContactIcons: React.FC = () => {
@@ -21,6 +20,7 @@ export const ContactIcons: React.FC = () => {
                         I turned my learning into a channel that some people
                         have found useful. Come and join! <br />
                     </p>
+
                     <div>
                         <YoutubeSubscribe
                             channelId="UCwqNP1r17-2xJFweoACbW8g"

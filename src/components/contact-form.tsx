@@ -17,7 +17,7 @@ const initialVals = {
 };
 
 interface ContactFormProps {
-    data: Partial<typeof initialVals>;
+    data?: Partial<typeof initialVals>;
 }
 
 export const ContactForm: React.FC<ContactFormProps> = props => {
@@ -102,10 +102,21 @@ export const ContactForm: React.FC<ContactFormProps> = props => {
         );
     }
 
+    console.log("topic", vals.topic);
     return (
         <>
-            <i>Lets talk more about </i>
-            <b>{vals.topic}</b>
+            {vals.topic ? (
+                <>
+                    <i>Lets talk more about </i>
+                    <b>
+                        {vals.topic
+                            .split(" ")
+                            .map(t => `#${t}`)
+                            .join(", ")}
+                    </b>
+                </>
+            ) : null}
+
             <form className="contact-form" onSubmit={handleSubmit}>
                 <FormInput
                     name="your_name"
