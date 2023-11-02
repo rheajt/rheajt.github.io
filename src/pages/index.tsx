@@ -11,77 +11,60 @@ import { QuoteCarousel } from "../components/quote-carousel";
 import { ProjectPage } from "../types/ProjectPage";
 
 export interface Quote {
-    author: string;
-    email?: string;
-    position: string;
-    employer: string;
-    text: string;
-    excerpt?: string;
+	author: string;
+	email?: string;
+	position: string;
+	employer: string;
+	text: string;
+	excerpt?: string;
 }
 
 const Home: React.FC<{ data: any; location: any }> = ({ data, location }) => {
-    const siteTitle = data.site.siteMetadata?.title || `jordanrhea.com`;
-    const projects: ProjectPage[] = data.projects.nodes;
-    const headerImageSrc = data.headerImage.resize.src;
+	const siteTitle = data.site.siteMetadata?.title || `jordanrhea.com`;
+	const projects: ProjectPage[] = data.projects.nodes;
+	const headerImageSrc = data.headerImage.resize.src;
 
-    const quotes = projects.reduce<Quote[]>((acc, p) => {
-        if (p.frontmatter.quote) {
-            acc.push(p.frontmatter.quote);
-        }
-        return acc;
-    }, []);
+	const quotes = projects.reduce<Quote[]>((acc, p) => {
+		if (p.frontmatter.quote) {
+			acc.push(p.frontmatter.quote);
+		}
+		return acc;
+	}, []);
 
-    return (
-        <Layout location={location} title={siteTitle}>
-            <Seo
-                title="jordanrhea.com"
-                image={data.site.siteMetadata.siteUrl + headerImageSrc}
-            />
+	return (
+		<Layout location={location} title={siteTitle}>
+			<Seo
+				title="jordanrhea.com"
+				image={data.site.siteMetadata.siteUrl + headerImageSrc}
+			/>
 
-            <div className="hero">
-                <StaticImage
-                    layout="fullWidth"
-                    formats={["auto", "webp", "avif"]}
-                    src="../../content/img/jordan-rhea-header.png"
-                    quality={95}
-                    alt="jordan rhea header"
-                />
-                <div>
-                    <h1>
-                        Jordan Rhea. <small>EDU Developer</small>
-                    </h1>
-                    <h2>
-                        Build your own tech solutions with <br />{" "}
-                        <div style={{ paddingTop: "1em" }}>
-                            <CloudTech />
-                        </div>
-                    </h2>
-                </div>
-            </div>
+			<div className="hero">
+				<p>test</p>
+			</div>
 
-            <p>
-                Extending the capabilities of <b>Office 365</b> and{" "}
-                <b>Google Workspaces</b> so that your team makes the most of
-                your systems. Background in education with a future in
-                development.
-            </p>
+			<p>
+				Extending the capabilities of <b>Office 365</b> and{" "}
+				<b>Google Workspaces</b> so that your team makes the most of
+				your systems. Background in education with a future in
+				development.
+			</p>
 
-            <QuoteCarousel quotes={quotes} />
+			<QuoteCarousel quotes={quotes} />
 
-            <h3>Projects</h3>
+			<h3>Projects</h3>
 
-            <p>
-                I have done a number of different projects. Learn more about
-                them below
-            </p>
+			<p>
+				I have done a number of different projects. Learn more about
+				them below
+			</p>
 
-            <div className="project-cards">
-                {projects.map((p: any) => {
-                    return <ProjectCard key={p.id} project={p} />;
-                })}
-            </div>
-        </Layout>
-    );
+			<div className="project-cards">
+				{projects.map((p: any) => {
+					return <ProjectCard key={p.id} project={p} />;
+				})}
+			</div>
+		</Layout>
+	);
 };
 
 export default Home;
