@@ -4,17 +4,20 @@ import Blockquote from "./blockquote";
 import { Quote } from "../pages";
 
 interface Props {
-    quotes: Quote[];
+	quotes: Quote[];
 }
 
 export const QuoteCarousel: React.FC<Props> = ({ quotes }) => {
-    return (
-        <Splide aria-label="Project quotes">
-            {quotes.map((quote, idx: number) => (
-                <Slide key={quote.author + idx}>
-                    <Blockquote quote={quote} />
-                </Slide>
-            ))}
-        </Splide>
-    );
+	return (
+		<Splide
+			aria-label="Project quotes"
+			style={{ backgroundColor: "#e5e5e0" }}
+		>
+			{quotes.map((quote, idx: number) => (
+				<Slide key={quote.author + idx}>
+					<Blockquote quote={quote} />
+				</Slide>
+			))}
+		</Splide>
+	);
 };

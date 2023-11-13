@@ -1,6 +1,7 @@
 import { Link } from "gatsby";
 import React from "react";
 import { StaticImage } from "gatsby-plugin-image";
+import { LinkButton } from "./link-button";
 import styled from "styled-components";
 
 export const Header: React.FC<{ pathname: string; showLinks?: boolean }> = ({
@@ -31,24 +32,13 @@ export const Header: React.FC<{ pathname: string; showLinks?: boolean }> = ({
 						>
 							Projects
 						</Link>
+					</div>
 
-						<Link
-							className={`page-link sans ${pathname.includes("blog") && "active"
-								}`}
-							to="/blog"
-						>
-							Blog
-						</Link>
-					</div>
-					<div className="page-buttons">
-						<Link
-							className={`page-button sans ${pathname.includes("contact") && "active"
-								}`}
-							to="/contact"
-						>
-							Contact
-						</Link>
-					</div>
+					<LinkButton
+						pathname={pathname}
+						href={"/contact"}
+						label="Contact"
+					/>
 				</nav>
 			</div>
 		</StyledHeader>
@@ -56,14 +46,21 @@ export const Header: React.FC<{ pathname: string; showLinks?: boolean }> = ({
 };
 
 const StyledHeader = styled.header`
-    display: flex;
-    align-items: center;
-    text-align: center;
-    justify-content: center;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+    padding: 0.25em;
 
     .container {
-        max-width: 900px;
+        max-width: 800px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        text-align: center;
+        justify-content: center;
     }
+
     nav.is-hidden {
         display: none;
     }
@@ -99,28 +96,14 @@ const StyledHeader = styled.header`
         .page-links {
             display: flex;
         }
-
-        .page-button {
-            background: none;
-            border: none;
-            padding: 0.5em 1em;
-            font: inherit;
-            cursor: pointer;
-            outline: inherit;
-            text-decoration: none;
-            color: white;
-            font-size: inherit;
-            font-weight: bold;
-            font-family: inherit;
-            border: 1px solid lightgray;
-            border-radius: 3px;
-            background-color: var(--color-primary);
-
-            &:hover {
-                $purple: var(--color-primary);
-                background-color: lighten(#283597, 10%);
-                // background-color: lightgray;
-            }
-        }
     }
 `;
+
+// const StyledNav = styled.nav`
+//     display: flex;
+//     justify-content: space-between;
+//     align-items: center;
+//     padding: 1rem;
+//     background-color: #f2f2f2;
+//     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+// `;

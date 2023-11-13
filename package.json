@@ -44,6 +44,7 @@
         "react-spring": "^9.6.1",
         "react-text-transition": "^3.0.2",
         "rehype-react": "^7.1.2",
+        "roughjs": "^4.6.5",
         "sass": "^1.58.0",
         "slugify": "^1.6.5",
         "styled-components": "^6.1.0",

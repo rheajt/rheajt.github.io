@@ -2,6 +2,7 @@ import { Link } from "gatsby";
 import * as React from "react";
 import { ReactNode } from "react";
 import { createGlobalStyle } from "styled-components";
+import { Footer } from "./footer";
 // import { PopupWidget } from "react-calendly";
 import { Header } from "./header";
 
@@ -18,14 +19,19 @@ const GlobalStyles = createGlobalStyle`
     box-sizing: border-box;
 }
 
+html, body {
+	padding: 0;
+	margin: 0;
+}
+
 html {
     line-height: var(--lineHeight-normal);
     font-size: var(--fontSize-root);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background-color: #fffff8;
-    background-size: 2rem 2rem;
-    background-image: radial-gradient(circle, #340b54, rgba(0, 0, 0, 0) 1px);
+    // background-color: #fffff8;
+    // background-size: 2rem 2rem;
+    // background-image: radial-gradient(circle, #340b54, rgba(0, 0, 0, 0) 1px);
 }
 
 body {
@@ -108,34 +114,16 @@ const Layout: React.FC<{
 	const isRootPath = location.pathname === rootPath;
 	const isBrowser = typeof window !== "undefined";
 
+	// <Header pathname={location.pathname} />
 	return (
 		<div>
 			<GlobalStyles />
+
 			<Header pathname={location.pathname} />
 
 			<main>{children}</main>
 
-			<footer>
-				<div>
-					© {new Date().getFullYear()}{" "}
-					<a href="https://jordanrhea.com">jordan rhea</a>
-				</div>
-
-				{/*isBrowser && (
-                    <PopupWidget
-                        url="https://calendly.com/jordan-rhea/30min"
-                        rootElement={document.getElementById("___gatsby")!}
-                        text="Let's talk solutions!"
-                        textColor="#ffffff"
-                        color="#283597"
-                    />
-                )*/}
-
-				<div className="legals">
-					<Link to="/privacy">privacy</Link>
-					<Link to="/terms">terms</Link>
-				</div>
-			</footer>
+			<Footer />
 		</div>
 	);
 };

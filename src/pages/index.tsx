@@ -9,6 +9,10 @@ import { CloudTech } from "../components/cloud-tech";
 // import Blockquote from "../components/blockquote";
 import { QuoteCarousel } from "../components/quote-carousel";
 import { ProjectPage } from "../types/ProjectPage";
+import { Loader } from "../components/loader";
+import { Hero } from "../components/hero";
+import { Section } from "../components/section";
+import { ProjectsSection } from "../components/projects-section";
 
 export interface Quote {
 	author: string;
@@ -38,31 +42,43 @@ const Home: React.FC<{ data: any; location: any }> = ({ data, location }) => {
 				image={data.site.siteMetadata.siteUrl + headerImageSrc}
 			/>
 
-			<div className="hero">
-				<p>test</p>
-			</div>
+			<Loader />
 
-			<p>
-				Extending the capabilities of <b>Office 365</b> and{" "}
-				<b>Google Workspaces</b> so that your team makes the most of
-				your systems. Background in education with a future in
-				development.
-			</p>
+			<Hero />
+
+			<Section>
+				<p>
+					As a dedicated data software consultant specializing in
+					educational institutions, you bring a unique blend of
+					technical expertise and a profound understanding of the
+					needs of schools and educators.{" "}
+				</p>
+				<p>
+					My role involves crafting innovative solutions that harness
+					the power of data to optimize educational processes. With a
+					keen eye for detail, I analyze and interpret complex
+					datasets, providing valuable insights to enhance
+					decision-making in academic environments.
+				</p>
+				<p>
+					My ability to bridge the gap between technology and
+					education ensures seamless integration of data software,
+					empowering schools to make informed choices for improved
+					student outcomes. Your commitment to transforming
+					educational landscapes establishes you as a key player in
+					shaping the future of learning.
+				</p>
+				<p>
+					Extending the capabilities of <b>Office 365</b> and{" "}
+					<b>Google Workspaces</b> so that your team makes the most of
+					your systems. Background in education with a future in
+					development.
+				</p>
+			</Section>
 
 			<QuoteCarousel quotes={quotes} />
 
-			<h3>Projects</h3>
-
-			<p>
-				I have done a number of different projects. Learn more about
-				them below
-			</p>
-
-			<div className="project-cards">
-				{projects.map((p: any) => {
-					return <ProjectCard key={p.id} project={p} />;
-				})}
-			</div>
+			<ProjectsSection projects={projects} />
 		</Layout>
 	);
 };
