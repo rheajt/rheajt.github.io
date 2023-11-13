@@ -1,6 +1,7 @@
 ---
+draft: true
 title: Managebac Calendar
-image: ./powerschool-data-flow.png
+image: ./managebac-calendar.png
 message: I am interested in customizing the PowerSchool experience at my school
 tags:
     - powerschool
@@ -8,6 +9,7 @@ tags:
     - customization
     - communication
     - data
+    - managebac
 quote:
     email: jordan@jordanrhea.com
     employer: jordanrhea.com
