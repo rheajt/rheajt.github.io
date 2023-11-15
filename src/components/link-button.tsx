@@ -3,23 +3,42 @@ import React from "react";
 import styled from "styled-components";
 
 type LinkButtonProps = {
-	pathname: string;
+	pathname?: string;
 	href: string;
 	label: string;
 };
-export function LinkButton(props: LinkButtonProps) {
+export function LinkButton({
+	pathname = "",
+	href = "",
+	label = "",
+}: LinkButtonProps) {
+	if (href.startsWith("http")) {
+		return (
+			<StyledLinkButtons>
+				<a
+					className={`page-button sans ${pathname.includes(href) && "active"
+						}`}
+					href={href}
+				>
+					{label}
+				</a>
+			</StyledLinkButtons>
+		);
+	}
+
 	return (
 		<StyledLinkButtons>
 			<Link
-				className={`page-button sans ${props.pathname.includes(props.href) && "active"
+				className={`page-button sans ${pathname.includes(href) && "active"
 					}`}
-				to={props.href}
+				to={href}
 			>
-				{props.label}
+				{label}
 			</Link>
 		</StyledLinkButtons>
 	);
 }
+
 const StyledLinkButtons = styled.div`
     .page-button {
         background: none;

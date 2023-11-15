@@ -3,16 +3,13 @@ import { graphql } from "gatsby";
 
 import Layout from "../components/layout";
 import Seo from "../components/seo";
-import { StaticImage } from "gatsby-plugin-image";
-import ProjectCard from "../components/project-card";
-import { CloudTech } from "../components/cloud-tech";
-// import Blockquote from "../components/blockquote";
 import { QuoteCarousel } from "../components/quote-carousel";
 import { ProjectPage } from "../types/ProjectPage";
 import { Loader } from "../components/loader";
 import { Hero } from "../components/hero";
 import { Section } from "../components/section";
 import { ProjectsSection } from "../components/projects-section";
+import { LinkButton } from "../components/link-button";
 
 export interface Quote {
 	author: string;
@@ -51,15 +48,22 @@ const Home: React.FC<{ data: any; location: any }> = ({ data, location }) => {
 					As a dedicated data software consultant specializing in
 					educational institutions, you bring a unique blend of
 					technical expertise and a profound understanding of the
-					needs of schools and educators.{" "}
+					needs of schools and educators.
 				</p>
 				<p>
 					My role involves crafting innovative solutions that harness
-					the power of data to optimize educational processes. With a
-					keen eye for detail, I analyze and interpret complex
-					datasets, providing valuable insights to enhance
-					decision-making in academic environments.
+					the power of data to optimize school operations. That is why
+					I created School Data Solutions, a data software consulting
+					company that specializes in educational institutions.
 				</p>
+
+				<div style={{ textAlign: "center" }}>
+					<LinkButton
+						label="School Data Solutions"
+						href="https://schooldata.solutions"
+					/>
+				</div>
+
 				<p>
 					My ability to bridge the gap between technology and
 					education ensures seamless integration of data software,
