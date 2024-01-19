@@ -46,10 +46,18 @@ const Home: React.FC<{ data: any; location: any }> = ({ data, location }) => {
 			<Section>
 				<p>
 					As a dedicated data software consultant specializing in
-					educational institutions, you bring a unique blend of
+					educational institutions, I bring a unique blend of
 					technical expertise and a profound understanding of the
-					needs of schools and educators.
+					needs of schools and educators. PSISJS is a support service
+					with customization options for PowerSchool SIS.
 				</p>
+
+				<div
+					style={{ display: "flex", justifyContent: "space-around" }}
+				>
+					<LinkButton label="PSISJS" href="https://psisjs.com" />
+				</div>
+
 				<p>
 					My role involves crafting innovative solutions that harness
 					the power of data to optimize school operations. That is why
@@ -57,7 +65,9 @@ const Home: React.FC<{ data: any; location: any }> = ({ data, location }) => {
 					company that specializes in educational institutions.
 				</p>
 
-				<div style={{ textAlign: "center" }}>
+				<div
+					style={{ display: "flex", justifyContent: "space-around" }}
+				>
 					<LinkButton
 						label="School Data Solutions"
 						href="https://schooldata.solutions"
