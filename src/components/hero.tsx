@@ -1,67 +1,64 @@
 import { StaticImage } from "gatsby-plugin-image";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import styled from "styled-components";
 import { Canvas } from "./canvas";
 import { CloudTech } from "./cloud-tech";
 
-const useRefDimensions = (ref: React.RefObject<HTMLDivElement>) => {
-	const [dimensions, setDimensions] = useState({ width: 800, height: 300 });
+const useRefDimensions = (ref: React.RefObject<HTMLDivElement | null>) => {
+    const [dimensions, setDimensions] = useState({ width: 800, height: 300 });
 
-	React.useEffect(() => {
-		if (ref.current) {
-			const { current } = ref;
-			const boundingRect = current.getBoundingClientRect();
-			const { width, height } = boundingRect;
+    React.useEffect(() => {
+        if (ref.current) {
+            const { current } = ref;
+            const boundingRect = current.getBoundingClientRect();
+            const { width, height } = boundingRect;
 
-			console.log({ width, height });
-			setDimensions({
-				width: Math.round(width),
-				height: Math.round(height),
-			});
-		}
-	}, [ref]);
+            console.log({ width, height });
+            setDimensions({
+                width: Math.round(width),
+                height: Math.round(height),
+            });
+        }
+    }, [ref]);
 
-	return dimensions;
+    return dimensions;
 };
 
 export const Hero = () => {
-	const refContainer = useRef<HTMLDivElement>(null);
-	const dimensions = useRefDimensions(refContainer);
+    // const refContainer = useRef<HTMLDivElement>(null);
+    // const dimensions = useRefDimensions(refContainer);
 
-	return (
-		<StyledHero>
-			<div className="container" ref={refContainer}>
-				<div className="columns">
-					<div className="image">
-						<StaticImage
-							formats={["auto", "webp", "avif"]}
-							src="../../content/img/jordan-rhea-header.png"
-							quality={95}
-							alt="jordan rhea header"
-							width={250}
-							height={250}
-						/>
-					</div>
-					<div className="caption">
-						<h1>I am Jordan Rhea</h1>
-						<h6>
-							and I build software for <br />
-							<CloudTech />
-						</h6>
-					</div>
-				</div>
-
-				<Canvas height={dimensions.height} width={dimensions.width} />
-			</div>
-		</StyledHero>
-	);
+    return (
+        <StyledHero>
+            <div className="container">
+                <div className="columns">
+                    <div className="image">
+                        <StaticImage
+                            formats={["auto", "webp", "avif"]}
+                            src="../../content/img/jordan-rhea-header.png"
+                            quality={95}
+                            alt="jordan rhea header"
+                            width={250}
+                            height={250}
+                        />
+                    </div>
+                    <div className="caption">
+                        <h1>I am Jordan Rhea</h1>
+                        <h6>
+                            and I build software for <br />
+                            <CloudTech />
+                        </h6>
+                    </div>
+                </div>
+            </div>
+        </StyledHero>
+    );
 };
 
 const StyledHero = styled.div`
     width: 100%;
     overflow: hidden;
     position: relative;
-    filter: drop-shadow(0.25em 0.25em 10px black);
 
     .container {
         clip-path: polygon(0 0, 100% 0, 100% 90%, 50% 100%, 0 90%);
@@ -90,16 +87,16 @@ const StyledHero = styled.div`
     }
 
     .caption {
-        font-family: var(--fontFamily-cursive);
-        font-weight: 900;
+        font-family: var(--fontFamily-sans);
         text-align: center;
-        text-shadow: 2px 2px 1px black;
         padding-top: 50px;
-        color: #fff;
+        color: white;
+        -webkit-text-stroke: 1px black;
+        -webkit-text-fill-color: transparent;
 
         h1 {
             margin: 15px 0;
-            font-weight: 200;
+            font-weight: 900;
             letter-spacing: 1px;
         }
 

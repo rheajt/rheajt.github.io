@@ -58,7 +58,7 @@ const Blog: React.FC<Props> = ({ data, location }) => {
                                     <i>
                                         {format(
                                             new Date(page.fields.date),
-                                            "PPP"
+                                            "PPP",
                                         )}
                                     </i>{" "}
                                     -{page.excerpt}
@@ -87,7 +87,7 @@ export const pageQuery = graphql`
         }
         allMarkdownRemark(
             filter: { fields: { category: { eq: "blog" } } }
-            sort: { fields: [fields___date], order: DESC }
+            sort: { fields: { date: DESC } }
         ) {
             nodes {
                 excerpt

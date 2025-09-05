@@ -18,7 +18,7 @@ export const pageQuery = graphql`
         }
         allMarkdownRemark(
             filter: { fields: { category: { eq: "project" } } }
-            sort: { fields: [fields___date], order: DESC }
+            sort: { fields: { date: DESC } }
         ) {
             nodes {
                 id
@@ -40,34 +40,34 @@ export const pageQuery = graphql`
     }
 `;
 const Projects: React.FC<ProjectPageProps> = ({ data, location }) => {
-	const siteTitle = data.site.siteMetadata?.title || `Title`;
-	const projects = data.allMarkdownRemark.nodes;
+    const siteTitle = data.site.siteMetadata?.title || `Title`;
+    const projects = data.allMarkdownRemark.nodes;
 
-	if (projects.length === 0) {
-		return (
-			<Layout location={location} title={siteTitle}>
-				<Seo title="All posts" />
-				<Bio />
-				<p>No blog posts found.</p>
-			</Layout>
-		);
-	}
+    if (projects.length === 0) {
+        return (
+            <Layout location={location} title={siteTitle}>
+                <Seo title="All posts" />
+                <Bio />
+                <p>No blog posts found.</p>
+            </Layout>
+        );
+    }
 
-	return (
-		<Layout location={location} title={siteTitle}>
-			<Seo title="All Projects" />
+    return (
+        <Layout location={location} title={siteTitle}>
+            <Seo title="All Projects" />
 
-			<StyledContainer>
-				<Bio />
+            <StyledContainer>
+                <Bio />
 
-				<StyledProjectCards>
-					{projects.map((p: any) => {
-						return <ProjectCard key={p.id} project={p} />;
-					})}
-				</StyledProjectCards>
-			</StyledContainer>
-		</Layout>
-	);
+                <StyledProjectCards>
+                    {projects.map((p: any) => {
+                        return <ProjectCard key={p.id} project={p} />;
+                    })}
+                </StyledProjectCards>
+            </StyledContainer>
+        </Layout>
+    );
 };
 
 export default Projects;
@@ -108,24 +108,24 @@ const StyledProjectCards = styled.div`
 `;
 
 const ProjectCard: React.FC<{ project: ProjectPage }> = ({ project }) => {
-	const image = getImage(project.frontmatter.image);
+    const image = getImage(project.frontmatter.image);
 
-	return (
-		<Link to={`/projects/${project.fields.slug}`}>
-			<div className="project-card">
-				{image && (
-					<div className="image">
-						<GatsbyImage
-							image={image}
-							alt={project.frontmatter.title}
-						/>
-					</div>
-				)}
-				<div className="description">
-					<h6>{project.frontmatter.title}</h6>
-					<p>{project.excerpt}</p>
-				</div>
-			</div>
-		</Link>
-	);
+    return (
+        <Link to={`/projects/${project.fields.slug}`}>
+            <div className="project-card">
+                {image && (
+                    <div className="image">
+                        <GatsbyImage
+                            image={image}
+                            alt={project.frontmatter.title}
+                        />
+                    </div>
+                )}
+                <div className="description">
+                    <h6>{project.frontmatter.title}</h6>
+                    <p>{project.excerpt}</p>
+                </div>
+            </div>
+        </Link>
+    );
 };

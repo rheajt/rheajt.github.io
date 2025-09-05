@@ -5,58 +5,75 @@ import { GithubSubscribe } from "./github-subscribe";
 import YoutubeSubscribe from "./youtube-subscribe";
 
 export const ContactIcons: React.FC = () => {
-	return (
-		<StyledContainer>
-			<h3>Social Links</h3>
-			<div className="contact-icons">
-				<a
-					className="icon-container"
-					href="https://youtube.com/jordanrhea"
-				>
-					<div className="icon">
-						<FaYoutube />
-					</div>
+    return (
+        <StyledContainer>
+            <h3>Social Links</h3>
+            <div className="contact-icons">
+                <a
+                    className="icon-container"
+                    href="https://youtube.com/jordanrhea"
+                    data-label="YouTube"
+                >
+                    <div className="icon">
+                        <span className="label">
+                            <FaYoutube />
+                        </span>
+                    </div>
 
-					<p className="description">
-						I turned my learning into a channel that some people
-						have found useful. Come and join! <br />
-					</p>
+                    <p className="description">
+                        I turned my learning into a channel that some people
+                        have found useful. Come and join! <br />
+                    </p>
 
-					<div>
-						<YoutubeSubscribe
-							channelId="UCwqNP1r17-2xJFweoACbW8g"
-							layout="default"
-							count="default"
-						/>
-					</div>
-				</a>
+                    <div>
+                        <YoutubeSubscribe
+                            channelId="UCwqNP1r17-2xJFweoACbW8g"
+                            layout="default"
+                            count="default"
+                        />
+                    </div>
+                </a>
 
-				<a className="icon-container" href="">
-					<div className="icon">
-						<FaGithub />
-					</div>
+                <a className="icon-container" href="" data-label="GitHub">
+                    <div className="icon">
+                        <span className="label">
+                            <FaGithub />
+                        </span>
+                    </div>
 
-					<p className="description">
-						Github is where I share the code
-					</p>
+                    <p className="description">
+                        Github is where I share the code
+                    </p>
 
-					<div>
-						<GithubSubscribe />
-					</div>
-				</a>
+                    <div>
+                        <GithubSubscribe />
+                    </div>
+                </a>
 
-				<a className="icon-container" href="">
-					<div className="icon">
-						<FaLinkedin />
-					</div>
+                <a className="icon-container" href="" data-label="LinkedIn">
+                    <div className="icon">
+                        <span className="label">
+                            <FaLinkedin />
+                        </span>
+                    </div>
 
-					<p className="description">
-						More information about what I do is on LinkedIn
-					</p>
-				</a>
-			</div>
-		</StyledContainer>
-	);
+                    <p className="description">
+                        More information about what I do is on LinkedIn
+                    </p>
+                </a>
+
+                <a className="icon-container" href="">
+                    <div className="icon">
+                        <FaLinkedin />
+                    </div>
+
+                    <p className="description">
+                        More information about what I do is on LinkedIn
+                    </p>
+                </a>
+            </div>
+        </StyledContainer>
+    );
 };
 
 const StyledContainer = styled.div`
@@ -91,10 +108,33 @@ const StyledContainer = styled.div`
         padding: 1em;
         transition: all 300ms;
         text-align: center;
+        position: relative;
+
+        &::after {
+            content: attr(data-label);
+            font-weight: 700;
+            visibility: hidden;
+            display: block;
+            height: 0;
+            overflow: hidden;
+            pointer-events: none;
+        }
 
         .icon {
             text-align: center;
             font-size: 3em;
+        }
+
+        .label {
+            font-weight: 400;
+            transition: font-weight 0.05s linear;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        &:hover .label {
+            font-weight: 700;
         }
 
         .description {

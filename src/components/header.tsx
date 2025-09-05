@@ -2,47 +2,53 @@ import { Link } from "gatsby";
 import React from "react";
 import { StaticImage } from "gatsby-plugin-image";
 import { LinkButton } from "./link-button";
+import { links } from "../utils/links";
 import styled from "styled-components";
 
 export const Header: React.FC<{ pathname: string; showLinks?: boolean }> = ({
-	pathname,
-	showLinks = true,
+    pathname,
+    showLinks = true,
 }) => {
-	return (
-		<StyledHeader>
-			<div className="container">
-				<Link to="/">
-					<StaticImage
-						layout="fixed"
-						formats={["auto", "webp", "avif"]}
-						src="../../content/img/jr-icon.png"
-						width={36}
-						height={36}
-						quality={95}
-						alt="jordan rhea header"
-					/>
-				</Link>
+    return (
+        <StyledHeader>
+            <div className="container">
+                <Link to="/">
+                    <StaticImage
+                        layout="fixed"
+                        formats={["auto", "webp", "avif"]}
+                        src="../../content/img/jr-icon.png"
+                        width={36}
+                        height={36}
+                        quality={95}
+                        alt="jordan rhea header"
+                    />
+                </Link>
 
-				<nav className={showLinks ? `` : `is-hidden`}>
-					<div className="page-links">
-						<Link
-							className={`page-link sans ${pathname.includes("projects") && "active"
-								}`}
-							to="/projects"
-						>
-							Projects
-						</Link>
-					</div>
+                <nav className={showLinks ? `` : `is-hidden`}>
+                    <div className="page-links">
+                        {links.map(link => (
+                            <Link
+                                key={link.to}
+                                data-label={link.name}
+                                className={`page-link sans ${
+                                    pathname.includes(link.to) ? "active" : ""
+                                }`}
+                                to={`/${link.to}`}
+                            >
+                                <span className="label">{link.name}</span>
+                            </Link>
+                        ))}
+                    </div>
 
-					<LinkButton
-						pathname={pathname}
-						href={"/contact"}
-						label="Contact"
-					/>
-				</nav>
-			</div>
-		</StyledHeader>
-	);
+                    <LinkButton
+                        pathname={pathname}
+                        href={"/contact"}
+                        label="Contact"
+                    />
+                </nav>
+            </div>
+        </StyledHeader>
+    );
 };
 
 const StyledHeader = styled.header`
@@ -82,14 +88,32 @@ const StyledHeader = styled.header`
 
         a {
             padding: 0 1em;
-            &:hover {
-                font-style: italic;
-                // border-bottom: 1px solid gray;
+            display: inline-block;
+            position: relative;
+            transition: font-weight 0.5s linear;
+
+            /* reserve space for the bold state to prevent layout shift */
+            &::after {
+                content: attr(data-label);
+                font-weight: 700;
+                visibility: hidden;
+                display: block;
+                height: 0;
+                overflow: hidden;
+                pointer-events: none;
             }
 
-            &.active {
-                // border-bottom: 2px solid black;
-                font-weight: bold;
+            .label {
+                font-weight: 400;
+                transition: font-weight 0.05s linear;
+            }
+
+            &:hover .label {
+                font-weight: 700;
+            }
+
+            &.active .label {
+                font-weight: 700;
             }
         }
 
@@ -98,12 +122,3 @@ const StyledHeader = styled.header`
         }
     }
 `;
-
-// const StyledNav = styled.nav`
-//     display: flex;
-//     justify-content: space-between;
-//     align-items: center;
-//     padding: 1rem;
-//     background-color: #f2f2f2;
-//     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-// `;

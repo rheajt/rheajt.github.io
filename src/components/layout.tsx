@@ -1,15 +1,13 @@
-import { Link } from "gatsby";
 import * as React from "react";
 import { ReactNode } from "react";
 import { createGlobalStyle } from "styled-components";
 import { Footer } from "./footer";
-// import { PopupWidget } from "react-calendly";
 import { Header } from "./header";
 
 export interface Location {
-	pathname: string;
-	search: string;
-	hash: string;
+    pathname: string;
+    search: string;
+    hash: string;
 }
 
 const GlobalStyles = createGlobalStyle`
@@ -25,22 +23,27 @@ html, body {
 }
 
 html {
-    line-height: var(--lineHeight-normal);
+    line-height: var(--grid-size);
     font-size: var(--fontSize-root);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    // background-color: #fffff8;
-    // background-size: 2rem 2rem;
-    // background-image: radial-gradient(circle, #340b54, rgba(0, 0, 0, 0) 1px);
 }
 
 body {
     font-family: var(--font-body);
     font-size: var(--fontSize-1);
     color: var(--color-text);
+    /* subtle graph-paper background */
+    background-color: #fbfbf8;
+    background-image:
+        linear-gradient(to right, rgba(0,0,0,0.06) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(0,0,0,0.06) 1px, transparent 1px);
+    background-size: 24px 24px;
+    background-repeat: repeat;
 }
 
 :root {
+    --grid-size: 1.5rem;
     --maxWidth-none: "none";
     --maxWidth-xs: 20rem;
     --maxWidth-sm: 24rem;
@@ -54,20 +57,19 @@ body {
     --maxWidth-wrapper: var(--maxWidth-2xl);
     --spacing-px: "1px";
     --spacing-0: 0;
-    --spacing-1: 0.25rem;
-    --spacing-2: 0.5rem;
-    --spacing-3: 0.75rem;
-    --spacing-4: 1rem;
-    --spacing-5: 1.25rem;
-    --spacing-6: 1.5rem;
-    --spacing-8: 2rem;
-    --spacing-10: 2.5rem;
-    --spacing-12: 3rem;
-    --spacing-16: 4rem;
-    --spacing-20: 5rem;
-    --spacing-24: 6rem;
-    --spacing-32: 8rem;
-    --fontFamily-cursive: Patrick Hand, cursive;
+    --spacing-1: calc(var(--grid-size) / 4);
+    --spacing-2: calc(var(--grid-size) / 2);
+    --spacing-3: calc(var(--grid-size) * 0.75);
+    --spacing-4: var(--grid-size);
+    --spacing-5: calc(var(--grid-size) * 1.25);
+    --spacing-6: calc(var(--grid-size) * 1.5);
+    --spacing-8: calc(var(--grid-size) * 2);
+    --spacing-10: calc(var(--grid-size) * 2.5);
+    --spacing-12: calc(var(--grid-size) * 3);
+    --spacing-16: calc(var(--grid-size) * 4);
+    --spacing-20: calc(var(--grid-size) * 5);
+    --spacing-24: calc(var(--grid-size) * 6);
+    --spacing-32: calc(var(--grid-size) * 8);
     --fontFamily-sans: Work Sans, system-ui, -apple-system, BlinkMacSystemFont,
         "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
         "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
@@ -75,7 +77,7 @@ body {
     --fontFamily-serif: "Merriweather", "Georgia", Cambria, "Times New Roman",
         Times, serif;
     --font-body: var(--fontFamily-sans);
-    --font-heading: var(--fontFamily-cursive);
+    --font-heading: var(--fontFamily-sans);
     --fontWeight-normal: 400;
     --fontWeight-medium: 500;
     --fontWeight-semibold: 600;
@@ -84,9 +86,9 @@ body {
     --fontWeight-black: 900;
     --fontSize-root: 16px;
     --lineHeight-none: 1;
-    --lineHeight-tight: 1.1;
+    --lineHeight-tight: 1.25;
     --lineHeight-normal: 1.5;
-    --lineHeight-relaxed: 1.625;
+    --lineHeight-relaxed: 1.875;
     /* 1.200 Minor Third Type Scale */
     --fontSize-0: 0.833rem;
     --fontSize-1: 1rem;
@@ -106,26 +108,26 @@ body {
 `;
 
 const Layout: React.FC<{
-	children: ReactNode;
-	location: Location;
-	title: string;
+    children: ReactNode;
+    location: Location;
+    title: string;
 }> = ({ location, children }) => {
-	const rootPath = `/`;
-	const isRootPath = location.pathname === rootPath;
-	const isBrowser = typeof window !== "undefined";
+    const rootPath = `/`;
+    const isRootPath = location.pathname === rootPath;
+    const isBrowser = typeof window !== "undefined";
 
-	// <Header pathname={location.pathname} />
-	return (
-		<div>
-			<GlobalStyles />
+    // <Header pathname={location.pathname} />
+    return (
+        <div>
+            <GlobalStyles />
 
-			<Header pathname={location.pathname} />
+            <Header pathname={location.pathname} />
 
-			<main>{children}</main>
+            <main>{children}</main>
 
-			<Footer />
-		</div>
-	);
+            <Footer />
+        </div>
+    );
 };
 
 export default Layout;

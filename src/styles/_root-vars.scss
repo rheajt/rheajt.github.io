@@ -1,4 +1,5 @@
 :root {
+    --grid-size: 1.5rem;
     --maxWidth-none: "none";
     --maxWidth-xs: 20rem;
     --maxWidth-sm: 24rem;
@@ -12,26 +13,27 @@
     --maxWidth-wrapper: var(--maxWidth-2xl);
     --spacing-px: "1px";
     --spacing-0: 0;
-    --spacing-1: 0.25rem;
-    --spacing-2: 0.5rem;
-    --spacing-3: 0.75rem;
-    --spacing-4: 1rem;
-    --spacing-5: 1.25rem;
-    --spacing-6: 1.5rem;
-    --spacing-8: 2rem;
-    --spacing-10: 2.5rem;
-    --spacing-12: 3rem;
-    --spacing-16: 4rem;
-    --spacing-20: 5rem;
-    --spacing-24: 6rem;
-    --spacing-32: 8rem;
+    --spacing-1: calc(var(--grid-size) / 4);
+    --spacing-2: calc(var(--grid-size) / 2);
+    --spacing-3: calc(var(--grid-size) * 0.75);
+    --spacing-4: var(--grid-size);
+    --spacing-5: calc(var(--grid-size) * 1.25);
+    --spacing-6: calc(var(--grid-size) * 1.5);
+    --spacing-8: calc(var(--grid-size) * 2);
+    --spacing-10: calc(var(--grid-size) * 2.5);
+    --spacing-12: calc(var(--grid-size) * 3);
+    --spacing-16: calc(var(--grid-size) * 4);
+    --spacing-20: calc(var(--grid-size) * 5);
+    --spacing-24: calc(var(--grid-size) * 6);
+    --spacing-32: calc(var(--grid-size) * 8);
     --fontFamily-cursive: Patrick Hand, cursive;
-    --fontFamily-sans: Work Sans, system-ui, -apple-system, BlinkMacSystemFont,
-        "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
+    --fontFamily-sans:
+        Work Sans, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
         "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
         "Noto Color Emoji";
-    --fontFamily-serif: "Merriweather", "Georgia", Cambria, "Times New Roman",
-        Times, serif;
+    --fontFamily-serif:
+        "Merriweather", "Georgia", Cambria, "Times New Roman", Times, serif;
     --font-body: var(--fontFamily-sans);
     --font-heading: var(--fontFamily-cursive);
     --fontWeight-normal: 400;
@@ -42,9 +44,9 @@
     --fontWeight-black: 900;
     --fontSize-root: 16px;
     --lineHeight-none: 1;
-    --lineHeight-tight: 1.1;
+    --lineHeight-tight: 1.25;
     --lineHeight-normal: 1.5;
-    --lineHeight-relaxed: 1.625;
+    --lineHeight-relaxed: 1.875;
     /* 1.200 Minor Third Type Scale */
     --fontSize-0: 0.833rem;
     --fontSize-1: 1rem;

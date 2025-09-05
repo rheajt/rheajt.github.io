@@ -9,36 +9,34 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     // Define a template for blog post
     const blogPost = path.resolve(`./src/templates/blog-post.tsx`);
     const projectPage = path.resolve(`./src/templates/project-page.tsx`);
+    const languageLearningPage = path.resolve(
+        `./src/templates/language-learning-page.tsx`,
+    );
 
     // Get all markdown blog posts sorted by date
-    const postNodes = await graphql(
-        `
-            {
-                allMarkdownRemark(
-                    filter: {
-                        fields: {
-                            category: { eq: "blog" }
-                            draft: { eq: false }
-                        }
-                    }
-                    sort: { fields: [fields___date], order: DESC }
-                    limit: 1000
-                ) {
-                    nodes {
-                        id
-                        fields {
-                            slug
-                        }
+    const postNodes = await graphql(`
+        {
+            allMarkdownRemark(
+                filter: {
+                    fields: { category: { eq: "blog" }, draft: { eq: false } }
+                }
+                sort: { fields: { date: DESC } }
+                limit: 1000
+            ) {
+                nodes {
+                    id
+                    fields {
+                        slug
                     }
                 }
             }
-        `
-    );
+        }
+    `);
 
     if (postNodes.errors) {
         reporter.panicOnBuild(
             `There was an error loading your blog posts`,
-            result.errors
+            result.errors,
         );
         return;
     }
@@ -67,39 +65,56 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         });
     }
 
-    const projectNodes = await graphql(
-        `
-            {
-                allMarkdownRemark(
-                    filter: { fields: { category: { eq: "project" } } }
-                    limit: 1000
-                ) {
-                    nodes {
-                        id
-                        fields {
-                            slug
-                        }
+    const projectNodes = await graphql(`
+        {
+            allMarkdownRemark(
+                filter: { fields: { category: { eq: "project" } } }
+                limit: 1000
+            ) {
+                nodes {
+                    id
+                    fields {
+                        slug
                     }
                 }
             }
-        `
-    );
+        }
+    `);
 
     const projects = projectNodes.data.allMarkdownRemark.nodes;
 
     if (projects.length > 0) {
         projects.forEach(post => {
-            // const previousPostId = index === 0 ? null : posts[index - 1].id;
-            // const nextPostId =
-            //     index === posts.length - 1 ? null : posts[index + 1].id;
-
             createPage({
                 path: "/projects/" + post.fields.slug,
                 component: projectPage,
                 context: {
                     id: post.id,
-                    // previousPostId,
-                    // nextPostId,
+                },
+            });
+        });
+    }
+
+    const lessonNodes = await graphql(`
+        query {
+            allFile(filter: { sourceInstanceName: { eq: "lessons" } }) {
+                files: nodes {
+                    id
+                    name
+                }
+            }
+        }
+    `);
+
+    const lessons = lessonNodes.data.allFile.files;
+
+    if (lessons.length > 0) {
+        lessons.forEach(lesson => {
+            createPage({
+                path: "/language-learning/" + lesson.name,
+                component: languageLearningPage,
+                context: {
+                    id: lesson.id,
                 },
             });
         });
