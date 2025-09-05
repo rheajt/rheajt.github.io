@@ -1,4 +1,8 @@
 export const links = [
     { name: "Projects", to: "projects" },
-    { name: "Language Learning", to: "language-learning" },
+    {
+        name: "About",
+        to: "about",
+        children: [{ name: "Language Learning", to: "language-learning" }],
+    },
 ];

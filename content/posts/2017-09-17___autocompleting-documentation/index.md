@@ -1,18 +1,19 @@
 ---
+draft: true
 title: Autocompleting Documentation
 subTitle: Documenting your code makes it easier to understand
 author: jordan
 categories:
-  - Web Applications
-  - Work Tools
+    - Web Applications
+    - Work Tools
 tags:
-  - Projects
-  - autocomplete
-  - documentation
-  - javascript
-  - google apps script
-  - google sheets
-youtube: 'https://www.youtube.com/watch?v=3YiFlM2niFQ'
+    - Projects
+    - autocomplete
+    - documentation
+    - javascript
+    - google apps script
+    - google sheets
+youtube: "https://www.youtube.com/watch?v=3YiFlM2niFQ"
 ---
 
 ## How can you create those cool autocompleting popups on your custom functions?
@@ -36,22 +37,25 @@ In a future video I'll be talking about how you can share your custom functions 
  * @customfunction
  */
 function CURRENCYEXCHANGE(amount, from, into) {
-  from = from || 'CNY';
-  into = into || 'USD';
+    from = from || "CNY";
+    into = into || "USD";
 
-  if (from.length !== 3 || into.length !== 3) {
-    throw TypeError('Currency type must be a 3 letter code.');
-  }
+    if (from.length !== 3 || into.length !== 3) {
+        throw TypeError("Currency type must be a 3 letter code.");
+    }
 
-  var url =
-    'https://api.fixer.io/latest?base=' + into.toUpperCase() + '&symbols=' + from.toUpperCase();
+    var url =
+        "https://api.fixer.io/latest?base=" +
+        into.toUpperCase() +
+        "&symbols=" +
+        from.toUpperCase();
 
-  var response = UrlFetchApp.fetch(url);
-  response = JSON.parse(response);
+    var response = UrlFetchApp.fetch(url);
+    response = JSON.parse(response);
 
-  var exchange = amount / response['rates'][from];
+    var exchange = amount / response["rates"][from];
 
-  return parseFloat(exchange.toFixed(2));
+    return parseFloat(exchange.toFixed(2));
 }
 ```
 

@@ -50,8 +50,10 @@ export default function ChineseLessonPage(props: any) {
         setUpdate(q);
     }
     return (
-        <Layout location={location} title="About">
-            <Seo title="Chinese Language Learning" />
+        <Layout location={props.location} title="About">
+            <Seo
+                title={`Language Learning Notes from ${props.pageContext.id}`}
+            />
             <Section>
                 <StyledStuff>
                     <div className="notes">

@@ -26,18 +26,63 @@ export const Header: React.FC<{ pathname: string; showLinks?: boolean }> = ({
 
                 <nav className={showLinks ? `` : `is-hidden`}>
                     <div className="page-links">
-                        {links.map(link => (
-                            <Link
-                                key={link.to}
-                                data-label={link.name}
-                                className={`page-link sans ${
-                                    pathname.includes(link.to) ? "active" : ""
-                                }`}
-                                to={`/${link.to}`}
-                            >
-                                <span className="label">{link.name}</span>
-                            </Link>
-                        ))}
+                        {links.map((link: any) => {
+                            const hasChildren =
+                                Array.isArray(link.children) &&
+                                link.children.length > 0;
+                            const isActive =
+                                pathname.includes(link.to) ||
+                                (hasChildren &&
+                                    link.children.some((c: any) =>
+                                        pathname.includes(c.to),
+                                    ));
+
+                            if (!hasChildren) {
+                                return (
+                                    <Link
+                                        key={link.to}
+                                        data-label={link.name}
+                                        className={`page-link sans ${isActive ? "active" : ""}`}
+                                        to={`/${link.to}`}
+                                    >
+                                        <span className="label">
+                                            {link.name}
+                                        </span>
+                                    </Link>
+                                );
+                            }
+
+                            return (
+                                <div
+                                    key={link.to}
+                                    className={`page-link-with-dropdown ${isActive ? "active" : ""}`}
+                                >
+                                    <Link
+                                        data-label={link.name}
+                                        className={`page-link sans ${isActive ? "active" : ""}`}
+                                        to={`/${link.to}`}
+                                    >
+                                        <span className="label">
+                                            {link.name}
+                                        </span>
+                                    </Link>
+
+                                    <div className="dropdown">
+                                        {link.children.map((child: any) => (
+                                            <Link
+                                                key={child.to}
+                                                to={`/${child.to}`}
+                                                className={`dropdown-item sans ${pathname.includes(child.to) ? "active" : ""}`}
+                                            >
+                                                <span className="label">
+                                                    {child.name}
+                                                </span>
+                                            </Link>
+                                        ))}
+                                    </div>
+                                </div>
+                            );
+                        })}
                     </div>
 
                     <LinkButton
@@ -119,6 +164,53 @@ const StyledHeader = styled.header`
 
         .page-links {
             display: flex;
+            align-items: center;
+        }
+
+        /* Dropdown container */
+        .page-link-with-dropdown {
+            position: relative;
+            display: flex;
+            align-content: center;
+        }
+
+        .dropdown {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            position: absolute;
+            top: 100%;
+            left: 100%;
+            transform: translateX(-50%) translateY(6px);
+            background: var(--color-background, #fff);
+            border-radius: 4px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+            min-width: 180px;
+            padding: 0.25em 0;
+            z-index: 10;
+            transition:
+                opacity 160ms ease,
+                transform 160ms ease;
+        }
+
+        .page-link-with-dropdown:hover .dropdown,
+        .page-link-with-dropdown .dropdown:hover {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .dropdown-item {
+            display: block;
+            padding: 0.5em 1em;
+            text-decoration: none;
+            color: var(--color-text);
+            white-space: nowrap;
+        }
+
+        .dropdown-item:hover {
+            background: rgba(0, 0, 0, 0.04);
         }
     }
 `;

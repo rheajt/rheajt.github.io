@@ -1,13 +1,15 @@
 import * as React from "react";
 import Layout from "../components/layout";
+import { Section } from "../components/section";
+import Seo from "../components/seo";
 import { buildMapboxSrc } from "../utils/buildMapboxSrc";
 
 const About: React.FC<{ location: any }> = ({ location }) => {
     return (
         <Layout location={location} title="About">
-            <h1>About Page</h1>
-
-            <section>
+            <Seo title="About" />
+            <Section>
+                <h1>About Page</h1>
                 <p>
                     I am a solutions developer working with both Google
                     Workspaces and Microsoft 365. I like building tools to make
@@ -33,7 +35,7 @@ const About: React.FC<{ location: any }> = ({ location }) => {
                     and written many automations in Google Workspaces. The idea
                     of automating the boring parts of the day is incredible.
                 </p>
-            </section>
+            </Section>
         </Layout>
     );
 };

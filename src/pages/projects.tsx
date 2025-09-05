@@ -17,7 +17,9 @@ export const pageQuery = graphql`
             }
         }
         allMarkdownRemark(
-            filter: { fields: { category: { eq: "project" } } }
+            filter: {
+                fields: { category: { eq: "project" }, draft: { eq: false } }
+            }
             sort: { fields: { date: DESC } }
         ) {
             nodes {
@@ -58,13 +60,13 @@ const Projects: React.FC<ProjectPageProps> = ({ data, location }) => {
             <Seo title="All Projects" />
 
             <StyledContainer>
-                <Bio />
-
                 <StyledProjectCards>
                     {projects.map((p: any) => {
                         return <ProjectCard key={p.id} project={p} />;
                     })}
                 </StyledProjectCards>
+
+                <Bio />
             </StyledContainer>
         </Layout>
     );
@@ -76,6 +78,7 @@ const StyledProjectCards = styled.div`
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     grid-gap: 1em;
+    padding-top: 2em;
 
     a {
         color: var(--color-text);

@@ -112,11 +112,6 @@ const Layout: React.FC<{
     location: Location;
     title: string;
 }> = ({ location, children }) => {
-    const rootPath = `/`;
-    const isRootPath = location.pathname === rootPath;
-    const isBrowser = typeof window !== "undefined";
-
-    // <Header pathname={location.pathname} />
     return (
         <div>
             <GlobalStyles />
@@ -129,5 +124,14 @@ const Layout: React.FC<{
         </div>
     );
 };
+
+export function SimpleLayout({ children }: { children: ReactNode }) {
+    return (
+        <div>
+            <GlobalStyles />
+            <main>{children}</main>
+        </div>
+    );
+}
 
 export default Layout;

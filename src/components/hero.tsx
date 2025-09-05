@@ -8,16 +8,42 @@ const useRefDimensions = (ref: React.RefObject<HTMLDivElement | null>) => {
     const [dimensions, setDimensions] = useState({ width: 800, height: 300 });
 
     React.useEffect(() => {
-        if (ref.current) {
-            const { current } = ref;
-            const boundingRect = current.getBoundingClientRect();
-            const { width, height } = boundingRect;
-
-            console.log({ width, height });
+        const node = ref.current;
+        if (!node) {
+            const w =
+                typeof window !== "undefined"
+                    ? Math.round(window.innerWidth)
+                    : 800;
+            setDimensions({ width: w, height: 300 });
+            return;
+        }
+        const update = () => {
+            const boundingRect = node.getBoundingClientRect();
+            const { height } = boundingRect;
+            const width =
+                typeof window !== "undefined"
+                    ? Math.round(window.innerWidth)
+                    : Math.round(boundingRect.width);
             setDimensions({
-                width: Math.round(width),
+                width,
                 height: Math.round(height),
             });
+        };
+
+        update();
+
+        if (typeof ResizeObserver !== "undefined") {
+            const ro = new ResizeObserver(update);
+            ro.observe(node);
+            const onResizeWindow = () => update();
+            window.addEventListener("resize", onResizeWindow);
+            return () => {
+                ro.disconnect();
+                window.removeEventListener("resize", onResizeWindow);
+            };
+        } else {
+            window.addEventListener("resize", update);
+            return () => window.removeEventListener("resize", update);
         }
     }, [ref]);
 
@@ -25,12 +51,13 @@ const useRefDimensions = (ref: React.RefObject<HTMLDivElement | null>) => {
 };
 
 export const Hero = () => {
-    // const refContainer = useRef<HTMLDivElement>(null);
-    // const dimensions = useRefDimensions(refContainer);
+    const refContainer = useRef<HTMLDivElement | null>(null);
+    const dimensions = useRefDimensions(refContainer);
 
     return (
         <StyledHero>
-            <div className="container">
+            <Canvas width={dimensions.width} height={dimensions.height} />
+            <div className="container" ref={refContainer}>
                 <div className="columns">
                     <div className="image">
                         <StaticImage
@@ -71,28 +98,28 @@ const StyledHero = styled.div`
             align-items: center;
             justify-content: center;
         }
+    }
 
+    .columns {
+        margin: 0 auto;
+        max-width: 800px;
+        display: grid;
+        grid-template-columns: 1fr;
+        position: relative;
+        z-index: 1;
+    }
+
+    @media (min-width: 768px) {
         .columns {
-            margin: 0 auto;
-            max-width: 800px;
-            display: grid;
-            grid-template-columns: 1fr;
-        }
-
-        @media (min-width: 768px) {
-            .columns {
-                grid-template-columns: 1fr 1fr;
-            }
+            grid-template-columns: 1fr 1fr;
         }
     }
 
     .caption {
         font-family: var(--fontFamily-sans);
+        font-weight: var(--fontWeight-extraBold);
         text-align: center;
         padding-top: 50px;
-        color: white;
-        -webkit-text-stroke: 1px black;
-        -webkit-text-fill-color: transparent;
 
         h1 {
             margin: 15px 0;
