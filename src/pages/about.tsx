@@ -3,6 +3,7 @@ import Layout from "../components/layout";
 import { Section } from "../components/section";
 import Seo from "../components/seo";
 import { buildMapboxSrc } from "../utils/buildMapboxSrc";
+import styled from "styled-components";
 
 const About: React.FC<{ location: any }> = ({ location }) => {
     return (
@@ -15,6 +16,8 @@ const About: React.FC<{ location: any }> = ({ location }) => {
                     Workspaces and Microsoft 365. I like building tools to make
                     our digital work lives easier.
                 </p>
+
+                <h3>Working smarter, not harder!</h3>
                 <p>
                     I have lived all over the world in different roles. I was a
                     United States Marine in Okinawa, Japan. I taught middle
@@ -23,11 +26,9 @@ const About: React.FC<{ location: any }> = ({ location }) => {
                     development work in Beijing, China.
                 </p>
 
-                <p>
-                    <figure className="marginnote">
-                        <img src={buildMapboxSrc()} alt="map" />
-                    </figure>
-                </p>
+                <FullWidthFigure>
+                    <img src={buildMapboxSrc()} alt="map" />
+                </FullWidthFigure>
 
                 <p>
                     I write code using JavaScript, Typescript, and Google Apps
@@ -41,3 +42,18 @@ const About: React.FC<{ location: any }> = ({ location }) => {
 };
 
 export default About;
+
+const FullWidthFigure = styled.figure`
+    margin: 1.5rem 0;
+    width: 100vw;
+    max-width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+    display: block;
+
+    img {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+`;

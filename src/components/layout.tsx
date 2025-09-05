@@ -1,8 +1,9 @@
+import { navigate } from "gatsby";
 import * as React from "react";
 import { ReactNode } from "react";
 import { createGlobalStyle } from "styled-components";
 import { Footer } from "./footer";
-import { Header } from "./header";
+import { BasicHeader, Header } from "./header";
 
 export interface Location {
     pathname: string;
@@ -129,6 +130,7 @@ export function SimpleLayout({ children }: { children: ReactNode }) {
     return (
         <div>
             <GlobalStyles />
+            <BasicHeader />
             <main>{children}</main>
         </div>
     );

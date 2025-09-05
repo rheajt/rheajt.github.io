@@ -1,14 +1,50 @@
-import { Link } from "gatsby";
+import { Link, navigate } from "gatsby";
 import React from "react";
 import { StaticImage } from "gatsby-plugin-image";
 import { LinkButton } from "./link-button";
 import { links } from "../utils/links";
 import styled from "styled-components";
 
+export const BasicHeader: React.FC = () => {
+    return (
+        <StyledHeader>
+            <div className="container">
+                <div
+                    onClick={() => {
+                        navigate(-1);
+                    }}
+                >
+                    <StaticImage
+                        layout="fixed"
+                        formats={["auto", "webp", "avif"]}
+                        src="../../content/img/jr-icon.png"
+                        width={36}
+                        height={36}
+                        quality={95}
+                        alt="jordan rhea header"
+                    />
+                </div>
+            </div>
+        </StyledHeader>
+    );
+};
 export const Header: React.FC<{ pathname: string; showLinks?: boolean }> = ({
     pathname,
     showLinks = true,
 }) => {
+    const [openDropdown, setOpenDropdown] = React.useState<string | null>(null);
+
+    React.useEffect(() => {
+        if (typeof window === "undefined") return;
+        function handleResize() {
+            if (window.innerWidth > 768) {
+                setOpenDropdown(null);
+            }
+        }
+        window.addEventListener("resize", handleResize);
+        return () => window.removeEventListener("resize", handleResize);
+    }, []);
+
     return (
         <StyledHeader>
             <div className="container">
@@ -44,6 +80,7 @@ export const Header: React.FC<{ pathname: string; showLinks?: boolean }> = ({
                                         data-label={link.name}
                                         className={`page-link sans ${isActive ? "active" : ""}`}
                                         to={`/${link.to}`}
+                                        onClick={() => setOpenDropdown(null)}
                                     >
                                         <span className="label">
                                             {link.name}
@@ -55,12 +92,26 @@ export const Header: React.FC<{ pathname: string; showLinks?: boolean }> = ({
                             return (
                                 <div
                                     key={link.to}
-                                    className={`page-link-with-dropdown ${isActive ? "active" : ""}`}
+                                    className={`page-link-with-dropdown ${isActive ? "active" : ""} ${openDropdown === link.to ? "is-open" : ""}`}
                                 >
                                     <Link
                                         data-label={link.name}
                                         className={`page-link sans ${isActive ? "active" : ""}`}
                                         to={`/${link.to}`}
+                                        onClick={e => {
+                                            if (typeof window === "undefined")
+                                                return;
+                                            if (window.innerWidth <= 768) {
+                                                // if dropdown is already open for this link, follow the link
+                                                if (openDropdown === link.to) {
+                                                    setOpenDropdown(null);
+                                                    return;
+                                                }
+
+                                                e.preventDefault();
+                                                setOpenDropdown(link.to);
+                                            }
+                                        }}
                                     >
                                         <span className="label">
                                             {link.name}
@@ -73,6 +124,9 @@ export const Header: React.FC<{ pathname: string; showLinks?: boolean }> = ({
                                                 key={child.to}
                                                 to={`/${child.to}`}
                                                 className={`dropdown-item sans ${pathname.includes(child.to) ? "active" : ""}`}
+                                                onClick={() =>
+                                                    setOpenDropdown(null)
+                                                }
                                             >
                                                 <span className="label">
                                                     {child.name}
@@ -194,7 +248,8 @@ const StyledHeader = styled.header`
         }
 
         .page-link-with-dropdown:hover .dropdown,
-        .page-link-with-dropdown .dropdown:hover {
+        .page-link-with-dropdown .dropdown:hover,
+        .page-link-with-dropdown.is-open .dropdown {
             opacity: 1;
             visibility: visible;
             pointer-events: auto;

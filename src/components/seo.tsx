@@ -9,7 +9,7 @@ interface Props {
     image?: string;
 }
 
-const Seo: React.FC<Props> = ({
+const Head: React.FC<Props> = ({
     description = "",
     lang = "en",
     meta = [],
@@ -87,13 +87,13 @@ const Seo: React.FC<Props> = ({
     });
 
     return (
-        <head>
+        <>
             <title>{fullTitle}</title>
             {baseMeta}
             {imageMeta}
             {additionalMeta}
-        </head>
+        </>
     );
 };
 
-export default Seo;
+export default Head;

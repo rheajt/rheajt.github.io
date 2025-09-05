@@ -1,5 +1,5 @@
 import * as React from "react";
-import { graphql } from "gatsby";
+import { graphql, Link } from "gatsby";
 import { Section } from "../components/section";
 import Layout from "../components/layout";
 import Seo from "../components/seo";
@@ -73,22 +73,13 @@ export default function ChineseLessonPage(props: any) {
                                 ))}
                             </p>
                         ))}
-                    </div>
-                    <div className="updates">
-                        <button onClick={handleClick}>click me</button>
-                        <p>{update}</p>
-
-                        {vocabulary.map((word: any, wordIndex: number) => (
-                            <div
-                                key={`vocab-index-${wordIndex}`}
-                                title={word.english}
-                            >
-                                <ruby>
-                                    {word.chinese}
-                                    {word.pinyin && <rt>{word.pinyin}</rt>}
-                                </ruby>
-                            </div>
-                        ))}
+                        <Link
+                            className="flashcard-button"
+                            to={`/language-learning/${props.data.file.name}/flashcards`}
+                            onClick={handleClick}
+                        >
+                            Flashcards
+                        </Link>
                     </div>
                 </StyledStuff>
             </Section>
@@ -98,7 +89,6 @@ export default function ChineseLessonPage(props: any) {
 
 const StyledStuff = styled.div`
     display: grid;
-    grid-template-columns: 4fr 1fr;
     padding: 4rem 0;
 
     p {
@@ -113,6 +103,36 @@ const StyledStuff = styled.div`
         font-size: 0.7em;
         color: #444;
     }
+
+    .updates {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+        align-items: flex-start;
+    }
+
+    .flashcard-button {
+        display: inline-block;
+        padding: 0.5rem 0.9rem;
+        background: var(--color-primary);
+        color: #fff;
+        text-decoration: none;
+        border-radius: 6px;
+        font-weight: 600;
+        box-shadow: 0 6px 18px rgba(40, 53, 151, 0.12);
+        transition:
+            transform 120ms ease,
+            box-shadow 120ms ease;
+    }
+    .flashcard-button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 24px rgba(40, 53, 151, 0.16);
+    }
+    .flashcard-button:focus {
+        outline: none;
+        box-shadow: 0 0 0 4px rgba(40, 53, 151, 0.08);
+    }
+
     .note {
         font-size: 0.95rem;
         color: #666;

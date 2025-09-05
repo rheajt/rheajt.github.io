@@ -40,6 +40,11 @@ export default function ChineseLanguageLearningPage({ data, location }: any) {
             <Section>
                 <h1>Chinese Language Learning</h1>
 
+                <p>
+                    I am learning Chinese. Here are notes from my lessons and
+                    some flashcards so I can study on the go.
+                </p>
+
                 <ul>
                     {pages.map((page: any) => {
                         const categories = page.childHanziJson.vocabulary

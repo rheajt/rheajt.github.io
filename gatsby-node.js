@@ -9,6 +9,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     // Define a template for blog post
     // const blogPost = path.resolve(`./src/templates/blog-post.tsx`);
     const projectPage = path.resolve(`./src/templates/project-page.tsx`);
+    const flashcardPage = path.resolve(`./src/templates/flashcards-page.tsx`);
     const languageLearningPage = path.resolve(
         `./src/templates/language-learning-page.tsx`,
     );
@@ -118,6 +119,13 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
             createPage({
                 path: "/language-learning/" + lesson.name,
                 component: languageLearningPage,
+                context: {
+                    id: lesson.id,
+                },
+            });
+            createPage({
+                path: "/language-learning/" + lesson.name + "/flashcards",
+                component: flashcardPage,
                 context: {
                     id: lesson.id,
                 },
