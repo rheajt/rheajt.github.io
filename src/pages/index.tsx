@@ -48,8 +48,8 @@ const Home: React.FC<{ data: any; location: any }> = ({ data, location }) => {
                     As a dedicated data software consultant specializing in
                     educational institutions, I bring a unique blend of
                     technical expertise and a profound understanding of the
-                    needs of schools and educators. PSISJS is a support service
-                    with customization options for PowerSchool SIS.
+                    needs of schools and educators. <b>PSISJS</b> is a support
+                    service with customization options for PowerSchool SIS.
                 </p>
 
                 <div
