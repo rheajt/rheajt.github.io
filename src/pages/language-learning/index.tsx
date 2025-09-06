@@ -6,7 +6,10 @@ import { graphql } from "gatsby";
 
 export const pageQuery = graphql`
     query {
-        allFile(filter: { sourceInstanceName: { eq: "lessons" } }) {
+        allFile(
+            filter: { sourceInstanceName: { eq: "lessons" } }
+            sort: { name: DESC }
+        ) {
             nodes {
                 id
                 name

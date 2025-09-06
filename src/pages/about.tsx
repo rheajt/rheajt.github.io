@@ -45,15 +45,18 @@ export default About;
 
 const FullWidthFigure = styled.figure`
     margin: 1.5rem 0;
-    width: 100vw;
-    max-width: 100vw;
-    margin-left: calc(50% - 50vw);
-    margin-right: calc(50% - 50vw);
+    width: 100%;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
     display: block;
 
     img {
         width: 100%;
+        max-width: 100%;
         height: auto;
         display: block;
+        margin-left: auto;
+        margin-right: auto;
     }
 `;
