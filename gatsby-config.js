@@ -34,6 +34,10 @@ module.exports = {
                         name: "Work Sans",
                         file: `https://fonts.googleapis.com/css2?family=Work+Sans&display=swap`,
                     },
+                    {
+                        name: "Iansui",
+                        file: `https://fonts.googleapis.com/css2?family=Iansui&display=swap`,
+                    },
                 ],
             },
         },
@@ -69,6 +73,13 @@ module.exports = {
             options: {
                 name: `lessons`,
                 path: `${__dirname}/content/hanzi_jsons`,
+            },
+        },
+        {
+            resolve: "gatsby-source-google-spreadsheets",
+            options: {
+                spreadsheetId: "1tJvDMO8ATqcR6KhXBYxO_Ygb9P9KXECBqEhk8JOh7pc",
+                credentials: require("./googlesheets-creds.json"),
             },
         },
         {

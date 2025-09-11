@@ -219,6 +219,7 @@ const CardBack = styled(CardFace)`
 `;
 
 const ChineseText = styled.div`
+    font-family: Iansui;
     font-size: 4.6rem;
     font-weight: 700;
     margin-bottom: 8px;

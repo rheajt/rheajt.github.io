@@ -6,24 +6,14 @@ import Seo from "../components/seo";
 import styled from "styled-components";
 
 export const pageQuery = graphql`
-    query fileById($id: String!) {
-        file(id: { eq: $id }) {
-            name
-            lesson: childHanziJson {
-                notes {
-                    line_index
-                    chars {
-                        hanzi
-                        pinyin
-                    }
-                }
-                vocabulary {
-                    chinese
-                    pinyin
-                    english
-                    category
-                    part_of_speech
-                }
+    query lesson($lesson: Int!) {
+        allGoogleTutoringSheet(filter: { lesson: { eq: $lesson } }) {
+            nodes {
+                chinese
+                pinyin
+                partOfSpeech
+                english
+                category
             }
         }
     }
