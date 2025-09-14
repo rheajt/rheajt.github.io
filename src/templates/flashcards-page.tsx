@@ -6,24 +6,29 @@ import Seo from "../components/seo";
 import styled from "styled-components";
 
 export const pageQuery = graphql`
-    query fileById($id: String!) {
-        file(id: { eq: $id }) {
-            name
-            lesson: childHanziJson {
-                vocabulary {
-                    chinese
-                    pinyin
-                    english
-                    category
-                    part_of_speech
-                }
+    query lesson($lesson: Int!) {
+        allGoogleTutoringSheet(filter: { lesson: { eq: $lesson } }) {
+            nodes {
+                chinese
+                pinyin
+                partOfSpeech
+                english
+                category
             }
         }
     }
 `;
 
+type LessonTopic = {
+    chinese: string;
+    pinyin?: string;
+    part_of_speech?: string;
+    english: string;
+    category?: string;
+};
+
 export default function FlashcardsPage(props: any) {
-    const { vocabulary } = props.data.file.lesson;
+    const vocabulary = props.data.allGoogleTutoringSheet.nodes;
 
     const [currentIndex, setCurrentIndex] = React.useState(0);
 
@@ -79,7 +84,7 @@ export default function FlashcardsPage(props: any) {
     );
 }
 
-const Flashcard = ({ item }: { item: any }) => {
+const Flashcard = ({ item }: { item: LessonTopic }) => {
     const [isFlipped, setIsFlipped] = React.useState<boolean>(false);
 
     const playChinese = (text: string) => {

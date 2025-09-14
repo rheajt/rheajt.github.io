@@ -1,10 +1,10 @@
 import { Link } from "gatsby";
 import { StaticImage } from "gatsby-plugin-image";
 import React, { ReactNode, useReducer, useState } from "react";
-import PokerForm from "../components/poker-form";
-import PokerSeats from "../components/poker-seats";
-import Seo from "../components/seo";
-import { initialState, reducer } from "../utils/pokerReducer";
+import PokerForm from "../../components/poker-form";
+import PokerSeats from "../../components/poker-seats";
+import Seo from "../../components/seo";
+import { initialState, reducer } from "../../utils/pokerReducer";
 
 const PokerPanel: React.FC<{
     title: string;

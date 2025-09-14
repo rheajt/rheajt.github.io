@@ -19,26 +19,24 @@ export const pageQuery = graphql`
     }
 `;
 
-type Line = {
-    line_index: number;
-    line_text: string;
-    chars: [
-        {
-            pinyin: string;
-            hanzi: string;
-        },
-    ];
+type LessonTopic = {
+    chinese: string;
+    pinyin?: string;
+    partOfSpeech?: string;
+    english: string;
+    category?: string;
 };
 export default function ChineseLessonPage(props: any) {
+    console.log(props);
     const [update, setUpdate] = React.useState<string | undefined>(undefined);
-    const { notes, vocabulary } = props.data.file.lesson;
+    const notes = props.data.allGoogleTutoringSheet.nodes;
 
     async function handleClick() {
         // get the selected text
         const q = getSelection()?.toString();
-        console.log(q, vocabulary);
         setUpdate(q);
     }
+
     return (
         <Layout location={props.location} title="About">
             <Seo
@@ -47,25 +45,18 @@ export default function ChineseLessonPage(props: any) {
             <Section>
                 <StyledStuff>
                     <div className="notes">
-                        {notes.map((line: Line, index: number) => (
+                        {notes.map((line: LessonTopic, index: number) => (
                             <p key={`line-index-${index}`}>
-                                {line.chars.map((charObj, charIndex) => (
-                                    <React.Fragment
-                                        key={`character-index-${charIndex}`}
-                                    >
-                                        <ruby>
-                                            {charObj.hanzi}
-                                            {charObj.pinyin && (
-                                                <rt>{charObj.pinyin}</rt>
-                                            )}
-                                        </ruby>
-                                    </React.Fragment>
-                                ))}
+                                <ruby>
+                                    {line.chinese}
+                                    {line.pinyin && <rt>{line.pinyin}</rt>}
+                                </ruby>
                             </p>
                         ))}
+
                         <Link
                             className="flashcard-button"
-                            to={`/language-learning/${props.data.file.name}/flashcards`}
+                            to={`${props.location.pathname}flashcards`}
                             onClick={handleClick}
                         >
                             Flashcards
@@ -86,6 +77,7 @@ const StyledStuff = styled.div`
         font-size: 1.25rem;
     }
     ruby {
+        font-family: Iansui;
         ruby-position: over;
         ruby-align: center;
     }

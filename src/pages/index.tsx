@@ -22,15 +22,20 @@ export interface Quote {
 
 const Home: React.FC<{ data: any; location: any }> = ({ data, location }) => {
     const siteTitle = data.site.siteMetadata?.title || `jordanrhea.com`;
-    const projects: ProjectPage[] = data.projects.nodes;
-    const headerImageSrc = data.headerImage.resize.src;
-
-    const quotes = projects.reduce<Quote[]>((acc, p) => {
+    const quotes = data.quotes.nodes.reduce((acc: Quote[], p: ProjectPage) => {
         if (p.frontmatter.quote) {
             acc.push(p.frontmatter.quote);
         }
         return acc;
     }, []);
+    const headerImageSrc = data.headerImage.resize.src;
+
+    // const quotes = projects.reduce<Quote[]>((acc, p) => {
+    //     if (p.frontmatter.quote) {
+    //         acc.push(p.frontmatter.quote);
+    //     }
+    //     return acc;
+    // }, []);
 
     return (
         <Layout location={location} title={siteTitle}>
@@ -92,7 +97,7 @@ const Home: React.FC<{ data: any; location: any }> = ({ data, location }) => {
 
             <QuoteCarousel quotes={quotes} />
 
-            <ProjectsSection projects={projects} />
+            <ProjectsSection />
         </Layout>
     );
 };
@@ -116,19 +121,12 @@ export const pageQuery = graphql`
             }
         }
 
-        projects: allMarkdownRemark(
+        quotes: allMarkdownRemark(
             filter: { fields: { category: { eq: "project" } } }
         ) {
             nodes {
                 id
                 frontmatter {
-                    title
-                    tags
-                    image {
-                        childImageSharp {
-                            gatsbyImageData(layout: CONSTRAINED)
-                        }
-                    }
                     quote {
                         author
                         email
@@ -138,10 +136,6 @@ export const pageQuery = graphql`
                         text
                     }
                 }
-                fields {
-                    slug
-                }
-                excerpt
             }
         }
 

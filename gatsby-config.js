@@ -83,6 +83,13 @@ module.exports = {
             },
         },
         {
+            resolve: "gatsby-source-google-spreadsheets",
+            options: {
+                spreadsheetId: "14K-Z_rRR4wRQoXirCnAnsYZ9xI-Sdqh8o66N474g1SI",
+                credentials: require("./googlesheets-creds.json"),
+            },
+        },
+        {
             resolve: `gatsby-transformer-json`,
             options: {
                 typeName: `HanziJson`, // a fixed string

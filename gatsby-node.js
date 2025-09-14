@@ -102,32 +102,35 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     }
 
     const lessonNodes = await graphql(`
-        query {
-            allFile(filter: { sourceInstanceName: { eq: "lessons" } }) {
-                files: nodes {
-                    id
-                    name
+        query tb {
+            allGoogleLessonsSheet(sort: { lesson: DESC }) {
+                nodes {
+                    date
+                    lesson
                 }
             }
         }
     `);
 
-    const lessons = lessonNodes.data.allFile.files;
+    const lessons = lessonNodes.data.allGoogleLessonsSheet.nodes;
 
     if (lessons.length > 0) {
         lessons.forEach(lesson => {
             createPage({
-                path: "/language-learning/" + lesson.name,
+                path: "/language-learning/lesson" + lesson.lesson,
                 component: languageLearningPage,
                 context: {
                     id: lesson.id,
+                    lesson: lesson.lesson,
                 },
             });
             createPage({
-                path: "/language-learning/" + lesson.name + "/flashcards",
+                path:
+                    "/language-learning/lesson" + lesson.lesson + "/flashcards",
                 component: flashcardPage,
                 context: {
                     id: lesson.id,
+                    lesson: lesson.lesson,
                 },
             });
         });
