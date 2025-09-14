@@ -1,12 +1,12 @@
-import React from "react";
+import * as React from "react";
+import { graphql, Link } from "gatsby";
+import styled from "styled-components";
 import Layout from "../../components/layout";
 import { Section } from "../../components/section";
 import Seo from "../../components/seo";
-import { graphql, Link } from "gatsby";
-import styled from "styled-components";
 import { Loader } from "../../components/loader";
 
-export const pageQuery = graphql`
+export const query = graphql`
     query allWords {
         allGoogleTutoringSheet(sort: { lesson: DESC }) {
             nodes {
@@ -35,12 +35,17 @@ type Word = {
 export default function ChineseLanguageDictionaryPage({ data, location }: any) {
     const [filter, setFilter] = React.useState<string>("");
 
-    if (!data || !data.allGoogleTutoringSheet) {
-        return <Loader />;
-    }
-
-    const words: Word[] = data.allGoogleTutoringSheet.nodes || [];
-    console.log(data);
+    // if (!data || !data.allGoogleTutoringSheet) {
+    //     return (
+    //         <Layout
+    //             location={location}
+    //             title="Chinese Language Learning Dictionary"
+    //         >
+    //             <Seo title="Chinese Language Learning Dictionary" />
+    //             <Loader />
+    //         </Layout>
+    //     );
+    // }
     return (
         <Layout
             location={location}
@@ -61,8 +66,8 @@ export default function ChineseLanguageDictionaryPage({ data, location }: any) {
                 </SearchRow>
 
                 <CardsGrid>
-                    {words
-                        .filter(word => {
+                    {(data.allGoogleTutoringSheet.nodes || [])
+                        .filter((word: Word) => {
                             if (!filter) return true;
                             const lowerFilter = filter.toLowerCase();
                             return (
@@ -88,7 +93,7 @@ export default function ChineseLanguageDictionaryPage({ data, location }: any) {
                                         .includes(lowerFilter))
                             );
                         })
-                        .map(word => {
+                        .map((word: Word) => {
                             return <WordCard key={word.id} word={word} />;
                         })}
                 </CardsGrid>

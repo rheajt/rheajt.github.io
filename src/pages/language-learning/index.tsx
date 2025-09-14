@@ -10,6 +10,7 @@ export const pageQuery = graphql`
     query {
         allGoogleLessonsSheet(sort: { lesson: DESC }) {
             nodes {
+                id
                 date
                 lesson
             }
@@ -103,6 +104,11 @@ const TwoColumn = styled.div`
     gap: 2rem;
     align-items: start;
     margin-top: 1rem;
+
+    @media (max-width: 768px) {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
 `;
 
 const LeftColumn = styled.div``;
