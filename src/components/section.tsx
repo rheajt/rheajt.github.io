@@ -2,22 +2,22 @@ import React from "react";
 import { styled } from "styled-components";
 
 type SectionProps = {
-	children: React.ReactNode;
-	className?: string;
-	id?: string;
-	style?: React.CSSProperties;
+    children: React.ReactNode;
+    className?: string;
+    id?: string;
+    style?: React.CSSProperties;
 };
 
 export const Section = (props: SectionProps) => {
-	return (
-		<StyledSection
-			className={props.className}
-			id={props.id}
-			style={props.style}
-		>
-			{props.children}
-		</StyledSection>
-	);
+    return (
+        <StyledSection
+            className={props.className}
+            id={props.id}
+            style={props.style}
+        >
+            {props.children}
+        </StyledSection>
+    );
 };
 
 const StyledSection = styled.section`
@@ -26,7 +26,7 @@ const StyledSection = styled.section`
     max-width: 800px;
 
     @media (max-width: 768px) {
-        padding: 2em 0.25em;
+        padding: 5em 0.25em;
         max-width: var(--maxWidth-sm);
     }
 `;

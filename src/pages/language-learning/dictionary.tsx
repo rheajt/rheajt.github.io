@@ -1,9 +1,10 @@
-import * as React from "react";
+import React from "react";
 import Layout from "../../components/layout";
 import { Section } from "../../components/section";
 import Seo from "../../components/seo";
 import { graphql, Link } from "gatsby";
 import styled from "styled-components";
+import { Loader } from "../../components/loader";
 
 export const pageQuery = graphql`
     query allWords {
@@ -33,7 +34,13 @@ type Word = {
 
 export default function ChineseLanguageDictionaryPage({ data, location }: any) {
     const [filter, setFilter] = React.useState<string>("");
+
+    if (!data || !data.allGoogleTutoringSheet) {
+        return <Loader />;
+    }
+
     const words: Word[] = data.allGoogleTutoringSheet.nodes || [];
+    console.log(data);
     return (
         <Layout
             location={location}

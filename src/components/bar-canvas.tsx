@@ -197,12 +197,12 @@ export const BarCanvas: React.FC<Props> = ({
         };
     }, [width, height, id]);
 
-    return (
-        <StyledCanvas id={id} ref={canvasRef} width={width} height={height} />
-    );
+    console.log("Rendering BarCanvas", { width, height });
+    return <StyledCanvas id={id} ref={canvasRef} />;
 };
 
-const StyledCanvas = styled.canvas<{ width: number; height: number }>`
+const StyledCanvas = styled.canvas`
+    box-sizing: border-box;
     position: absolute;
     top: 0;
     left: 50%;

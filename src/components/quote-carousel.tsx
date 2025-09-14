@@ -30,8 +30,8 @@ export const QuoteCarousel: React.FC<Props> = ({ quotes }) => {
             setDims({
                 width:
                     typeof window !== "undefined"
-                        ? Math.round(window.innerWidth)
-                        : Math.round(rect.width),
+                        ? Math.round(window.innerWidth) - 15
+                        : Math.round(rect.width) - 15,
                 height: Math.round(rect.height),
             });
         };
@@ -58,6 +58,7 @@ export const QuoteCarousel: React.FC<Props> = ({ quotes }) => {
             <Splide
                 aria-label="Project quotes"
                 style={{
+                    boxSizing: "border-box",
                     padding: "2rem 0",
                     position: "relative",
                     zIndex: 1,

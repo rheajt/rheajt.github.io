@@ -189,7 +189,7 @@ const CardOuter = styled.div`
 
 const CardInner = styled.div<{ flipped: string }>`
     width: 360px;
-    height: 300px;
+    height: 500px;
     position: relative;
     transform-style: preserve-3d;
     transition: transform 0.6s;
@@ -225,9 +225,10 @@ const CardBack = styled(CardFace)`
 
 const ChineseText = styled.div`
     font-family: Iansui;
-    font-size: 4.6rem;
+    font-size: 4rem;
     font-weight: 700;
     margin-bottom: 8px;
+    line-height: 4rem;
 `;
 
 const PinyinText = styled.div`

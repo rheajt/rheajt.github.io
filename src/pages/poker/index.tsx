@@ -1,6 +1,7 @@
 import { Link } from "gatsby";
 import { StaticImage } from "gatsby-plugin-image";
 import React, { ReactNode, useReducer, useState } from "react";
+import Layout from "../../components/layout";
 import PokerForm from "../../components/poker-form";
 import PokerSeats from "../../components/poker-seats";
 import Seo from "../../components/seo";
@@ -23,12 +24,12 @@ const PokerPanel: React.FC<{
     );
 };
 
-const PokerPage: React.FC = () => {
+export default function PokerPage({ location }) {
     const [activeSection, setActiveSection] = useState(0);
     const [state, dispatch] = useReducer(reducer, initialState);
 
     return (
-        <div className="poker-page">
+        <Layout title="Poker Notes" location={location}>
             <Seo title="Poker Notes" />
 
             <PokerPanel
@@ -90,8 +91,6 @@ const PokerPage: React.FC = () => {
                     />
                 </Link>
             </footer>
-        </div>
+        </Layout>
     );
-};
-
-export default PokerPage;
+}

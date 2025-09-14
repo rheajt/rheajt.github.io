@@ -4,7 +4,7 @@ import { Section } from "../../components/section";
 import Seo from "../../components/seo";
 import { graphql, Link } from "gatsby";
 import styled from "styled-components";
-import { PartsOfSpeech } from "./partsOfSpeech";
+import PartsOfSpeech from "./partsOfSpeech";
 
 export const pageQuery = graphql`
     query {
