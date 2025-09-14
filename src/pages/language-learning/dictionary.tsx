@@ -32,7 +32,7 @@ type Word = {
     category?: string;
 };
 
-export default function ChineseLanguageDictionaryPage({ data, location }: any) {
+function ChineseLanguageDictionaryPage({ data, location }: any) {
     const [filter, setFilter] = React.useState<string>("");
 
     // if (!data || !data.allGoogleTutoringSheet) {
@@ -101,6 +101,7 @@ export default function ChineseLanguageDictionaryPage({ data, location }: any) {
         </Layout>
     );
 }
+export default ChineseLanguageDictionaryPage;
 
 function WordCard({ word }: { word: Word }) {
     return (
