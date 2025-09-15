@@ -4,7 +4,7 @@ import { ResponsiveContainer, PieChart, Pie, Cell, Tooltip } from "recharts";
 
 const allPartsOfSpeech = graphql`
     query allWords {
-        all: allGoogleTutoringSheet {
+        allGoogleTutoringSheet {
             nodes {
                 partOfSpeech
             }
@@ -18,17 +18,24 @@ type PartOfSpeech = {
 export default function PartsOfSpeech() {
     const parts = useStaticQuery(allPartsOfSpeech);
 
-    const data: { name: string; value: number }[] = parts.all.nodes
-        .map((node: PartOfSpeech) => node.partOfSpeech || "Unknown")
-        .reduce((acc: any, part: string) => {
-            const found = acc.find((item: any) => item.name === part);
-            if (found) {
-                found.value += 1;
-            } else {
-                acc.push({ name: part, value: 1 });
-            }
-            return acc;
-        }, []);
+    console.log("parts", parts);
+
+    const data: { name: string; value: number }[] =
+        parts.allGoogleTutoringSheet.nodes
+            .filter(
+                (node: PartOfSpeech) =>
+                    node.partOfSpeech && node.partOfSpeech.trim() !== "",
+            )
+            .map((node: PartOfSpeech) => node.partOfSpeech || "Unknown")
+            .reduce((acc: any, part: string) => {
+                const found = acc.find((item: any) => item.name === part);
+                if (found) {
+                    found.value += 1;
+                } else {
+                    acc.push({ name: part, value: 1 });
+                }
+                return acc;
+            }, []);
 
     const COLORS = [
         "#0088FE",

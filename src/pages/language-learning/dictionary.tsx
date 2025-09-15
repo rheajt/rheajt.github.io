@@ -4,11 +4,10 @@ import styled from "styled-components";
 import Layout from "../../components/layout";
 import { Section } from "../../components/section";
 import Seo from "../../components/seo";
-import { Loader } from "../../components/loader";
 
-export const query = graphql`
-    query allWords {
-        allGoogleTutoringSheet(sort: { lesson: DESC }) {
+export const pageQuery = graphql`
+    query allWordsQuery {
+        allGoogleTutoringSheet {
             nodes {
                 id
                 chinese
@@ -32,20 +31,8 @@ type Word = {
     category?: string;
 };
 
-function ChineseLanguageDictionaryPage({ data, location }: any) {
+export default function ChineseLanguageDictionaryPage({ data, location }: any) {
     const [filter, setFilter] = React.useState<string>("");
-
-    // if (!data || !data.allGoogleTutoringSheet) {
-    //     return (
-    //         <Layout
-    //             location={location}
-    //             title="Chinese Language Learning Dictionary"
-    //         >
-    //             <Seo title="Chinese Language Learning Dictionary" />
-    //             <Loader />
-    //         </Layout>
-    //     );
-    // }
     return (
         <Layout
             location={location}
@@ -101,7 +88,6 @@ function ChineseLanguageDictionaryPage({ data, location }: any) {
         </Layout>
     );
 }
-export default ChineseLanguageDictionaryPage;
 
 function WordCard({ word }: { word: Word }) {
     return (
