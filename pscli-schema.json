@@ -1,0 +1,73 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Generated schema for Root",
+    "type": "object",
+    "properties": {
+        "name": {
+            "type": "string"
+        },
+        "description": {
+            "type": "string"
+        },
+        "author": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string"
+                }
+            },
+            "required": ["name", "email"]
+        },
+        "pages": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "entry": {
+                        "type": "string"
+                    },
+                    "filename": {
+                        "type": "string"
+                    },
+                    "title": {
+                        "type": "string"
+                    },
+                    "template": {
+                        "type": "string"
+                    },
+                    "destination": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "entry",
+                    "filename",
+                    "title",
+                    "template",
+                    "destination"
+                ]
+            },
+            "minItems": 0
+        },
+        "inserts": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "entry": {
+                        "type": "string"
+                    },
+                    "destination": {
+                        "type": "string"
+                    }
+                },
+                "required": ["entry", "destination"]
+            },
+            "minItems": 0
+        }
+    },
+    "required": ["name", "description", "author", "pages", "inserts"]
+}
