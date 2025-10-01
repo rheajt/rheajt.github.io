@@ -3,6 +3,12 @@ export const links = [
     {
         name: "About",
         to: "about",
-        children: [{ name: "Language Learning", to: "language-learning" }],
+        children: [
+            { name: "Language Learning", to: "language-learning" },
+            {
+                name: "Vexillology",
+                to: "vexillology",
+            },
+        ],
     },
 ];

@@ -27,7 +27,6 @@ type LessonTopic = {
     category?: string;
 };
 export default function ChineseLessonPage(props: any) {
-    console.log(props);
     const [update, setUpdate] = React.useState<string | undefined>(undefined);
     const notes = props.data.allGoogleTutoringSheet.nodes;
 

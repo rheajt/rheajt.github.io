@@ -24,6 +24,7 @@ const StyledSection = styled.section`
     padding: 3em 0.25em;
     margin: 0 auto;
     max-width: 800px;
+    min-height: 87vh;
 
     @media (max-width: 768px) {
         padding: 5em 0.25em;

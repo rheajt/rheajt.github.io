@@ -6,13 +6,6 @@ tags:
     - microsoft
     - sharepoint
     - lists
-<!-- quote: -->
-<!--     author: Brad Orr -->
-<!--     email: brad.orr@keystoneacademy.cn -->
-<!--     position: Director of Digital Learning -->
-<!--     employer: Keystone Academy -->
-<!--     text: It is ok. Not great. Not terrible. But it was ok. -->
-<!--     excerpt: Decent. Not terrible -->
 ---
 
 ### The movement to develop "low-code" and "no-code" tools that make development accessible to everyone. This only means great things for development!

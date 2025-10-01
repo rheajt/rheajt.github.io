@@ -66,15 +66,11 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     //     });
     // }
 
+    const isDev = process.env.NODE_ENV !== "production";
     const projectNodes = await graphql(`
         {
             allMarkdownRemark(
-                filter: {
-                    fields: {
-                        category: { eq: "project" }
-                        draft: { eq: false }
-                    }
-                }
+                filter: { fields: { category: { eq: "project" } } }
                 limit: 1000
             ) {
                 nodes {

@@ -69,13 +69,6 @@ module.exports = {
             },
         },
         {
-            resolve: `gatsby-source-filesystem`,
-            options: {
-                name: `lessons`,
-                path: `${__dirname}/content/hanzi_jsons`,
-            },
-        },
-        {
             resolve: "gatsby-source-google-spreadsheets",
             options: {
                 spreadsheetId: "1tJvDMO8ATqcR6KhXBYxO_Ygb9P9KXECBqEhk8JOh7pc",
@@ -89,12 +82,12 @@ module.exports = {
                 credentials: require("./googlesheets-creds.json"),
             },
         },
-        {
-            resolve: `gatsby-transformer-json`,
-            options: {
-                typeName: `HanziJson`, // a fixed string
-            },
-        },
+        // {
+        //     resolve: `gatsby-transformer-json`,
+        //     options: {
+        //         typeName: `HanziJson`, // a fixed string
+        //     },
+        // },
         {
             resolve: `gatsby-transformer-remark`,
             options: {
