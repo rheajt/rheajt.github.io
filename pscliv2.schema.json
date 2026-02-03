@@ -1,0 +1,72 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Generated schema for Root",
+    "type": "object",
+    "properties": {
+        "name": {
+            "type": "string"
+        },
+        "description": {
+            "type": "string"
+        },
+        "author": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string"
+                }
+            },
+            "required": ["name", "email"]
+        },
+        "server": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "powerschool": {
+                    "type": "string"
+                },
+                "registration": {
+                    "type": "string"
+                }
+            }
+        },
+        "cdns": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "entries": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "entry": {
+                        "type": "string"
+                    },
+                    "filename": {
+                        "type": "string"
+                    },
+                    "destination": {
+                        "type": "string"
+                    }
+                },
+                "required": ["entry", "destination"]
+            }
+        },
+        "pages": {
+            "type": "array",
+            "items": {}
+        },
+        "inserts": {
+            "type": "array",
+            "items": {}
+        }
+    },
+    "required": ["name", "description", "author"]
+}
