@@ -8,29 +8,22 @@ import Seo from "../components/seo";
 import { format } from "date-fns";
 import Share from "../components/share";
 import { BlogPostProps } from "../types/BlogPost";
-import { renderAst } from "../components/custom";
+import { PortableText } from "../components/portable-text";
 
 const BlogPostTemplate: React.FC<BlogPostProps> = ({ data, location }) => {
-    const post = data.markdownRemark;
+    const post = data.sanityPost;
     const siteTitle = data.site.siteMetadata?.title || `Title`;
-    const url = data.site.siteMetadata.siteUrl + "/blog/" + post.fields.slug;
+    const url = data.site.siteMetadata.siteUrl + "/blog/" + post.slug.current;
     const { previous, next } = data;
     let image = undefined;
 
-    if (post.frontmatter.image) {
-        image =
-            data.site.siteMetadata?.siteUrl + post.frontmatter.image.publicURL;
-    } else if (post.fields.thumbnail) {
-        image = post.fields.thumbnail;
+    if (post.image?.asset?.url) {
+        image = post.image.asset.url;
     }
 
     return (
         <Layout location={location} title={siteTitle}>
-            <Seo
-                title={post.frontmatter.title}
-                description={post.frontmatter.description || post.excerpt}
-                image={image}
-            />
+            <Seo title={post.title} description={post.title} image={image} />
 
             <article
                 className="blog-post"
@@ -38,14 +31,14 @@ const BlogPostTemplate: React.FC<BlogPostProps> = ({ data, location }) => {
                 itemType="http://schema.org/Article"
             >
                 <header>
-                    <h1 itemProp="headline">{post.frontmatter.title}</h1>
-                    <p>{format(new Date(post.fields.date), "PPP")}</p>
+                    <h1 itemProp="headline">{post.title}</h1>
+                    <p>{format(new Date(post.publishedAt), "PPP")}</p>
                 </header>
 
                 <Share url={url} />
 
                 <section itemProp="articleBody">
-                    {renderAst(post.htmlAst)}
+                    <PortableText value={post.body} />
                 </section>
 
                 <hr />
@@ -68,17 +61,17 @@ const BlogPostTemplate: React.FC<BlogPostProps> = ({ data, location }) => {
                     <li>
                         {previous && (
                             <Link
-                                to={"/blog/" + previous.fields.slug}
+                                to={"/blog/" + previous.slug.current}
                                 rel="prev"
                             >
-                                ← {previous.frontmatter.title}
+                                ← {previous.title}
                             </Link>
                         )}
                     </li>
                     <li>
                         {next && (
-                            <Link to={"/blog/" + next.fields.slug} rel="next">
-                                {next.frontmatter.title} →
+                            <Link to={"/blog/" + next.slug.current} rel="next">
+                                {next.title} →
                             </Link>
                         )}
                     </li>
@@ -88,8 +81,8 @@ const BlogPostTemplate: React.FC<BlogPostProps> = ({ data, location }) => {
             <Disqus
                 config={{
                     url: url,
-                    identifier: post.fields.slug,
-                    title: post.frontmatter.title,
+                    identifier: post.slug.current,
+                    title: post.title,
                 }}
             />
         </Layout>
@@ -110,43 +103,45 @@ export const pageQuery = graphql`
                 siteUrl
             }
         }
-        markdownRemark(id: { eq: $id }) {
+        sanityPost(id: { eq: $id }) {
             id
-            excerpt(pruneLength: 160)
-            html
-            htmlAst
-            frontmatter {
-                title
-                date(formatString: "MMMM DD, YYYY")
-                description
-                image {
-                    publicURL
-                    childImageSharp {
-                        gatsbyImageData(layout: CONSTRAINED)
+            title
+            publishedAt
+            slug {
+                current
+            }
+            image {
+                asset {
+                    url
+                    altText
+                    gatsbyImageData(layout: CONSTRAINED)
+                }
+            }
+            body {
+                ... on SanityBlock {
+                    _key
+                    _type
+                    style
+                    children {
+                        _key
+                        _type
+                        text
+                        marks
                     }
                 }
             }
-            fields {
-                date
-                thumbnail
-                slug
-            }
         }
-        previous: markdownRemark(id: { eq: $previousPostId }) {
-            fields {
-                slug
+        previous: sanityPost(id: { eq: $previousPostId }) {
+            slug {
+                current
             }
-            frontmatter {
-                title
-            }
+            title
         }
-        next: markdownRemark(id: { eq: $nextPostId }) {
-            fields {
-                slug
+        next: sanityPost(id: { eq: $nextPostId }) {
+            slug {
+                current
             }
-            frontmatter {
-                title
-            }
+            title
         }
     }
 `;

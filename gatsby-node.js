@@ -7,64 +7,57 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     const { createPage } = actions;
 
     // Define a template for blog post
-    // const blogPost = path.resolve(`./src/templates/blog-post.tsx`);
+    const blogPost = path.resolve(`./src/templates/blog-post.tsx`);
     const projectPage = path.resolve(`./src/templates/project-page.tsx`);
     const flashcardPage = path.resolve(`./src/templates/flashcards-page.tsx`);
     const languageLearningPage = path.resolve(
         `./src/templates/language-learning-page.tsx`,
     );
 
-    // Get all markdown blog posts sorted by date
-    // const postNodes = await graphql(`
-    //     {
-    //         allMarkdownRemark(
-    //             filter: {
-    //                 fields: { category: { eq: "blog" }, draft: { eq: false } }
-    //             }
-    //             sort: { fields: { date: DESC } }
-    //             limit: 1000
-    //         ) {
-    //             nodes {
-    //                 id
-    //                 fields {
-    //                     slug
-    //                 }
-    //             }
-    //         }
-    //     }
-    // `);
-    //
-    // if (postNodes.errors) {
-    //     reporter.panicOnBuild(
-    //         `There was an error loading your blog posts`,
-    //         result.errors,
-    //     );
-    //     return;
-    // }
-    //
-    // const posts = postNodes.data.allMarkdownRemark.nodes;
+    const postNodes = await graphql(`
+        {
+            allSanityPost(
+                filter: { slug: { current: { ne: null } } }
+                sort: { publishedAt: DESC }
+                limit: 1000
+            ) {
+                nodes {
+                    id
+                    slug {
+                        current
+                    }
+                }
+            }
+        }
+    `);
 
-    // Create blog posts pages
-    // But only if there's at least one markdown file found at "content/blog" (defined in gatsby-config.js)
-    // `context` is available in the template as a prop and as a variable in GraphQL
+    if (postNodes.errors) {
+        reporter.panicOnBuild(
+            `There was an error loading your blog posts`,
+            postNodes.errors,
+        );
+        return;
+    }
 
-    // if (posts.length > 0) {
-    //     posts.forEach((post, index) => {
-    //         const previousPostId = index === 0 ? null : posts[index - 1].id;
-    //         const nextPostId =
-    //             index === posts.length - 1 ? null : posts[index + 1].id;
-    //
-    //         createPage({
-    //             path: "/blog/" + post.fields.slug,
-    //             component: blogPost,
-    //             context: {
-    //                 id: post.id,
-    //                 previousPostId,
-    //                 nextPostId,
-    //             },
-    //         });
-    //     });
-    // }
+    const posts = postNodes.data.allSanityPost.nodes;
+
+    if (posts.length > 0) {
+        posts.forEach((post, index) => {
+            const previousPostId = index === 0 ? null : posts[index - 1].id;
+            const nextPostId =
+                index === posts.length - 1 ? null : posts[index + 1].id;
+
+            createPage({
+                path: "/blog/" + post.slug.current,
+                component: blogPost,
+                context: {
+                    id: post.id,
+                    previousPostId,
+                    nextPostId,
+                },
+            });
+        });
+    }
 
     const isDev = process.env.NODE_ENV !== "production";
     const projectNodes = await graphql(`

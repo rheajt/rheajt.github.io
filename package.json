@@ -8,6 +8,7 @@
         "url": "https://github.com/rheajt/rheajt.github.io"
     },
     "dependencies": {
+        "@portabletext/react": "^6.0.2",
         "@splidejs/react-splide": "^0.7.12",
         "babel-plugin-styled-components": "^2.1.4",
         "date-fns": "^4.1.0",
@@ -32,6 +33,7 @@
         "gatsby-remark-responsive-iframe": "^6.15.0",
         "gatsby-remark-smartypants": "^6.15.0",
         "gatsby-source-filesystem": "^5.15.0",
+        "gatsby-source-sanity": "^7.9.2",
         "gatsby-transformer-json": "^5.15.0",
         "gatsby-transformer-remark": "^6.15.0",
         "gatsby-transformer-sharp": "^5.15.0",

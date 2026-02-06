@@ -13,7 +13,7 @@ interface Props {
 
 const Blog: React.FC<Props> = ({ data, location }) => {
     const siteTitle = data.site.siteMetadata?.title || `Title`;
-    const posts = data.allMarkdownRemark.nodes;
+    const posts = data.allSanityPost.nodes;
 
     if (posts.length === 0) {
         return (
@@ -26,9 +26,9 @@ const Blog: React.FC<Props> = ({ data, location }) => {
     }
 
     const byMonth = posts.reduce((acc: any, page: any) => {
-        if (!page.fields.date) return acc;
+        if (!page.publishedAt) return acc;
 
-        const monthYear = format(new Date(page.fields.date), "MMMM yyyy");
+        const monthYear = format(new Date(page.publishedAt), "MMMM yyyy");
 
         if (acc[monthYear]) {
             acc[monthYear].push(page);
@@ -49,23 +49,27 @@ const Blog: React.FC<Props> = ({ data, location }) => {
                     <section key={month}>
                         <h3>{month}</h3>
                         {byMonth[month].map((page: any) => (
-                            <div key={`${month}-${page.fields.slug}`}>
-                                <Link to={`/blog/${page.fields.slug}`}>
-                                    <b>{page.frontmatter.title}</b>
+                            <div key={`${month}-${page.slug.current}`}>
+                                <Link to={`/blog/${page.slug.current}`}>
+                                    <b>{page.title}</b>
                                 </Link>
 
                                 <p>
                                     <i>
                                         {format(
-                                            new Date(page.fields.date),
+                                            new Date(page.publishedAt),
                                             "PPP",
                                         )}
                                     </i>{" "}
-                                    -{page.excerpt}
                                 </p>
                                 <p>
                                     Tags in this post:{" "}
-                                    <i>{page.frontmatter.tags.join(", ")}</i>
+                                    <i>
+                                        {(page.tags || [])
+                                            .map((tag: any) => tag?.label)
+                                            .filter(Boolean)
+                                            .join(", ")}
+                                    </i>
                                 </p>
                             </div>
                         ))}
@@ -85,20 +89,20 @@ export const pageQuery = graphql`
                 title
             }
         }
-        allMarkdownRemark(
-            filter: { fields: { category: { eq: "blog" } } }
-            sort: { fields: { date: DESC } }
+        allSanityPost(
+            filter: { slug: { current: { ne: null } } }
+            sort: { publishedAt: DESC }
         ) {
             nodes {
-                excerpt
-                fields {
-                    slug
-                    date
+                id
+                title
+                tags {
+                    _id
+                    label
                 }
-                frontmatter {
-                    title
-                    description
-                    tags
+                publishedAt
+                slug {
+                    current
                 }
             }
         }

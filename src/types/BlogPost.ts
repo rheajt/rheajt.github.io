@@ -1,5 +1,3 @@
-import { IGatsbyImageData } from "gatsby-plugin-image";
-
 export interface BlogPostProps {
     data: BlogPostData;
     location: Location;
@@ -12,42 +10,31 @@ export interface BlogPostData {
             title: string;
         };
     };
-    markdownRemark: {
+    sanityPost: {
         id: string;
-        excerpt: string;
-        html: string;
-        htmlAst: string;
-        frontmatter: {
-            title: string;
-            date: string;
-            description: string;
-            image: {
-                publicURL: string;
-                childImageSharp: {
-                    gatsbyImageData: IGatsbyImageData;
-                };
+        title: string;
+        publishedAt: string;
+        slug: {
+            current: string;
+        };
+        image?: {
+            altText?: string;
+            asset?: {
+                url?: string;
             };
         };
-        fields: {
-            date: string;
-            thumbnail: string;
-            slug: string;
-        };
+        body: any;
     };
-    previous: {
-        fields: {
-            slug: string;
+    previous?: {
+        slug: {
+            current: string;
         };
-        frontmatter: {
-            title: string;
+        title: string;
+    } | null;
+    next?: {
+        slug: {
+            current: string;
         };
-    };
-    next: {
-        fields: {
-            slug: string;
-        };
-        frontmatter: {
-            title: string;
-        };
-    };
+        title: string;
+    } | null;
 }
