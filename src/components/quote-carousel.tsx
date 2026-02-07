@@ -15,13 +15,13 @@ export const QuoteCarousel: React.FC<Props> = ({ quotes }) => {
     useEffect(() => {
         const node = ref.current;
         if (!node) {
-            setDims({
-                width:
-                    typeof window !== "undefined"
-                        ? Math.round(window.innerWidth)
-                        : 800,
-                height: 240,
-            });
+            // setDims({
+            //     width:
+            //         typeof window !== "undefined"
+            //             ? Math.round(window.innerWidth)
+            //             : 800,
+            //     height: 240,
+            // });
             return;
         }
 

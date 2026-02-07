@@ -21,13 +21,13 @@ export const Section = (props: SectionProps) => {
 };
 
 const StyledSection = styled.section`
-    padding: 3em 0.25em;
+    padding: 3em 0;
     margin: 0 auto;
     max-width: 800px;
-    min-height: 87vh;
+    // min-height: 87vh;
 
     @media (max-width: 768px) {
-        padding: 5em 0.25em;
+        padding: 5em 0.5em;
         max-width: var(--maxWidth-sm);
     }
 `;

@@ -197,7 +197,7 @@ export const BarCanvas: React.FC<Props> = ({
         };
     }, [width, height, id]);
 
-    console.log("Rendering BarCanvas", { width, height });
+    // console.log("Rendering BarCanvas", { width, height });
     return <StyledCanvas id={id} ref={canvasRef} />;
 };
 

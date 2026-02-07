@@ -155,7 +155,7 @@ const StyledHeader = styled.header`
     top: 0;
     width: 100%;
     z-index: 1;
-    padding: 0.25em;
+    padding: 1em;
 
     .container {
         max-width: 800px;
