@@ -30,13 +30,6 @@ const Home: React.FC<{ data: any; location: any }> = ({ data, location }) => {
     }, []);
     const headerImageSrc = data.headerImage.resize.src;
 
-    // const quotes = projects.reduce<Quote[]>((acc, p) => {
-    //     if (p.frontmatter.quote) {
-    //         acc.push(p.frontmatter.quote);
-    //     }
-    //     return acc;
-    // }, []);
-
     return (
         <Layout location={location} title={siteTitle}>
             <Seo
@@ -95,7 +88,7 @@ const Home: React.FC<{ data: any; location: any }> = ({ data, location }) => {
                 </p>
             </Section>
 
-            <QuoteCarousel quotes={quotes} />
+            <QuoteCarousel quotes={quotes.splice(0, 3)} />
 
             <ProjectsSection />
         </Layout>
