@@ -1,0 +1,81 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "PowerSchool CLI Configuration Schema",
+    "description": "A schema for validating PowerSchool CLI configuration files that is defined in a powerschool.json file at the root of a project.",
+    "type": "object",
+    "properties": {
+        "name": {
+            "type": "string",
+            "description": "The name of the project"
+        },
+        "description": {
+            "type": "string",
+            "description": "A brief description of the project"
+        },
+        "author": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "The author's name"
+                },
+                "email": {
+                    "type": "string",
+                    "description": "The author's email address",
+                    "format": "email"
+                }
+            },
+            "required": ["name", "email"]
+        },
+        "pages": {
+            "type": "array",
+            "description": "An array of page objects that are webpacked and placed in the plugins folder based on the destination property",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "entry": {
+                        "type": "string"
+                    },
+                    "filename": {
+                        "type": "string"
+                    },
+                    "title": {
+                        "type": "string"
+                    },
+                    "template": {
+                        "type": "string"
+                    },
+                    "destination": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "entry",
+                    "filename",
+                    "title",
+                    "template",
+                    "destination"
+                ]
+            },
+            "minItems": 0
+        },
+        "inserts": {
+            "type": "array",
+            "description": "An array of insert objects defining the inserts to be generated, these can be html files or image files",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "entry": {
+                        "type": "string"
+                    },
+                    "destination": {
+                        "type": "string"
+                    }
+                },
+                "required": ["entry", "destination"]
+            },
+            "minItems": 0
+        }
+    },
+    "required": ["name", "description", "author", "pages", "inserts"]
+}

@@ -58,7 +58,12 @@ typings/
 
 # gatsby files
 .cache/
-public
+# public - now used for SolidStart static assets
+
+# SolidStart / Vinxi
+.output/
+.vinxi/
+dist/
 
 # Mac files
 .DS_Store
