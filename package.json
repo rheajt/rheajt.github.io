@@ -1,90 +1,46 @@
 {
-    "name": "rheajt.github.io",
-    "private": true,
-    "description": "static blog site built with gatsby",
-    "version": "3.0.0",
-    "author": "jordan rhea <rheajt@gmail.com>",
-    "bugs": {
-        "url": "https://github.com/rheajt/rheajt.github.io"
-    },
-    "dependencies": {
-        "@portabletext/react": "^6.0.2",
-        "@splidejs/react-splide": "^0.7.12",
-        "babel-plugin-styled-components": "^2.1.4",
-        "date-fns": "^4.1.0",
-        "gatsby": "^5.15.0",
-        "gatsby-omni-font-loader": "^2.0.2",
-        "gatsby-plugin-disqus": "^1.2.6",
-        "gatsby-plugin-feed": "^5.15.0",
-        "gatsby-plugin-gatsby-cloud": "^5.14.0",
-        "gatsby-plugin-google-analytics": "^5.15.0",
-        "gatsby-plugin-google-gtag": "^5.15.0",
-        "gatsby-plugin-google-tagmanager": "^5.15.0",
-        "gatsby-plugin-image": "^3.15.0",
-        "gatsby-plugin-manifest": "^5.15.0",
-        "gatsby-plugin-offline": "^6.15.0",
-        "gatsby-plugin-react-helmet": "^6.15.0",
-        "gatsby-plugin-sass": "^6.15.0",
-        "gatsby-plugin-sharp": "^5.15.0",
-        "gatsby-plugin-styled-components": "^6.15.0",
-        "gatsby-remark-copy-linked-files": "^6.15.0",
-        "gatsby-remark-images": "^7.15.0",
-        "gatsby-remark-prismjs": "^7.15.0",
-        "gatsby-remark-responsive-iframe": "^6.15.0",
-        "gatsby-remark-smartypants": "^6.15.0",
-        "gatsby-source-filesystem": "^5.15.0",
-        "gatsby-source-sanity": "^7.9.2",
-        "gatsby-transformer-json": "^5.15.0",
-        "gatsby-transformer-remark": "^6.15.0",
-        "gatsby-transformer-sharp": "^5.15.0",
-        "prismjs": "^1.30.0",
-        "react": "^18.3.1",
-        "react-calendly": "^4.4.0",
-        "react-charts": "^3.0.0-beta.57",
-        "react-dom": "^18.3.1",
-        "react-helmet": "^6.1.0",
-        "react-icons": "^5.5.0",
-        "react-roughviz": "github:huedaya/react-roughviz",
-        "react-share": "^5.2.2",
-        "react-spring": "^10.0.1",
-        "react-text-transition": "^3.1.0",
-        "recharts": "^3.2.0",
-        "rehype-react": "^8.0.0",
-        "roughjs": "^4.6.6",
-        "sass": "^1.92.1",
-        "slugify": "^1.6.5",
-        "styled-components": "^6.1.19",
-        "typeface-merriweather": "^1.1.13",
-        "typeface-montserrat": "^1.1.13"
-    },
-    "devDependencies": {
-        "@types/react-helmet": "^6.1.11",
-        "@types/react-icons": "^2.2.7",
-        "gatsby-source-google-spreadsheets": "^3.0.9",
-        "gh-pages": "^6.3.0",
-        "prettier": "^3.6.2"
-    },
-    "homepage": "https://jordanrhea.com",
-    "keywords": [
-        "gatsby",
-        "portfolio",
-        "blog"
-    ],
-    "license": "0BSD",
-    "main": "n/a",
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/rheajt/rheajt.github.io.git"
-    },
-    "scripts": {
-        "build": "gatsby build",
-        "dev": "gatsby develop",
-        "post": "ts-node utils/post.ts",
-        "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
-        "start": "gatsby develop",
-        "serve": "gatsby serve",
-        "clean": "gatsby clean",
-        "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
-        "deploy": "gatsby build && gh-pages -b master -d public"
-    }
+  "name": "rheajt.github.io",
+  "private": true,
+  "description": "portfolio site built with SolidStart and Bun",
+  "version": "4.0.0",
+  "author": "jordan rhea <rheajt@gmail.com>",
+  "type": "module",
+  "scripts": {
+    "dev": "vinxi dev",
+    "build": "vinxi build",
+    "start": "vinxi start",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\""
+  },
+  "dependencies": {
+    "@solidjs/meta": "^0.29.4",
+    "@solidjs/router": "^0.15.3",
+    "@solidjs/start": "^1.1.0",
+    "date-fns": "^4.1.0",
+    "solid-icons": "^1.1.0",
+    "solid-js": "^1.9.5",
+    "solid-styled-components": "^0.28.5",
+    "vinxi": "^0.5.3"
+  },
+  "devDependencies": {
+    "@solidjs/testing-library": "^0.8.10",
+    "@testing-library/jest-dom": "^6.9.1",
+    "jsdom": "^29.0.2",
+    "prettier": "^3.6.2",
+    "sass": "^1.83.0",
+    "vite-plugin-solid": "^2.11.12",
+    "vitest": "^4.1.4"
+  },
+  "homepage": "https://jordanrhea.com",
+  "keywords": [
+    "solidjs",
+    "solidstart",
+    "portfolio"
+  ],
+  "license": "0BSD",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rheajt/rheajt.github.io.git"
+  }
 }

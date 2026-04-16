@@ -1,172 +1,48 @@
-import React, { FormEvent, useState } from "react";
-import { PokerSeat } from "../utils/pokerReducer";
-import PokerCardSelector from "./poker-card-selector";
+import { createSignal, Show, For } from "solid-js";
+import { styled } from "solid-styled-components";
+import type { PokerSeat } from "../utils/pokerReducer";
 
-const handAction = {
-    round: "",
-    action: "",
-};
+interface Props { seats: PokerSeat[]; }
 
-const PokerForm: React.FC<{ seats: PokerSeat[] }> = ({ seats }) => {
-    const [handActions, setHandActions] = useState<typeof handAction[]>([]);
+const PokerForm = (props: Props) => {
+  const [showResults, setShowResults] = createSignal(false);
 
-    function handleSubmit(e: FormEvent<HTMLFormElement>) {
-        e.preventDefault();
+  const results = () => {
+    return props.seats.map(seat => ({
+      name: seat.name || "Unknown",
+      profit: (seat.out ?? 0) - (seat.in ?? 0),
+    }));
+  };
 
-        console.log(handActions);
-    }
-
-    return (
-        <form onSubmit={handleSubmit}>
-            <div className="pre-flop">
-                <span>Dealt:</span>
-                <PokerCardSelector />
-                <PokerCardSelector />
-
-                <ActionSelect
-                    seats={seats}
-                    handleClick={() => {
-                        const updatedActions = [
-                            ...handActions,
-                            { round: "pre-flop", action: `stuff` },
-                        ];
-                        setHandActions(updatedActions);
-                    }}
-                >
-                    <div>
-                        {handActions
-                            .filter(ha => ha.round === "pre-flop")
-                            .map(ha => {
-                                return <p>{ha.action}</p>;
-                            })}
-                    </div>
-                </ActionSelect>
-            </div>
-            <div className="flop">
-                <span>Flop</span>
-                <PokerCardSelector />
-                <PokerCardSelector />
-                <PokerCardSelector />
-
-                <ActionSelect
-                    seats={seats}
-                    handleClick={() => {
-                        const updatedActions = [
-                            ...handActions,
-                            { round: "flop", action: `stuff` },
-                        ];
-                        setHandActions(updatedActions);
-                    }}
-                >
-                    <div>
-                        {handActions
-                            .filter(ha => ha.round === "flop")
-                            .map(ha => {
-                                return <p>{ha.action}</p>;
-                            })}
-                    </div>
-                </ActionSelect>
-            </div>
-
-            <div className="turn">
-                <span>Turn</span>
-                <PokerCardSelector />
-
-                <ActionSelect
-                    seats={seats}
-                    handleClick={() => {
-                        const updatedActions = [
-                            ...handActions,
-                            { round: "turn", action: `stuff` },
-                        ];
-                        setHandActions(updatedActions);
-                    }}
-                >
-                    <div>
-                        {handActions
-                            .filter(ha => ha.round === "turn")
-                            .map(ha => {
-                                return <p>{ha.action}</p>;
-                            })}
-                    </div>
-                </ActionSelect>
-            </div>
-
-            <div className="river">
-                <span>River</span>
-                <PokerCardSelector />
-
-                <ActionSelect
-                    seats={seats}
-                    handleClick={() => {
-                        const updatedActions = [
-                            ...handActions,
-                            { round: "river", action: `stuff` },
-                        ];
-                        setHandActions(updatedActions);
-                    }}
-                >
-                    <div>
-                        {handActions
-                            .filter(ha => ha.round === "river")
-                            .map(ha => {
-                                return <p>{ha.action}</p>;
-                            })}
-                    </div>
-                </ActionSelect>
-            </div>
-
-            <div className="showdown">
-                <button type="submit">Save Hand</button>
-            </div>
-        </form>
-    );
+  return (
+    <StyledPokerForm>
+      <button onClick={() => setShowResults(!showResults())}>
+        {showResults() ? "Hide Results" : "Show Results"}
+      </button>
+      <Show when={showResults()}>
+        <table>
+          <thead><tr><th>Player</th><th>Profit/Loss</th></tr></thead>
+          <tbody>
+            <For each={results()}>
+              {(r) => (
+                <tr>
+                  <td>{r.name}</td>
+                  <td style={{ color: r.profit >= 0 ? "green" : "red" }}>{r.profit >= 0 ? "+" : ""}{r.profit}</td>
+                </tr>
+              )}
+            </For>
+          </tbody>
+        </table>
+      </Show>
+    </StyledPokerForm>
+  );
 };
 
 export default PokerForm;
 
-const ActionSelect: React.FC<{
-    seats: PokerSeat[];
-    handleClick: () => void;
-    children: JSX.Element;
-}> = ({ seats, handleClick, children }) => {
-    return (
-        <>
-            <div className="poker-action">
-                <select>
-                    <option value="UTG">UTG</option>
-                    <option value="UTG+1">UTG+1</option>
-                    <option value="MP">MP</option>
-                    <option value="HJ">HJ</option>
-                    <option value="CO">CO</option>
-                    <option value="BTN">BTN</option>
-                    <option value="SB">SB</option>
-                    <option value="BB">BB</option>
-                </select>
-
-                <select>
-                    {seats.map((s, idx) => {
-                        return (
-                            <option value={s.name} key={"pre-flop-" + idx}>
-                                {s.name}
-                            </option>
-                        );
-                    })}
-                </select>
-
-                <select>
-                    <option value="check">check</option>
-                    <option value="bet">bet</option>
-                    <option value="raise">raise</option>
-                    <option value="call">call</option>
-                    <option value="fold">fold</option>
-                </select>
-
-                <input type="number" />
-            </div>
-            <button onClick={handleClick}>+</button>
-
-            {children}
-        </>
-    );
-};
+const StyledPokerForm = styled.div`
+  margin-top: 1rem;
+  button { padding: 0.5rem 1rem; background-color: var(--color-primary); color: white; border: none; border-radius: 3px; cursor: pointer; }
+  table { width: 100%; margin-top: 1rem; border-collapse: collapse; }
+  th, td { padding: 0.5rem; border-bottom: 1px solid lightgray; text-align: left; }
+`;

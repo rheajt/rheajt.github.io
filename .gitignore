@@ -56,9 +56,10 @@ typings/
 # dotenv environment variable files
 .env*
 
-# gatsby files
-.cache/
-public
+# SolidStart / Vinxi
+.output/
+.vinxi/
+dist/
 
 # Mac files
 .DS_Store
