@@ -1,99 +1,43 @@
-import * as React from "react";
-import { useStaticQuery, graphql } from "gatsby";
+import { Title, Meta } from "@solidjs/meta";
+import { Show, For } from "solid-js";
+import { siteMetadata } from "../site-config";
 
-interface Props {
-    description?: string;
-    lang?: string;
-    meta?: { name?: string; property?: string; content: string }[];
-    title?: string;
-    image?: string;
+interface SeoProps {
+  description?: string;
+  lang?: string;
+  meta?: { name?: string; property?: string; content: string }[];
+  title?: string;
+  image?: string;
 }
 
-const Head: React.FC<Props> = ({
-    description = "",
-    lang = "en",
-    meta = [],
-    title = "jordanrhea.com",
-    image,
-}) => {
-    const { site } = useStaticQuery(graphql`
-        query {
-            site {
-                siteMetadata {
-                    title
-                    description
-                    siteUrl
-                    social {
-                        twitter
-                    }
-                }
-            }
-        }
-    `);
+export default function Seo(props: SeoProps) {
+  const description = () => props.description || siteMetadata.description;
+  const title = () => props.title || "jordanrhea.com";
+  const defaultTitle = siteMetadata.title;
+  const fullTitle = () => defaultTitle ? `${title()} | ${defaultTitle}` : title();
 
-    const metaDescription = description || site.siteMetadata.description;
-    const defaultTitle = site.siteMetadata?.title;
-    const fullTitle = defaultTitle ? `${title} | ${defaultTitle}` : title;
-
-    const baseMeta = [
-        <meta name="description" content={metaDescription} key="description" />,
-        <meta name="language" content={lang} key="language" />,
-        <meta property="og:title" content={title} key="og:title" />,
-        <meta
-            property="og:description"
-            content={metaDescription}
-            key="og:description"
-        />,
-        <meta property="og:type" content="website" key="og:type" />,
-        <meta name="twitter:card" content="summary" key="twitter:card" />,
-        <meta
-            name="twitter:creator"
-            content={site.siteMetadata?.social?.twitter || ""}
-            key="twitter:creator"
-        />,
-        <meta name="twitter:title" content={title} key="twitter:title" />,
-        <meta
-            name="twitter:description"
-            content={metaDescription}
-            key="twitter:description"
-        />,
-    ];
-
-    const imageMeta = image
-        ? [
-              <meta property="og:image" content={image} key="og:image" />,
-              <meta name="twitter:image" content={image} key="twitter:image" />,
-          ]
-        : [];
-
-    const additionalMeta = meta.map((m, i) => {
-        if (m.name)
-            return (
-                <meta
-                    name={m.name}
-                    content={m.content}
-                    key={`meta-name-${m.name}-${i}`}
-                />
-            );
-        if (m.property)
-            return (
-                <meta
-                    property={m.property}
-                    content={m.content}
-                    key={`meta-prop-${m.property}-${i}`}
-                />
-            );
-        return null;
-    });
-
-    return (
-        <>
-            <title>{fullTitle}</title>
-            {baseMeta}
-            {imageMeta}
-            {additionalMeta}
-        </>
-    );
-};
-
-export default Head;
+  return (
+    <>
+      <Title>{fullTitle()}</Title>
+      <Meta name="description" content={description()} />
+      <Meta property="og:title" content={title()} />
+      <Meta property="og:description" content={description()} />
+      <Meta property="og:type" content="website" />
+      <Meta name="twitter:card" content="summary" />
+      <Meta name="twitter:creator" content={siteMetadata.social?.twitter || ""} />
+      <Meta name="twitter:title" content={title()} />
+      <Meta name="twitter:description" content={description()} />
+      <Show when={props.image}>
+        <Meta property="og:image" content={props.image!} />
+        <Meta name="twitter:image" content={props.image!} />
+      </Show>
+      <For each={props.meta || []}>
+        {(m) => (
+          <Show when={m.name || m.property}>
+            <Meta {...(m.name ? { name: m.name } : {})} {...(m.property ? { property: m.property } : {})} content={m.content} />
+          </Show>
+        )}
+      </For>
+    </>
+  );
+}

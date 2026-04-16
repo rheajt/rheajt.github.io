@@ -1,7 +1,7 @@
-import Layout from "~/components/solid/layout";
-import Seo from "~/components/solid/seo";
-import Bio from "~/components/solid/bio";
-import { Section } from "~/components/solid/section";
+import Layout from "~/components/layout";
+import Seo from "~/components/seo";
+import Bio from "~/components/bio";
+import { Section } from "~/components/section";
 
 export default function Blog() {
   return (

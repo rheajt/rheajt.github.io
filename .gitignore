@@ -56,10 +56,6 @@ typings/
 # dotenv environment variable files
 .env*
 
-# gatsby files
-.cache/
-# public - now used for SolidStart static assets
-
 # SolidStart / Vinxi
 .output/
 .vinxi/

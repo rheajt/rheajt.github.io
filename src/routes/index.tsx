@@ -1,9 +1,9 @@
-import Layout from "~/components/solid/layout";
-import Seo from "~/components/solid/seo";
-import { Loader } from "~/components/solid/loader";
-import { Hero } from "~/components/solid/hero";
-import { Section } from "~/components/solid/section";
-import { LinkButton } from "~/components/solid/link-button";
+import Layout from "~/components/layout";
+import Seo from "~/components/seo";
+import { Loader } from "~/components/loader";
+import { Hero } from "~/components/hero";
+import { Section } from "~/components/section";
+import { LinkButton } from "~/components/link-button";
 import { siteMetadata } from "~/site-config";
 
 export default function Home() {

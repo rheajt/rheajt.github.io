@@ -1,9 +1,9 @@
 import { createSignal } from "solid-js";
-import Layout from "~/components/solid/layout";
-import Seo from "~/components/solid/seo";
-import { Section } from "~/components/solid/section";
-import PokerSeats from "~/components/solid/poker-seats";
-import PokerForm from "~/components/solid/poker-form";
+import Layout from "~/components/layout";
+import Seo from "~/components/seo";
+import { Section } from "~/components/section";
+import PokerSeats from "~/components/poker-seats";
+import PokerForm from "~/components/poker-form";
 import type { PokerSeat } from "~/utils/pokerReducer";
 
 const initialSeat: PokerSeat = { name: "", hero: false, in: 0 };

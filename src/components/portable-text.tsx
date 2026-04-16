@@ -1,58 +1,62 @@
-import * as React from "react";
-import { PortableText as PortableTextReact } from "@portabletext/react";
-import { GatsbyImage, getImage, IGatsbyImageData } from "gatsby-plugin-image";
+import { For, Show, Switch, Match } from "solid-js";
+import type { JSX } from "solid-js";
 
-type SanityImage = {
-    altText?: string;
-    asset?: {
-        url?: string;
-        gatsbyImageData?: IGatsbyImageData;
-    };
-};
+interface Block {
+  _type: string;
+  _key?: string;
+  style?: string;
+  children?: any[];
+  markDefs?: any[];
+  listItem?: string;
+  asset?: { url?: string };
+  altText?: string;
+}
 
-const components = {
-    types: {
-        image: ({ value }: { value: SanityImage }) => {
-            const gatsbyImage = getImage(value?.asset?.gatsbyImageData ?? null);
+function renderSpan(span: any, markDefs: any[] = []): JSX.Element {
+  let text: JSX.Element = span.text || "";
+  if (span.marks && span.marks.length > 0) {
+    for (const markKey of span.marks) {
+      if (markKey === "strong") text = <strong>{text}</strong>;
+      else if (markKey === "em") text = <em>{text}</em>;
+      else if (markKey === "code") text = <code>{text}</code>;
+      else {
+        const def = markDefs.find((d: any) => d._key === markKey);
+        if (def && def._type === "link") {
+          const isExternal = /^https?:\/\//.test(def.href || "");
+          text = <a href={def.href} target={isExternal ? "_blank" : undefined} rel={isExternal ? "noreferrer noopener" : undefined}>{text}</a>;
+        }
+      }
+    }
+  }
+  return text;
+}
 
-            if (gatsbyImage) {
-                return (
-                    <GatsbyImage
-                        image={gatsbyImage}
-                        alt={value?.altText || ""}
-                    />
-                );
-            }
+function renderBlock(block: Block): JSX.Element {
+  if (block._type === "image") {
+    return <Show when={block.asset?.url}><img src={block.asset!.url} alt={block.altText || ""} style={{ "max-width": "100%" }} /></Show>;
+  }
 
-            if (value?.asset?.url) {
-                return <img src={value.asset.url} alt={value?.altText || ""} />;
-            }
+  if (block._type !== "block") return null as unknown as JSX.Element;
 
-            return null;
-        },
-    },
-    marks: {
-        link: ({
-            value,
-            children,
-        }: {
-            value?: { href?: string };
-            children: any;
-        }) => {
-            const href = value?.href || "";
-            const isExternal = /^https?:\/\//.test(href);
-            const rel = isExternal ? "noreferrer noopener" : undefined;
-            const target = isExternal ? "_blank" : undefined;
+  const children = (
+    <For each={block.children || []}>
+      {(child) => renderSpan(child, block.markDefs)}
+    </For>
+  );
 
-            return (
-                <a href={href} rel={rel} target={target}>
-                    {children}
-                </a>
-            );
-        },
-    },
-};
+  return (
+    <Switch fallback={<p>{children}</p>}>
+      <Match when={block.style === "h1"}><h1>{children}</h1></Match>
+      <Match when={block.style === "h2"}><h2>{children}</h2></Match>
+      <Match when={block.style === "h3"}><h3>{children}</h3></Match>
+      <Match when={block.style === "h4"}><h4>{children}</h4></Match>
+      <Match when={block.style === "blockquote"}><blockquote>{children}</blockquote></Match>
+      <Match when={block.style === "normal" || !block.style}><p>{children}</p></Match>
+    </Switch>
+  );
+}
 
-export const PortableText = ({ value }: { value: any }) => {
-    return <PortableTextReact value={value} components={components} />;
+export const PortableText = (props: { value: any }) => {
+  const blocks = () => (Array.isArray(props.value) ? props.value : []);
+  return <For each={blocks()}>{(block) => renderBlock(block)}</For>;
 };

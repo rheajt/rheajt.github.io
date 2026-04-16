@@ -1,6 +1,6 @@
-import Layout from "~/components/solid/layout";
-import Seo from "~/components/solid/seo";
-import { Section } from "~/components/solid/section";
+import Layout from "~/components/layout";
+import Seo from "~/components/seo";
+import { Section } from "~/components/section";
 import { buildMapboxSrc } from "~/utils/buildMapboxSrc";
 import { styled } from "solid-styled-components";
 
