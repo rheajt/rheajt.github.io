@@ -3,9 +3,7 @@ import { render, screen, fireEvent } from "@solidjs/testing-library";
 import PokerSeats from "~/components/poker-seats";
 
 describe("PokerSeats", () => {
-    const seats = [
-        { name: "Player 1", hero: true, in: 100, out: 0 },
-    ];
+    const seats = [{ name: "Player 1", hero: true, in: 100, out: 0 }];
 
     it("renders seat inputs", () => {
         const handleUpdate = vi.fn();

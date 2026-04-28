@@ -1,0 +1,112 @@
+name: Jordan Rhea
+headline: Data software consultant for schools and educational institutions
+tagline: Building tools and connecting systems.
+location: Beijing, China
+links:
+  - label: LinkedIn
+    url: https://www.linkedin.com/in/rheajt/
+  - label: GitHub
+    url: https://github.com/rheajt
+  - label: YouTube
+    url: https://www.youtube.com/jordanrhea
+  - label: Strava
+    url: https://www.strava.com/athletes/132740066
+summary:
+  - Data software consultant specializing in educational institutions, with a
+    blend of technical expertise and classroom experience.
+  - Founder of School Data Solutions and creator of PSISJS support services for
+    PowerSchool SIS customization.
+  - Builds automations and integrations across PowerSchool, Microsoft 365,
+    SharePoint, Google Workspace, Google Apps Script, and TypeScript/JavaScript
+    ecosystems.
+  - Focuses on connecting data systems, reducing repetitive work, and helping
+    schools make informed operational decisions.
+experience:
+  - role: Founder / Data Software Consultant
+    organization: School Data Solutions
+    location: Remote / Education technology
+    period: Current
+    highlights:
+      - Created a data software consulting company focused on educational
+        institutions.
+      - Crafts solutions that use school data to optimize operations and support
+        improved student outcomes.
+      - Bridges school workflows with technical systems so educators can use the
+        platforms they already have more effectively.
+  - role: PowerSchool SIS Customization Consultant
+    organization: PSISJS
+    location: Education technology
+    period: Current
+    highlights:
+      - Provides support services and customization options for PowerSchool SIS.
+      - Builds PowerSchool plugins and tools that improve productivity, user
+        experience, and access to school data.
+      - Developed pscli, a TypeScript and Node.js CLI that streamlines
+        PowerSchool plugin development.
+  - role: Solutions Developer
+    organization: Educational institutions
+    location: Beijing, China
+    period: Current
+    highlights:
+      - Extends the capabilities of Microsoft Office 365, SharePoint, Google
+        Workspace, and Google Apps Script.
+      - Builds SPFx web parts, Power Apps portals, dashboards, landing pages,
+        and workflow automations.
+      - Uses JavaScript, TypeScript, and Google Apps Script to automate
+        repetitive work and improve digital workflows.
+  - role: Middle School English Teacher
+    organization: Education
+    location: Richmond, Virginia
+    period: Previous
+    highlights:
+      - Taught middle school English and language arts.
+      - Brought classroom experience into later education technology consulting
+        work.
+  - role: United States Marine
+    organization: United States Marine Corps
+    location: Okinawa, Japan
+    period: Previous
+    highlights:
+      - Served in Okinawa, Japan before moving into education and software
+        development.
+projects:
+  - PowerSchool CLI
+  - PowerSchool Customization
+  - SharePoint Bulletins
+  - PowerSchool Log Entries
+  - United Data Server
+  - PowerSchool SharePoint Web Parts
+  - Academic Support Portal with Power Apps
+  - WASC Report Dashboard
+  - Landing Pages
+  - Chinese Language Learning
+  - Vexillology Quiz Results
+  - Totally Unscripted Appearance
+skills:
+  - PowerSchool SIS
+  - PowerSchool plugins
+  - Microsoft Office 365
+  - Microsoft SharePoint
+  - SPFx
+  - Power Apps
+  - Google Workspace
+  - Google Apps Script
+  - JavaScript
+  - TypeScript
+  - Node.js
+  - SolidStart
+  - Data dashboards
+  - School data integrations
+  - Workflow automation
+background:
+  - Lived and worked across Okinawa, Richmond, Izmir, and Beijing.
+  - Self-taught computer programmer with a background in classroom education.
+  - GitHub profile describes the work as blending code, creativity, educator
+    tools, plugins, and database queries.
+sourceNotes:
+  - "LinkedIn profile URL supplied: https://www.linkedin.com/in/rheajt/"
+  - LinkedIn public page blocked direct extraction, so this file also uses
+    publicly available profile links and jordanrhea.com content explored during
+    the update.
+  - Public sources checked include jordanrhea.com, jordanrhea.com/projects, and
+    github.com/rheajt.

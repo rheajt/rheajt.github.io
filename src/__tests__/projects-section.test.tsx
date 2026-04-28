@@ -1,73 +1,57 @@
-import { describe, it, expect } from "vitest";
+import { describe, it, expect, vi, beforeEach } from "vitest";
 import { render, screen } from "@solidjs/testing-library";
 import { Router } from "@solidjs/router";
+
+vi.mock("~/lib/sanity", () => ({
+    fetchPosts: vi.fn(() =>
+        Promise.resolve([
+            {
+                _id: "1",
+                title: "Project One",
+                slug: { current: "project-one" },
+                summary: "First project description",
+                publishedAt: "2024-01-01",
+                imageUrl: "/img/test.png",
+            },
+        ]),
+    ),
+}));
+
 import { ProjectsSection } from "~/components/projects-section";
+import { fetchPosts } from "~/lib/sanity";
 
 function renderInRouter(ui: () => any) {
-    return render(() => (
-        <Router root={() => ui()}>{[]}</Router>
-    ));
+    return render(() => <Router root={() => ui()}>{[]}</Router>);
 }
 
 describe("ProjectsSection", () => {
-    it("does not render when projects is undefined", () => {
-        const { container } = renderInRouter(() => (
-            <ProjectsSection />
-        ));
-        expect(
-            container.querySelector("section"),
-        ).not.toBeInTheDocument();
+    beforeEach(() => {
+        vi.clearAllMocks();
     });
 
-    it("does not render when projects is empty", () => {
-        const { container } = renderInRouter(() => (
-            <ProjectsSection projects={[]} />
-        ));
-        expect(
-            container.querySelector("section"),
-        ).not.toBeInTheDocument();
-    });
-
-    it("renders projects when provided", () => {
-        const projects = [
-            {
-                id: "1",
-                title: "Project One",
-                slug: "project-one",
-                excerpt: "First project description",
-            },
-            {
-                id: "2",
-                title: "Project Two",
-                slug: "project-two",
-                excerpt: "Second project description",
-            },
-        ];
-        renderInRouter(() => (
-            <ProjectsSection projects={projects} />
-        ));
-        expect(screen.getByText("Project One")).toBeInTheDocument();
-        expect(screen.getByText("Project Two")).toBeInTheDocument();
+    it("renders projects from Sanity", async () => {
+        renderInRouter(() => <ProjectsSection />);
+        expect(vi.mocked(fetchPosts)).toHaveBeenCalledWith(4);
+        expect(await screen.findByText("Project One")).toBeInTheDocument();
         expect(
             screen.getByText("First project description"),
         ).toBeInTheDocument();
+        expect(screen.getByText("January 1, 2024")).toBeInTheDocument();
+        expect(screen.queryByRole("link", { name: "Project One" })).toBeNull();
     });
 
-    it("renders project image when imageUrl provided", () => {
-        const projects = [
-            {
-                id: "1",
-                title: "With Image",
-                slug: "with-image",
-                excerpt: "Has an image",
-                imageUrl: "/img/test.png",
-            },
-        ];
-        renderInRouter(() => (
-            <ProjectsSection projects={projects} />
-        ));
-        const img = screen.getByAltText("With Image");
-        expect(img).toBeInTheDocument();
-        expect(img).toHaveAttribute("src", "/img/test.png");
+    it("renders a View All Projects link", async () => {
+        renderInRouter(() => <ProjectsSection />);
+        const link = await screen.findByText("View All Projects");
+        expect(link).toBeInTheDocument();
+        expect(link.closest("a")).toHaveAttribute("href", "/projects");
+    });
+
+    it("shows an error message when projects are unavailable", async () => {
+        vi.mocked(fetchPosts).mockRejectedValueOnce(new Error("offline"));
+        renderInRouter(() => <ProjectsSection />);
+        expect(
+            await screen.findByText(/projects are temporarily unavailable/i),
+        ).toBeInTheDocument();
     });
 });

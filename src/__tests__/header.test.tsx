@@ -4,9 +4,7 @@ import { Router } from "@solidjs/router";
 import { Header, BasicHeader } from "~/components/header";
 
 function renderInRouter(ui: () => any) {
-    return render(() => (
-        <Router root={() => ui()}>{[]}</Router>
-    ));
+    return render(() => <Router root={() => ui()}>{[]}</Router>);
 }
 
 describe("Header", () => {
@@ -14,10 +12,7 @@ describe("Header", () => {
         renderInRouter(() => <Header pathname="/" />);
         const img = screen.getByAltText("jordan rhea header");
         expect(img).toBeInTheDocument();
-        expect(img).toHaveAttribute(
-            "src",
-            "/content/img/jr-icon.png",
-        );
+        expect(img).toHaveAttribute("src", "/content/img/jr-icon.png");
     });
 
     it("renders navigation links", () => {
@@ -35,17 +30,13 @@ describe("Header", () => {
         const { container } = renderInRouter(() => (
             <Header pathname="/projects" />
         ));
-        const projectsLink = container.querySelector(
-            'a[href="/projects"]',
-        );
+        const projectsLink = container.querySelector('a[href="/projects"]');
         expect(projectsLink?.className).toContain("active");
     });
 
     it("renders dropdown children for About", () => {
         renderInRouter(() => <Header pathname="/" />);
-        expect(
-            screen.getByText("Language Learning"),
-        ).toBeInTheDocument();
+        expect(screen.getByText("Language Learning")).toBeInTheDocument();
         expect(screen.getByText("Vexillology")).toBeInTheDocument();
     });
 });

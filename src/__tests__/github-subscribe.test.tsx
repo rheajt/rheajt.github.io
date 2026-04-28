@@ -7,9 +7,7 @@ describe("GithubSubscribe", () => {
         const { container } = render(() => <GithubSubscribe />);
         const link = container.querySelector(".github-button");
         expect(link).toBeInTheDocument();
-        expect(link?.getAttribute("href")).toBe(
-            "https://github.com/rheajt",
-        );
+        expect(link?.getAttribute("href")).toBe("https://github.com/rheajt");
     });
 
     it("shows follow text", () => {

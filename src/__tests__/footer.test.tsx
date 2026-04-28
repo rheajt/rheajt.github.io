@@ -4,9 +4,7 @@ import { Router, Route } from "@solidjs/router";
 import { Footer } from "~/components/footer";
 
 function renderInRouter(ui: () => any) {
-    return render(() => (
-        <Router root={() => ui()}>{[]}</Router>
-    ));
+    return render(() => <Router root={() => ui()}>{[]}</Router>);
 }
 
 describe("Footer", () => {

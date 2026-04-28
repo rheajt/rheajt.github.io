@@ -1,5 +1,6 @@
 export const links = [
     { name: "Projects", to: "projects" },
+    { name: "Resume", to: "resume" },
     {
         name: "About",
         to: "about",

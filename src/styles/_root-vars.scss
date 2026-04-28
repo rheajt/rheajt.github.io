@@ -11,6 +11,7 @@
     --maxWidth-4xl: 56rem;
     --maxWidth-full: "100%";
     --maxWidth-wrapper: var(--maxWidth-2xl);
+    --layout-width: 64rem;
     --spacing-px: "1px";
     --spacing-0: 0;
     --spacing-1: calc(var(--grid-size) / 4);
@@ -26,7 +27,10 @@
     --spacing-20: calc(var(--grid-size) * 5);
     --spacing-24: calc(var(--grid-size) * 6);
     --spacing-32: calc(var(--grid-size) * 8);
-    --fontFamily-cursive: Patrick Hand, cursive;
+    --fontFamily-display:
+        "Space Grotesk", system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", sans-serif;
+    --fontFamily-mono: "Space Mono", "Courier New", monospace;
     --fontFamily-sans:
         Work Sans, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
         Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
@@ -35,7 +39,7 @@
     --fontFamily-serif:
         "Merriweather", "Georgia", Cambria, "Times New Roman", Times, serif;
     --font-body: var(--fontFamily-sans);
-    --font-heading: var(--fontFamily-cursive);
+    --font-heading: var(--fontFamily-display);
     --fontWeight-normal: 400;
     --fontWeight-medium: 500;
     --fontWeight-semibold: 600;

@@ -12,12 +12,12 @@ export interface PokerSeat {
 type Actions =
     | { type: "add_seat" }
     | {
-        type: "update_seat";
-        payload: {
-            seatIdx: number;
-            update: Partial<PokerSeat>;
-        };
-    };
+          type: "update_seat";
+          payload: {
+              seatIdx: number;
+              update: Partial<PokerSeat>;
+          };
+      };
 
 const initialSeat = {
     name: "",

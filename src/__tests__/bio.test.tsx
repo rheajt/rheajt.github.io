@@ -17,14 +17,9 @@ describe("Bio", () => {
 
     it("renders avatar image", () => {
         render(() => <Bio />);
-        const img = screen.getByAltText(
-            "jordan rhea wearing a hoodie",
-        );
+        const img = screen.getByAltText("jordan rhea wearing a hoodie");
         expect(img).toBeInTheDocument();
-        expect(img).toHaveAttribute(
-            "src",
-            "/content/img/avatar-image.png",
-        );
+        expect(img).toHaveAttribute("src", "/content/img/avatar-image.png");
     });
 
     it("renders social links", () => {
@@ -32,9 +27,7 @@ describe("Bio", () => {
         const links = container.querySelectorAll("a");
         expect(links.length).toBe(4);
 
-        const hrefs = Array.from(links).map(l =>
-            l.getAttribute("href"),
-        );
+        const hrefs = Array.from(links).map(l => l.getAttribute("href"));
         expect(hrefs).toContain("https://twitter.com/rheajt");
         expect(hrefs).toContain("https://linkedin.com/in/rheajt");
         expect(hrefs).toContain("https://youtube.com/jordanrhea");

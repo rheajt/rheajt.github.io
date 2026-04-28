@@ -6,16 +6,16 @@ import { Suspense } from "solid-js";
 import "./styles/style.scss";
 
 export default function App() {
-  return (
-    <Router
-      root={(props) => (
-        <MetaProvider>
-          <Title>jordan rhea</Title>
-          <Suspense>{props.children}</Suspense>
-        </MetaProvider>
-      )}
-    >
-      <FileRoutes />
-    </Router>
-  );
+    return (
+        <Router
+            root={props => (
+                <MetaProvider>
+                    <Title>jordan rhea</Title>
+                    <Suspense>{props.children}</Suspense>
+                </MetaProvider>
+            )}
+        >
+            <FileRoutes />
+        </Router>
+    );
 }

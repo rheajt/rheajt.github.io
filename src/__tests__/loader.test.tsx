@@ -1,10 +1,27 @@
-import { describe, it, expect } from "vitest";
-import { render, screen } from "@solidjs/testing-library";
+import { describe, it, expect, vi } from "vitest";
+import { render } from "@solidjs/testing-library";
 import { Loader } from "~/components/loader";
 
 describe("Loader", () => {
-    it("renders the loader element", () => {
-        const { container } = render(() => <Loader />);
-        expect(container.querySelector(".load-circle")).toBeInTheDocument();
+    it("dismisses the server-rendered loader element", () => {
+        document.body.innerHTML = `<div id="page-loader"><div class="load-circle"></div></div>`;
+
+        vi.stubGlobal(
+            "requestAnimationFrame",
+            (callback: FrameRequestCallback) => {
+                callback(0);
+                return 0;
+            },
+        );
+
+        render(() => <Loader />);
+
+        const loader = document.getElementById("page-loader");
+
+        expect(loader).toHaveClass("ready");
+
+        loader?.dispatchEvent(new Event("transitionend"));
+
+        expect(document.getElementById("page-loader")).not.toBeInTheDocument();
     });
 });

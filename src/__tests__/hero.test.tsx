@@ -20,8 +20,6 @@ describe("Hero", () => {
 
     it("renders cloud tech text", () => {
         const { container } = render(() => <Hero />);
-        expect(container.textContent).toContain(
-            "and I build software for",
-        );
+        expect(container.textContent).toContain("and I build software for");
     });
 });

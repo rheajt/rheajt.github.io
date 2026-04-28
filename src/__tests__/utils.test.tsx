@@ -100,9 +100,7 @@ describe("pokerReducer", () => {
     it("updates a seat name", () => {
         const state = {
             ...initialState,
-            seats: [
-                { name: "Old", hero: false, in: 0 } as PokerSeat,
-            ],
+            seats: [{ name: "Old", hero: false, in: 0 } as PokerSeat],
         };
         const result = reducer(state, {
             type: "update_seat",
@@ -114,9 +112,7 @@ describe("pokerReducer", () => {
     it("updates a seat hero status", () => {
         const state = {
             ...initialState,
-            seats: [
-                { name: "Test", hero: false, in: 0 } as PokerSeat,
-            ],
+            seats: [{ name: "Test", hero: false, in: 0 } as PokerSeat],
         };
         const result = reducer(state, {
             type: "update_seat",

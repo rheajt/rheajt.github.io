@@ -2,83 +2,15 @@
 
 /* HTML elements */
 
-/* Note: Splide CSS removed during SolidStart migration */
-/* @import "@splidejs/react-splide/css"; */
+@use "normalize";
+@use "root-vars";
+@use "custom";
 
-@import "normalize";
-@import "root-vars";
-@import "custom";
-
-@import "icon-container";
-@import "share-icons";
-@import "poker-page";
-@import "blockquote";
-@import "contact-form";
-
-/* Global CSS variables (moved from React createGlobalStyle in layout.tsx) */
-:root {
-    --grid-size: 1.5rem;
-    --maxWidth-none: "none";
-    --maxWidth-xs: 20rem;
-    --maxWidth-sm: 24rem;
-    --maxWidth-md: 28rem;
-    --maxWidth-lg: 32rem;
-    --maxWidth-xl: 36rem;
-    --maxWidth-2xl: 42rem;
-    --maxWidth-3xl: 48rem;
-    --maxWidth-4xl: 56rem;
-    --maxWidth-full: "100%";
-    --maxWidth-wrapper: var(--maxWidth-2xl);
-    --spacing-px: "1px";
-    --spacing-0: 0;
-    --spacing-1: calc(var(--grid-size) / 4);
-    --spacing-2: calc(var(--grid-size) / 2);
-    --spacing-3: calc(var(--grid-size) * 0.75);
-    --spacing-4: var(--grid-size);
-    --spacing-5: calc(var(--grid-size) * 1.25);
-    --spacing-6: calc(var(--grid-size) * 1.5);
-    --spacing-8: calc(var(--grid-size) * 2);
-    --spacing-10: calc(var(--grid-size) * 2.5);
-    --spacing-12: calc(var(--grid-size) * 3);
-    --spacing-16: calc(var(--grid-size) * 4);
-    --spacing-20: calc(var(--grid-size) * 5);
-    --spacing-24: calc(var(--grid-size) * 6);
-    --spacing-32: calc(var(--grid-size) * 8);
-    --fontFamily-sans: Work Sans, system-ui, -apple-system, BlinkMacSystemFont,
-        "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
-        "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
-        "Noto Color Emoji";
-    --fontFamily-serif: "Merriweather", "Georgia", Cambria, "Times New Roman",
-        Times, serif;
-    --font-body: var(--fontFamily-sans);
-    --font-heading: var(--fontFamily-sans);
-    --fontWeight-normal: 400;
-    --fontWeight-medium: 500;
-    --fontWeight-semibold: 600;
-    --fontWeight-bold: 700;
-    --fontWeight-extrabold: 800;
-    --fontWeight-black: 900;
-    --fontSize-root: 16px;
-    --lineHeight-none: 1;
-    --lineHeight-tight: 1.25;
-    --lineHeight-normal: 1.5;
-    --lineHeight-relaxed: 1.875;
-    /* 1.200 Minor Third Type Scale */
-    --fontSize-0: 0.833rem;
-    --fontSize-1: 1rem;
-    --fontSize-2: 1.2rem;
-    --fontSize-3: 1.44rem;
-    --fontSize-4: 1.728rem;
-    --fontSize-5: 2.074rem;
-    --fontSize-6: 2.488rem;
-    --fontSize-7: 2.986rem;
-    --color-primary: #283597;
-    --color-text: #2e353f;
-    --color-text-light: #4f5969;
-    --color-heading: #1a202c;
-    --color-heading-black: black;
-    --color-accent: #d1dce5;
-}
+@use "icon-container";
+@use "share-icons";
+@use "poker-page";
+@use "blockquote";
+@use "contact-form";
 
 *,
 :after,
@@ -86,7 +18,8 @@
     box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
     padding: 0;
     margin: 0;
 }
@@ -105,8 +38,8 @@ body {
     /* subtle graph-paper background */
     background-color: #fbfbf8;
     background-image:
-        linear-gradient(to right, rgba(0,0,0,0.06) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(0,0,0,0.06) 1px, transparent 1px);
+        linear-gradient(to right, rgba(0, 0, 0, 0.06) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(0, 0, 0, 0.06) 1px, transparent 1px);
     background-size: 24px 24px;
     background-repeat: repeat;
 }
@@ -138,8 +71,8 @@ h4,
 h5,
 h6 {
     font-family: var(--font-heading);
-    margin-top: var(--spacing-12);
-    margin-bottom: var(--spacing-6);
+    margin-top: var(--spacing-10);
+    margin-bottom: var(--spacing-4);
     line-height: var(--lineHeight-tight);
     letter-spacing: -0.025em;
 }
@@ -149,12 +82,12 @@ h3,
 h4,
 h5,
 h6 {
-    font-weight: var(--fontWeight-bold);
+    font-weight: var(--fontWeight-semibold);
     color: var(--color-heading);
 }
 
 h1 {
-    font-weight: var(--fontWeight-black);
+    font-weight: var(--fontWeight-bold);
     font-size: var(--fontSize-6);
     color: var(--color-heading-black);
 }
@@ -199,7 +132,7 @@ p {
     line-height: var(--lineHeight-relaxed);
     --baseline-multiplier: 0.179;
     --x-height-multiplier: 0.35;
-    margin: var(--spacing-0) var(--spacing-0) var(--spacing-8) var(--spacing-0);
+    margin: var(--spacing-0) var(--spacing-0) var(--spacing-6) var(--spacing-0);
     padding: var(--spacing-0);
 }
 
@@ -208,7 +141,7 @@ ol {
     margin-left: var(--spacing-0);
     margin-right: var(--spacing-0);
     padding: var(--spacing-0);
-    margin-bottom: var(--spacing-8);
+    margin-bottom: var(--spacing-6);
     list-style-position: outside;
     list-style-image: none;
 }
@@ -216,11 +149,11 @@ ol {
 ul li,
 ol li {
     padding-left: var(--spacing-0);
-    margin-bottom: calc(var(--spacing-8) / 2);
+    margin-bottom: calc(var(--spacing-6) / 2);
 }
 
 li > p {
-    margin-bottom: calc(var(--spacing-8) / 2);
+    margin-bottom: calc(var(--spacing-6) / 2);
 }
 
 li *:last-child {
@@ -229,18 +162,18 @@ li *:last-child {
 
 li > ul {
     margin-left: var(--spacing-8);
-    margin-top: calc(var(--spacing-8) / 2);
+    margin-top: calc(var(--spacing-6) / 2);
 }
 
 blockquote {
     color: var(--color-text-light);
     margin-left: calc(-1 * var(--spacing-6));
-    margin-right: var(--spacing-8);
+    margin-right: var(--spacing-6);
     padding: var(--spacing-0) var(--spacing-0) var(--spacing-0) var(--spacing-6);
     border-left: var(--spacing-1) solid var(--color-primary);
     font-size: var(--fontSize-2);
     font-style: italic;
-    margin-bottom: var(--spacing-8);
+    margin-bottom: var(--spacing-6);
 }
 
 blockquote > :last-child {
@@ -254,7 +187,7 @@ blockquote > ol {
 
 table {
     width: 100%;
-    margin-bottom: var(--spacing-8);
+    margin-bottom: var(--spacing-6);
     border-collapse: collapse;
     border-spacing: 0.25rem;
 }
@@ -274,10 +207,6 @@ a:focus {
     text-decoration: none;
 }
 
-/* img { */
-/*     filter: drop-shadow(0px 0px 1px black); */
-/* } */
-
 /* Custom classes */
 
 .global-wrapper {
@@ -287,11 +216,11 @@ a:focus {
 }
 
 .global-wrapper[data-is-root-path="true"] .bio {
-    margin-bottom: var(--spacing-20);
+    margin-bottom: var(--spacing-16);
 }
 
 .global-header {
-    margin-bottom: var(--spacing-12);
+    margin-bottom: var(--spacing-10);
 }
 
 .main-heading {
@@ -300,8 +229,8 @@ a:focus {
 }
 
 .post-list-item {
-    margin-bottom: var(--spacing-8);
-    margin-top: var(--spacing-8);
+    margin-bottom: var(--spacing-6);
+    margin-top: var(--spacing-6);
 }
 
 .post-list-item p {
@@ -328,8 +257,8 @@ a:focus {
 
 .bio {
     display: flex;
-    margin-top: var(--spacing-16);
-    margin-bottom: var(--spacing-16);
+    margin-top: var(--spacing-12);
+    margin-bottom: var(--spacing-12);
 }
 
 .bio p {
@@ -354,10 +283,6 @@ a:focus {
 
 .blog-post-nav ul {
     margin: var(--spacing-0);
-}
-
-.gatsby-highlight {
-    margin-bottom: var(--spacing-8);
 }
 
 /* Media queries */

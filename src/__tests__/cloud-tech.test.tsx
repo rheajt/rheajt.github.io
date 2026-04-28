@@ -10,8 +10,7 @@ describe("CloudTech", () => {
         // Should show one of the cloud tech names
         const text = span?.textContent;
         expect(
-            text === "Microsoft Office 365" ||
-                text === "Google Workspaces",
+            text === "Microsoft Office 365" || text === "Google Workspaces",
         ).toBe(true);
     });
 });

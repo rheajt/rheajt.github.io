@@ -6,15 +6,15 @@ import { ContactForm } from "~/components/contact-form";
 import { ContactIcons } from "~/components/contact-icons";
 
 export default function ContactPage() {
-  return (
-    <Layout>
-      <Seo title="Contact" />
-      <Section>
-        <StyledContainer>
-          <ContactForm />
-        </StyledContainer>
-        <ContactIcons />
-      </Section>
-    </Layout>
-  );
+    return (
+        <Layout>
+            <Seo title="Contact" />
+            <Section>
+                <StyledContainer>
+                    <ContactForm />
+                </StyledContainer>
+                <ContactIcons />
+            </Section>
+        </Layout>
+    );
 }

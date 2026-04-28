@@ -12,9 +12,7 @@ describe("PortableText", () => {
                 children: [{ _type: "span", text: "Hello world" }],
             },
         ];
-        const { container } = render(() => (
-            <PortableText value={blocks} />
-        ));
+        const { container } = render(() => <PortableText value={blocks} />);
         expect(container.textContent).toContain("Hello world");
     });
 
@@ -27,9 +25,7 @@ describe("PortableText", () => {
                 children: [{ _type: "span", text: "Main Heading" }],
             },
         ];
-        const { container } = render(() => (
-            <PortableText value={blocks} />
-        ));
+        const { container } = render(() => <PortableText value={blocks} />);
         const h1 = container.querySelector("h1");
         expect(h1).toBeInTheDocument();
         expect(h1?.textContent).toBe("Main Heading");
@@ -41,17 +37,11 @@ describe("PortableText", () => {
                 _type: "block",
                 _key: "1",
                 style: "h2",
-                children: [
-                    { _type: "span", text: "Sub Heading" },
-                ],
+                children: [{ _type: "span", text: "Sub Heading" }],
             },
         ];
-        const { container } = render(() => (
-            <PortableText value={blocks} />
-        ));
-        expect(container.querySelector("h2")?.textContent).toBe(
-            "Sub Heading",
-        );
+        const { container } = render(() => <PortableText value={blocks} />);
+        expect(container.querySelector("h2")?.textContent).toBe("Sub Heading");
     });
 
     it("renders strong marks", () => {
@@ -69,9 +59,7 @@ describe("PortableText", () => {
                 ],
             },
         ];
-        const { container } = render(() => (
-            <PortableText value={blocks} />
-        ));
+        const { container } = render(() => <PortableText value={blocks} />);
         expect(container.querySelector("strong")?.textContent).toBe(
             "bold text",
         );
@@ -92,12 +80,8 @@ describe("PortableText", () => {
                 ],
             },
         ];
-        const { container } = render(() => (
-            <PortableText value={blocks} />
-        ));
-        expect(container.querySelector("em")?.textContent).toBe(
-            "italic text",
-        );
+        const { container } = render(() => <PortableText value={blocks} />);
+        expect(container.querySelector("em")?.textContent).toBe("italic text");
     });
 
     it("renders links from markDefs", () => {
@@ -122,9 +106,7 @@ describe("PortableText", () => {
                 ],
             },
         ];
-        const { container } = render(() => (
-            <PortableText value={blocks} />
-        ));
+        const { container } = render(() => <PortableText value={blocks} />);
         const link = container.querySelector("a");
         expect(link).toBeInTheDocument();
         expect(link?.getAttribute("href")).toBe("https://example.com");
@@ -132,9 +114,7 @@ describe("PortableText", () => {
     });
 
     it("renders empty when no blocks", () => {
-        const { container } = render(() => (
-            <PortableText value={[]} />
-        ));
+        const { container } = render(() => <PortableText value={[]} />);
         expect(container.textContent).toBe("");
     });
 
@@ -144,16 +124,12 @@ describe("PortableText", () => {
                 _type: "block",
                 _key: "1",
                 style: "blockquote",
-                children: [
-                    { _type: "span", text: "A wise quote" },
-                ],
+                children: [{ _type: "span", text: "A wise quote" }],
             },
         ];
-        const { container } = render(() => (
-            <PortableText value={blocks} />
-        ));
-        expect(
-            container.querySelector("blockquote")?.textContent,
-        ).toBe("A wise quote");
+        const { container } = render(() => <PortableText value={blocks} />);
+        expect(container.querySelector("blockquote")?.textContent).toBe(
+            "A wise quote",
+        );
     });
 });
