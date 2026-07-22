@@ -1,0 +1,267 @@
+{
+  "__commonjsHelpers-Cpj98o6Y.js": {
+    "file": "assets/_commonjsHelpers-Cpj98o6Y.js",
+    "name": "_commonjsHelpers"
+  },
+  "_browser-D1uQyElW.js": {
+    "file": "assets/browser-D1uQyElW.js",
+    "name": "browser",
+    "isDynamicEntry": true,
+    "imports": [
+      "__commonjsHelpers-Cpj98o6Y.js"
+    ]
+  },
+  "_jspdf.es.min-Di08oh1D.js": {
+    "file": "assets/jspdf.es.min-Di08oh1D.js",
+    "name": "jspdf.es.min",
+    "isDynamicEntry": true,
+    "imports": [
+      "_preload-helper-ug3pwPZ1.js"
+    ],
+    "dynamicImports": [
+      "node_modules/html2canvas/dist/html2canvas.esm.js",
+      "node_modules/dompurify/dist/purify.es.mjs",
+      "node_modules/canvg/lib/index.es.js"
+    ]
+  },
+  "_preload-helper-ug3pwPZ1.js": {
+    "file": "assets/preload-helper-ug3pwPZ1.js",
+    "name": "preload-helper"
+  },
+  "_routing-BQzf89fU.js": {
+    "file": "assets/routing-BQzf89fU.js",
+    "name": "routing"
+  },
+  "_sanity-RriOvLF3.js": {
+    "file": "assets/sanity-RriOvLF3.js",
+    "name": "sanity",
+    "imports": [
+      "_routing-BQzf89fU.js",
+      "_preload-helper-ug3pwPZ1.js"
+    ],
+    "dynamicImports": [
+      "node_modules/@sanity/client/dist/_chunks-es/stegaEncodeSourceMap.js",
+      "_browser-D1uQyElW.js"
+    ]
+  },
+  "_section-ChQ-PyK9.js": {
+    "file": "assets/section-ChQ-PyK9.js",
+    "name": "section",
+    "imports": [
+      "_routing-BQzf89fU.js"
+    ]
+  },
+  "node_modules/@sanity/client/dist/_chunks-es/stegaEncodeSourceMap.js": {
+    "file": "assets/stegaEncodeSourceMap-B066x8zH.js",
+    "name": "stegaEncodeSourceMap",
+    "src": "node_modules/@sanity/client/dist/_chunks-es/stegaEncodeSourceMap.js",
+    "isDynamicEntry": true,
+    "imports": [
+      "_sanity-RriOvLF3.js",
+      "_routing-BQzf89fU.js",
+      "_preload-helper-ug3pwPZ1.js"
+    ]
+  },
+  "node_modules/canvg/lib/index.es.js": {
+    "file": "assets/index.es-k2SLvxV2.js",
+    "name": "index.es",
+    "src": "node_modules/canvg/lib/index.es.js",
+    "isDynamicEntry": true,
+    "imports": [
+      "__commonjsHelpers-Cpj98o6Y.js",
+      "_jspdf.es.min-Di08oh1D.js",
+      "_preload-helper-ug3pwPZ1.js"
+    ]
+  },
+  "node_modules/dompurify/dist/purify.es.mjs": {
+    "file": "assets/purify.es-dhnUglUx.js",
+    "name": "purify.es",
+    "src": "node_modules/dompurify/dist/purify.es.mjs",
+    "isDynamicEntry": true
+  },
+  "node_modules/html2canvas/dist/html2canvas.esm.js": {
+    "file": "assets/html2canvas.esm-B0tyYwQk.js",
+    "name": "html2canvas.esm",
+    "src": "node_modules/html2canvas/dist/html2canvas.esm.js",
+    "isDynamicEntry": true
+  },
+  "src/routes/[...404].tsx?pick=default&pick=$css": {
+    "file": "assets/_...404_-Dt_WSE6u.js",
+    "name": "_...404_",
+    "src": "src/routes/[...404].tsx?pick=default&pick=$css",
+    "isEntry": true,
+    "isDynamicEntry": true,
+    "imports": [
+      "_routing-BQzf89fU.js",
+      "_section-ChQ-PyK9.js"
+    ]
+  },
+  "src/routes/about.tsx?pick=default&pick=$css": {
+    "file": "assets/about-DpGOfk0h.js",
+    "name": "about",
+    "src": "src/routes/about.tsx?pick=default&pick=$css",
+    "isEntry": true,
+    "isDynamicEntry": true,
+    "imports": [
+      "_routing-BQzf89fU.js",
+      "_section-ChQ-PyK9.js"
+    ]
+  },
+  "src/routes/contact.tsx?pick=default&pick=$css": {
+    "file": "assets/contact-C1Ma1Wuc.js",
+    "name": "contact",
+    "src": "src/routes/contact.tsx?pick=default&pick=$css",
+    "isEntry": true,
+    "isDynamicEntry": true,
+    "imports": [
+      "_section-ChQ-PyK9.js",
+      "_routing-BQzf89fU.js"
+    ]
+  },
+  "src/routes/index.tsx?pick=default&pick=$css": {
+    "file": "assets/index-4N8322Vz.js",
+    "name": "index",
+    "src": "src/routes/index.tsx?pick=default&pick=$css",
+    "isEntry": true,
+    "isDynamicEntry": true,
+    "imports": [
+      "_routing-BQzf89fU.js",
+      "_section-ChQ-PyK9.js",
+      "_sanity-RriOvLF3.js",
+      "_preload-helper-ug3pwPZ1.js"
+    ]
+  },
+  "src/routes/language-learning/dictionary.tsx?pick=default&pick=$css": {
+    "file": "assets/dictionary-BmTHT95e.js",
+    "name": "dictionary",
+    "src": "src/routes/language-learning/dictionary.tsx?pick=default&pick=$css",
+    "isEntry": true,
+    "isDynamicEntry": true,
+    "imports": [
+      "_routing-BQzf89fU.js",
+      "_section-ChQ-PyK9.js"
+    ]
+  },
+  "src/routes/language-learning/index.tsx?pick=default&pick=$css": {
+    "file": "assets/index-DsTg2rvP.js",
+    "name": "index",
+    "src": "src/routes/language-learning/index.tsx?pick=default&pick=$css",
+    "isEntry": true,
+    "isDynamicEntry": true,
+    "imports": [
+      "_routing-BQzf89fU.js",
+      "_section-ChQ-PyK9.js"
+    ]
+  },
+  "src/routes/poker/index.tsx?pick=default&pick=$css": {
+    "file": "assets/index-T56N_j1H.js",
+    "name": "index",
+    "src": "src/routes/poker/index.tsx?pick=default&pick=$css",
+    "isEntry": true,
+    "isDynamicEntry": true,
+    "imports": [
+      "_routing-BQzf89fU.js",
+      "_section-ChQ-PyK9.js"
+    ]
+  },
+  "src/routes/privacy.tsx?pick=default&pick=$css": {
+    "file": "assets/privacy-68j9LPk7.js",
+    "name": "privacy",
+    "src": "src/routes/privacy.tsx?pick=default&pick=$css",
+    "isEntry": true,
+    "isDynamicEntry": true,
+    "imports": [
+      "_routing-BQzf89fU.js",
+      "_section-ChQ-PyK9.js"
+    ]
+  },
+  "src/routes/projects.tsx?pick=default&pick=$css": {
+    "file": "assets/projects-CKAcxvIP.js",
+    "name": "projects",
+    "src": "src/routes/projects.tsx?pick=default&pick=$css",
+    "isEntry": true,
+    "isDynamicEntry": true,
+    "imports": [
+      "_routing-BQzf89fU.js",
+      "_section-ChQ-PyK9.js",
+      "_sanity-RriOvLF3.js",
+      "_preload-helper-ug3pwPZ1.js"
+    ]
+  },
+  "src/routes/resume.tsx?pick=default&pick=$css": {
+    "file": "assets/resume-DdxZDJZR.js",
+    "name": "resume",
+    "src": "src/routes/resume.tsx?pick=default&pick=$css",
+    "isEntry": true,
+    "isDynamicEntry": true,
+    "imports": [
+      "_routing-BQzf89fU.js",
+      "_section-ChQ-PyK9.js",
+      "_preload-helper-ug3pwPZ1.js"
+    ],
+    "dynamicImports": [
+      "_jspdf.es.min-Di08oh1D.js"
+    ]
+  },
+  "src/routes/schedule.tsx?pick=default&pick=$css": {
+    "file": "assets/schedule-Dmm1f54w.js",
+    "name": "schedule",
+    "src": "src/routes/schedule.tsx?pick=default&pick=$css",
+    "isEntry": true,
+    "isDynamicEntry": true,
+    "imports": [
+      "_routing-BQzf89fU.js",
+      "_section-ChQ-PyK9.js"
+    ]
+  },
+  "src/routes/terms.tsx?pick=default&pick=$css": {
+    "file": "assets/terms-BbcY6lBt.js",
+    "name": "terms",
+    "src": "src/routes/terms.tsx?pick=default&pick=$css",
+    "isEntry": true,
+    "isDynamicEntry": true,
+    "imports": [
+      "_routing-BQzf89fU.js",
+      "_section-ChQ-PyK9.js"
+    ]
+  },
+  "src/routes/vexillology/index.tsx?pick=default&pick=$css": {
+    "file": "assets/index-DED_2ZFQ.js",
+    "name": "index",
+    "src": "src/routes/vexillology/index.tsx?pick=default&pick=$css",
+    "isEntry": true,
+    "isDynamicEntry": true,
+    "imports": [
+      "_routing-BQzf89fU.js",
+      "_section-ChQ-PyK9.js"
+    ]
+  },
+  "virtual:$vinxi/handler/client": {
+    "file": "assets/client-C7zmsKRw.js",
+    "name": "client",
+    "src": "virtual:$vinxi/handler/client",
+    "isEntry": true,
+    "imports": [
+      "_routing-BQzf89fU.js",
+      "_preload-helper-ug3pwPZ1.js"
+    ],
+    "dynamicImports": [
+      "src/routes/[...404].tsx?pick=default&pick=$css",
+      "src/routes/about.tsx?pick=default&pick=$css",
+      "src/routes/contact.tsx?pick=default&pick=$css",
+      "src/routes/index.tsx?pick=default&pick=$css",
+      "src/routes/language-learning/dictionary.tsx?pick=default&pick=$css",
+      "src/routes/language-learning/index.tsx?pick=default&pick=$css",
+      "src/routes/poker/index.tsx?pick=default&pick=$css",
+      "src/routes/privacy.tsx?pick=default&pick=$css",
+      "src/routes/projects.tsx?pick=default&pick=$css",
+      "src/routes/resume.tsx?pick=default&pick=$css",
+      "src/routes/schedule.tsx?pick=default&pick=$css",
+      "src/routes/terms.tsx?pick=default&pick=$css",
+      "src/routes/vexillology/index.tsx?pick=default&pick=$css"
+    ],
+    "css": [
+      "assets/client-C2MRVTfl.css"
+    ]
+  }
+}
