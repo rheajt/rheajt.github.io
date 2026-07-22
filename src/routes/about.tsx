@@ -5,6 +5,8 @@ import { buildMapboxSrc } from "~/utils/buildMapboxSrc";
 import { styled } from "solid-styled-components";
 
 export default function About() {
+    const mapSrc = buildMapboxSrc();
+
     return (
         <Layout>
             <Seo title="About" />
@@ -23,9 +25,11 @@ export default function About() {
                     computer programmer in Izmir, Turkey. Now I am doing
                     development work in Beijing, China.
                 </p>
-                <FullWidthFigure>
-                    <img src={buildMapboxSrc()} alt="map" />
-                </FullWidthFigure>
+                {mapSrc && (
+                    <FullWidthFigure>
+                        <img src={mapSrc} alt="map" />
+                    </FullWidthFigure>
+                )}
                 <p>
                     I write code using JavaScript, Typescript, and Google Apps
                     Script. I have built SPFx webparts in Microsoft Sharepoint

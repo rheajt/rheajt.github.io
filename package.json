@@ -11,7 +11,8 @@
     "start": "vinxi start",
     "test": "vitest run",
     "test:watch": "vitest",
-    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\""
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
+    "deploy": "bun run build && gh-pages -d .output/public --dotfiles"
   },
   "dependencies": {
     "@sanity/client": "^7.22.0",
@@ -29,6 +30,7 @@
   "devDependencies": {
     "@solidjs/testing-library": "^0.8.10",
     "@testing-library/jest-dom": "^6.9.1",
+    "gh-pages": "^6.3.0",
     "jsdom": "^29.1.0",
     "prettier": "^3.6.2",
     "sass": "^1.83.0",

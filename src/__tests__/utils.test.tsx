@@ -1,4 +1,4 @@
-import { describe, it, expect } from "vitest";
+import { afterEach, describe, expect, it, vi } from "vitest";
 import { links } from "~/utils/links";
 import { buildMapboxSrc } from "~/utils/buildMapboxSrc";
 import { siteMetadata } from "~/site-config";
@@ -35,19 +35,13 @@ describe("links", () => {
 });
 
 describe("buildMapboxSrc", () => {
-    it("returns a mapbox URL string", () => {
-        const url = buildMapboxSrc();
-        expect(url).toContain("https://api.mapbox.com");
+    afterEach(() => {
+        vi.unstubAllEnvs();
     });
 
-    it("includes the theme", () => {
-        const url = buildMapboxSrc();
-        expect(url).toContain("dark-v10");
-    });
-
-    it("includes the access token", () => {
-        const url = buildMapboxSrc();
-        expect(url).toContain("access_token=");
+    it("returns no URL without a Mapbox token", () => {
+        vi.stubEnv("VITE_MAPBOX_TOKEN", "");
+        expect(buildMapboxSrc()).toBeUndefined();
     });
 
     it("accepts custom options", () => {
@@ -58,7 +52,9 @@ describe("buildMapboxSrc", () => {
             zoom: 5,
             token: "test-token",
         });
+        expect(url).toContain("https://api.mapbox.com");
         expect(url).toContain("light-v10");
+        expect(url).toContain("access_token=test-token");
         expect(url).toContain("test-token");
     });
 });

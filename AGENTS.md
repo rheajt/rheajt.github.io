@@ -45,3 +45,17 @@
 
 - Vitest runs in jsdom with setup at `src/__tests__/setup.ts`.
 - Canvas APIs are limited in jsdom; `BarCanvas` intentionally skips drawing under jsdom while still rendering a `<canvas>` for tests.
+
+## Agent skills
+
+### Issue tracker
+
+GitHub Issues in `rheajt/rheajt.github.io`; see `docs/agents/issue-tracker.md`.
+
+### Triage labels
+
+Default triage labels are used; see `docs/agents/triage-labels.md`.
+
+### Domain docs
+
+Single-context layout using root `CONTEXT.md` and `docs/adr/`; see `docs/agents/domain.md`.
