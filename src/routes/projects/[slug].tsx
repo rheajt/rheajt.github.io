@@ -21,8 +21,15 @@ export default function ProjectDetail() {
 
     return (
         <Suspense fallback={<Loader />}>
-            <Show when={post()} fallback={<NotFound />}>
-                {project => <ProjectContent post={project()} />}
+            <Show
+                when={post.error}
+                fallback={
+                    <Show when={post()} fallback={<NotFound />}>
+                        {project => <ProjectContent post={project()} />}
+                    </Show>
+                }
+            >
+                <RouteFailure />
             </Show>
         </Suspense>
     );
@@ -60,6 +67,17 @@ export default function ProjectDetail() {
             </Layout>
         );
     }
+}
+
+function RouteFailure() {
+    return (
+        <Layout>
+            <Section>
+                <h1>Unable to load project</h1>
+                <p>Please try again later.</p>
+            </Section>
+        </Layout>
+    );
 }
 
 function formatPostDate(date: string) {

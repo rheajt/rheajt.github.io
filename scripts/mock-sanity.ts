@@ -1,20 +1,41 @@
-const smokeProject = {
-    _id: "build-smoke-project",
-    title: "Build Smoke Project",
-    slug: { current: "build-smoke-project" },
-    summary: "A deterministic project returned during the build smoke test.",
-    category: "jordanrhea.com",
-    publishedAt: "2026-01-01T00:00:00.000Z",
-    imageUrl: "https://example.com/build-smoke-project.png",
-    imageAlt: "Build smoke project image",
-    tags: [],
-    seo: {
+const smokeProjects = [
+    {
+        _id: "build-smoke-project",
         title: "Build Smoke Project",
-        description:
+        slug: { current: "build-smoke-project" },
+        summary:
             "A deterministic project returned during the build smoke test.",
+        category: "jordanrhea.com",
+        publishedAt: "2026-01-01T00:00:00.000Z",
+        imageUrl: "https://example.com/build-smoke-project.png",
+        imageAlt: "Build smoke project image",
+        tags: [],
+        seo: {
+            title: "Build Smoke Project",
+            description:
+                "A deterministic project returned during the build smoke test.",
+        },
+        body: [],
     },
-    body: [],
-};
+    {
+        _id: "build-smoke-project-two",
+        title: "Second Build Smoke Project",
+        slug: { current: "build-smoke-project-two" },
+        summary:
+            "A second deterministic project returned during the build smoke test.",
+        category: "jordanrhea.com",
+        publishedAt: "2026-01-02T00:00:00.000Z",
+        imageUrl: "https://example.com/build-smoke-project-two.png",
+        imageAlt: "Second build smoke project image",
+        tags: [],
+        seo: {
+            title: "Second Build Smoke Project",
+            description:
+                "A second deterministic project returned during the build smoke test.",
+        },
+        body: [],
+    },
+];
 
 const originalFetch = globalThis.fetch;
 
@@ -28,11 +49,15 @@ globalThis.fetch = async (input, init) => {
     }
 
     const query = requestUrl.searchParams.get("query") ?? "";
+    const slug =
+        requestUrl.searchParams.get("$slug") ??
+        requestUrl.searchParams.get("slug");
     const result = query.includes("].slug.current")
-        ? [smokeProject.slug.current]
+        ? smokeProjects.map(project => project.slug.current)
         : query.includes("slug.current == $slug")
-          ? smokeProject
-          : [smokeProject];
+          ? (smokeProjects.find(project => project.slug.current === slug) ??
+            null)
+          : smokeProjects;
 
     return Response.json({ result });
 };

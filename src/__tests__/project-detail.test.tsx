@@ -25,6 +25,7 @@ vi.mock("@solidjs/router", async importOriginal => {
 
 import ProjectDetail from "~/routes/projects/[slug]";
 import { fetchPostBySlug } from "~/lib/sanity";
+import { siteMetadata } from "~/site-config";
 
 describe("Project detail route", () => {
     it("loads the scoped project and supplies project canonical social metadata", async () => {
@@ -72,5 +73,49 @@ describe("Project detail route", () => {
         expect(
             await screen.findByRole("heading", { name: "404: Not Found" }),
         ).toBeInTheDocument();
+    });
+
+    it("uses the site description when the project has no SEO description or summary", async () => {
+        vi.mocked(fetchPostBySlug).mockResolvedValueOnce({
+            _id: "project-2",
+            title: "Project Without Description",
+            slug: { current: "project-one" },
+            publishedAt: "2024-01-01",
+            body: [],
+        });
+
+        render(() => (
+            <MetaProvider>
+                <Router root={() => <ProjectDetail />}>{[]}</Router>
+            </MetaProvider>
+        ));
+
+        await screen.findByRole("heading", {
+            name: "Project Without Description",
+        });
+        expect(
+            document.head
+                .querySelector('meta[name="description"]')
+                ?.getAttribute("content"),
+        ).toBe(siteMetadata.description);
+    });
+
+    it("renders a route failure when the project fetch is rejected", async () => {
+        vi.mocked(fetchPostBySlug).mockRejectedValueOnce(
+            new Error("Sanity is unavailable"),
+        );
+
+        render(() => (
+            <MetaProvider>
+                <Router root={() => <ProjectDetail />}>{[]}</Router>
+            </MetaProvider>
+        ));
+
+        expect(
+            await screen.findByRole("heading", {
+                name: "Unable to load project",
+            }),
+        ).toBeInTheDocument();
+        expect(screen.getByText("Please try again later.")).toBeInTheDocument();
     });
 });

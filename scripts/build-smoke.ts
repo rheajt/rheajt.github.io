@@ -3,12 +3,26 @@ import { resolve } from "node:path";
 
 const outputDirectory = resolve(".output");
 const publicDirectory = resolve(outputDirectory, "public");
-const projectPage = resolve(
-    publicDirectory,
-    "projects",
-    "build-smoke-project",
-    "index.html",
-);
+const projectPages = [
+    {
+        path: resolve(
+            publicDirectory,
+            "projects",
+            "build-smoke-project",
+            "index.html",
+        ),
+        content: "Build Smoke Project",
+    },
+    {
+        path: resolve(
+            publicDirectory,
+            "projects",
+            "build-smoke-project-two",
+            "index.html",
+        ),
+        content: "Second Build Smoke Project",
+    },
+];
 const notFoundPage = resolve(publicDirectory, "404.html");
 
 await rm(outputDirectory, { force: true, recursive: true });
@@ -28,7 +42,9 @@ if ((await build.exited) !== 0) {
     throw new Error("Vinxi build failed.");
 }
 
-await assertPage(projectPage, "Build Smoke Project");
+await Promise.all(
+    projectPages.map(project => assertPage(project.path, project.content)),
+);
 await assertPage(notFoundPage, "404: Not Found");
 
 async function assertPage(path: string, expectedContent: string) {
