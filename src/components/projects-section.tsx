@@ -34,7 +34,7 @@ export const ProjectsSection = () => {
                 <div class="grid">
                     <For each={state()?.posts}>
                         {(post: SanityPost) => (
-                            <div class="card">
+                            <A href={`/projects/${post.slug.current}`} class="card">
                                 <Show
                                     when={post.imageUrl}
                                     fallback={
@@ -60,7 +60,7 @@ export const ProjectsSection = () => {
                                         <p>{post.summary}</p>
                                     </Show>
                                 </div>
-                            </div>
+                            </A>
                         )}
                     </For>
                 </div>
@@ -116,6 +116,8 @@ const StyledSection = styled.section`
         border: 1px solid rgba(0, 0, 0, 0.08);
         border-radius: 4px;
         overflow: hidden;
+        text-decoration: none;
+        color: inherit;
         transition:
             transform 180ms ease,
             box-shadow 180ms ease,

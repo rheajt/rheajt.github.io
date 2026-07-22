@@ -37,7 +37,9 @@ describe("ProjectsSection", () => {
             screen.getByText("First project description"),
         ).toBeInTheDocument();
         expect(screen.getByText("January 1, 2024")).toBeInTheDocument();
-        expect(screen.queryByRole("link", { name: "Project One" })).toBeNull();
+
+        const link = screen.getByRole("link", { name: /Project One/i });
+        expect(link).toHaveAttribute("href", "/projects/project-one");
     });
 
     it("renders a View All Projects link", async () => {

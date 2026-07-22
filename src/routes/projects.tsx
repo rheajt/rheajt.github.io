@@ -1,3 +1,4 @@
+import { A } from "@solidjs/router";
 import { createResource, For, Show, Suspense } from "solid-js";
 import { styled } from "solid-styled-components";
 import Layout from "~/components/layout";
@@ -30,7 +31,7 @@ export default function Projects() {
                         <ProjectGrid>
                             <For each={state()?.posts}>
                                 {(post: SanityPost) => (
-                                    <ProjectCard>
+                                    <ProjectCard href={`/projects/${post.slug.current}`}>
                                         <Show
                                             when={post.imageUrl}
                                             fallback={
@@ -106,7 +107,7 @@ const ProjectGrid = styled.div`
     margin-top: var(--spacing-8);
 `;
 
-const ProjectCard = styled.div`
+const ProjectCard = styled(A)`
     background: #fff;
     border: 1px solid var(--color-accent);
     border-radius: 4px;

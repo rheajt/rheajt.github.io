@@ -40,6 +40,9 @@ describe("Projects route", () => {
         ).toBeInTheDocument();
         expect(screen.getByAltText("Test image")).toBeInTheDocument();
         expect(screen.getByText("January 1, 2024")).toBeInTheDocument();
+
+        const link = screen.getByRole("link", { name: /Project One/i });
+        expect(link).toHaveAttribute("href", "/projects/project-one");
     });
 
     it("shows an error message when Sanity fails", async () => {
