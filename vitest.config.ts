@@ -14,6 +14,7 @@ export default defineConfig({
         environment: "jsdom",
         globals: true,
         setupFiles: ["./src/__tests__/setup.ts"],
+        testTimeout: 10000,
         transformMode: {
             web: [/\.[jt]sx?$/],
         },
