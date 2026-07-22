@@ -18,6 +18,12 @@ export interface SanityPost {
     imageAlt?: string;
     tags?: { label: string; slug: { current: string } }[];
     body?: any[];
+    seo?: {
+        title?: string;
+        description?: string;
+        imageUrl?: string;
+        imageAlt?: string;
+    };
 }
 
 export const SITE_PROJECT_CATEGORY = "jordanrhea.com";
@@ -91,18 +97,31 @@ export async function fetchPostsWithImages(
 
 export async function fetchPostBySlug(
     slug: string,
+    category: string | null = SITE_PROJECT_CATEGORY,
 ): Promise<SanityPost | null> {
     return sanityClient.fetch(
-        `*[_type == "post" && slug.current == $slug && !(_id in path("drafts.**")) && draft != true][0]{
+        `*[
+          _type == "post" &&
+          slug.current == $slug &&
+          !(_id in path("drafts.**")) &&
+          draft != true &&
+          ($category == null || category == $category)
+        ][0]{
       _id,
       title,
       slug,
       summary,
       category,
       publishedAt,
-      "imageUrl": coalesce(image.asset->url, mainImage.asset->url, coverImage.asset->url),
-      "imageAlt": coalesce(image.alt, mainImage.alt, coverImage.alt, title),
+      "imageUrl": coalesce(image.asset->url, mainImage.asset->url, coverImage.asset->url, body[_type == "image" && defined(asset)][0].asset->url),
+      "imageAlt": coalesce(image.alt, mainImage.alt, coverImage.alt, body[_type == "image" && defined(asset)][0].alt, title),
       "tags": tags[]->{ label, slug },
+      "seo": {
+        "title": coalesce(seo.title, seo.metaTitle),
+        "description": coalesce(seo.description, seo.metaDescription),
+        "imageUrl": coalesce(seo.image.asset->url, seo.ogImage.asset->url),
+        "imageAlt": coalesce(seo.image.alt, seo.ogImage.alt)
+      },
       body[] {
         ...,
         _type == "image" => {
@@ -111,6 +130,19 @@ export async function fetchPostBySlug(
         }
       }
     }`,
-        { slug },
+        { slug, category },
+    );
+}
+
+export async function fetchPublishedProjectSlugs(): Promise<string[]> {
+    return sanityClient.fetch(
+        `*[
+          _type == "post" &&
+          defined(slug.current) &&
+          !(_id in path("drafts.**")) &&
+          draft != true &&
+          category == $category
+        ].slug.current`,
+        { category: SITE_PROJECT_CATEGORY },
     );
 }

@@ -1,4 +1,4 @@
-import { Title, Meta } from "@solidjs/meta";
+import { Title, Meta, Link } from "@solidjs/meta";
 import { Show, For } from "solid-js";
 import { siteMetadata } from "../site-config";
 
@@ -8,6 +8,8 @@ interface SeoProps {
     meta?: { name?: string; property?: string; content: string }[];
     title?: string;
     image?: string;
+    canonical?: string;
+    type?: "article" | "website";
 }
 
 export default function Seo(props: SeoProps) {
@@ -23,7 +25,11 @@ export default function Seo(props: SeoProps) {
             <Meta name="description" content={description()} />
             <Meta property="og:title" content={title()} />
             <Meta property="og:description" content={description()} />
-            <Meta property="og:type" content="website" />
+            <Meta property="og:type" content={props.type ?? "website"} />
+            <Show when={props.canonical}>
+                <Link rel="canonical" href={props.canonical!} />
+                <Meta property="og:url" content={props.canonical!} />
+            </Show>
             <Meta name="twitter:card" content="summary" />
             <Meta
                 name="twitter:creator"
