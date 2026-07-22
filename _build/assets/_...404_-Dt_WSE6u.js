@@ -1,0 +1,1 @@
+import{e as t,x as e,C as o}from"./routing-BQzf89fU.js";import{S as a,a as n,L as r}from"./section-ChQ-PyK9.js";var s=o("<h1>404: Not Found"),u=o("<p>You just hit a route that doesn't exist... the sadness.");function d(){return t(r,{get children(){return[t(a,{title:"404: Not Found"}),t(n,{get children(){return[e(s),e(u)]}})]}})}export{d as default};

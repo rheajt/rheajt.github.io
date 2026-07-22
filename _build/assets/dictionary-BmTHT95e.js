@@ -1,0 +1,1 @@
+import{e as t,x as e,C as r}from"./routing-BQzf89fU.js";import{S as a,a as n,L as o}from"./section-ChQ-PyK9.js";var i=r("<h1>Dictionary"),c=r("<p>Dictionary interface coming soon.");function p(){return t(o,{get children(){return[t(a,{title:"Dictionary"}),t(n,{get children(){return[e(i),e(c)]}})]}})}export{p as default};
