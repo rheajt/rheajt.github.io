@@ -6,6 +6,8 @@ export default defineConfig({
         preset: "static",
         hooks: {
             "prerender:routes": async routes => {
+                routes.add("/404.html");
+
                 const projectSlugs = await fetchPublishedProjectSlugs();
 
                 for (const slug of projectSlugs) {
