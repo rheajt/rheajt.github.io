@@ -123,10 +123,43 @@ export async function fetchPostBySlug(
         "imageAlt": coalesce(seo.image.alt, seo.ogImage.alt)
       },
       body[] {
-        ...,
+        _key,
+        _type,
+        _type == "block" => {
+          style,
+          listItem,
+          level,
+          children[] { _key, _type, text, marks },
+          markDefs[] { _key, _type, href }
+        },
         _type == "image" => {
-          ...,
-          "url": asset->url
+          "url": asset->url,
+          "asset": { "url": asset->url },
+          alt,
+          altText,
+          caption
+        },
+        _type == "youtube" => {
+          url,
+          videoUrl,
+          youtubeUrl,
+          title
+        },
+        _type == "youtubeVideo" => {
+          url,
+          videoUrl,
+          youtubeUrl,
+          title
+        },
+        _type == "code" => {
+          code,
+          language,
+          filename
+        },
+        _type == "codeBlock" => {
+          code,
+          language,
+          filename
         }
       }
     }`,
