@@ -1,1 +1,0 @@
-import{e,x as t,C as o}from"./routing-BQzf89fU.js";import{S as l,a as r,L as a}from"./section-ChQ-PyK9.js";var n=o("<h1>Vexillology"),i=o("<p>Flags of the world quiz coming soon.");function g(){return e(a,{get children(){return[e(l,{title:"Vexillology"}),e(r,{get children(){return[t(n),t(i)]}})]}})}export{g as default};

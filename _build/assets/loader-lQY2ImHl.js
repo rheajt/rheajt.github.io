@@ -1,0 +1,1 @@
+import{O as t}from"./routing-CLiSUilp.js";const r=()=>(t(()=>{const e=document.getElementById("page-loader");e&&requestAnimationFrame(()=>{e.classList.add("ready"),e.addEventListener("transitionend",()=>e.remove(),{once:!0})})}),null);export{r as L};

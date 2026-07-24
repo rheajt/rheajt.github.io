@@ -1,1 +1,0 @@
-import{e,x as n,C as a}from"./routing-BQzf89fU.js";import{S as t,a as r,L as g}from"./section-ChQ-PyK9.js";var o=a("<h1>Language Learning"),s=a("<p>Language learning resources and lessons coming soon.");function l(){return e(g,{get children(){return[e(t,{title:"Language Learning"}),e(r,{get children(){return[n(o),n(s)]}})]}})}export{l as default};

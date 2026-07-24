@@ -1,4 +1,8 @@
 {
+  "_HttpStatusCode-DjTx85av.js": {
+    "file": "assets/HttpStatusCode-DjTx85av.js",
+    "name": "HttpStatusCode"
+  },
   "__commonjsHelpers-Cpj98o6Y.js": {
     "file": "assets/_commonjsHelpers-Cpj98o6Y.js",
     "name": "_commonjsHelpers"
@@ -24,19 +28,25 @@
       "node_modules/canvg/lib/index.es.js"
     ]
   },
+  "_loader-lQY2ImHl.js": {
+    "file": "assets/loader-lQY2ImHl.js",
+    "name": "loader",
+    "imports": [
+      "_routing-CLiSUilp.js"
+    ]
+  },
   "_preload-helper-ug3pwPZ1.js": {
     "file": "assets/preload-helper-ug3pwPZ1.js",
     "name": "preload-helper"
   },
-  "_routing-BQzf89fU.js": {
-    "file": "assets/routing-BQzf89fU.js",
+  "_routing-CLiSUilp.js": {
+    "file": "assets/routing-CLiSUilp.js",
     "name": "routing"
   },
-  "_sanity-RriOvLF3.js": {
-    "file": "assets/sanity-RriOvLF3.js",
+  "_sanity-C_0eWEZ_.js": {
+    "file": "assets/sanity-C_0eWEZ_.js",
     "name": "sanity",
     "imports": [
-      "_routing-BQzf89fU.js",
       "_preload-helper-ug3pwPZ1.js"
     ],
     "dynamicImports": [
@@ -44,21 +54,28 @@
       "_browser-D1uQyElW.js"
     ]
   },
-  "_section-ChQ-PyK9.js": {
-    "file": "assets/section-ChQ-PyK9.js",
+  "_section-4fqYtlCS.js": {
+    "file": "assets/section-4fqYtlCS.js",
     "name": "section",
     "imports": [
-      "_routing-BQzf89fU.js"
+      "_seo-Cu1eZUpG.js",
+      "_routing-CLiSUilp.js"
+    ]
+  },
+  "_seo-Cu1eZUpG.js": {
+    "file": "assets/seo-Cu1eZUpG.js",
+    "name": "seo",
+    "imports": [
+      "_routing-CLiSUilp.js"
     ]
   },
   "node_modules/@sanity/client/dist/_chunks-es/stegaEncodeSourceMap.js": {
-    "file": "assets/stegaEncodeSourceMap-B066x8zH.js",
+    "file": "assets/stegaEncodeSourceMap-B7jnlJeh.js",
     "name": "stegaEncodeSourceMap",
     "src": "node_modules/@sanity/client/dist/_chunks-es/stegaEncodeSourceMap.js",
     "isDynamicEntry": true,
     "imports": [
-      "_sanity-RriOvLF3.js",
-      "_routing-BQzf89fU.js",
+      "_sanity-C_0eWEZ_.js",
       "_preload-helper-ug3pwPZ1.js"
     ]
   },
@@ -86,117 +103,158 @@
     "isDynamicEntry": true
   },
   "src/routes/[...404].tsx?pick=default&pick=$css": {
-    "file": "assets/_...404_-Dt_WSE6u.js",
+    "file": "assets/_...404_-CIL5eLoz.js",
     "name": "_...404_",
     "src": "src/routes/[...404].tsx?pick=default&pick=$css",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
-      "_routing-BQzf89fU.js",
-      "_section-ChQ-PyK9.js"
+      "_routing-CLiSUilp.js",
+      "_HttpStatusCode-DjTx85av.js",
+      "_seo-Cu1eZUpG.js",
+      "_section-4fqYtlCS.js"
     ]
   },
   "src/routes/about.tsx?pick=default&pick=$css": {
-    "file": "assets/about-DpGOfk0h.js",
+    "file": "assets/about-Dg0Ryf9U.js",
     "name": "about",
     "src": "src/routes/about.tsx?pick=default&pick=$css",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
-      "_routing-BQzf89fU.js",
-      "_section-ChQ-PyK9.js"
+      "_routing-CLiSUilp.js",
+      "_seo-Cu1eZUpG.js",
+      "_section-4fqYtlCS.js"
     ]
   },
   "src/routes/contact.tsx?pick=default&pick=$css": {
-    "file": "assets/contact-C1Ma1Wuc.js",
+    "file": "assets/contact-BXGf0HSo.js",
     "name": "contact",
     "src": "src/routes/contact.tsx?pick=default&pick=$css",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
-      "_section-ChQ-PyK9.js",
-      "_routing-BQzf89fU.js"
+      "_seo-Cu1eZUpG.js",
+      "_section-4fqYtlCS.js",
+      "_routing-CLiSUilp.js"
     ]
   },
   "src/routes/index.tsx?pick=default&pick=$css": {
-    "file": "assets/index-4N8322Vz.js",
+    "file": "assets/index-gxCB7mbP.js",
     "name": "index",
     "src": "src/routes/index.tsx?pick=default&pick=$css",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
-      "_routing-BQzf89fU.js",
-      "_section-ChQ-PyK9.js",
-      "_sanity-RriOvLF3.js",
+      "_routing-CLiSUilp.js",
+      "_seo-Cu1eZUpG.js",
+      "_loader-lQY2ImHl.js",
+      "_section-4fqYtlCS.js",
+      "_sanity-C_0eWEZ_.js",
       "_preload-helper-ug3pwPZ1.js"
     ]
   },
   "src/routes/language-learning/dictionary.tsx?pick=default&pick=$css": {
-    "file": "assets/dictionary-BmTHT95e.js",
+    "file": "assets/dictionary-DFkTvMsP.js",
     "name": "dictionary",
     "src": "src/routes/language-learning/dictionary.tsx?pick=default&pick=$css",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
-      "_routing-BQzf89fU.js",
-      "_section-ChQ-PyK9.js"
+      "_routing-CLiSUilp.js",
+      "_seo-Cu1eZUpG.js",
+      "_section-4fqYtlCS.js"
     ]
   },
   "src/routes/language-learning/index.tsx?pick=default&pick=$css": {
-    "file": "assets/index-DsTg2rvP.js",
+    "file": "assets/index-e3npWm86.js",
     "name": "index",
     "src": "src/routes/language-learning/index.tsx?pick=default&pick=$css",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
-      "_routing-BQzf89fU.js",
-      "_section-ChQ-PyK9.js"
+      "_routing-CLiSUilp.js",
+      "_seo-Cu1eZUpG.js",
+      "_section-4fqYtlCS.js"
     ]
   },
   "src/routes/poker/index.tsx?pick=default&pick=$css": {
-    "file": "assets/index-T56N_j1H.js",
+    "file": "assets/index-DJUV36VQ.js",
     "name": "index",
     "src": "src/routes/poker/index.tsx?pick=default&pick=$css",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
-      "_routing-BQzf89fU.js",
-      "_section-ChQ-PyK9.js"
+      "_routing-CLiSUilp.js",
+      "_seo-Cu1eZUpG.js",
+      "_section-4fqYtlCS.js"
     ]
   },
   "src/routes/privacy.tsx?pick=default&pick=$css": {
-    "file": "assets/privacy-68j9LPk7.js",
+    "file": "assets/privacy-D9IHaBLN.js",
     "name": "privacy",
     "src": "src/routes/privacy.tsx?pick=default&pick=$css",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
-      "_routing-BQzf89fU.js",
-      "_section-ChQ-PyK9.js"
+      "_routing-CLiSUilp.js",
+      "_seo-Cu1eZUpG.js",
+      "_section-4fqYtlCS.js"
     ]
   },
-  "src/routes/projects.tsx?pick=default&pick=$css": {
-    "file": "assets/projects-CKAcxvIP.js",
-    "name": "projects",
-    "src": "src/routes/projects.tsx?pick=default&pick=$css",
+  "src/routes/projects/[slug].tsx?pick=default&pick=$css": {
+    "file": "assets/_slug_-BsL9jJdT.js",
+    "name": "_slug_",
+    "src": "src/routes/projects/[slug].tsx?pick=default&pick=$css",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
-      "_routing-BQzf89fU.js",
-      "_section-ChQ-PyK9.js",
-      "_sanity-RriOvLF3.js",
+      "_routing-CLiSUilp.js",
+      "_seo-Cu1eZUpG.js",
+      "_loader-lQY2ImHl.js",
+      "__commonjsHelpers-Cpj98o6Y.js",
+      "_HttpStatusCode-DjTx85av.js",
+      "_section-4fqYtlCS.js",
+      "_sanity-C_0eWEZ_.js",
       "_preload-helper-ug3pwPZ1.js"
     ]
   },
+  "src/routes/projects/index.tsx?pick=default&pick=$css": {
+    "file": "assets/index-CiHR3eWd.js",
+    "name": "index",
+    "src": "src/routes/projects/index.tsx?pick=default&pick=$css",
+    "isEntry": true,
+    "isDynamicEntry": true,
+    "imports": [
+      "_routing-CLiSUilp.js",
+      "_seo-Cu1eZUpG.js",
+      "_section-4fqYtlCS.js",
+      "_sanity-C_0eWEZ_.js",
+      "_loader-lQY2ImHl.js",
+      "_preload-helper-ug3pwPZ1.js"
+    ]
+  },
+  "src/routes/prototype-editorial.tsx?pick=default&pick=$css": {
+    "file": "assets/prototype-editorial-BRU7zjY6.js",
+    "name": "prototype-editorial",
+    "src": "src/routes/prototype-editorial.tsx?pick=default&pick=$css",
+    "isEntry": true,
+    "isDynamicEntry": true,
+    "imports": [
+      "_routing-CLiSUilp.js",
+      "_seo-Cu1eZUpG.js"
+    ]
+  },
   "src/routes/resume.tsx?pick=default&pick=$css": {
-    "file": "assets/resume-DdxZDJZR.js",
+    "file": "assets/resume-DrEihIMP.js",
     "name": "resume",
     "src": "src/routes/resume.tsx?pick=default&pick=$css",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
-      "_routing-BQzf89fU.js",
-      "_section-ChQ-PyK9.js",
+      "_routing-CLiSUilp.js",
+      "_seo-Cu1eZUpG.js",
+      "_section-4fqYtlCS.js",
       "_preload-helper-ug3pwPZ1.js"
     ],
     "dynamicImports": [
@@ -204,46 +262,51 @@
     ]
   },
   "src/routes/schedule.tsx?pick=default&pick=$css": {
-    "file": "assets/schedule-Dmm1f54w.js",
+    "file": "assets/schedule-DRP3W2Rc.js",
     "name": "schedule",
     "src": "src/routes/schedule.tsx?pick=default&pick=$css",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
-      "_routing-BQzf89fU.js",
-      "_section-ChQ-PyK9.js"
+      "_routing-CLiSUilp.js",
+      "_seo-Cu1eZUpG.js",
+      "_section-4fqYtlCS.js"
     ]
   },
   "src/routes/terms.tsx?pick=default&pick=$css": {
-    "file": "assets/terms-BbcY6lBt.js",
+    "file": "assets/terms--Z7OYxHl.js",
     "name": "terms",
     "src": "src/routes/terms.tsx?pick=default&pick=$css",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
-      "_routing-BQzf89fU.js",
-      "_section-ChQ-PyK9.js"
+      "_routing-CLiSUilp.js",
+      "_seo-Cu1eZUpG.js",
+      "_section-4fqYtlCS.js"
     ]
   },
   "src/routes/vexillology/index.tsx?pick=default&pick=$css": {
-    "file": "assets/index-DED_2ZFQ.js",
+    "file": "assets/index-D2M1aAZ_.js",
     "name": "index",
     "src": "src/routes/vexillology/index.tsx?pick=default&pick=$css",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
-      "_routing-BQzf89fU.js",
-      "_section-ChQ-PyK9.js"
+      "_routing-CLiSUilp.js",
+      "_seo-Cu1eZUpG.js",
+      "_section-4fqYtlCS.js"
     ]
   },
   "virtual:$vinxi/handler/client": {
-    "file": "assets/client-C7zmsKRw.js",
+    "file": "assets/client-BE3gP8-A.js",
     "name": "client",
     "src": "virtual:$vinxi/handler/client",
     "isEntry": true,
     "imports": [
-      "_routing-BQzf89fU.js",
-      "_preload-helper-ug3pwPZ1.js"
+      "_routing-CLiSUilp.js",
+      "_preload-helper-ug3pwPZ1.js",
+      "_loader-lQY2ImHl.js",
+      "_HttpStatusCode-DjTx85av.js"
     ],
     "dynamicImports": [
       "src/routes/[...404].tsx?pick=default&pick=$css",
@@ -254,7 +317,9 @@
       "src/routes/language-learning/index.tsx?pick=default&pick=$css",
       "src/routes/poker/index.tsx?pick=default&pick=$css",
       "src/routes/privacy.tsx?pick=default&pick=$css",
-      "src/routes/projects.tsx?pick=default&pick=$css",
+      "src/routes/projects/[slug].tsx?pick=default&pick=$css",
+      "src/routes/projects/index.tsx?pick=default&pick=$css",
+      "src/routes/prototype-editorial.tsx?pick=default&pick=$css",
       "src/routes/resume.tsx?pick=default&pick=$css",
       "src/routes/schedule.tsx?pick=default&pick=$css",
       "src/routes/terms.tsx?pick=default&pick=$css",
