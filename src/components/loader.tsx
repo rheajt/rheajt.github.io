@@ -1,7 +1,8 @@
 import { onMount } from "solid-js";
 
 /**
- * Dismisses the server-rendered #page-loader overlay once the app has hydrated.
+ * Dismisses the server-rendered #page-loader overlay once its root-level
+ * hydration component has mounted.
  * The loader markup and styles live in entry-server.tsx so they render instantly
  * in the initial HTML — no FOUC possible.
  */

@@ -49,9 +49,10 @@ globalThis.fetch = async (input, init) => {
     }
 
     const query = requestUrl.searchParams.get("query") ?? "";
-    const slug =
+    const serializedSlug =
         requestUrl.searchParams.get("$slug") ??
         requestUrl.searchParams.get("slug");
+    const slug = serializedSlug ? JSON.parse(serializedSlug) : null;
     const result = query.includes("].slug.current")
         ? smokeProjects.map(project => project.slug.current)
         : query.includes("slug.current == $slug")

@@ -8,10 +8,14 @@ export default function NotFound() {
         <Layout>
             <HttpStatusCode code={404} />
             <Seo title="404: Not Found" />
-            <Section>
-                <h1>404: Not Found</h1>
-                <p>You just hit a route that doesn't exist... the sadness.</p>
-            </Section>
+            <div data-static-404>
+                <Section>
+                    <h1>404: Not Found</h1>
+                    <p>
+                        You just hit a route that doesn't exist... the sadness.
+                    </p>
+                </Section>
+            </div>
         </Layout>
     );
 }

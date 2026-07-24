@@ -31,7 +31,9 @@ export default function Projects() {
                         <ProjectGrid>
                             <For each={state()?.posts}>
                                 {(post: SanityPost) => (
-                                    <ProjectCard href={`/projects/${post.slug.current}`}>
+                                    <ProjectCard
+                                        href={`/projects/${post.slug.current}`}
+                                    >
                                         <Show
                                             when={post.imageUrl}
                                             fallback={

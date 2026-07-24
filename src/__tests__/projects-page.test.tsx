@@ -19,7 +19,7 @@ vi.mock("~/lib/sanity", () => ({
     ),
 }));
 
-import Projects from "~/routes/projects";
+import Projects from "~/routes/projects/index";
 import { fetchPosts } from "~/lib/sanity";
 
 function renderInRouter(ui: () => any) {
