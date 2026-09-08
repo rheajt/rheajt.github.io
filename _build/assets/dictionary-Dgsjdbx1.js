@@ -1,0 +1,1 @@
+import{e as t,x as e,C as r}from"./routing-CLiSUilp.js";import{S as o,L as i}from"./seo-oT5MijD8.js";import{S as n}from"./section-DFmlLx1C.js";var a=r("<h1>Dictionary"),m=r("<p>Dictionary interface coming soon.");function s(){return t(i,{get children(){return[t(o,{title:"Dictionary"}),t(n,{get children(){return[e(a),e(m)]}})]}})}export{s as default};

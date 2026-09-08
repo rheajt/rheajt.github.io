@@ -1,0 +1,1 @@
+import{e,x as t,C as o}from"./routing-CLiSUilp.js";import{S as l,L as r}from"./seo-oT5MijD8.js";import{S as a}from"./section-DFmlLx1C.js";var i=o("<h1>Vexillology"),n=o("<p>Flags of the world quiz coming soon.");function g(){return e(r,{get children(){return[e(l,{title:"Vexillology"}),e(a,{get children(){return[t(i),t(n)]}})]}})}export{g as default};
