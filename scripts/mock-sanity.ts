@@ -35,6 +35,16 @@ const smokeProjects = [
         },
         body: [],
     },
+    {
+        _id: "build-smoke-school-project",
+        title: "School scheduling workspace",
+        slug: { current: "school-scheduling" },
+        summary: "Review scheduling information in one place.",
+        category: "schooldata.solutions",
+        publishedAt: "2026-01-03T00:00:00.000Z",
+        tags: [{ label: "PowerSchool", slug: { current: "powerschool" } }],
+        body: [],
+    },
 ];
 
 const originalFetch = globalThis.fetch;
@@ -53,12 +63,18 @@ globalThis.fetch = async (input, init) => {
         requestUrl.searchParams.get("$slug") ??
         requestUrl.searchParams.get("slug");
     const slug = serializedSlug ? JSON.parse(serializedSlug) : null;
+    const serializedCategory =
+        requestUrl.searchParams.get("$category") ??
+        requestUrl.searchParams.get("category");
+    const category = serializedCategory ? JSON.parse(serializedCategory) : null;
+    const projects = smokeProjects.filter(
+        project => category === null || project.category === category,
+    );
     const result = query.includes("].slug.current")
-        ? smokeProjects.map(project => project.slug.current)
+        ? projects.map(project => project.slug.current)
         : query.includes("slug.current == $slug")
-          ? (smokeProjects.find(project => project.slug.current === slug) ??
-            null)
-          : smokeProjects;
+          ? (projects.find(project => project.slug.current === slug) ?? null)
+          : projects;
 
     return Response.json({ result });
 };

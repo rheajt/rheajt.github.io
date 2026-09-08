@@ -7,6 +7,7 @@ export default defineConfig({
         hooks: {
             "prerender:routes": async routes => {
                 routes.add("/404.html");
+                routes.add("/school-data-solutions");
 
                 const projectSlugs = await fetchPublishedProjectSlugs();
 

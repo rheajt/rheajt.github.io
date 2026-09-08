@@ -1,9 +1,16 @@
+import { strict as assert } from "node:assert";
 import { rm } from "node:fs/promises";
 import { resolve } from "node:path";
+import { JSDOM } from "jsdom";
 
 const outputDirectory = resolve(".output");
 const publicDirectory = resolve(outputDirectory, "public");
 const projectsListingPage = resolve(publicDirectory, "projects", "index.html");
+const schoolDataSolutionsPage = resolve(
+    publicDirectory,
+    "school-data-solutions",
+    "index.html",
+);
 const projectsListingHeading = /<h1[^>]*>Projects<\/h1>/;
 const projectDetailPages = [
     {
@@ -49,6 +56,67 @@ await Promise.all(
 );
 await assertPageMatches(projectsListingPage, projectsListingHeading);
 await assertPage(notFoundPage, "404: Not Found");
+await assertPageMatches(
+    schoolDataSolutionsPage,
+    /<h1[^>]*>School Data\s*<br\s*\/?>\s*<span>Solutions<\/span><\/h1>/,
+);
+await assertSchoolDataSolutionsPage();
+
+async function assertSchoolDataSolutionsPage() {
+    const schoolPage = await readPage(schoolDataSolutionsPage);
+    const projectsPage = await readPage(projectsListingPage);
+    // Parse without executing scripts so payload-only data cannot pass as a card.
+    const { document } = new JSDOM(schoolPage).window;
+    const cards = document.querySelectorAll("main #project-list article");
+
+    assert.equal(
+        cards.length,
+        1,
+        "School page must render only its category fixture.",
+    );
+    assert.equal(
+        cards[0].querySelector("h3")?.textContent,
+        "School scheduling workspace",
+        "School fixture title must be rendered in a project card.",
+    );
+    assert.ok(
+        Array.from(cards[0].querySelectorAll("p")).some(
+            paragraph =>
+                paragraph.textContent ===
+                "Review scheduling information in one place.",
+        ),
+        "School fixture summary must be rendered in a project card.",
+    );
+    assert.equal(
+        cards[0].querySelector(".platform-label")?.textContent,
+        "PowerSchool",
+    );
+
+    const logo = document.querySelector("main .hero-heading img.brand-logo");
+    assert.equal(
+        logo?.getAttribute("src"),
+        "/school-data-solutions-new-logo.png",
+    );
+    assert.equal(logo?.getAttribute("alt"), "School Data Solutions logo");
+    assert.ok(
+        await Bun.file(
+            resolve(publicDirectory, "school-data-solutions-new-logo.png"),
+        ).exists(),
+        "School hero logo asset must be emitted.",
+    );
+
+    for (const project of projectDetailPages) {
+        assert.ok(
+            !schoolPage.includes(project.title),
+            `School page must not include another category's project: ${project.title}`,
+        );
+        assertPageContains(projectsPage, projectsListingPage, project.title);
+    }
+    assert.ok(
+        !projectsPage.includes("School scheduling workspace"),
+        "The normal projects listing must not include the school-category fixture.",
+    );
+}
 
 async function assertProjectDetailPage(project: {
     path: string;
