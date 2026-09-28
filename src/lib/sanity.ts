@@ -5,6 +5,8 @@ export const sanityClient = createClient({
     dataset: "production",
     apiVersion: "2026-04-19",
     useCdn: true,
+    // Keep the native fetch transport shared by browser, SSR, and build mocks.
+    resolveFetch: () => globalThis.fetch,
 });
 
 export interface SanityPost {

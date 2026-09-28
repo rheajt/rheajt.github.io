@@ -41,6 +41,7 @@ export default function SchoolDataSolutions() {
             />
             <Page>
                 <Section className="intro">
+                    <h1 class="visually-hidden">School Data Solutions</h1>
                     <p class="eyebrow">
                         School operations · Data · Development
                     </p>
@@ -254,6 +255,18 @@ const Page = styled.div`
     }
     h1 span {
         color: var(--color-primary);
+    }
+    .visually-hidden {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        clip-path: inset(50%);
+        white-space: nowrap;
+        border: 0;
     }
     h2 {
         margin-top: 0;

@@ -1,6 +1,7 @@
 import { strict as assert } from "node:assert";
 import { rm } from "node:fs/promises";
 import { resolve } from "node:path";
+import { pathToFileURL } from "node:url";
 import { JSDOM } from "jsdom";
 
 const outputDirectory = resolve(".output");
@@ -37,18 +38,21 @@ const notFoundPage = resolve(publicDirectory, "404.html");
 await rm(outputDirectory, { force: true, recursive: true });
 
 const build = Bun.spawn(
-    [
-        "bun",
-        "--preload",
-        "./scripts/mock-sanity.ts",
-        "./node_modules/vinxi/bin/cli.mjs",
-        "build",
-    ],
-    { stdin: "inherit", stdout: "inherit", stderr: "inherit" },
+    ["./node_modules/.bin/vite", "build"],
+    {
+        stdin: "inherit",
+        stdout: "inherit",
+        stderr: "inherit",
+        // Nitro 3 prerenders in a Node worker; preload the mock in that worker too.
+        env: {
+            ...process.env,
+            NODE_OPTIONS: `${process.env.NODE_OPTIONS ?? ""} --import=${pathToFileURL(resolve("scripts/mock-sanity.ts")).href}`,
+        },
+    },
 );
 
 if ((await build.exited) !== 0) {
-    throw new Error("Vinxi build failed.");
+    throw new Error("Vite build failed.");
 }
 
 await Promise.all(
@@ -56,10 +60,6 @@ await Promise.all(
 );
 await assertPageMatches(projectsListingPage, projectsListingHeading);
 await assertPage(notFoundPage, "404: Not Found");
-await assertPageMatches(
-    schoolDataSolutionsPage,
-    /<h1[^>]*>School Data\s*<br\s*\/?>\s*<span>Solutions<\/span><\/h1>/,
-);
 await assertSchoolDataSolutionsPage();
 
 async function assertSchoolDataSolutionsPage() {
@@ -67,8 +67,15 @@ async function assertSchoolDataSolutionsPage() {
     const projectsPage = await readPage(projectsListingPage);
     // Parse without executing scripts so payload-only data cannot pass as a card.
     const { document } = new JSDOM(schoolPage).window;
+    const headings = document.querySelectorAll("main h1");
     const cards = document.querySelectorAll("main #project-list article");
 
+    assert.equal(headings.length, 1, "School page must render one main heading.");
+    assert.equal(
+        headings[0].textContent?.replace(/\s+/g, " ").trim(),
+        "School Data Solutions",
+        "School page heading must identify School Data Solutions.",
+    );
     assert.equal(
         cards.length,
         1,

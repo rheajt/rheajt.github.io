@@ -4,10 +4,11 @@
 
 - Always use Bun in this repo: `bun install`, `bun add <pkg>`, `bun remove <pkg>`, and `bun run <script>`.
 - `bun.lock` is the lockfile. Do not recreate or rely on `package-lock.json`.
+- Activate the Node version pinned in `.node-version` before running tooling; `package.json` engines defines the supported range required by SolidStart and jsdom.
 
 ## Verified commands
 
-- Dev server: `bun run dev` (Vinxi/SolidStart on port `4444`).
+- Dev server: `bun run dev` (Vite/SolidStart on port `4444`).
 - Static production build: `bun run build`.
 - Full test suite: `bun run test`.
 - Focused test: `bun run test -- src/__tests__/header.test.tsx`.
@@ -16,13 +17,14 @@
 
 ## Trust config over README
 
-- `README.md` is stale: it describes Gatsby/React/npm. The executable source is SolidStart + SolidJS + Vinxi + Bun.
+- `README.md` is stale: it describes Gatsby/React/npm. The executable source is SolidStart 2 + SolidJS + Vite 8 + Nitro 3 + Bun.
 - App routing is file-based through `src/app.tsx` and `src/routes/*` using `@solidjs/start/router`.
-- Build output is static: `app.config.ts` sets `server.preset = "static"`.
+- Build output is static: `vite.config.ts` uses `solidStart()` and `nitro()` plugins with `nitro.preset = "static"`.
 
 ## Project wiring
 
 - Use the `~/*` alias for `src/*`; it is configured in both `tsconfig.json` and `vitest.config.ts`.
+- TypeScript environment types come from `@solidjs/start/env` in `tsconfig.json`.
 - Global styles enter through `src/app.tsx` importing `src/styles/style.scss`.
 - Sass uses the modern compiler and `@use`; do not reintroduce deprecated Sass `@import`.
 - Prettier uses 4-space tabs, semicolons, and no arrow parens for single args.

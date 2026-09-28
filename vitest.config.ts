@@ -1,5 +1,4 @@
-/// <reference types="vitest" />
-import { defineConfig } from "vite";
+import { defineConfig } from "vitest/config";
 import solidPlugin from "vite-plugin-solid";
 import { resolve } from "path";
 
@@ -7,7 +6,7 @@ export default defineConfig({
     plugins: [solidPlugin()],
     resolve: {
         alias: {
-            "~": resolve(__dirname, "./src"),
+            "~": resolve(import.meta.dirname, "./src"),
         },
     },
     test: {
@@ -15,16 +14,6 @@ export default defineConfig({
         globals: true,
         setupFiles: ["./src/__tests__/setup.ts"],
         testTimeout: 10000,
-        transformMode: {
-            web: [/\.[jt]sx?$/],
-        },
-        deps: {
-            optimizer: {
-                web: {
-                    include: [],
-                },
-            },
-        },
         css: true,
     },
     css: {
