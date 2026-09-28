@@ -1,0 +1,1 @@
+import{E as e,I as t,W as n}from"./routing-DP3NAu6Z.js";import{r,t as i}from"./seo-CaORYdCz.js";import{t as a}from"./section-BIbz61Lq.js";var o=t(`<h1>Language Learning`),s=t(`<p>Language learning resources and lessons coming soon.`);function c(){return n(r,{get children(){return[n(i,{title:`Language Learning`}),n(a,{get children(){return[e(o),e(s)]}})]}})}export{c as default};

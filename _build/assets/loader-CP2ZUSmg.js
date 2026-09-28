@@ -1,0 +1,1 @@
+import{rt as e}from"./routing-DP3NAu6Z.js";var t=()=>(e(()=>{let e=document.getElementById(`page-loader`);e&&requestAnimationFrame(()=>{e.classList.add(`ready`),e.addEventListener(`transitionend`,()=>e.remove(),{once:!0})})}),null);export{t};
