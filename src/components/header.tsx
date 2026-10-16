@@ -1,31 +1,16 @@
 import { A, useNavigate } from "@solidjs/router";
-import { createSignal, onMount, onCleanup, For, Show } from "solid-js";
-import { styled } from "solid-styled-components";
 import {
-    FaBrandsGithub,
-    FaBrandsLinkedin,
-    FaBrandsStrava,
-    FaBrandsYoutube,
-    FaSolidExternalLinkAlt,
-    FaSolidGlobe,
-    FaSolidBars,
-    FaSolidTimes,
-    FaSolidLaptopCode,
-    FaSolidFileAlt,
-    FaSolidUser,
-    FaSolidEnvelope,
-} from "solid-icons/fa";
-import { LinkButton } from "./link-button";
-import { links } from "~/utils/links";
+    createEffect,
+    createSignal,
+    onMount,
+    onCleanup,
+    For,
+    Show,
+} from "solid-js";
+import { styled } from "solid-styled-components";
 import { getResumeLinks } from "~/utils/yaml";
-
-const resumeLinkIcons = {
-    Website: FaSolidGlobe,
-    LinkedIn: FaBrandsLinkedin,
-    GitHub: FaBrandsGithub,
-    YouTube: FaBrandsYoutube,
-    Strava: FaBrandsStrava,
-};
+import { standalonePages, workPages } from "./navigation-data";
+import "./navigation.scss";
 
 export const BasicHeader = () => {
     const navigate = useNavigate();
@@ -46,206 +31,171 @@ export const BasicHeader = () => {
     );
 };
 
-export const Header = (props: { pathname: string; showLinks?: boolean }) => {
-    const [openDropdown, setOpenDropdown] = createSignal<string | null>(null);
-    const [isMobileMenuOpen, setIsMobileMenuOpen] = createSignal(false);
-    const showLinks = () => props.showLinks !== false;
-    const resumeLinks = getResumeLinks();
+type HeaderProps = { pathname: string; showLinks?: boolean };
+
+function LocalLink(props: {
+    href: string;
+    label: string;
+    pathname: string;
+    class?: string;
+}) {
+    return (
+        <A
+            href={props.href}
+            class={props.class}
+            aria-current={props.pathname === props.href ? "page" : undefined}
+        >
+            {props.label}
+        </A>
+    );
+}
+
+function ConnectLinks() {
+    return (
+        <For each={getResumeLinks()}>
+            {link => (
+                <a href={link.url} target="_blank" rel="noreferrer">
+                    {link.label}
+                    <span aria-hidden="true">↗</span>
+                </a>
+            )}
+        </For>
+    );
+}
+
+export const Header = (props: HeaderProps) => {
+    const [open, setOpen] = createSignal(false);
+    let header!: HTMLElement;
+    let trigger: HTMLButtonElement | undefined;
+    let panel: HTMLElement | undefined;
+
+    const close = (restoreFocus = false) => {
+        setOpen(false);
+        if (restoreFocus) trigger?.focus();
+    };
+
+    createEffect(() => {
+        props.pathname;
+        props.showLinks;
+        close(panel?.contains(document.activeElement));
+    });
 
     onMount(() => {
-        function handleResize() {
-            if (window.innerWidth > 600) {
-                setOpenDropdown(null);
-                setIsMobileMenuOpen(false);
+        const outside = (event: PointerEvent) => {
+            if (open() && !header.contains(event.target as Node))
+                close(!!panel?.contains(document.activeElement));
+        };
+        const escape = (event: KeyboardEvent) => {
+            if (event.key === "Escape" && open()) {
+                event.preventDefault();
+                close(true);
             }
-        }
-        window.addEventListener("resize", handleResize);
-        onCleanup(() => window.removeEventListener("resize", handleResize));
+        };
+        document.addEventListener("pointerdown", outside);
+        document.addEventListener("keydown", escape);
+        onCleanup(() => {
+            document.removeEventListener("pointerdown", outside);
+            document.removeEventListener("keydown", escape);
+        });
     });
 
     return (
-        <StyledHeader>
-            <div class="container">
-                <A href="/">
-                    <img
-                        src="/content/img/jr-icon.png"
-                        width={36}
-                        height={36}
-                        alt="jordan rhea header"
-                    />
-                </A>
-
-                <Show when={showLinks()}>
-                    <button
-                        class="mobile-menu-toggle"
-                        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen())}
-                        aria-label={
-                            isMobileMenuOpen() ? "Close menu" : "Open menu"
-                        }
-                        aria-expanded={isMobileMenuOpen()}
-                        aria-controls="mobile-header-menu"
+        <header ref={header} class="site-navigation">
+            <div class="nav-shell">
+                <div class="nav-masthead">
+                    <A
+                        class="nav-brand"
+                        href="/"
+                        aria-label="Jordan Rhea — Home"
                     >
-                        <Show
-                            when={isMobileMenuOpen()}
-                            fallback={<FaSolidBars size={24} />}
+                        <img
+                            src="/content/img/jr-icon.png"
+                            width="36"
+                            height="36"
+                            alt=""
+                        />
+                        <span>
+                            Jordan Rhea<small>Education & technology</small>
+                        </span>
+                    </A>
+                    <Show when={props.showLinks !== false}>
+                        <nav class="nav-work" aria-label="Work">
+                            <For each={workPages}>
+                                {page => (
+                                    <LocalLink
+                                        {...page}
+                                        pathname={props.pathname}
+                                    />
+                                )}
+                            </For>
+                        </nav>
+                        <button
+                            ref={trigger}
+                            type="button"
+                            class="nav-toggle"
+                            aria-expanded={open()}
+                            aria-controls="header-pages-panel"
+                            onClick={() => setOpen(!open())}
                         >
-                            <FaSolidTimes size={24} />
-                        </Show>
-                    </button>
-                </Show>
-
-                <Show when={showLinks() && isMobileMenuOpen()}>
-                    <div id="mobile-header-menu" class="mobile-menu-dropdown">
-                        <A
-                            href="/projects"
-                            onClick={() => setIsMobileMenuOpen(false)}
-                        >
-                            <FaSolidLaptopCode size={18} />
-                            <span>Projects</span>
-                        </A>
-                        <A
-                            href="/resume"
-                            onClick={() => setIsMobileMenuOpen(false)}
-                        >
-                            <FaSolidFileAlt size={18} />
-                            <span>Resume</span>
-                        </A>
-                        <A
-                            href="/about"
-                            onClick={() => setIsMobileMenuOpen(false)}
-                        >
-                            <FaSolidUser size={18} />
-                            <span>About</span>
-                        </A>
-                        <A
-                            href="/contact"
-                            onClick={() => setIsMobileMenuOpen(false)}
-                        >
-                            <FaSolidEnvelope size={18} />
-                            <span>Contact</span>
-                        </A>
-                    </div>
-                </Show>
-
-                <nav class={showLinks() ? "" : "is-hidden"}>
-                    <div class="page-links">
-                        <For each={links}>
-                            {(link: any) => {
-                                const hasChildren =
-                                    Array.isArray(link.children) &&
-                                    link.children.length > 0;
-                                const isActive = () =>
-                                    props.pathname.includes(link.to) ||
-                                    (hasChildren &&
-                                        link.children.some((c: any) =>
-                                            props.pathname.includes(c.to),
-                                        ));
-
-                                return (
-                                    <Show
-                                        when={hasChildren}
-                                        fallback={
-                                            <A
-                                                data-label={link.name}
-                                                class={`page-link sans ${isActive() ? "active" : ""}`}
-                                                href={`/${link.to}`}
-                                                onClick={() =>
-                                                    setOpenDropdown(null)
-                                                }
-                                            >
-                                                <span class="label">
-                                                    {link.name}
-                                                </span>
-                                            </A>
-                                        }
-                                    >
-                                        <div
-                                            class={`page-link-with-dropdown ${isActive() ? "active" : ""} ${openDropdown() === link.to ? "is-open" : ""}`}
-                                        >
-                                            <A
-                                                data-label={link.name}
-                                                class={`page-link sans ${isActive() ? "active" : ""}`}
-                                                href={`/${link.to}`}
-                                                onClick={e => {
-                                                    if (
-                                                        window.innerWidth <= 768
-                                                    ) {
-                                                        if (
-                                                            openDropdown() ===
-                                                            link.to
-                                                        ) {
-                                                            setOpenDropdown(
-                                                                null,
-                                                            );
-                                                            return;
-                                                        }
-                                                        e.preventDefault();
-                                                        setOpenDropdown(
-                                                            link.to,
-                                                        );
-                                                    }
-                                                }}
-                                            >
-                                                <span class="label">
-                                                    {link.name}
-                                                </span>
-                                            </A>
-                                            <div class="dropdown">
-                                                <For each={link.children}>
-                                                    {(child: any) => (
-                                                        <A
-                                                            href={`/${child.to}`}
-                                                            class={`dropdown-item sans ${props.pathname.includes(child.to) ? "active" : ""}`}
-                                                            onClick={() =>
-                                                                setOpenDropdown(
-                                                                    null,
-                                                                )
-                                                            }
-                                                        >
-                                                            <span class="label">
-                                                                {child.name}
-                                                            </span>
-                                                        </A>
-                                                    )}
-                                                </For>
-                                            </div>
-                                        </div>
-                                    </Show>
+                            Pages
+                            <span aria-hidden="true">{open() ? "−" : "+"}</span>
+                        </button>
+                        <div class="nav-quick-connect">
+                            <ConnectLinks />
+                            <LocalLink
+                                href="/contact"
+                                label="Contact"
+                                pathname={props.pathname}
+                                class="nav-contact"
+                            />
+                        </div>
+                    </Show>
+                </div>
+                <Show when={props.showLinks !== false}>
+                    {/* Keep destinations in SSR HTML so static prerendering can crawl them. */}
+                    <nav
+                        ref={panel}
+                        id="header-pages-panel"
+                        class="nav-panel"
+                        hidden={!open()}
+                        aria-label="Pages and connections"
+                        onClick={event => {
+                            if ((event.target as Element).closest("a"))
+                                close(
+                                    !!panel?.contains(document.activeElement),
                                 );
-                            }}
-                        </For>
-                    </div>
-                    <div class="resume-links">
-                        <For each={resumeLinks}>
-                            {link => {
-                                const Icon =
-                                    resumeLinkIcons[
-                                        link.label as keyof typeof resumeLinkIcons
-                                    ] ?? FaSolidExternalLinkAlt;
-
-                                return (
-                                    <a
-                                        href={link.url}
-                                        target="_blank"
-                                        rel="noreferrer"
-                                        class="resume-link"
-                                        aria-label={link.label}
-                                        title={link.label}
-                                    >
-                                        <Icon size={18} />
-                                    </a>
-                                );
-                            }}
-                        </For>
-                    </div>
-                    <LinkButton
-                        pathname={props.pathname}
-                        href="/contact"
-                        label="Contact"
-                    />
-                </nav>
+                        }}
+                    >
+                        <section class="nav-pages">
+                            <h2>Pages</h2>
+                            <LocalLink
+                                href="/"
+                                label="Home"
+                                pathname={props.pathname}
+                            />
+                            <For each={standalonePages}>
+                                {page => (
+                                    <LocalLink
+                                        {...page}
+                                        pathname={props.pathname}
+                                    />
+                                )}
+                            </For>
+                        </section>
+                        <section class="nav-connections">
+                            <h2>Connect</h2>
+                            <ConnectLinks />
+                            <LocalLink
+                                href="/contact"
+                                label="Contact"
+                                pathname={props.pathname}
+                                class="nav-contact"
+                            />
+                        </section>
+                    </nav>
+                </Show>
             </div>
-        </StyledHeader>
+        </header>
     );
 };
 
@@ -265,223 +215,9 @@ const StyledHeader = styled.header`
         justify-content: space-between;
     }
 
-    nav.is-hidden {
-        display: none;
-    }
-
-    a {
-        background: none;
-        text-decoration: none;
-        color: var(--color-text);
-    }
-
-    .mobile-menu-toggle {
-        display: none;
-        background: none;
-        border: none;
-        color: var(--color-text);
-        cursor: pointer;
-        padding: 0.5em;
-        z-index: 20;
-    }
-
-    .mobile-menu-dropdown {
-        display: none;
-    }
-
-    nav {
-        display: flex;
-        align-items: center;
-        list-style: none;
-        text-transform: uppercase;
-        justify-content: space-between;
-        width: 100%;
-        margin-left: 1em;
-        min-width: 0;
-
-        a {
-            padding: 0 0.85em;
-            display: inline-block;
-            position: relative;
-            transition: font-weight 0.5s linear;
-
-            &::after {
-                content: attr(data-label);
-                font-weight: 700;
-                visibility: hidden;
-                display: block;
-                height: 0;
-                overflow: hidden;
-                pointer-events: none;
-            }
-
-            .label {
-                font-weight: 400;
-                transition: font-weight 0.05s linear;
-            }
-
-            &:hover .label {
-                font-weight: 700;
-            }
-            &.active .label {
-                font-weight: 700;
-            }
-        }
-
-        .page-links {
-            display: flex;
-            align-items: center;
-        }
-
-        .resume-links {
-            display: flex;
-            align-items: center;
-            justify-content: flex-end;
-            gap: 0.35rem;
-            margin-left: auto;
-            margin-right: 0.75rem;
-            flex-wrap: nowrap;
-            white-space: nowrap;
-        }
-
-        .resume-link {
-            border-radius: 50%;
-            color: var(--color-primary);
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 2rem;
-            height: 2rem;
-            padding: 0;
-            transition:
-                background 160ms ease,
-                color 160ms ease,
-                transform 160ms ease;
-
-            &:hover {
-                background: rgba(40, 53, 151, 0.06);
-                color: var(--color-heading);
-                transform: translateY(-1px);
-            }
-        }
-
-        .page-link-with-dropdown {
-            position: relative;
-            display: flex;
-            align-content: center;
-        }
-
-        .dropdown {
-            opacity: 0;
-            visibility: hidden;
-            pointer-events: none;
-            position: absolute;
-            top: 100%;
-            left: 100%;
-            transform: translateX(-50%) translateY(6px);
-            background: var(--color-background, #fff);
-            border-radius: 4px;
-            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
-            min-width: 180px;
-            padding: 0.25em 0;
-            z-index: 10;
-            transition:
-                opacity 160ms ease,
-                transform 160ms ease;
-        }
-
-        .page-link-with-dropdown:hover .dropdown,
-        .page-link-with-dropdown .dropdown:hover,
-        .page-link-with-dropdown.is-open .dropdown {
-            opacity: 1;
-            visibility: visible;
-            pointer-events: auto;
-            transform: translateX(-50%) translateY(0);
-        }
-
-        .dropdown-item {
-            display: block;
-            padding: 0.5em 1em;
-            text-decoration: none;
-            color: var(--color-text);
-            white-space: nowrap;
-        }
-
-        .dropdown-item:hover {
-            background: rgba(0, 0, 0, 0.04);
-        }
-    }
-
-    @media (max-width: 768px) {
-        nav {
-            flex-wrap: nowrap;
-            gap: 0.4rem;
-            overflow-x: auto;
-            scrollbar-width: none;
-
-            &::-webkit-scrollbar {
-                display: none;
-            }
-
-            .resume-links {
-                margin-left: auto;
-                margin-right: 0.35rem;
-            }
-
-            a {
-                padding: 0 0.45em;
-            }
-        }
-    }
-
     @media (max-width: 600px) {
         .container {
             position: relative;
-        }
-
-        nav {
-            display: none !important;
-        }
-
-        .mobile-menu-toggle {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .mobile-menu-dropdown {
-            display: flex;
-            flex-direction: column;
-            position: absolute;
-            top: 100%;
-            right: 0;
-            background: var(--color-background, #fff);
-            border-radius: 8px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-            padding: 0.5em 0;
-            min-width: 200px;
-            z-index: 100;
-            margin-top: 0.5em;
-            border: 1px solid rgba(0, 0, 0, 0.05);
-
-            a {
-                display: flex;
-                align-items: center;
-                gap: 1em;
-                padding: 1em 1.5em;
-                color: var(--color-text);
-                text-decoration: none;
-                font-weight: 500;
-                transition: background 0.2s ease;
-
-                &:hover {
-                    background: rgba(0, 0, 0, 0.04);
-                }
-
-                svg {
-                    color: var(--color-primary);
-                }
-            }
         }
     }
 `;

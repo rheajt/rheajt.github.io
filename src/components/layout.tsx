@@ -1,15 +1,14 @@
-import { createSignal, onMount, type JSX } from "solid-js";
+import { type JSX } from "solid-js";
+import { useLocation } from "@solidjs/router";
 import { Footer } from "./footer";
 import { BasicHeader, Header } from "./header";
 
 export default function Layout(props: { children: JSX.Element }) {
-    const [pathname, setPathname] = createSignal("");
-
-    onMount(() => setPathname(window.location.pathname));
+    const location = useLocation();
 
     return (
         <div>
-            <Header pathname={pathname()} />
+            <Header pathname={location.pathname} />
             <main>{props.children}</main>
             <Footer />
         </div>

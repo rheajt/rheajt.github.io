@@ -34,6 +34,12 @@ const projectDetailPages = [
     },
 ];
 const notFoundPage = resolve(publicDirectory, "404.html");
+const standalonePages = [
+    { label: "Resume", href: "/resume" },
+    { label: "About", href: "/about" },
+    { label: "Language Learning", href: "/language-learning" },
+    { label: "Vexillology", href: "/vexillology" },
+];
 
 await rm(outputDirectory, { force: true, recursive: true });
 
@@ -61,6 +67,71 @@ await Promise.all(
 await assertPageMatches(projectsListingPage, projectsListingHeading);
 await assertPage(notFoundPage, "404: Not Found");
 await assertSchoolDataSolutionsPage();
+await assertProductionNavigation();
+
+async function assertProductionNavigation() {
+    const pages = [
+        { path: resolve(publicDirectory, "index.html"), pathname: "/" },
+        { path: schoolDataSolutionsPage, pathname: "/school-data-solutions" },
+        { path: projectsListingPage, pathname: "/projects" },
+        ...standalonePages.map(page => ({
+            path: resolve(publicDirectory, page.href.slice(1), "index.html"),
+            pathname: page.href,
+        })),
+    ];
+
+    for (const page of pages) {
+        // readPage also proves Nitro discovered and emitted each standalone route.
+        const { document } = new JSDOM(await readPage(page.path)).window;
+        const header = document.querySelector("header");
+        assert.ok(header, `Production header must be rendered: ${page.pathname}`);
+        const brand = header.querySelector('a[aria-label="Jordan Rhea — Home"]');
+        assert.equal(brand?.getAttribute("href"), "/");
+        assert.equal(brand.querySelector("img")?.getAttribute("src"), "/content/img/jr-icon.png");
+
+        const work = header.querySelector('nav[aria-label="Work"]');
+        assert.ok(work, "Production header must expose work navigation.");
+        assert.equal(work.querySelector('a[href="/school-data-solutions"]')?.textContent?.trim(), "School Data Solutions");
+        assert.equal(work.querySelector('a[href="/projects"]')?.textContent?.trim(), "Projects");
+
+        const toggle = Array.from(header.querySelectorAll("button")).find(
+            button => button.textContent?.trim().startsWith("Pages"),
+        );
+        assert.ok(toggle, "Production header must render the Pages disclosure.");
+        assert.equal(toggle.getAttribute("aria-expanded"), "false");
+        const panelId = toggle.getAttribute("aria-controls");
+        assert.ok(panelId, "Pages must identify its controlled panel.");
+        const panel = document.getElementById(panelId);
+        assert.ok(panel, "Closed Pages panel must remain mounted in static HTML.");
+        assert.ok(panel.hasAttribute("hidden"), "Pages panel must be hidden initially.");
+        for (const destination of [{ label: "Home", href: "/" }, ...standalonePages]) {
+            assert.equal(
+                panel.querySelector(`a[href="${destination.href}"]`)?.textContent?.trim(),
+                destination.label,
+                `Static panel must expose ${destination.href} for Nitro crawling.`,
+            );
+        }
+        if (page.pathname !== "/") {
+            assert.equal(
+                header.querySelector(`a[href="${page.pathname}"]`)?.getAttribute("aria-current"),
+                "page",
+                `Static navigation must mark the current route: ${page.pathname}`,
+            );
+        }
+        assert.equal(
+            document.querySelector('[aria-label="Navigation prototype controls"], [aria-label="Previous navigation variant"], [aria-label="Next navigation variant"]'),
+            null,
+            "Production output must not include prototype controls.",
+        );
+        assert.ok(!/Navigation preview/i.test(document.body.textContent ?? ""));
+        for (const link of header.querySelectorAll("a[href]")) {
+            assert.ok(
+                !/[?&]variant=/.test(link.getAttribute("href") ?? ""),
+                "Production navigation hrefs must not retain preview variants.",
+            );
+        }
+    }
+}
 
 async function assertSchoolDataSolutionsPage() {
     const schoolPage = await readPage(schoolDataSolutionsPage);
@@ -78,16 +149,18 @@ async function assertSchoolDataSolutionsPage() {
     );
     assert.equal(
         cards.length,
-        1,
-        "School page must render only its category fixture.",
+        projectDetailPages.length + 1,
+        "School page must render every published fixture across categories.",
     );
-    assert.equal(
-        cards[0].querySelector("h3")?.textContent,
-        "School scheduling workspace",
+    const schoolCard = Array.from(cards).find(
+        card => card.querySelector("h3")?.textContent === "School scheduling workspace",
+    );
+    assert.ok(
+        schoolCard,
         "School fixture title must be rendered in a project card.",
     );
     assert.ok(
-        Array.from(cards[0].querySelectorAll("p")).some(
+        Array.from(schoolCard.querySelectorAll("p")).some(
             paragraph =>
                 paragraph.textContent ===
                 "Review scheduling information in one place.",
@@ -95,7 +168,7 @@ async function assertSchoolDataSolutionsPage() {
         "School fixture summary must be rendered in a project card.",
     );
     assert.equal(
-        cards[0].querySelector(".platform-label")?.textContent,
+        schoolCard.querySelector(".platform-label")?.textContent,
         "PowerSchool",
     );
 
@@ -114,8 +187,10 @@ async function assertSchoolDataSolutionsPage() {
 
     for (const project of projectDetailPages) {
         assert.ok(
-            !schoolPage.includes(project.title),
-            `School page must not include another category's project: ${project.title}`,
+            Array.from(cards).some(
+                card => card.querySelector("h3")?.textContent === project.title,
+            ),
+            `School page must render a project card from every category: ${project.title}`,
         );
         assertPageContains(projectsPage, projectsListingPage, project.title);
     }

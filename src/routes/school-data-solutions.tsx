@@ -18,7 +18,7 @@ export default function SchoolDataSolutions() {
     const [state] = createResource(async () => {
         try {
             return {
-                posts: await fetchPosts(undefined, "schooldata.solutions"),
+                posts: await fetchPosts(undefined, null),
                 error: false,
             };
         } catch {
@@ -96,9 +96,9 @@ export default function SchoolDataSolutions() {
                 </Section>
 
                 <Section id="project-highlights" className="projects">
-                    <p class="eyebrow">Selected work</p>
-                    <h2>Tools for school workflows</h2>
-                    <p>Project highlights from School Data Solutions.</p>
+                    <p class="eyebrow">Projects</p>
+                    <h2>All projects</h2>
+                    <p>All published projects.</p>
                     <Suspense
                         fallback={
                             <p class="project-message" role="status">
@@ -118,7 +118,7 @@ export default function SchoolDataSolutions() {
                             }
                         >
                             <p class="project-message" role="status">
-                                No project highlights are available yet. Get in
+                                No published projects are available yet. Get in
                                 touch below to discuss your school’s needs.
                             </p>
                         </Show>

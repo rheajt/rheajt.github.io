@@ -11,6 +11,7 @@ const posts: SanityPost[] = [
     {
         _id: "school-1", title: "School scheduling workspace",
         slug: { current: "school-scheduling" }, publishedAt: "2026-01-01",
+        category: "schooldata.solutions",
         summary: "Review scheduling information in one place.",
         imageUrl: "/school-workspace.png", imageAlt: "Scheduling workspace overview",
         tags: [
@@ -21,6 +22,7 @@ const posts: SanityPost[] = [
     {
         _id: "school-2", title: "Planning notebook",
         slug: { current: "planning-notebook" }, publishedAt: "2026-01-02",
+        category: "jordanrhea.com",
         imageUrl: "/notebook.png",
         tags: [{ label: "Planning", slug: { current: "planning" } }],
     },
@@ -44,10 +46,16 @@ beforeEach(() => {
 });
 
 describe("School Data Solutions", () => {
-    it("loads school-category highlights, logo, and existing navigation", async () => {
+    it("loads all published projects without a limit or category, logo, and existing navigation", async () => {
         renderPage();
-        expect(fetchPosts).toHaveBeenCalledWith(undefined, "schooldata.solutions");
+        expect(fetchPosts).toHaveBeenCalledExactlyOnceWith(undefined, null);
         expect(await screen.findByRole("heading", { name: "School scheduling workspace" })).toBeInTheDocument();
+        expect(screen.getByRole("heading", { level: 2, name: "All projects" })).toBeInTheDocument();
+        expect(screen.getByText("All published projects.")).toBeInTheDocument();
+        expect(screen.getAllByRole("article")).toHaveLength(posts.length);
+        for (const post of posts) {
+            expect(screen.getByRole("heading", { level: 3, name: post.title })).toBeInTheDocument();
+        }
         expect(screen.getAllByRole("main")).toHaveLength(1);
         expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent("School Data Solutions");
         expect(screen.getByAltText("School Data Solutions logo")).toHaveAttribute("src", "/school-data-solutions-new-logo.png");
@@ -58,6 +66,22 @@ describe("School Data Solutions", () => {
         for (const card of screen.getAllByRole("article")) {
             expect(card.querySelector("a, details")).toBeNull();
         }
+    });
+
+    it("renders every returned project beyond common result caps across categories", async () => {
+        const allPosts: SanityPost[] = Array.from({ length: 105 }, (_, index) => ({
+            _id: `project-${index}`,
+            title: `Published project ${index}`,
+            slug: { current: `project-${index}` },
+            publishedAt: "2026-01-01",
+            category: ["schooldata.solutions", "jordanrhea.com", "other", undefined][index % 4],
+        }));
+        vi.mocked(fetchPosts).mockResolvedValue(allPosts);
+        renderPage();
+        await screen.findByRole("heading", { name: allPosts[104].title });
+        expect(fetchPosts).toHaveBeenCalledExactlyOnceWith(undefined, null);
+        expect(screen.getAllByRole("article").map(card => card.querySelector("h3")?.textContent)).toEqual(allPosts.map(post => post.title));
+        expect(screen.getByRole("status")).toHaveTextContent("105 projects · All projects");
     });
 
     it("derives unique filters from fetched tags and resets to every project", async () => {
@@ -76,6 +100,9 @@ describe("School Data Solutions", () => {
         expect(filters.getByRole("button", { name: "All", exact: true })).toHaveAttribute("aria-pressed", "true");
         expect(screen.getAllByRole("article")).toHaveLength(3);
         expect(screen.getByRole("status")).toHaveTextContent("3 projects · All projects");
+        for (const post of posts) {
+            expect(screen.getByRole("heading", { name: post.title })).toBeInTheDocument();
+        }
     });
 
     it("handles optional images, summaries, and tags without fabricated content", async () => {
@@ -111,7 +138,7 @@ describe("School Data Solutions", () => {
     it("shows a useful empty state", async () => {
         vi.mocked(fetchPosts).mockResolvedValue([]);
         renderPage();
-        expect(await screen.findByText(/No project highlights are available yet/)).toBeInTheDocument();
+        expect(await screen.findByText(/No published projects are available yet/)).toBeInTheDocument();
         expect(screen.queryByRole("article")).not.toBeInTheDocument();
         expect(screen.queryByRole("group", { name: "Filter projects by tag" })).not.toBeInTheDocument();
     });
@@ -120,7 +147,7 @@ describe("School Data Solutions", () => {
         vi.mocked(fetchPosts).mockRejectedValue(new Error("offline"));
         renderPage();
         expect(await screen.findByRole("alert")).toHaveTextContent("Projects couldn’t be loaded.");
-        expect(screen.queryByText(/No project highlights/)).not.toBeInTheDocument();
+        expect(screen.queryByText(/No published projects/)).not.toBeInTheDocument();
         expect(screen.getByRole("link", { name: "Start a conversation" })).toHaveAttribute("href", "/contact");
     });
 
