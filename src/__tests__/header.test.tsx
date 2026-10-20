@@ -27,7 +27,9 @@ function renderInRouter(ui: () => JSX.Element, url = "/") {
     const history = createMemoryHistory();
     history.set({ value: url, replace: true });
     const result = render(() => (
-        <MemoryRouter history={history} root={() => ui()}>{[]}</MemoryRouter>
+        <MemoryRouter history={history} root={() => ui()}>
+            {[]}
+        </MemoryRouter>
     ));
     return { ...result, history };
 }
@@ -51,19 +53,17 @@ describe("Header", () => {
             "/content/img/jr-icon.png",
         );
         const work = within(screen.getByRole("navigation", { name: "Work" }));
-        expect(work.getByRole("link", { name: "School Data Solutions" })).toHaveAttribute(
-            "href",
-            "/school-data-solutions",
-        );
+        expect(
+            work.getByRole("link", { name: "School Data Solutions" }),
+        ).toHaveAttribute("href", "/school-data-solutions");
         expect(work.getByRole("link", { name: "Projects" })).toHaveAttribute(
             "href",
             "/projects",
         );
         expect(work.getAllByRole("link")).toHaveLength(2);
-        expect(screen.getByRole("button", { name: "Pages", exact: true })).toHaveAttribute(
-            "aria-expanded",
-            "false",
-        );
+        expect(
+            screen.getByRole("button", { name: "Pages", exact: true }),
+        ).toHaveAttribute("aria-expanded", "false");
     });
 
     it("keeps every standalone destination mounted but hidden while Pages is closed", () => {
@@ -74,7 +74,9 @@ describe("Header", () => {
             const link = panel.querySelector(`a[href="${page.href}"]`);
             expect(link).toBeInTheDocument();
             expect(link).toHaveTextContent(page.name);
-            expect(screen.queryByRole("link", { name: page.name, exact: true })).not.toBeInTheDocument();
+            expect(
+                screen.queryByRole("link", { name: page.name, exact: true }),
+            ).not.toBeInTheDocument();
         }
     });
 
@@ -85,10 +87,12 @@ describe("Header", () => {
         expect(trigger).toHaveAttribute("aria-expanded", "true");
         expect(panel).toBeVisible();
         for (const page of standalonePages) {
-            expect(within(panel).getByRole("link", { name: page.name, exact: true })).toHaveAttribute(
-                "href",
-                page.href,
-            );
+            expect(
+                within(panel).getByRole("link", {
+                    name: page.name,
+                    exact: true,
+                }),
+            ).toHaveAttribute("href", page.href);
         }
         fireEvent.click(trigger);
         expect(trigger).toHaveAttribute("aria-expanded", "false");
@@ -96,32 +100,81 @@ describe("Header", () => {
         expect(document.getElementById(panel.id)).toBe(panel);
     });
 
-    it("provides the four resume social links and Contact in both connection areas", () => {
+    it("provides five accessible SVG social links in both connection areas without changing resume links", () => {
+        const resumeLinks = getResumeLinks().map(link => ({ ...link }));
+        expect(resumeLinks).toHaveLength(4);
+        expect(resumeLinks.map(link => link.label)).toEqual([
+            "LinkedIn",
+            "GitHub",
+            "YouTube",
+            "Strava",
+        ]);
         renderInRouter(() => <Header pathname="/" />);
         const { trigger, panel } = getDisclosure();
-        const header = within(screen.getByRole("banner"));
-        const resumeLinks = getResumeLinks();
-        expect(resumeLinks).toHaveLength(4);
+        const banner = screen.getByRole("banner");
+        const header = within(banner);
         const connections = [
             ...resumeLinks.map(link => ({ name: link.label, href: link.url })),
-            { name: "Contact", href: "/contact" },
+            { name: "Letterboxd", href: "https://boxd.it/bz8UB" },
         ];
         fireEvent.click(trigger);
         expect(panel).toBeVisible();
+        expect(banner.querySelectorAll('a[href^="https://"]')).toHaveLength(10);
+        expect(panel.querySelectorAll('a[href^="https://"]')).toHaveLength(5);
         for (const connection of connections) {
             const panelLink = within(panel).getByRole("link", {
                 name: connection.name,
                 exact: true,
                 hidden: true,
             });
-            expect(panelLink).toHaveAttribute("href", connection.href);
-            const wideLinks = header.getAllByRole("link", {
-                name: connection.name,
-                exact: true,
-                hidden: true,
-            }).filter(link => !panel.contains(link));
+            const wideLinks = header
+                .getAllByRole("link", {
+                    name: connection.name,
+                    exact: true,
+                    hidden: true,
+                })
+                .filter(link => !panel.contains(link));
             expect(wideLinks).toHaveLength(1);
-            expect(wideLinks[0]).toHaveAttribute("href", connection.href);
+            for (const link of [panelLink, wideLinks[0]]) {
+                expect(link.tagName).toBe("A");
+                expect(link).toHaveAccessibleName(connection.name);
+                expect(link).toHaveAttribute("aria-label", connection.name);
+                expect(link).toHaveAttribute("title", connection.name);
+                expect(link).toHaveAttribute("href", connection.href);
+                expect(link).toHaveAttribute("target", "_blank");
+                expect(link.getAttribute("rel")?.split(/\s+/)).toContain(
+                    "noreferrer",
+                );
+                const svg = link.querySelector("svg");
+                expect(svg).toBeInTheDocument();
+                expect(svg).toHaveAttribute("aria-hidden", "true");
+                expect(svg).toHaveAttribute("focusable", "false");
+                // SVG metadata is not visible brand text; no text or arrow outside the icon.
+                const content = link.cloneNode(true) as HTMLElement;
+                content.querySelectorAll("svg").forEach(icon => icon.remove());
+                expect(content.textContent?.trim()).toBe("");
+            }
+        }
+        expect(getResumeLinks()).toEqual(resumeLinks);
+    });
+
+    it("keeps Contact as a separate text-only internal link in both connection areas", () => {
+        renderInRouter(() => <Header pathname="/" />);
+        const { trigger, panel } = getDisclosure();
+        fireEvent.click(trigger);
+        const contacts = within(screen.getByRole("banner")).getAllByRole(
+            "link",
+            { name: "Contact", exact: true, hidden: true },
+        );
+        expect(contacts).toHaveLength(2);
+        expect(contacts.filter(link => panel.contains(link))).toHaveLength(1);
+        expect(contacts.filter(link => !panel.contains(link))).toHaveLength(1);
+        for (const contact of contacts) {
+            expect(contact.tagName).toBe("A");
+            expect(contact).toHaveAttribute("href", "/contact");
+            expect(contact).not.toHaveAttribute("target");
+            expect(contact).toHaveTextContent(/^Contact$/);
+            expect(contact.querySelector("svg")).not.toBeInTheDocument();
         }
     });
 
@@ -129,7 +182,9 @@ describe("Header", () => {
         renderInRouter(() => <Header pathname="/" />);
         const { trigger, panel } = getDisclosure();
         fireEvent.click(trigger);
-        within(panel).getByRole("link", { name: "Resume", exact: true }).focus();
+        within(panel)
+            .getByRole("link", { name: "Resume", exact: true })
+            .focus();
         fireEvent.keyDown(document.activeElement!, { key: "Escape" });
         expect(trigger).toHaveAttribute("aria-expanded", "false");
         expect(panel).not.toBeVisible();
@@ -140,7 +195,9 @@ describe("Header", () => {
         renderInRouter(() => <Header pathname="/" />);
         const { trigger, panel } = getDisclosure();
         fireEvent.click(trigger);
-        fireEvent.pointerDown(within(panel).getByRole("link", { name: "Resume", exact: true }));
+        fireEvent.pointerDown(
+            within(panel).getByRole("link", { name: "Resume", exact: true }),
+        );
         expect(trigger).toHaveAttribute("aria-expanded", "true");
         fireEvent.pointerDown(document.body);
         expect(trigger).toHaveAttribute("aria-expanded", "false");
@@ -151,7 +208,9 @@ describe("Header", () => {
         const { history } = renderInRouter(() => <Header pathname="/" />);
         const { trigger, panel } = getDisclosure();
         fireEvent.click(trigger);
-        fireEvent.click(within(panel).getByRole("link", { name: "About", exact: true }));
+        fireEvent.click(
+            within(panel).getByRole("link", { name: "About", exact: true }),
+        );
         await waitFor(() => expect(history.get()).toBe("/about"));
         expect(trigger).toHaveAttribute("aria-expanded", "false");
         expect(panel).not.toBeVisible();
@@ -165,15 +224,22 @@ describe("Header", () => {
         const { trigger, panel } = getDisclosure();
         fireEvent.click(trigger);
         history.set({ value: "/resume" });
-        await waitFor(() => expect(trigger).toHaveAttribute("aria-expanded", "false"));
+        await waitFor(() =>
+            expect(trigger).toHaveAttribute("aria-expanded", "false"),
+        );
         expect(panel).not.toBeVisible();
     });
 
     it("updates aria-current from the reactive pathname prop for work and standalone pages", () => {
         const [pathname, setPathname] = createSignal("/school-data-solutions");
         renderInRouter(() => <Header pathname={pathname()} />);
-        const school = screen.getByRole("link", { name: "School Data Solutions" });
-        const projects = screen.getByRole("link", { name: "Projects", exact: true });
+        const school = screen.getByRole("link", {
+            name: "School Data Solutions",
+        });
+        const projects = screen.getByRole("link", {
+            name: "Projects",
+            exact: true,
+        });
         expect(school).toHaveAttribute("aria-current", "page");
         expect(projects).not.toHaveAttribute("aria-current", "page");
         setPathname("/projects");
@@ -182,9 +248,17 @@ describe("Header", () => {
 
         const { trigger, panel } = getDisclosure();
         fireEvent.click(trigger);
-        const about = within(panel).getByRole("link", { name: "About", exact: true });
-        const language = within(panel).getByRole("link", { name: "Language Learning" });
-        const home = within(panel).getByRole("link", { name: "Home", exact: true });
+        const about = within(panel).getByRole("link", {
+            name: "About",
+            exact: true,
+        });
+        const language = within(panel).getByRole("link", {
+            name: "Language Learning",
+        });
+        const home = within(panel).getByRole("link", {
+            name: "Home",
+            exact: true,
+        });
         setPathname("/about");
         expect(projects).not.toHaveAttribute("aria-current", "page");
         expect(about).toHaveAttribute("aria-current", "page");
@@ -203,22 +277,47 @@ describe("Header", () => {
         expect(screen.getAllByRole("link", { hidden: true })).toEqual([
             screen.getByRole("link", { name: "Jordan Rhea — Home" }),
         ]);
-        expect(screen.queryByRole("navigation", { hidden: true })).not.toBeInTheDocument();
-        expect(screen.queryByRole("button", { hidden: true })).not.toBeInTheDocument();
+        expect(
+            screen.queryByRole("navigation", { hidden: true }),
+        ).not.toBeInTheDocument();
+        expect(
+            screen.queryByRole("button", { hidden: true }),
+        ).not.toBeInTheDocument();
     });
 
     it("ignores variant=B and has no prototype controls, variant links, or arrow switching", () => {
-        const { history } = renderInRouter(() => <Header pathname="/" />, "/?variant=B");
+        const { history } = renderInRouter(
+            () => <Header pathname="/" />,
+            "/?variant=B",
+        );
         const { trigger, panel } = getDisclosure();
-        expect(screen.queryByRole("complementary", { name: /Navigation prototype controls/i, hidden: true })).not.toBeInTheDocument();
-        expect(screen.queryByRole("button", { name: /navigation variant/i, hidden: true })).not.toBeInTheDocument();
-        expect(screen.queryByText(/Navigation preview/i)).not.toBeInTheDocument();
-        expect(screen.queryByRole("button", { name: /Explore|Close/ })).not.toBeInTheDocument();
+        expect(
+            screen.queryByRole("complementary", {
+                name: /Navigation prototype controls/i,
+                hidden: true,
+            }),
+        ).not.toBeInTheDocument();
+        expect(
+            screen.queryByRole("button", {
+                name: /navigation variant/i,
+                hidden: true,
+            }),
+        ).not.toBeInTheDocument();
+        expect(
+            screen.queryByText(/Navigation preview/i),
+        ).not.toBeInTheDocument();
+        expect(
+            screen.queryByRole("button", { name: /Explore|Close/ }),
+        ).not.toBeInTheDocument();
         for (const link of screen.getAllByRole("link", { hidden: true })) {
             expect(link.getAttribute("href")).not.toMatch(/[?&]variant=/);
         }
         for (const key of ["ArrowLeft", "ArrowRight"]) {
-            const event = new KeyboardEvent("keydown", { key, bubbles: true, cancelable: true });
+            const event = new KeyboardEvent("keydown", {
+                key,
+                bubbles: true,
+                cancelable: true,
+            });
             window.dispatchEvent(event);
             expect(event.defaultPrevented).toBe(false);
             expect(history.get()).toBe("/?variant=B");

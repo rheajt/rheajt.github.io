@@ -43,19 +43,16 @@ const standalonePages = [
 
 await rm(outputDirectory, { force: true, recursive: true });
 
-const build = Bun.spawn(
-    ["./node_modules/.bin/vite", "build"],
-    {
-        stdin: "inherit",
-        stdout: "inherit",
-        stderr: "inherit",
-        // Nitro 3 prerenders in a Node worker; preload the mock in that worker too.
-        env: {
-            ...process.env,
-            NODE_OPTIONS: `${process.env.NODE_OPTIONS ?? ""} --import=${pathToFileURL(resolve("scripts/mock-sanity.ts")).href}`,
-        },
+const build = Bun.spawn(["./node_modules/.bin/vite", "build"], {
+    stdin: "inherit",
+    stdout: "inherit",
+    stderr: "inherit",
+    // Nitro 3 prerenders in a Node worker; preload the mock in that worker too.
+    env: {
+        ...process.env,
+        NODE_OPTIONS: `${process.env.NODE_OPTIONS ?? ""} --import=${pathToFileURL(resolve("scripts/mock-sanity.ts")).href}`,
     },
-);
+});
 
 if ((await build.exited) !== 0) {
     throw new Error("Vite build failed.");
@@ -84,42 +81,80 @@ async function assertProductionNavigation() {
         // readPage also proves Nitro discovered and emitted each standalone route.
         const { document } = new JSDOM(await readPage(page.path)).window;
         const header = document.querySelector("header");
-        assert.ok(header, `Production header must be rendered: ${page.pathname}`);
-        const brand = header.querySelector('a[aria-label="Jordan Rhea — Home"]');
-        assert.equal(brand?.getAttribute("href"), "/");
-        assert.equal(brand.querySelector("img")?.getAttribute("src"), "/content/img/jr-icon.png");
+        assert.ok(
+            header,
+            `Production header must be rendered: ${page.pathname}`,
+        );
+        const brand = header.querySelector(
+            'a[aria-label="Jordan Rhea — Home"]',
+        );
+        assert.ok(
+            brand,
+            "Production header must retain the accessible home link.",
+        );
+        assert.equal(brand.getAttribute("href"), "/");
+        assert.equal(
+            brand.querySelector("img")?.getAttribute("src"),
+            "/content/img/jr-icon.png",
+        );
 
         const work = header.querySelector('nav[aria-label="Work"]');
         assert.ok(work, "Production header must expose work navigation.");
-        assert.equal(work.querySelector('a[href="/school-data-solutions"]')?.textContent?.trim(), "School Data Solutions");
-        assert.equal(work.querySelector('a[href="/projects"]')?.textContent?.trim(), "Projects");
+        assert.equal(
+            work
+                .querySelector('a[href="/school-data-solutions"]')
+                ?.textContent?.trim(),
+            "School Data Solutions",
+        );
+        assert.equal(
+            work.querySelector('a[href="/projects"]')?.textContent?.trim(),
+            "Projects",
+        );
 
         const toggle = Array.from(header.querySelectorAll("button")).find(
             button => button.textContent?.trim().startsWith("Pages"),
         );
-        assert.ok(toggle, "Production header must render the Pages disclosure.");
+        assert.ok(
+            toggle,
+            "Production header must render the Pages disclosure.",
+        );
         assert.equal(toggle.getAttribute("aria-expanded"), "false");
         const panelId = toggle.getAttribute("aria-controls");
         assert.ok(panelId, "Pages must identify its controlled panel.");
         const panel = document.getElementById(panelId);
-        assert.ok(panel, "Closed Pages panel must remain mounted in static HTML.");
-        assert.ok(panel.hasAttribute("hidden"), "Pages panel must be hidden initially.");
-        for (const destination of [{ label: "Home", href: "/" }, ...standalonePages]) {
+        assert.ok(
+            panel,
+            "Closed Pages panel must remain mounted in static HTML.",
+        );
+        assert.ok(
+            panel.hasAttribute("hidden"),
+            "Pages panel must be hidden initially.",
+        );
+        for (const destination of [
+            { label: "Home", href: "/" },
+            ...standalonePages,
+        ]) {
             assert.equal(
-                panel.querySelector(`a[href="${destination.href}"]`)?.textContent?.trim(),
+                panel
+                    .querySelector(`a[href="${destination.href}"]`)
+                    ?.textContent?.trim(),
                 destination.label,
                 `Static panel must expose ${destination.href} for Nitro crawling.`,
             );
         }
         if (page.pathname !== "/") {
             assert.equal(
-                header.querySelector(`a[href="${page.pathname}"]`)?.getAttribute("aria-current"),
+                header
+                    .querySelector(`a[href="${page.pathname}"]`)
+                    ?.getAttribute("aria-current"),
                 "page",
                 `Static navigation must mark the current route: ${page.pathname}`,
             );
         }
         assert.equal(
-            document.querySelector('[aria-label="Navigation prototype controls"], [aria-label="Previous navigation variant"], [aria-label="Next navigation variant"]'),
+            document.querySelector(
+                '[aria-label="Navigation prototype controls"], [aria-label="Previous navigation variant"], [aria-label="Next navigation variant"]',
+            ),
             null,
             "Production output must not include prototype controls.",
         );
@@ -141,7 +176,11 @@ async function assertSchoolDataSolutionsPage() {
     const headings = document.querySelectorAll("main h1");
     const cards = document.querySelectorAll("main #project-list article");
 
-    assert.equal(headings.length, 1, "School page must render one main heading.");
+    assert.equal(
+        headings.length,
+        1,
+        "School page must render one main heading.",
+    );
     assert.equal(
         headings[0].textContent?.replace(/\s+/g, " ").trim(),
         "School Data Solutions",
@@ -153,7 +192,9 @@ async function assertSchoolDataSolutionsPage() {
         "School page must render every published fixture across categories.",
     );
     const schoolCard = Array.from(cards).find(
-        card => card.querySelector("h3")?.textContent === "School scheduling workspace",
+        card =>
+            card.querySelector("h3")?.textContent ===
+            "School scheduling workspace",
     );
     assert.ok(
         schoolCard,

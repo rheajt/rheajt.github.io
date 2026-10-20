@@ -104,13 +104,32 @@
     .nav-quick-connect {
         display: flex;
         align-items: center;
-        gap: 2px;
+        gap: 12px;
         margin-left: auto;
     }
-    .nav-quick-connect a {
-        padding-inline: 7px;
-        font-size: 11px;
-        gap: 4px;
+    .nav-social-links {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 2px;
+    }
+    a.nav-social-link {
+        width: 44px;
+        height: 44px;
+        flex: 0 0 44px;
+        padding: 12px;
+        justify-content: center;
+        color: var(--color-text-light);
+        svg {
+            display: block;
+            width: 20px;
+            height: 20px;
+            flex-shrink: 0;
+        }
+        &:hover,
+        &:focus-visible {
+            color: var(--social-color);
+        }
     }
     a.nav-contact {
         background: var(--nav-ink);

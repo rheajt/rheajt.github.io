@@ -1,4 +1,4 @@
-import { A, useNavigate } from "@solidjs/router";
+import { useNavigate } from "@solidjs/router";
 import {
     createEffect,
     createSignal,
@@ -8,8 +8,12 @@ import {
     Show,
 } from "solid-js";
 import { styled } from "solid-styled-components";
-import { getResumeLinks } from "~/utils/yaml";
-import { standalonePages, workPages } from "./navigation-data";
+import { Dynamic } from "solid-js/web";
+import {
+    getNavigationSocialLinks,
+    standalonePages,
+    workPages,
+} from "./navigation-data";
 import "./navigation.scss";
 
 export const BasicHeader = () => {
@@ -39,27 +43,42 @@ function LocalLink(props: {
     pathname: string;
     class?: string;
 }) {
+    // The router handles native anchors; A would override our pathname-based aria-current.
     return (
-        <A
+        <a
             href={props.href}
             class={props.class}
             aria-current={props.pathname === props.href ? "page" : undefined}
         >
             {props.label}
-        </A>
+        </a>
     );
 }
 
 function ConnectLinks() {
     return (
-        <For each={getResumeLinks()}>
-            {link => (
-                <a href={link.url} target="_blank" rel="noreferrer">
-                    {link.label}
-                    <span aria-hidden="true">↗</span>
-                </a>
-            )}
-        </For>
+        <div class="nav-social-links">
+            <For each={getNavigationSocialLinks()}>
+                {link => (
+                    <a
+                        class="nav-social-link"
+                        href={link.url}
+                        aria-label={link.label}
+                        title={link.label}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style={{ "--social-color": link.color }}
+                    >
+                        <Dynamic
+                            component={link.icon}
+                            size={20}
+                            aria-hidden="true"
+                            focusable="false"
+                        />
+                    </a>
+                )}
+            </For>
+        </div>
     );
 }
 
@@ -103,10 +122,13 @@ export const Header = (props: HeaderProps) => {
         <header ref={header} class="site-navigation">
             <div class="nav-shell">
                 <div class="nav-masthead">
-                    <A
+                    <a
                         class="nav-brand"
                         href="/"
                         aria-label="Jordan Rhea — Home"
+                        aria-current={
+                            props.pathname === "/" ? "page" : undefined
+                        }
                     >
                         <img
                             src="/content/img/jr-icon.png"
@@ -117,7 +139,7 @@ export const Header = (props: HeaderProps) => {
                         <span>
                             Jordan Rhea<small>Education & technology</small>
                         </span>
-                    </A>
+                    </a>
                     <Show when={props.showLinks !== false}>
                         <nav class="nav-work" aria-label="Work">
                             <For each={workPages}>
