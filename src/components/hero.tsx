@@ -2,6 +2,7 @@ import { createSignal, createEffect, onCleanup } from "solid-js";
 import { styled } from "solid-styled-components";
 import { Canvas } from "./canvas";
 import { CloudTech } from "./cloud-tech";
+import { layoutShell } from "./layout-shell";
 
 export const Hero = () => {
     let refContainer: HTMLDivElement | undefined;
@@ -89,8 +90,7 @@ const StyledHero = styled.div`
     }
 
     .columns {
-        margin: 0 auto;
-        max-width: var(--layout-width);
+        ${layoutShell}
         display: grid;
         grid-template-columns: 1fr;
         position: relative;

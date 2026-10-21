@@ -8,6 +8,7 @@ import Seo from "~/components/seo";
 import NotFound from "~/routes/[...404]";
 import { fetchPostBySlug, type SanityPost } from "~/lib/sanity";
 import { siteMetadata } from "~/site-config";
+import { layoutShell } from "~/components/layout-shell";
 
 export default function ProjectDetail() {
     const params = useParams();
@@ -147,12 +148,11 @@ function formatPostDate(date: string) {
 }
 
 const ArticleContainer = styled.article`
-    max-width: var(--layout-width);
-    margin: 0 auto;
-    padding: var(--spacing-12) 0 var(--spacing-20);
+    ${layoutShell}
+    padding-block: var(--spacing-12) var(--spacing-20);
 
     @media (max-width: 768px) {
-        padding: var(--spacing-12) 1em var(--spacing-12);
+        padding-block: var(--spacing-12);
     }
 `;
 
@@ -308,9 +308,8 @@ const ArticleFooter = styled.footer`
 `;
 
 const NotFoundContainer = styled.div`
-    max-width: var(--layout-width);
-    margin: 0 auto;
-    padding: var(--spacing-10) 1em;
+    ${layoutShell}
+    padding-block: var(--spacing-10);
     min-height: 60vh;
     display: flex;
     flex-direction: column;

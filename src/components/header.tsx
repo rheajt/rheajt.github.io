@@ -15,12 +15,13 @@ import {
     workPages,
 } from "./navigation-data";
 import "./navigation.scss";
+import { layoutShell } from "./layout-shell";
 
 export const BasicHeader = () => {
     const navigate = useNavigate();
 
     return (
-        <StyledHeader>
+        <StyledHeader class="basic-header">
             <div class="container">
                 <div onClick={() => navigate(-1)} style={{ cursor: "pointer" }}>
                     <img
@@ -225,12 +226,14 @@ const StyledHeader = styled.header`
     position: absolute;
     top: 0;
     width: 100%;
+    max-width: var(--layout-width);
+    left: 50%;
+    transform: translateX(-50%);
     z-index: 1;
-    padding: 1em;
+    padding-block: 1em;
 
     .container {
-        max-width: var(--layout-width);
-        margin: 0 auto;
+        ${layoutShell}
         display: flex;
         align-items: center;
         text-align: center;

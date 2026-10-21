@@ -66,20 +66,19 @@ export const ContactIcons = () => {
 
 const StyledContainer = styled.div`
     margin: 0 auto;
-    max-width: var(--layout-width);
-    padding: 3em 0.25em;
+    padding-block: 3em;
     a {
         color: var(--color-text);
         text-decoration: none;
     }
     @media (max-width: 768px) {
-        padding: 2em 0.25em;
+        padding-block: 2em;
     }
     .contact-icons {
         margin-top: 1em;
         margin-bottom: 1em;
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr));
         grid-gap: 1em;
         justify-content: space-between;
         justify-items: center;

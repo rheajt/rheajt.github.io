@@ -69,12 +69,16 @@ export default PokerSeats;
 const StyledSeats = styled.div`
     .seat {
         display: flex;
+        flex-wrap: wrap;
         gap: 0.5rem;
         margin-bottom: 0.5rem;
         align-items: center;
     }
     input[type="text"],
     input[type="number"] {
+        min-width: 0;
+        width: 100%;
+        flex: 1 1 8rem;
         padding: 4px 8px;
         border: 1px solid lightgray;
         border-radius: 3px;

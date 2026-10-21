@@ -12,7 +12,7 @@ export default function Schedule() {
                     src="https://calendly.com/jordan-rhea/30min"
                     width="100%"
                     height="700"
-                    style={{ border: "none", "min-width": "320px" }}
+                    style={{ border: "none", "max-width": "100%" }}
                     title="Schedule a meeting"
                 />
             </Section>

@@ -2,6 +2,7 @@ import { createSignal, Show, For } from "solid-js";
 import { styled } from "solid-styled-components";
 import Layout from "~/components/layout";
 import Seo from "~/components/seo";
+import { layoutShell } from "~/components/layout-shell";
 
 export default function PrototypeEditorial() {
     const [viewState, setViewState] = createSignal<"content" | "404">("content");
@@ -194,9 +195,8 @@ const PrototypeControls = styled.div`
 `;
 
 const NotFoundContainer = styled.div`
-    max-width: var(--layout-width);
-    margin: 0 auto;
-    padding: var(--spacing-10) 1em;
+    ${layoutShell}
+    padding-block: var(--spacing-10);
     min-height: 60vh;
     display: flex;
     flex-direction: column;
@@ -234,9 +234,8 @@ const NotFoundContainer = styled.div`
 `;
 
 const ArticleContainer = styled.article`
-    max-width: var(--layout-width);
-    margin: 0 auto;
-    padding: var(--spacing-8) 1em var(--spacing-20);
+    ${layoutShell}
+    padding-block: var(--spacing-8) var(--spacing-20);
 `;
 
 const ContextNav = styled.nav`

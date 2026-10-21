@@ -2,6 +2,7 @@ import { A } from "@solidjs/router";
 import { createResource, Show, For } from "solid-js";
 import { styled } from "solid-styled-components";
 import { fetchPosts, type SanityPost } from "~/lib/sanity";
+import { layoutShell } from "./layout-shell";
 
 const HOME_POST_LIMIT = 4;
 
@@ -34,7 +35,10 @@ export const ProjectsSection = () => {
                 <div class="grid">
                     <For each={state()?.posts}>
                         {(post: SanityPost) => (
-                            <A href={`/projects/${post.slug.current}`} class="card">
+                            <A
+                                href={`/projects/${post.slug.current}`}
+                                class="card"
+                            >
                                 <Show
                                     when={post.imageUrl}
                                     fallback={
@@ -83,9 +87,8 @@ function formatPostDate(date: string) {
 }
 
 const StyledSection = styled.section`
-    max-width: var(--layout-width);
-    margin: 0 auto var(--spacing-16, 4rem) auto;
-    padding: 0 var(--spacing-4, 1rem);
+    ${layoutShell}
+    margin-bottom: var(--spacing-16, 4rem);
 
     .section-title {
         text-align: center;
@@ -107,7 +110,7 @@ const StyledSection = styled.section`
 
     .grid {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr));
         gap: var(--spacing-8, 2rem);
     }
 

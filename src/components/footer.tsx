@@ -1,5 +1,6 @@
 import { A } from "@solidjs/router";
 import { styled } from "solid-styled-components";
+import { layoutShell } from "./layout-shell";
 
 export const Footer = () => {
     return (
@@ -20,7 +21,7 @@ export const Footer = () => {
 
 const StyledFooter = styled.footer`
     background-color: var(--color-primary);
-    padding: var(--spacing-10) var(--spacing-5);
+    padding: var(--spacing-10) 0;
     color: white;
 
     a,
@@ -31,10 +32,11 @@ const StyledFooter = styled.footer`
     }
 
     .container {
-        margin: 0 auto;
+        ${layoutShell}
         display: flex;
         align-items: center;
         justify-content: space-between;
-        max-width: var(--layout-width);
+        flex-wrap: wrap;
+        gap: var(--spacing-3);
     }
 `;

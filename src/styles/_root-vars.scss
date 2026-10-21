@@ -11,7 +11,9 @@
     --maxWidth-4xl: 56rem;
     --maxWidth-full: "100%";
     --maxWidth-wrapper: var(--maxWidth-2xl);
+    /* Border-box shell width, including the shared content gutters. */
     --layout-width: 64rem;
+    --layout-gutter: clamp(1rem, 3vw, 1.5rem);
     --spacing-px: "1px";
     --spacing-0: 0;
     --spacing-1: calc(var(--grid-size) / 4);

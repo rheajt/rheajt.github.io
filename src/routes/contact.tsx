@@ -10,7 +10,7 @@ export default function ContactPage() {
         <Layout>
             <Seo title="Contact" />
             <Section>
-                <StyledContainer>
+                <StyledContainer style={{ "padding-inline": "0" }}>
                     <ContactForm />
                 </StyledContainer>
                 <ContactIcons />

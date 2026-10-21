@@ -209,6 +209,19 @@ a:focus {
 
 /* Custom classes */
 
+/* Keep the common route shell available even before client hydration. */
+.layout-section {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: var(--layout-width);
+    margin-inline: auto;
+    padding: var(--spacing-12) var(--layout-gutter);
+
+    @media (max-width: 768px) {
+        padding-block: var(--spacing-10);
+    }
+}
+
 .global-wrapper {
     margin: var(--spacing-0) auto;
     max-width: var(--maxWidth-4xl);

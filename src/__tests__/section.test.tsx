@@ -3,6 +3,16 @@ import { render, screen } from "@solidjs/testing-library";
 import { Section } from "~/components/section";
 
 describe("Section", () => {
+    it("keeps the shared shell alongside route-specific classes and styles", () => {
+        const { container } = render(() => (
+            <Section className="intro" style={{ "padding-top": "0" }}>
+                Content
+            </Section>
+        ));
+        const section = container.querySelector("section")!;
+        expect(section).toHaveClass("layout-section", "intro");
+        expect(section.style.paddingTop).toBe("0px");
+    });
     it("renders children content", () => {
         render(() => (
             <Section>
