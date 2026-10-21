@@ -3,7 +3,7 @@ import {
     FaBrandsLinkedin,
     FaBrandsYoutube,
 } from "solid-icons/fa";
-import { styled } from "solid-styled-components";
+import { styled } from "~/lib/styled";
 import { GithubSubscribe } from "./github-subscribe";
 import YoutubeSubscribe from "./youtube-subscribe";
 

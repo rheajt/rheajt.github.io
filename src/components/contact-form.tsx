@@ -1,5 +1,5 @@
 import { createSignal, createEffect, onCleanup, Show } from "solid-js";
-import { styled } from "solid-styled-components";
+import { styled } from "~/lib/styled";
 
 const initialVals = {
     your_name: "",

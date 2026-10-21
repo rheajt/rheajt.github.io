@@ -1,9 +1,8 @@
 import Layout from "~/components/layout";
 import Seo from "~/components/seo";
-import { Loader } from "~/components/loader";
 import { Hero } from "~/components/hero";
 import { Section } from "~/components/section";
-import { styled } from "solid-styled-components";
+import { styled } from "~/lib/styled";
 import { siteMetadata } from "~/site-config";
 import { ProjectsSection } from "~/components/projects-section";
 import { QuoteCarousel } from "~/components/quote-carousel";
@@ -18,7 +17,6 @@ export default function Home() {
                     siteMetadata.siteUrl + "/content/img/jordanrhea-header.png"
                 }
             />
-            <Loader />
             <Hero />
             <Section>
                 <MissionStatement>

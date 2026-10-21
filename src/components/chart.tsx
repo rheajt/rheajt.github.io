@@ -1,4 +1,4 @@
-import { styled } from "solid-styled-components";
+import { styled } from "~/lib/styled";
 
 const StyledFullWidthComponent = styled.div`
     width: 100%;

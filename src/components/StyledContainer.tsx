@@ -1,4 +1,4 @@
-import { styled } from "solid-styled-components";
+import { styled } from "~/lib/styled";
 import { layoutShell } from "./layout-shell";
 
 export const StyledContainer = styled.div`

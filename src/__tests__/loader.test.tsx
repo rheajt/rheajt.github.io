@@ -1,32 +1,29 @@
 import { describe, it, expect, vi } from "vitest";
-import { render } from "@solidjs/testing-library";
+import { render, screen } from "@solidjs/testing-library";
+import { Loader } from "~/components/loader";
 
-vi.mock("@solidjs/start/router", () => ({
-    FileRoutes: () => null,
-}));
+vi.mock("@solidjs/start/router", () => ({ FileRoutes: () => null }));
 
 import { AppRoot } from "~/app";
 
-describe("AppRoot loader", () => {
-    it("dismisses the server-rendered loader element after root hydration", () => {
-        document.body.innerHTML = `<div id="page-loader"><div class="load-circle"></div></div>`;
+describe("fail-open loading", () => {
+    it("renders local accessible loading feedback", () => {
+        render(() => <Loader />);
+        expect(screen.getByRole("status")).toHaveTextContent("Loading…");
+        expect(document.querySelector("#page-loader")).not.toBeInTheDocument();
+    });
 
-        vi.stubGlobal(
-            "requestAnimationFrame",
-            (callback: FrameRequestCallback) => {
-                callback(0);
-                return 0;
-            },
-        );
-
-        render(() => <AppRoot />);
-
-        const loader = document.getElementById("page-loader");
-
-        expect(loader).toHaveClass("ready");
-
-        loader?.dispatchEvent(new Event("transitionend"));
-
-        expect(document.getElementById("page-loader")).not.toBeInTheDocument();
+    it("shows root content without a bootstrap loader or animation callback", () => {
+        const frame = vi.spyOn(window, "requestAnimationFrame");
+        render(() => (
+            <AppRoot>
+                <p>Visible page content</p>
+            </AppRoot>
+        ));
+        expect(screen.getByText("Visible page content")).toBeVisible();
+        expect(screen.queryByRole("status")).not.toBeInTheDocument();
+        expect(document.querySelector("#page-loader")).not.toBeInTheDocument();
+        expect(frame).not.toHaveBeenCalled();
+        frame.mockRestore();
     });
 });

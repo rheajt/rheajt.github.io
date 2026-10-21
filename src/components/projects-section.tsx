@@ -1,6 +1,6 @@
 import { A } from "@solidjs/router";
 import { createResource, Show, For } from "solid-js";
-import { styled } from "solid-styled-components";
+import { styled } from "~/lib/styled";
 import { fetchPosts, type SanityPost } from "~/lib/sanity";
 import { formatPublishedDate } from "~/utils/formatPublishedDate";
 import { layoutShell } from "./layout-shell";

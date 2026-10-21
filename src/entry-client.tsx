@@ -5,7 +5,6 @@ export const hasStaticNotFoundMarker = () =>
 
 export function mountClient() {
     if (hasStaticNotFoundMarker()) {
-        document.getElementById("page-loader")?.remove();
         return;
     }
 

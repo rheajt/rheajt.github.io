@@ -1,6 +1,6 @@
 import { A } from "@solidjs/router";
 import { Show } from "solid-js";
-import { styled } from "solid-styled-components";
+import { styled } from "~/lib/styled";
 
 type LinkButtonProps = { pathname?: string; href: string; label: string };
 

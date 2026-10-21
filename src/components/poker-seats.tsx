@@ -1,5 +1,5 @@
 import { Index } from "solid-js";
-import { styled } from "solid-styled-components";
+import { styled } from "~/lib/styled";
 import type { PokerSeat } from "../utils/pokerReducer";
 
 interface Props {

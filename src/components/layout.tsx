@@ -3,12 +3,15 @@ import { useLocation } from "@solidjs/router";
 import { Footer } from "./footer";
 import { BasicHeader, Header } from "./header";
 
-export default function Layout(props: { children: JSX.Element }) {
+export default function Layout(props: {
+    children: JSX.Element;
+    header?: JSX.Element;
+}) {
     const location = useLocation();
 
     return (
         <div>
-            <Header pathname={location.pathname} />
+            {props.header ?? <Header pathname={location.pathname} />}
             <main>{props.children}</main>
             <Footer />
         </div>

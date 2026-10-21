@@ -2,7 +2,7 @@ import Layout from "~/components/layout";
 import Seo from "~/components/seo";
 import { Section } from "~/components/section";
 import { buildMapboxSrc } from "~/utils/buildMapboxSrc";
-import { styled } from "solid-styled-components";
+import { styled } from "~/lib/styled";
 
 export default function About() {
     const mapSrc = buildMapboxSrc();

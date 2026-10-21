@@ -8,10 +8,16 @@ export default defineConfig({
     plugins: [solidStart({ devOverlay: false }), nitro()],
     nitro: {
         preset: "static",
+        prerender: {
+            ignore: ["/prototype-editorial"],
+        },
         hooks: {
             "prerender:routes": async routes => {
                 routes.add("/404.html");
                 routes.add("/school-data-solutions");
+                routes.add("/schedule");
+                routes.add("/poker");
+                routes.add("/language-learning/dictionary");
 
                 const projectSlugs = await fetchPublishedProjectSlugs();
 
@@ -21,7 +27,10 @@ export default defineConfig({
             },
             "prerender:generate": route => {
                 // Emit the custom static fallback even though it correctly returns 404.
-                if (route.route === "/404.html" && route.error?.status === 404) {
+                if (
+                    route.route === "/404.html" &&
+                    route.error?.status === 404
+                ) {
                     route.error = undefined;
                 }
             },

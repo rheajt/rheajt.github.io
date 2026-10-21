@@ -12,7 +12,6 @@ const schoolDataSolutionsPage = resolve(
     "school-data-solutions",
     "index.html",
 );
-const projectsListingHeading = /<h1[^>]*>Projects<\/h1>/;
 const projectDetailPages = [
     {
         path: resolve(
@@ -22,6 +21,9 @@ const projectDetailPages = [
             "index.html",
         ),
         title: "Build Smoke Project",
+        description:
+            "A deterministic project returned during the build smoke test.",
+        canonical: "https://jordanrhea.com/projects/build-smoke-project",
     },
     {
         path: resolve(
@@ -31,6 +33,9 @@ const projectDetailPages = [
             "index.html",
         ),
         title: "Second Build Smoke Project",
+        description:
+            "A second deterministic project returned during the build smoke test.",
+        canonical: "https://jordanrhea.com/projects/build-smoke-project-two",
     },
 ];
 const notFoundPage = resolve(publicDirectory, "404.html");
@@ -39,6 +44,15 @@ const standalonePages = [
     { label: "About", href: "/about" },
     { label: "Language Learning", href: "/language-learning" },
     { label: "Vexillology", href: "/vexillology" },
+];
+const seededPages = [
+    { pathname: "/schedule", heading: "Schedule a Meeting", title: "Schedule" },
+    { pathname: "/poker", heading: "Poker Tracker", title: "Poker" },
+    {
+        pathname: "/language-learning/dictionary",
+        heading: "Dictionary",
+        title: "Dictionary",
+    },
 ];
 
 await rm(outputDirectory, { force: true, recursive: true });
@@ -61,10 +75,27 @@ if ((await build.exited) !== 0) {
 await Promise.all(
     projectDetailPages.map(project => assertProjectDetailPage(project)),
 );
-await assertPageMatches(projectsListingPage, projectsListingHeading);
-await assertPage(notFoundPage, "404: Not Found");
+await assertPageHeading(projectsListingPage, "Projects");
+await assertPageHeading(notFoundPage, "404: Not Found");
 await assertSchoolDataSolutionsPage();
 await assertProductionNavigation();
+for (const page of seededPages) {
+    await assertPageHeading(
+        resolve(publicDirectory, page.pathname.slice(1), "index.html"),
+        page.heading,
+        page.title,
+    );
+}
+for (const path of [
+    "prototype-editorial/index.html",
+    "prototype-editorial.html",
+]) {
+    assert.equal(
+        await Bun.file(resolve(publicDirectory, path)).exists(),
+        false,
+        "The editorial prototype must not be published.",
+    );
+}
 
 async function assertProductionNavigation() {
     const pages = [
@@ -80,6 +111,28 @@ async function assertProductionNavigation() {
     for (const page of pages) {
         // readPage also proves Nitro discovered and emitted each standalone route.
         const { document } = new JSDOM(await readPage(page.path)).window;
+        assertStyledElement(
+            document,
+            document.querySelector("footer"),
+            `Footer on ${page.pathname}`,
+        );
+        assert.equal(
+            document.querySelector("#page-loader"),
+            null,
+            "Static content must not be covered by a global loader.",
+        );
+        if (page.pathname === "/") {
+            assert.ok(
+                !Array.from(
+                    document.querySelectorAll('main [role="status"]'),
+                ).some(status =>
+                    /^Loading(?:…|\.{3})$/.test(
+                        status.textContent?.trim() ?? "",
+                    ),
+                ),
+                "The completed homepage must not retain a permanent loading status.",
+            );
+        }
         const header = document.querySelector("header");
         assert.ok(
             header,
@@ -173,6 +226,10 @@ async function assertSchoolDataSolutionsPage() {
     const projectsPage = await readPage(projectsListingPage);
     // Parse without executing scripts so payload-only data cannot pass as a card.
     const { document } = new JSDOM(schoolPage).window;
+    const projectsDocument = new JSDOM(projectsPage).window.document;
+    const projectTitles = Array.from(
+        projectsDocument.querySelectorAll('main a[href^="/projects/"] h3'),
+    ).map(heading => heading.textContent);
     const headings = document.querySelectorAll("main h1");
     const cards = document.querySelectorAll("main #project-list article");
 
@@ -233,10 +290,13 @@ async function assertSchoolDataSolutionsPage() {
             ),
             `School page must render a project card from every category: ${project.title}`,
         );
-        assertPageContains(projectsPage, projectsListingPage, project.title);
+        assert.ok(
+            projectTitles.includes(project.title),
+            `Projects listing must contain an active card for ${project.title}.`,
+        );
     }
     assert.ok(
-        !projectsPage.includes("School scheduling workspace"),
+        !projectTitles.includes("School scheduling workspace"),
         "The normal projects listing must not include the school-category fixture.",
     );
 }
@@ -244,33 +304,119 @@ async function assertSchoolDataSolutionsPage() {
 async function assertProjectDetailPage(project: {
     path: string;
     title: string;
+    description: string;
+    canonical: string;
 }) {
-    const page = await readPage(project.path);
-
-    assertPageContains(page, project.path, project.title);
-    assertPageContains(page, project.path, "<article");
-
-    if (projectsListingHeading.test(page)) {
-        throw new Error(
-            `Detail page rendered the projects listing heading: ${project.path}`,
+    const dom = new JSDOM(await readPage(project.path));
+    try {
+        const document = dom.window.document;
+        const article = document.querySelector("main article");
+        assert.ok(
+            article,
+            `Async project must render an active main article: ${project.path}`,
         );
+        assert.equal(article.querySelector("h1")?.textContent, project.title);
+        assert.equal(
+            article.querySelector(".dek")?.textContent,
+            project.description,
+        );
+        assert.equal(document.querySelectorAll("main h1").length, 1);
+        assert.equal(document.head.querySelectorAll("title").length, 1);
+        assert.equal(
+            document.head.querySelector("title")?.textContent,
+            `${project.title} | jordan rhea`,
+        );
+        assert.equal(
+            document.head
+                .querySelector('meta[name="description"]')
+                ?.getAttribute("content"),
+            project.description,
+        );
+        assert.equal(
+            document.head
+                .querySelector('link[rel="canonical"]')
+                ?.getAttribute("href"),
+            project.canonical,
+        );
+        assertStyledElement(
+            document,
+            article,
+            `Async article on ${project.path}`,
+        );
+        assertStyledElement(
+            document,
+            document.querySelector("footer"),
+            `Footer on ${project.path}`,
+        );
+        assert.equal(document.querySelector("#page-loader"), null);
+    } finally {
+        dom.window.close();
     }
 }
 
-async function assertPage(path: string, expectedContent: string) {
-    const page = await readPage(path);
-
-    assertPageContains(page, path, expectedContent);
+async function assertPageHeading(
+    path: string,
+    heading: string,
+    title?: string,
+) {
+    const dom = new JSDOM(await readPage(path));
+    try {
+        const document = dom.window.document;
+        assert.equal(
+            document.querySelector("main h1")?.textContent,
+            heading,
+            `Expected active main heading in ${path}.`,
+        );
+        if (title)
+            assert.equal(
+                document.head.querySelector("title")?.textContent,
+                `${title} | jordan rhea`,
+            );
+        assertStyledElement(
+            document,
+            document.querySelector("footer"),
+            `Footer on ${path}`,
+        );
+        assert.equal(document.querySelector("#page-loader"), null);
+    } finally {
+        dom.window.close();
+    }
 }
 
-async function assertPageMatches(path: string, expectedContent: RegExp) {
-    const page = await readPage(path);
-
-    if (!expectedContent.test(page)) {
-        throw new Error(
-            `Generated file did not contain expected content: ${path}`,
-        );
-    }
+function assertStyledElement(
+    document: Document,
+    element: Element | null,
+    label: string,
+) {
+    assert.ok(
+        element,
+        `${label} must exist outside templates and hydration payloads.`,
+    );
+    const sheets =
+        document.head.querySelectorAll<HTMLStyleElement>("style#_goober");
+    assert.equal(
+        sheets.length,
+        1,
+        `${label} must have one emitted Goober stylesheet in head.`,
+    );
+    const classes = Array.from(element.classList).filter(name =>
+        /^go\d+$/.test(name),
+    );
+    assert.ok(classes.length, `${label} must retain its generated class.`);
+    const rules = Array.from(sheets[0].sheet?.cssRules ?? []);
+    assert.ok(
+        classes.some(name =>
+            rules.some(
+                rule =>
+                    "selectorText" in rule &&
+                    typeof rule.selectorText === "string" &&
+                    rule.selectorText
+                        .split(",")
+                        .some(selector => selector.trim() === `.${name}`),
+            ),
+        ),
+        `${label} must have an emitted CSS rule matching its actual generated class.`,
+    );
 }
 
 async function readPage(path: string) {
@@ -281,16 +427,4 @@ async function readPage(path: string) {
     }
 
     return page.text();
-}
-
-function assertPageContains(
-    page: string,
-    path: string,
-    expectedContent: string,
-) {
-    if (!page.includes(expectedContent)) {
-        throw new Error(
-            `Generated file did not contain expected content: ${path}`,
-        );
-    }
 }

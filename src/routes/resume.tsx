@@ -1,5 +1,5 @@
 import { For, Show, createSignal } from "solid-js";
-import { styled } from "solid-styled-components";
+import { styled } from "~/lib/styled";
 import { FaSolidFilePdf } from "solid-icons/fa";
 import Layout from "~/components/layout";
 import Seo from "~/components/seo";

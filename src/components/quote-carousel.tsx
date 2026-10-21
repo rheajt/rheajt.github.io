@@ -1,6 +1,6 @@
 import { createSignal, onCleanup, For, Show, createEffect } from "solid-js";
 import { createReducedMotion } from "~/utils/reduced-motion";
-import { styled } from "solid-styled-components";
+import { styled } from "~/lib/styled";
 import Blockquote from "./blockquote";
 import { BarCanvas } from "./bar-canvas";
 

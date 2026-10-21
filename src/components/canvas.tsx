@@ -1,5 +1,5 @@
 import { createEffect, onCleanup } from "solid-js";
-import { styled } from "solid-styled-components";
+import { styled } from "~/lib/styled";
 import { createReducedMotion } from "~/utils/reduced-motion";
 
 type Point = { x: number; y: number };

@@ -242,3 +242,44 @@
         }
     }
 }
+
+// Static 404 recovery: native anchors and disclosure, with no hydration dependency.
+.site-navigation.static-not-found-navigation {
+    .static-recovery-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 4px;
+        margin-left: auto;
+    }
+    .static-more-pages {
+        border-top: 1px solid var(--nav-line);
+    }
+    .static-more-pages summary {
+        min-height: 44px;
+        padding: 12px calc(var(--layout-gutter) - 1px);
+        font-size: 13px;
+        line-height: 1.5;
+        cursor: pointer;
+        color: var(--nav-ink);
+    }
+    .static-more-pages summary:hover {
+        background: #2835970a;
+    }
+    .static-more-pages summary:focus-visible {
+        outline: 2px solid var(--nav-ink);
+        outline-offset: -4px;
+    }
+    .static-more-pages nav {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 4px 12px;
+        padding: 0 calc(var(--layout-gutter) - 1px) 12px;
+    }
+    @media (max-width: 720px) {
+        .static-recovery-links {
+            width: 100%;
+            margin-left: 0;
+            justify-content: space-between;
+        }
+    }
+}

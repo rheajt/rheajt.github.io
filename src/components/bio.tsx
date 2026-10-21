@@ -1,5 +1,5 @@
 import { Show } from "solid-js";
-import { styled } from "solid-styled-components";
+import { styled } from "~/lib/styled";
 import {
     FaBrandsGithub,
     FaBrandsLinkedin,

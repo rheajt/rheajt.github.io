@@ -1,6 +1,6 @@
 import { useParams, A } from "@solidjs/router";
 import { createResource, Show, Suspense, For } from "solid-js";
-import { styled } from "solid-styled-components";
+import { styled } from "~/lib/styled";
 import Layout from "~/components/layout";
 import { Loader } from "~/components/loader";
 import { PortableText } from "~/components/portable-text";

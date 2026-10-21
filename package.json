@@ -14,6 +14,7 @@
     "start": "vite preview",
     "test": "vitest run",
     "test:watch": "vitest",
+    "test:ssr": "bun run scripts/styled-ssr-regression.ts",
     "test:build-smoke": "bun run scripts/build-smoke.ts",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
     "deploy": "bun run build && gh-pages -d .output/public --dotfiles"

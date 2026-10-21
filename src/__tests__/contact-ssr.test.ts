@@ -14,6 +14,7 @@ describe("contact server HTML", () => {
             plugins: [solidPlugin({ ssr: true })],
             resolve: {
                 alias: [
+                    { find: "~", replacement: resolve("src") },
                     {
                         find: /^solid-js$/,
                         replacement: resolve(
@@ -44,12 +45,36 @@ describe("contact server HTML", () => {
         const { ContactIcons } = await server.ssrLoadModule(
             "/src/components/contact-icons.tsx",
         );
-        const { renderToString } = await server.ssrLoadModule("solid-js/web");
-        const html = renderToString(ContactIcons);
+        const { renderToString, ssr } =
+            await server.ssrLoadModule("solid-js/web");
+        const { provideRequestEvent } = await server.ssrLoadModule(
+            "solid-js/web/storage",
+        );
+        const { registerStyledAssets } = await server.ssrLoadModule(
+            "/src/lib/styled-server.ts",
+        );
+        const html = provideRequestEvent(
+            {
+                request: new Request("https://example.test/contact"),
+                locals: {},
+            },
+            () =>
+                renderToString(() => {
+                    const page = ssr(
+                        ["<html><head></head><body>", "</body></html>"],
+                        ContactIcons(),
+                    );
+                    registerStyledAssets();
+                    return page;
+                }),
+        );
         const dom = new JSDOM(html);
         try {
             const doc = dom.window.document;
             const cards = doc.querySelectorAll(".icon-container");
+            const sheets = doc.head.querySelectorAll("style#_goober");
+            expect(sheets).toHaveLength(1);
+            expect(sheets[0].textContent).toContain(".icon-container");
             expect(cards).toHaveLength(3);
             const follow = doc.querySelector(".github-button")!;
             expect(follow.closest('[data-label="GitHub"]')).not.toBeNull();

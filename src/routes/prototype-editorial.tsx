@@ -1,5 +1,5 @@
 import { createSignal, Show, For } from "solid-js";
-import { styled } from "solid-styled-components";
+import { styled } from "~/lib/styled";
 import Layout from "~/components/layout";
 import Seo from "~/components/seo";
 import { layoutShell } from "~/components/layout-shell";

@@ -1,6 +1,6 @@
 import { createSignal, createEffect, onCleanup } from "solid-js";
 import { createReducedMotion } from "~/utils/reduced-motion";
-import { styled } from "solid-styled-components";
+import { styled } from "~/lib/styled";
 
 const texts = [
     { name: "Microsoft Office 365", color: "#01A6F0" },
