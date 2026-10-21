@@ -1,4 +1,4 @@
-import { For } from "solid-js";
+import { For, Show, createSignal } from "solid-js";
 import { styled } from "solid-styled-components";
 import { FaSolidFilePdf } from "solid-icons/fa";
 import Layout from "~/components/layout";
@@ -10,6 +10,20 @@ import { downloadResumePdf } from "~/utils/resume-pdf";
 const resume = getResumeData();
 
 export default function Resume() {
+    const [pending, setPending] = createSignal(false);
+    const [error, setError] = createSignal("");
+    const download = async () => {
+        if (pending()) return;
+        setPending(true);
+        setError("");
+        try {
+            await downloadResumePdf(resume);
+        } catch {
+            setError("Could not download the PDF. Please try again.");
+        } finally {
+            setPending(false);
+        }
+    };
     return (
         <Layout>
             <Seo title="Resume" />
@@ -19,11 +33,16 @@ export default function Resume() {
                         <button
                             class="download-button"
                             type="button"
-                            onClick={() => downloadResumePdf(resume)}
+                            onClick={download}
+                            disabled={pending()}
+                            aria-busy={pending()}
                         >
                             <FaSolidFilePdf aria-hidden="true" />
-                            Download PDF
+                            {pending() ? "Preparing PDF…" : "Download PDF"}
                         </button>
+                        <Show when={error()}>
+                            <p role="alert">{error()}</p>
+                        </Show>
                         <p class="eyebrow">Resume</p>
                         <h1>{resume.name}</h1>
                         <p class="headline">{resume.headline}</p>

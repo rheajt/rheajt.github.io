@@ -1,4 +1,4 @@
-import { onMount } from "solid-js";
+import { onMount, onCleanup } from "solid-js";
 
 const YoutubeSubscribe = (props: { channelId: string }) => {
     onMount(() => {
@@ -6,6 +6,7 @@ const YoutubeSubscribe = (props: { channelId: string }) => {
         script.src = "https://apis.google.com/js/platform.js";
         script.async = true;
         document.head.appendChild(script);
+        onCleanup(() => script.remove());
     });
     return (
         <div

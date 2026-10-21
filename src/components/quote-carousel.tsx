@@ -1,4 +1,5 @@
-import { createSignal, onMount, onCleanup, For, createEffect } from "solid-js";
+import { createSignal, onCleanup, For, Show, createEffect } from "solid-js";
+import { createReducedMotion } from "~/utils/reduced-motion";
 import { styled } from "solid-styled-components";
 import Blockquote from "./blockquote";
 import { BarCanvas } from "./bar-canvas";
@@ -16,6 +17,8 @@ export const QuoteCarousel = (props: Props) => {
     let ref: HTMLDivElement | undefined;
     const [dims, setDims] = createSignal({ width: 800, height: 240 });
     const [activeIndex, setActiveIndex] = createSignal(0);
+    const [paused, setPaused] = createSignal(false);
+    const reducedMotion = createReducedMotion();
 
     createEffect(() => {
         const node = ref;
@@ -45,7 +48,8 @@ export const QuoteCarousel = (props: Props) => {
         }
     });
 
-    onMount(() => {
+    createEffect(() => {
+        if (reducedMotion() || paused() || props.quotes.length < 2) return;
         const interval = setInterval(() => {
             setActiveIndex(i => (i + 1) % (props.quotes.length || 1));
         }, 5000);
@@ -70,6 +74,26 @@ export const QuoteCarousel = (props: Props) => {
                     )}
                 </For>
             </div>
+            <Show when={props.quotes.length > 1}>
+                <div class="carousel-controls">
+                    <button
+                        type="button"
+                        onClick={() =>
+                            setActiveIndex(i => (i + 1) % props.quotes.length)
+                        }
+                    >
+                        Next quote
+                    </button>
+                    <Show when={!reducedMotion()}>
+                        <button
+                            type="button"
+                            onClick={() => setPaused(value => !value)}
+                        >
+                            {paused() ? "Resume quotes" : "Pause quotes"}
+                        </button>
+                    </Show>
+                </div>
+            </Show>
         </StyledCarousel>
     );
 };
@@ -80,6 +104,24 @@ const StyledCarousel = styled.div`
     isolation: isolate;
     min-height: 240px;
 
+    .carousel-controls {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        padding-bottom: 1rem;
+    }
+    .carousel-controls button {
+        font: inherit;
+        font-size: 0.875rem;
+        color: var(--color-primary);
+        background: rgba(255, 255, 255, 0.72);
+        border: 1px solid currentColor;
+        border-radius: 999px;
+        padding: 0.25rem 0.75rem;
+        cursor: pointer;
+    }
     .carousel-inner {
         position: relative;
         z-index: 1;
@@ -104,6 +146,12 @@ const StyledCarousel = styled.div`
         opacity: 1;
         visibility: visible;
         pointer-events: auto;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .slide {
+            transition: none;
+        }
     }
 
     blockquote {

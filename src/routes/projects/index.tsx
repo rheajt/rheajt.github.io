@@ -5,6 +5,7 @@ import Layout from "~/components/layout";
 import Seo from "~/components/seo";
 import { Section } from "~/components/section";
 import { fetchPosts, type SanityPost } from "~/lib/sanity";
+import { formatPublishedDate } from "~/utils/formatPublishedDate";
 import { Loader } from "~/components/loader";
 
 export default function Projects() {
@@ -54,11 +55,22 @@ export default function Projects() {
                                             </div>
                                         </Show>
                                         <div class="card-body">
-                                            <time dateTime={post.publishedAt}>
-                                                {formatPostDate(
+                                            <Show
+                                                when={formatPublishedDate(
                                                     post.publishedAt,
                                                 )}
-                                            </time>
+                                            >
+                                                {date => (
+                                                    <time
+                                                        dateTime={
+                                                            post.publishedAt ??
+                                                            undefined
+                                                        }
+                                                    >
+                                                        {date()}
+                                                    </time>
+                                                )}
+                                            </Show>
                                             <h3>{post.title}</h3>
                                             <Show when={post.summary}>
                                                 <p>{post.summary}</p>
@@ -92,14 +104,6 @@ export default function Projects() {
             </Layout>
         </Suspense>
     );
-}
-
-function formatPostDate(date: string) {
-    return new Intl.DateTimeFormat("en", {
-        month: "long",
-        day: "numeric",
-        year: "numeric",
-    }).format(new Date(date));
 }
 
 const ProjectGrid = styled.div`

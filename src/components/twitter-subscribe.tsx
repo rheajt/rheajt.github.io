@@ -1,4 +1,4 @@
-import { onMount } from "solid-js";
+import { onMount, onCleanup } from "solid-js";
 
 const TwitterSubscribe = (props: { username: string }) => {
     onMount(() => {
@@ -6,6 +6,7 @@ const TwitterSubscribe = (props: { username: string }) => {
         script.src = "https://platform.twitter.com/widgets.js";
         script.async = true;
         document.head.appendChild(script);
+        onCleanup(() => script.remove());
     });
     return (
         <a

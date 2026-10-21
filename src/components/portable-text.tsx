@@ -15,15 +15,15 @@ import type { JSX } from "solid-js";
 interface Span {
     _type: string;
     text?: string;
-    marks?: string[];
+    marks?: unknown;
 }
 
 interface Block {
     _type: string;
     _key?: string;
     style?: string;
-    children?: Span[];
-    markDefs?: { _key?: string; _type?: string; href?: string }[];
+    children?: unknown;
+    markDefs?: unknown;
     listItem?: string;
     level?: number;
     url?: string;
@@ -43,19 +43,31 @@ function isSafeHref(href: string): boolean {
     return /^(https?:|mailto:|\/|#)/i.test(href);
 }
 
+function isRecord(value: unknown): value is Record<string, unknown> {
+    return typeof value === "object" && value !== null && !Array.isArray(value);
+}
+
 function renderSpan(span: Span, markDefs: Block["markDefs"] = []): JSX.Element {
     let text: JSX.Element = span.text || "";
+    const definitions = Array.isArray(markDefs) ? markDefs : [];
+    const marks = Array.isArray(span.marks) ? span.marks : [];
 
-    for (const markKey of span.marks || []) {
+    for (const markKey of marks) {
+        if (typeof markKey !== "string") continue;
         if (markKey === "strong") text = <strong>{text}</strong>;
         else if (markKey === "em") text = <em>{text}</em>;
         else if (markKey === "code") text = <code>{text}</code>;
         else {
-            const definition = markDefs.find(
-                definition => definition._key === markKey,
+            const definition = definitions.find(
+                definition =>
+                    isRecord(definition) && definition._key === markKey,
             );
             const href = definition?.href;
-            if (definition?._type === "link" && href && isSafeHref(href)) {
+            if (
+                definition?._type === "link" &&
+                typeof href === "string" &&
+                isSafeHref(href)
+            ) {
                 const isExternal = /^https?:\/\//i.test(href);
                 text = (
                     <a
@@ -74,10 +86,16 @@ function renderSpan(span: Span, markDefs: Block["markDefs"] = []): JSX.Element {
 }
 
 function blockChildren(block: Block): JSX.Element {
+    const children = Array.isArray(block.children)
+        ? block.children.filter(
+              (child): child is Span =>
+                  isRecord(child) &&
+                  child._type === "span" &&
+                  typeof child.text === "string",
+          )
+        : [];
     return (
-        <For each={block.children || []}>
-            {child => renderSpan(child, block.markDefs)}
-        </For>
+        <For each={children}>{child => renderSpan(child, block.markDefs)}</For>
     );
 }
 
@@ -165,7 +183,8 @@ function renderYoutube(block: Block): JSX.Element {
 }
 
 function highlightedCode(code: string, language?: string): string {
-    const normalizedLanguage = language?.toLowerCase();
+    const normalizedLanguage =
+        typeof language === "string" ? language.toLowerCase() : undefined;
     const grammar =
         normalizedLanguage === "js" || normalizedLanguage === "javascript"
             ? Prism.languages.javascript
@@ -207,7 +226,8 @@ function highlightedCode(code: string, language?: string): string {
 function CodeBlock(props: { block: Block }): JSX.Element {
     const [copied, setCopied] = createSignal(false);
     const [copyFailed, setCopyFailed] = createSignal(false);
-    const source = () => props.block.code || "";
+    const source = () =>
+        typeof props.block.code === "string" ? props.block.code : "";
 
     async function copyCode(event: MouseEvent) {
         const button = event.currentTarget as HTMLButtonElement;
@@ -291,41 +311,86 @@ function renderBlock(block: Block): JSX.Element {
     return null as unknown as JSX.Element;
 }
 
-function renderBlocks(blocks: Block[]): JSX.Element[] {
-    const rendered: JSX.Element[] = [];
+interface ListNode {
+    kind: "list";
+    listItem: "bullet" | "number";
+    level: number;
+    items: { block: Block; lists: ListNode[] }[];
+}
 
-    for (let index = 0; index < blocks.length; index += 1) {
-        const block = blocks[index];
+function renderList(list: ListNode): JSX.Element {
+    const content = (
+        <For each={list.items}>
+            {item => (
+                <li>
+                    {blockChildren(item.block)}
+                    <For each={item.lists}>{renderList}</For>
+                </li>
+            )}
+        </For>
+    );
+    return list.listItem === "number" ? <ol>{content}</ol> : <ul>{content}</ul>;
+}
+
+function renderBlocks(blocks: Block[]): JSX.Element[] {
+    const nodes: (ListNode | { kind: "block"; block: Block })[] = [];
+    const stack: ListNode[] = [];
+
+    for (const block of blocks) {
         if (
-            block._type === "block" &&
-            (block.listItem === "bullet" || block.listItem === "number")
+            block._type !== "block" ||
+            (block.listItem !== "bullet" && block.listItem !== "number")
         ) {
-            const listItem = block.listItem;
-            const items: Block[] = [];
-            while (
-                blocks[index]?._type === "block" &&
-                blocks[index].listItem === listItem
-            ) {
-                items.push(blocks[index]);
-                index += 1;
-            }
-            index -= 1;
-            const content = (
-                <For each={items}>{item => <li>{blockChildren(item)}</li>}</For>
-            );
-            rendered.push(
-                listItem === "number" ? <ol>{content}</ol> : <ul>{content}</ul>,
-            );
-        } else {
-            rendered.push(renderBlock(block));
+            stack.length = 0;
+            nodes.push({ kind: "block", block });
+            continue;
         }
+
+        const level =
+            typeof block.level === "number" &&
+            Number.isInteger(block.level) &&
+            block.level > 0
+                ? block.level
+                : 1;
+        while (stack.length && stack[stack.length - 1].level > level)
+            stack.pop();
+
+        let list = stack[stack.length - 1];
+        if (list?.level === level && list.listItem !== block.listItem) {
+            stack.pop();
+            list = stack[stack.length - 1];
+        }
+
+        if (!list || list.level !== level) {
+            const next: ListNode = {
+                kind: "list",
+                listItem: block.listItem,
+                level,
+                items: [],
+            };
+            // A skipped level nests under the nearest authored parent item.
+            // Never create a list directly inside another list.
+            if (list) list.items[list.items.length - 1].lists.push(next);
+            else nodes.push(next);
+            stack.push(next);
+            list = next;
+        }
+
+        list.items.push({ block, lists: [] });
     }
 
-    return rendered;
+    return nodes.map(node =>
+        node.kind === "list" ? renderList(node) : renderBlock(node.block),
+    );
 }
 
 export const PortableText = (props: { value: unknown }) => {
     const blocks = () =>
-        Array.isArray(props.value) ? (props.value as Block[]) : [];
+        Array.isArray(props.value)
+            ? props.value.filter(
+                  (block): block is Block =>
+                      isRecord(block) && typeof block._type === "string",
+              )
+            : [];
     return <>{renderBlocks(blocks())}</>;
 };

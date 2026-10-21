@@ -328,9 +328,11 @@ describe("Header", () => {
 });
 
 describe("BasicHeader", () => {
-    it("renders its existing logo image and alt", () => {
+    it("renders its existing logo inside a named native back button", () => {
         renderInRouter(() => <BasicHeader />);
-        const img = screen.getByAltText("jordan rhea header");
+        const button = screen.getByRole("button", { name: "Go back" });
+        expect(button).toHaveAttribute("type", "button");
+        const img = button.querySelector("img");
         expect(img).toBeInTheDocument();
         expect(img).toHaveAttribute("src", "/content/img/jr-icon.png");
     });

@@ -1,6 +1,7 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import { render, screen } from "@solidjs/testing-library";
 import { Router } from "@solidjs/router";
+import { ErrorBoundary } from "solid-js";
 
 vi.mock("~/lib/sanity", () => ({
     fetchPosts: vi.fn(() =>
@@ -56,4 +57,32 @@ describe("ProjectsSection", () => {
             await screen.findByText(/projects are temporarily unavailable/i),
         ).toBeInTheDocument();
     });
+
+    it.each([undefined, null, "invalid"])(
+        "keeps the project card but omits an invalid date: %s",
+        async publishedAt => {
+            vi.mocked(fetchPosts).mockResolvedValueOnce([
+                {
+                    _id: "undated",
+                    title: "Undated Project",
+                    slug: { current: "undated" },
+                    publishedAt,
+                    imageUrl: "/image.png",
+                },
+            ]);
+            const { container } = renderInRouter(() => (
+                <ErrorBoundary fallback={<p>Render failed</p>}>
+                    <ProjectsSection />
+                </ErrorBoundary>
+            ));
+
+            expect(
+                await screen.findByRole("heading", { name: "Undated Project" }),
+            ).toBeInTheDocument();
+            expect(
+                screen.getByRole("link", { name: /Undated Project/ }),
+            ).toHaveAttribute("href", "/projects/undated");
+            expect(container.querySelector("time")).toBeNull();
+        },
+    );
 });

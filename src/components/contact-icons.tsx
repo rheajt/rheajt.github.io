@@ -12,39 +12,45 @@ export const ContactIcons = () => {
         <StyledContainer>
             <h3>Social Links</h3>
             <div class="contact-icons">
-                <a
-                    class="icon-container"
-                    href="https://youtube.com/jordanrhea"
-                    data-label="YouTube"
-                >
-                    <div class="icon">
-                        <span class="label">
-                            <FaBrandsYoutube />
-                        </span>
-                    </div>
-                    <p class="description">
-                        I turned my learning into a channel that some people
-                        have found useful. Come and join!
-                    </p>
+                <div class="icon-container" data-label="YouTube">
+                    <a
+                        class="profile-link"
+                        href="https://youtube.com/jordanrhea"
+                        aria-label="Jordan Rhea on YouTube"
+                    >
+                        <div class="icon">
+                            <span class="label">
+                                <FaBrandsYoutube />
+                            </span>
+                        </div>
+                        <p class="description">
+                            I turned my learning into a channel that some people
+                            have found useful. Come and join!
+                        </p>
+                    </a>
                     <div>
                         <YoutubeSubscribe channelId="UCwqNP1r17-2xJFweoACbW8g" />
                     </div>
-                </a>
-                <a
-                    class="icon-container"
-                    href="https://github.com/rheajt"
-                    data-label="GitHub"
-                >
-                    <div class="icon">
-                        <span class="label">
-                            <FaBrandsGithub />
-                        </span>
-                    </div>
-                    <p class="description">Github is where I share the code</p>
+                </div>
+                <div class="icon-container" data-label="GitHub">
+                    <a
+                        class="profile-link"
+                        href="https://github.com/rheajt"
+                        aria-label="Jordan Rhea on GitHub"
+                    >
+                        <div class="icon">
+                            <span class="label">
+                                <FaBrandsGithub />
+                            </span>
+                        </div>
+                        <p class="description">
+                            Github is where I share the code
+                        </p>
+                    </a>
                     <div>
                         <GithubSubscribe />
                     </div>
-                </a>
+                </div>
                 <a
                     class="icon-container"
                     href="https://linkedin.com/in/rheajt"
@@ -122,5 +128,10 @@ const StyledContainer = styled.div`
             background-color: white;
             border: 1px solid lightgray;
         }
+    }
+    .profile-link {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
     }
 `;

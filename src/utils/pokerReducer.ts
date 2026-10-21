@@ -26,26 +26,25 @@ const initialSeat = {
 };
 
 export const initialState = {
-    seats: [initialSeat] as PokerSeat[],
+    seats: [{ ...initialSeat }] as PokerSeat[],
     hands: [],
 };
 
 export const reducer = (state: typeof initialState, action: Actions) => {
     switch (action.type) {
         case "add_seat": {
-            state.seats.push(initialSeat);
-            return { ...state };
+            return { ...state, seats: [...state.seats, { ...initialSeat }] };
         }
 
         case "update_seat": {
-            let seat = state.seats[action.payload.seatIdx];
-            state.seats[action.payload.seatIdx] = {
-                ...seat,
-                ...action.payload.update,
+            return {
+                ...state,
+                seats: state.seats.map((seat, idx) =>
+                    idx === action.payload.seatIdx
+                        ? { ...seat, ...action.payload.update }
+                        : seat,
+                ),
             };
-
-            console.log(state);
-            return { ...state };
         }
 
         // case "add_hand": {

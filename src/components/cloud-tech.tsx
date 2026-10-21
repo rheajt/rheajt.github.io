@@ -1,4 +1,5 @@
-import { createSignal, onMount, onCleanup } from "solid-js";
+import { createSignal, createEffect, onCleanup } from "solid-js";
+import { createReducedMotion } from "~/utils/reduced-motion";
 import { styled } from "solid-styled-components";
 
 const texts = [
@@ -9,16 +10,23 @@ const texts = [
 export const CloudTech = () => {
     const [index, setIndex] = createSignal(0);
     const [visible, setVisible] = createSignal(true);
+    const reducedMotion = createReducedMotion();
 
-    onMount(() => {
+    createEffect(() => {
+        setVisible(true);
+        if (reducedMotion()) return;
+        let timeout: ReturnType<typeof setTimeout> | undefined;
         const intervalId = setInterval(() => {
             setVisible(false);
-            setTimeout(() => {
+            timeout = setTimeout(() => {
                 setIndex(i => i + 1);
                 setVisible(true);
             }, 300);
         }, 6000);
-        onCleanup(() => clearInterval(intervalId));
+        onCleanup(() => {
+            clearInterval(intervalId);
+            clearTimeout(timeout);
+        });
     });
 
     const current = () => texts[index() % texts.length];
@@ -55,5 +63,10 @@ const StyledCloudText = styled.span`
     .text-hidden {
         opacity: 0;
         transform: translateY(-10px);
+    }
+    @media (prefers-reduced-motion: reduce) {
+        span {
+            transition: none;
+        }
     }
 `;

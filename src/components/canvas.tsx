@@ -1,5 +1,6 @@
 import { createEffect, onCleanup } from "solid-js";
 import { styled } from "solid-styled-components";
+import { createReducedMotion } from "~/utils/reduced-motion";
 
 type Point = { x: number; y: number };
 type Line = {
@@ -12,6 +13,7 @@ type Line = {
 type CanvasProps = { height: number; width: number };
 
 export const Canvas = (props: CanvasProps) => {
+    const reducedMotion = createReducedMotion();
     let canvasRef: HTMLCanvasElement | undefined;
     let linesRef: Line[] = [];
     let rafRef: number | null = null;
@@ -19,6 +21,7 @@ export const Canvas = (props: CanvasProps) => {
     let dprRef = 1;
 
     createEffect(() => {
+        const staticRender = reducedMotion();
         const width = props.width;
         const height = props.height;
         if (!width || !height) return;
@@ -29,6 +32,7 @@ export const Canvas = (props: CanvasProps) => {
             ) as HTMLCanvasElement | null);
         if (!canvas) return;
         canvasRef = canvas;
+        if (navigator.userAgent.toLowerCase().includes("jsdom")) return;
         const ctx = canvas.getContext("2d");
         if (!ctx) return;
 
@@ -76,14 +80,15 @@ export const Canvas = (props: CanvasProps) => {
             return line;
         };
 
-        createLine();
+        const initialLine = createLine();
+        if (staticRender) initialLine.start -= initialLine.duration + 1000;
         const scheduleNext = () => {
             timeoutRef = window.setTimeout(() => {
                 createLine();
                 scheduleNext();
             }, 6000) as unknown as number;
         };
-        scheduleNext();
+        if (!staticRender) scheduleNext();
 
         const easeOutCubic = (t: number) => 1 - Math.pow(1 - t, 3);
 
@@ -200,10 +205,11 @@ export const Canvas = (props: CanvasProps) => {
                 }
             }
 
-            rafRef = requestAnimationFrame(draw);
+            if (!staticRender) rafRef = requestAnimationFrame(draw);
         };
 
-        rafRef = requestAnimationFrame(draw);
+        if (staticRender) draw();
+        else rafRef = requestAnimationFrame(draw);
 
         onCleanup(() => {
             if (timeoutRef) {
@@ -221,6 +227,7 @@ export const Canvas = (props: CanvasProps) => {
         <StyledCanvas
             ref={canvasRef}
             id="graph-paper"
+            aria-hidden="true"
             width={props.width}
             height={props.height}
         />

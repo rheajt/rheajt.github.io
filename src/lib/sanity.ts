@@ -15,10 +15,10 @@ export interface SanityPost {
     slug: { current: string };
     summary?: string;
     category?: string;
-    publishedAt: string;
+    publishedAt?: string | null;
     imageUrl?: string;
     imageAlt?: string;
-    tags?: { label: string; slug: { current: string } }[];
+    tags?: { label: string; slug?: { current: string } | null }[];
     body?: any[];
     seo?: {
         title?: string;
@@ -29,6 +29,48 @@ export interface SanityPost {
 }
 
 export const SITE_PROJECT_CATEGORY = "jordanrhea.com";
+
+function isRecord(value: unknown): value is Record<string, unknown> {
+    return typeof value === "object" && value !== null && !Array.isArray(value);
+}
+
+function normalizePost(value: unknown): SanityPost | null {
+    if (
+        !isRecord(value) ||
+        typeof value._id !== "string" ||
+        !value._id.trim() ||
+        typeof value.title !== "string" ||
+        !value.title.trim() ||
+        !isRecord(value.slug) ||
+        typeof value.slug.current !== "string" ||
+        !value.slug.current.trim()
+    ) {
+        return null;
+    }
+
+    // Dereferenced tags can contain null when the referenced document is gone.
+    // Dates are optional; an undated project is still valid, routable content.
+    return {
+        ...value,
+        ...(value.tags === undefined
+            ? {}
+            : {
+                  tags: Array.isArray(value.tags)
+                      ? value.tags.filter(
+                            tag =>
+                                isRecord(tag) && typeof tag.label === "string",
+                        )
+                      : [],
+              }),
+    } as SanityPost;
+}
+
+function normalizePosts(value: unknown): SanityPost[] {
+    if (!Array.isArray(value)) return [];
+    return value
+        .map(normalizePost)
+        .filter((post): post is SanityPost => post !== null);
+}
 
 const postCardProjection = `{
   _id,
@@ -60,15 +102,18 @@ export async function fetchPosts(
     const slice = typeof limit === "number" ? `[0...$limit]` : "";
 
     try {
-        return await sanityClient.fetch(
+        const posts = await sanityClient.fetch<unknown>(
             `*[
           _type == "post" &&
+          defined(slug.current) &&
+          slug.current != "" &&
           !(_id in path("drafts.**")) &&
           draft != true &&
           ($category == null || category == $category)
         ] | order(publishedAt desc)${slice} ${postCardProjection}`,
             { category, limit },
         );
+        return normalizePosts(posts);
     } catch (error) {
         console.error("Failed to fetch projects from Sanity", error);
         throw error;
@@ -80,9 +125,11 @@ export async function fetchPostsWithImages(
     category: string | null = SITE_PROJECT_CATEGORY,
 ): Promise<SanityPost[]> {
     const end = limit ?? 100;
-    return sanityClient.fetch(
+    const posts = await sanityClient.fetch<unknown>(
         `*[
           _type == "post" &&
+          defined(slug.current) &&
+          slug.current != "" &&
           !(_id in path("drafts.**")) &&
           draft != true &&
           ($category == null || category == $category) &&
@@ -95,13 +142,14 @@ export async function fetchPostsWithImages(
         ] | order(publishedAt desc)[0...$end] ${postCardProjection}`,
         { category, end },
     );
+    return normalizePosts(posts);
 }
 
 export async function fetchPostBySlug(
     slug: string,
     category: string | null = SITE_PROJECT_CATEGORY,
 ): Promise<SanityPost | null> {
-    return sanityClient.fetch(
+    const post = await sanityClient.fetch<unknown>(
         `*[
           _type == "post" &&
           slug.current == $slug &&
@@ -167,6 +215,7 @@ export async function fetchPostBySlug(
     }`,
         { slug, category },
     );
+    return normalizePost(post);
 }
 
 export async function fetchPublishedProjectSlugs(): Promise<string[]> {

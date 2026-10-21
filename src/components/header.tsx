@@ -23,14 +23,25 @@ export const BasicHeader = () => {
     return (
         <StyledHeader class="basic-header">
             <div class="container">
-                <div onClick={() => navigate(-1)} style={{ cursor: "pointer" }}>
+                <button
+                    type="button"
+                    aria-label="Go back"
+                    onClick={() => navigate(-1)}
+                    style={{
+                        cursor: "pointer",
+                        background: "transparent",
+                        border: "0",
+                        padding: "0",
+                        display: "flex",
+                    }}
+                >
                     <img
                         src="/content/img/jr-icon.png"
                         width={36}
                         height={36}
-                        alt="jordan rhea header"
+                        alt=""
                     />
-                </div>
+                </button>
             </div>
         </StyledHeader>
     );

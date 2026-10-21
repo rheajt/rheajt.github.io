@@ -2,6 +2,15 @@ import { describe, it, expect, vi, afterEach } from "vitest";
 import { fireEvent, render, screen } from "@solidjs/testing-library";
 import { PortableText } from "~/components/portable-text";
 
+function listBlock(text: string, listItem = "bullet", level = 1) {
+    return {
+        _type: "block",
+        listItem,
+        level,
+        children: [{ _type: "span", text }],
+    };
+}
+
 describe("PortableText", () => {
     afterEach(() => {
         vi.restoreAllMocks();
@@ -260,5 +269,241 @@ describe("PortableText", () => {
         ));
 
         expect(screen.getByText("Still here")).toBeInTheDocument();
+    });
+
+    it.each([
+        ["bullet", "ul"],
+        ["number", "ol"],
+    ])(
+        "nests %s lists inside their parent list item and dedents",
+        (type, tag) => {
+            const { container } = render(() => (
+                <PortableText
+                    value={[
+                        listBlock("Parent", type),
+                        listBlock("Child", type, 2),
+                        listBlock("Grandchild", type, 3),
+                        listBlock("Second child", type, 2),
+                        listBlock("Sibling", type),
+                    ]}
+                />
+            ));
+
+            const root = container.querySelector(`:scope > ${tag}`)!;
+            expect(root.querySelectorAll(":scope > li")).toHaveLength(2);
+            expect(
+                root.querySelector(`:scope > li > ${tag} > li`)?.firstChild
+                    ?.textContent,
+            ).toBe("Child");
+            expect(
+                root.querySelector(`:scope > li > ${tag} > li > ${tag} > li`),
+            ).toHaveTextContent("Grandchild");
+            expect(screen.getByText("Second child").parentElement).toBe(
+                screen.getByText("Child").parentElement,
+            );
+            expect(screen.getByText("Sibling").parentElement).toBe(root);
+            expect(container.querySelectorAll(`${tag} > ${tag}`)).toHaveLength(
+                0,
+            );
+        },
+    );
+
+    it("switches nested and root list types without losing the parent item", () => {
+        const { container } = render(() => (
+            <PortableText
+                value={[
+                    listBlock("Parent"),
+                    listBlock("Ordered child", "number", 2),
+                    listBlock("Bullet child", "bullet", 2),
+                    listBlock("Ordered again", "number", 2),
+                    listBlock("Next parent"),
+                    listBlock("Root ordered", "number"),
+                ]}
+            />
+        ));
+
+        const parent = screen.getByText("Parent");
+        expect(Array.from(parent.children).map(child => child.tagName)).toEqual(
+            ["OL", "UL", "OL"],
+        );
+        expect(
+            screen.getByText("Ordered child").parentElement?.parentElement,
+        ).toBe(parent);
+        expect(
+            screen.getByText("Bullet child").parentElement?.parentElement,
+        ).toBe(parent);
+        expect(screen.getByText("Next parent").parentElement).toBe(
+            parent.parentElement,
+        );
+        expect(
+            Array.from(container.children).map(child => child.tagName),
+        ).toEqual(["UL", "OL"]);
+    });
+
+    it("ends the list at an intervening block and starts a fresh list", () => {
+        const { container } = render(() => (
+            <PortableText
+                value={[
+                    listBlock("Parent"),
+                    listBlock("Child", "bullet", 2),
+                    listBlock("Dedented"),
+                    {
+                        _type: "block",
+                        children: [{ _type: "span", text: "Between lists" }],
+                    },
+                    listBlock("New list"),
+                ]}
+            />
+        ));
+
+        expect(
+            Array.from(container.children).map(child => child.tagName),
+        ).toEqual(["UL", "P", "UL"]);
+        expect(screen.getByText("Dedented").parentElement).toBe(
+            container.firstElementChild,
+        );
+        expect(screen.getByText("New list").parentElement).toBe(
+            container.lastElementChild,
+        );
+    });
+
+    it.each([
+        [
+            "null blocks",
+            [null, undefined, false, 42, "bad", {}, { _type: null }],
+        ],
+        [
+            "null children",
+            [
+                {
+                    _type: "block",
+                    children: [
+                        null,
+                        undefined,
+                        false,
+                        42,
+                        {},
+                        { _type: "span", text: "Kept child" },
+                    ],
+                },
+            ],
+        ],
+        ["non-array children", [{ _type: "block", children: { text: "bad" } }]],
+        [
+            "non-string text",
+            [
+                {
+                    _type: "block",
+                    children: [{ _type: "span", text: { bad: true } }],
+                },
+            ],
+        ],
+        [
+            "null mark definitions",
+            [
+                {
+                    _type: "block",
+                    markDefs: null,
+                    children: [
+                        { _type: "span", text: "Unlinked", marks: ["link"] },
+                    ],
+                },
+            ],
+        ],
+        [
+            "null definition entries",
+            [
+                {
+                    _type: "block",
+                    markDefs: [null, false, {}],
+                    children: [
+                        { _type: "span", text: "Unlinked", marks: ["link"] },
+                    ],
+                },
+            ],
+        ],
+        [
+            "non-array marks",
+            [
+                {
+                    _type: "block",
+                    children: [{ _type: "span", text: "Unmarked", marks: {} }],
+                },
+            ],
+        ],
+        [
+            "non-array definitions",
+            [
+                {
+                    _type: "block",
+                    markDefs: {},
+                    children: [
+                        { _type: "span", text: "Unlinked", marks: ["link"] },
+                    ],
+                },
+            ],
+        ],
+        ["malformed code", [{ _type: "code", code: {}, language: 42 }]],
+    ])("ignores malformed CMS data: %s", (_name, malformed) => {
+        render(() => (
+            <PortableText
+                value={[
+                    ...malformed,
+                    {
+                        _type: "block",
+                        children: [{ _type: "span", text: "Still here" }],
+                    },
+                ]}
+            />
+        ));
+        expect(screen.getByText("Still here")).toBeInTheDocument();
+    });
+
+    it("ignores malformed marks and definitions while preserving safe links and marks", () => {
+        render(() => (
+            <PortableText
+                value={[
+                    {
+                        _type: "block",
+                        markDefs: [
+                            null,
+                            { _key: "safe", _type: "link", href: "/projects" },
+                            {
+                                _key: "unsafe",
+                                _type: "link",
+                                href: "javascript:alert(1)",
+                            },
+                            { _key: "bad-href", _type: "link", href: {} },
+                        ],
+                        children: [
+                            null,
+                            {
+                                _type: "span",
+                                text: "Safe",
+                                marks: [null, {}, "strong", "safe"],
+                            },
+                            {
+                                _type: "span",
+                                text: "Unsafe",
+                                marks: ["unsafe"],
+                            },
+                            {
+                                _type: "span",
+                                text: "Bad href",
+                                marks: ["bad-href"],
+                            },
+                        ],
+                    },
+                ]}
+            />
+        ));
+
+        expect(screen.getByRole("link", { name: "Safe" })).toHaveAttribute(
+            "href",
+            "/projects",
+        );
+        expect(screen.getByText("Safe").tagName).toBe("STRONG");
+        expect(screen.getAllByRole("link")).toHaveLength(1);
+        expect(screen.getByText(/Unsafe/)).toHaveTextContent("Bad href");
     });
 });

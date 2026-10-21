@@ -2,6 +2,7 @@ import { describe, expect, it, vi } from "vitest";
 import { render, screen } from "@solidjs/testing-library";
 import { MetaProvider } from "@solidjs/meta";
 import { Router } from "@solidjs/router";
+import { ErrorBoundary } from "solid-js";
 
 vi.mock("~/lib/sanity", () => ({
     fetchPostBySlug: vi.fn(() =>
@@ -43,6 +44,10 @@ describe("Project detail route", () => {
             screen.getByText("A concise project summary."),
         ).toBeInTheDocument();
         expect(screen.getByAltText("Project preview")).toBeInTheDocument();
+        expect(screen.getByText("January 1, 2024")).toHaveAttribute(
+            "datetime",
+            "2024-01-01",
+        );
         expect(document.title).toBe("Project One | jordan rhea");
         expect(
             document.head
@@ -118,4 +123,44 @@ describe("Project detail route", () => {
         ).toBeInTheDocument();
         expect(screen.getByText("Please try again later.")).toBeInTheDocument();
     });
+
+    it.each([undefined, null, "invalid"])(
+        "omits an invalid publication date and divider but retains category: %s",
+        async publishedAt => {
+            vi.mocked(fetchPostBySlug).mockResolvedValueOnce({
+                _id: "undated",
+                title: "Undated Project",
+                slug: { current: "undated" },
+                publishedAt,
+                category: "jordanrhea.com",
+                body: [
+                    {
+                        _type: "block",
+                        children: [{ _type: "span", text: "Project body" }],
+                    },
+                ],
+            });
+            const { container } = render(() => (
+                <MetaProvider>
+                    <Router
+                        root={() => (
+                            <ErrorBoundary fallback={<p>Render failed</p>}>
+                                <ProjectDetail />
+                            </ErrorBoundary>
+                        )}
+                    >
+                        {[]}
+                    </Router>
+                </MetaProvider>
+            ));
+
+            expect(
+                await screen.findByRole("heading", { name: "Undated Project" }),
+            ).toBeInTheDocument();
+            expect(screen.getByText("jordanrhea.com")).toBeInTheDocument();
+            expect(screen.getByText("Project body")).toBeInTheDocument();
+            expect(container.querySelector("time")).toBeNull();
+            expect(container.querySelector(".divider")).toBeNull();
+        },
+    );
 });

@@ -2,6 +2,7 @@ import { A } from "@solidjs/router";
 import { createResource, Show, For } from "solid-js";
 import { styled } from "solid-styled-components";
 import { fetchPosts, type SanityPost } from "~/lib/sanity";
+import { formatPublishedDate } from "~/utils/formatPublishedDate";
 import { layoutShell } from "./layout-shell";
 
 const HOME_POST_LIMIT = 4;
@@ -56,9 +57,22 @@ export const ProjectsSection = () => {
                                     </div>
                                 </Show>
                                 <div class="card-body">
-                                    <time dateTime={post.publishedAt}>
-                                        {formatPostDate(post.publishedAt)}
-                                    </time>
+                                    <Show
+                                        when={formatPublishedDate(
+                                            post.publishedAt,
+                                        )}
+                                    >
+                                        {date => (
+                                            <time
+                                                dateTime={
+                                                    post.publishedAt ??
+                                                    undefined
+                                                }
+                                            >
+                                                {date()}
+                                            </time>
+                                        )}
+                                    </Show>
                                     <h3>{post.title}</h3>
                                     <Show when={post.summary}>
                                         <p>{post.summary}</p>
@@ -77,14 +91,6 @@ export const ProjectsSection = () => {
         </StyledSection>
     );
 };
-
-function formatPostDate(date: string) {
-    return new Intl.DateTimeFormat("en", {
-        month: "long",
-        day: "numeric",
-        year: "numeric",
-    }).format(new Date(date));
-}
 
 const StyledSection = styled.section`
     ${layoutShell}

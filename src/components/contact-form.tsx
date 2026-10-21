@@ -1,10 +1,5 @@
-import { createSignal, createEffect, Show } from "solid-js";
+import { createSignal, createEffect, onCleanup, Show } from "solid-js";
 import { styled } from "solid-styled-components";
-
-interface CustomFormElement extends HTMLFormElement {
-    your_name: HTMLInputElement;
-    message: HTMLTextAreaElement;
-}
 
 const initialVals = {
     your_name: "",
@@ -23,13 +18,18 @@ interface ContactFormProps {
 export const ContactForm = (props: ContactFormProps) => {
     const [isDisabled, setIsDisabled] = createSignal(true);
     const [isSent, setSent] = createSignal(false);
+    const [isSubmitting, setIsSubmitting] = createSignal(false);
+    const [error, setError] = createSignal("");
+    let request: AbortController | undefined;
+    onCleanup(() => request?.abort());
     const [percentage, setPercentage] = createSignal(0);
     const [vals, setVals] = createSignal({ ...initialVals, ...props.data });
 
     createEffect(() => {
         const v = vals();
-        const wordCount = v.message.split(" ").length;
-        const charCount = v.message.length;
+        const message = v.message.trim();
+        const wordCount = message ? message.split(/\s+/).length : 0;
+        const charCount = message.length;
         const pct = Math.min(
             100,
             Math.max(0, ((charCount / 100) * 100 + (wordCount / 50) * 100) / 2),
@@ -37,8 +37,8 @@ export const ContactForm = (props: ContactFormProps) => {
         setPercentage(pct);
         if (
             pct === 100 &&
-            v.your_name.length !== 0 &&
-            v.your_email.length !== 0
+            v.your_name.trim().length !== 0 &&
+            v.your_email.trim().length !== 0
         ) {
             setIsDisabled(false);
         } else {
@@ -48,20 +48,31 @@ export const ContactForm = (props: ContactFormProps) => {
 
     async function handleSubmit(e: Event) {
         e.preventDefault();
+        const form = e.currentTarget as HTMLFormElement;
+        if (isDisabled() || isSubmitting() || !form.reportValidity()) return;
+        setIsSubmitting(true);
+        setError("");
+        request = new AbortController();
         const deploymentId =
             "AKfycbyhUP2UI4NOia08Ey5yykiLYERXLRyHF_fBZVBiH9rKYeWDLOmy4AdRtmPuMzS7Dsg";
         const endpoint = `https://script.google.com/macros/s/${deploymentId}/exec`;
         try {
             const resp = await fetch(endpoint, {
+                signal: request.signal,
                 redirect: "follow",
                 method: "post",
                 headers: { "content-type": "text/plain" },
                 body: JSON.stringify(vals()),
             });
+            if (!resp.ok) throw new Error("Unable to send message");
             const json = await resp.json();
-            if (json.status === "done") setSent(true);
-        } catch (err) {
-            console.log(err);
+            if (json.status !== "done") throw new Error("Message not accepted");
+            setSent(true);
+        } catch {
+            if (!request.signal.aborted)
+                setError("Your message could not be sent. Please try again.");
+        } finally {
+            setIsSubmitting(false);
         }
     }
 
@@ -74,6 +85,7 @@ export const ContactForm = (props: ContactFormProps) => {
             when={!isSent()}
             fallback={
                 <div
+                    role="status"
                     style={{
                         display: "grid",
                         "place-items": "center",
@@ -97,11 +109,14 @@ export const ContactForm = (props: ContactFormProps) => {
                         </b>
                     </>
                 </Show>
-                <StyledForm onSubmit={handleSubmit}>
+                <StyledForm onSubmit={handleSubmit} aria-busy={isSubmitting()}>
                     <StyledFormInput>
                         <label for="your_name">Name</label>
                         <input
                             type="text"
+                            id="your_name"
+                            required
+                            autocomplete="name"
                             name="your_name"
                             placeholder="Name"
                             value={vals().your_name}
@@ -114,6 +129,9 @@ export const ContactForm = (props: ContactFormProps) => {
                         <label for="your_email">Email</label>
                         <input
                             type="email"
+                            id="your_email"
+                            required
+                            autocomplete="email"
                             name="your_email"
                             placeholder="Email"
                             value={vals().your_email}
@@ -131,6 +149,8 @@ export const ContactForm = (props: ContactFormProps) => {
                             talking about data systems.
                         </label>
                         <textarea
+                            id="message"
+                            required
                             name="message"
                             value={vals().message}
                             onInput={e =>
@@ -140,6 +160,11 @@ export const ContactForm = (props: ContactFormProps) => {
                             rows={7}
                         ></textarea>
                         <div
+                            role="progressbar"
+                            aria-label="Message detail"
+                            aria-valuemin={0}
+                            aria-valuemax={100}
+                            aria-valuenow={Math.round(percentage())}
                             style={{
                                 width: "100%",
                                 border: "1px solid lightgray",
@@ -155,8 +180,11 @@ export const ContactForm = (props: ContactFormProps) => {
                         </div>
                     </StyledFormInput>
                     <div class="actions full-width">
-                        <button type="submit" disabled={isDisabled()}>
-                            Send
+                        <button
+                            type="submit"
+                            disabled={isDisabled() || isSubmitting()}
+                        >
+                            {isSubmitting() ? "Sending…" : "Send"}
                         </button>
                         <div class="checkbox-group">
                             <StyledFormCheckbox>
@@ -191,6 +219,11 @@ export const ContactForm = (props: ContactFormProps) => {
                             </StyledFormCheckbox>
                         </div>
                     </div>
+                    <Show when={error()}>
+                        <p class="full-width" role="alert">
+                            {error()}
+                        </p>
+                    </Show>
                 </StyledForm>
             </>
         </Show>
@@ -242,6 +275,9 @@ const StyledForm = styled.form`
     margin-bottom: 1em;
     grid-gap: 1em;
     grid-template-columns: 1fr 1fr;
+    > .full-width {
+        grid-column: 1 / -1;
+    }
     button {
         padding: 0.5rem 1rem;
         border-radius: 3px;

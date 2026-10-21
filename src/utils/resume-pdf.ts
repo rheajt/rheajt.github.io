@@ -16,6 +16,30 @@ export async function downloadResumePdf(resume: ResumeData) {
         y = margin;
     };
 
+    const writeLines = (
+        lines: string[],
+        x: number,
+        lineHeight: number,
+        isBullet = false,
+    ) => {
+        // Keep ordinary blocks together, but split blocks taller than a page.
+        ensureSpace(
+            Math.min(lines.length * lineHeight, pageHeight - margin * 2),
+        );
+        let offset = 0;
+        while (offset < lines.length) {
+            ensureSpace(lineHeight);
+            const count = Math.min(
+                lines.length - offset,
+                Math.floor((pageHeight - margin - y) / lineHeight),
+            );
+            if (isBullet && offset === 0) doc.text("•", margin, y);
+            doc.text(lines.slice(offset, offset + count), x, y);
+            y += count * lineHeight;
+            offset += count;
+        }
+    };
+
     const text = (
         value: string,
         x: number,
@@ -38,9 +62,7 @@ export async function downloadResumePdf(resume: ResumeData) {
         doc.setFontSize(size);
         doc.setTextColor(...color);
         const lines = doc.splitTextToSize(value, maxWidth) as string[];
-        ensureSpace(lines.length * lineHeight);
-        doc.text(lines, x, y);
-        y += lines.length * lineHeight;
+        writeLines(lines, x, lineHeight);
     };
 
     const section = (title: string) => {
@@ -59,17 +81,14 @@ export async function downloadResumePdf(resume: ResumeData) {
 
     const bullet = (value: string) => {
         const bulletWidth = 12;
+        doc.setFont("times", "normal");
+        doc.setFontSize(10);
+        doc.setTextColor(35, 35, 35);
         const lines = doc.splitTextToSize(
             value,
             contentWidth - bulletWidth,
         ) as string[];
-        ensureSpace(lines.length * 13.5);
-        doc.setFont("times", "normal");
-        doc.setFontSize(10);
-        doc.setTextColor(35, 35, 35);
-        doc.text("•", margin, y);
-        doc.text(lines, margin + bulletWidth, y);
-        y += lines.length * 13.5;
+        writeLines(lines, margin + bulletWidth, 13.5, true);
     };
 
     const linkedHeaderLinks = () => {

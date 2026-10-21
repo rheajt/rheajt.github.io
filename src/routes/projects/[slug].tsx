@@ -7,6 +7,7 @@ import { PortableText } from "~/components/portable-text";
 import Seo from "~/components/seo";
 import NotFound from "~/routes/[...404]";
 import { fetchPostBySlug, type SanityPost } from "~/lib/sanity";
+import { formatPublishedDate } from "~/utils/formatPublishedDate";
 import { siteMetadata } from "~/site-config";
 import { layoutShell } from "~/components/layout-shell";
 
@@ -43,8 +44,10 @@ export default function ProjectDetail() {
     );
 
     function ProjectContent(props: { post: SanityPost }) {
+        const publicationDate = () =>
+            formatPublishedDate(props.post.publishedAt);
         const hasDateOrCategory = () =>
-            !!(props.post.publishedAt || props.post.category);
+            !!(publicationDate() || props.post.category);
 
         return (
             <Layout>
@@ -65,15 +68,21 @@ export default function ProjectDetail() {
                     <ArticleHero>
                         <Show when={hasDateOrCategory()}>
                             <div class="metadata">
-                                <Show when={props.post.publishedAt}>
-                                    <time dateTime={props.post.publishedAt}>
-                                        {formatPostDate(props.post.publishedAt)}
-                                    </time>
+                                <Show when={publicationDate()}>
+                                    {date => (
+                                        <time
+                                            dateTime={
+                                                props.post.publishedAt ??
+                                                undefined
+                                            }
+                                        >
+                                            {date()}
+                                        </time>
+                                    )}
                                 </Show>
                                 <Show
                                     when={
-                                        props.post.publishedAt &&
-                                        props.post.category
+                                        publicationDate() && props.post.category
                                     }
                                 >
                                     <span class="divider">•</span>
@@ -137,14 +146,6 @@ function RouteFailure() {
             </NotFoundContainer>
         </Layout>
     );
-}
-
-function formatPostDate(date: string) {
-    return new Intl.DateTimeFormat("en", {
-        month: "long",
-        day: "numeric",
-        year: "numeric",
-    }).format(new Date(date));
 }
 
 const ArticleContainer = styled.article`

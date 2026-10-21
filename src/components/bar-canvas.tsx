@@ -1,5 +1,6 @@
 import { createEffect, onCleanup } from "solid-js";
 import { styled } from "solid-styled-components";
+import { createReducedMotion } from "~/utils/reduced-motion";
 
 type Bar = {
     prev: number;
@@ -23,6 +24,7 @@ const randomColor = (alpha = 0.9) => {
 };
 
 export const BarCanvas = (props: Props) => {
+    const reducedMotion = createReducedMotion();
     let canvasRef: HTMLCanvasElement | undefined;
     let barsRef: Bar[] = [];
     let rafRef: number | null = null;
@@ -36,6 +38,7 @@ export const BarCanvas = (props: Props) => {
     };
 
     createEffect(() => {
+        const staticRender = reducedMotion();
         const width = props.width;
         const height = props.height;
         if (!width || !height) return;
@@ -120,14 +123,20 @@ export const BarCanvas = (props: Props) => {
             }
         };
 
-        const interval = window.setInterval(scheduleTargets, 3000);
+        const interval = staticRender
+            ? undefined
+            : window.setInterval(scheduleTargets, 3000);
 
         const draw = () => {
             const nowDraw = performance.now();
-            rafRef = requestAnimationFrame(draw);
+            if (!staticRender) rafRef = requestAnimationFrame(draw);
 
-            if (!isVisible || document.visibilityState === "hidden") return;
-            if (nowDraw - lastFrame < FRAME_INTERVAL) return;
+            if (
+                !staticRender &&
+                (!isVisible || document.visibilityState === "hidden")
+            )
+                return;
+            if (!staticRender && nowDraw - lastFrame < FRAME_INTERVAL) return;
             lastFrame = nowDraw;
 
             context.setTransform(1, 0, 0, 1, 0, 0);
@@ -180,7 +189,8 @@ export const BarCanvas = (props: Props) => {
                 : null;
         observer?.observe(canvas);
 
-        rafRef = requestAnimationFrame(draw);
+        if (staticRender) draw();
+        else rafRef = requestAnimationFrame(draw);
 
         onCleanup(() => {
             observer?.disconnect();
@@ -189,7 +199,13 @@ export const BarCanvas = (props: Props) => {
         });
     });
 
-    return <StyledCanvas id={props.id ?? "bar-canvas"} ref={canvasRef} />;
+    return (
+        <StyledCanvas
+            id={props.id ?? "bar-canvas"}
+            ref={canvasRef}
+            aria-hidden="true"
+        />
+    );
 };
 
 const StyledCanvas = styled.canvas`

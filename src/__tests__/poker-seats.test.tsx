@@ -80,4 +80,33 @@ describe("PokerSeats", () => {
         const seatDivs = container.querySelectorAll(".seat");
         expect(seatDivs.length).toBe(3);
     });
+
+    it("gives every player field an unambiguous accessible name", () => {
+        render(() => (
+            <PokerSeats
+                seats={[...seats, { name: "Player 2", hero: false, in: 0 }]}
+                handleUpdateSeat={vi.fn()}
+                handleAddSeat={vi.fn()}
+            />
+        ));
+
+        for (const player of [1, 2]) {
+            expect(
+                screen.getByRole("textbox", { name: `Player ${player} name` }),
+            ).toBeInTheDocument();
+            expect(
+                screen.getByRole("spinbutton", {
+                    name: `Player ${player} buy-in`,
+                }),
+            ).toBeInTheDocument();
+            expect(
+                screen.getByRole("spinbutton", {
+                    name: `Player ${player} cash-out`,
+                }),
+            ).toBeInTheDocument();
+            expect(
+                screen.getByRole("checkbox", { name: `Player ${player} hero` }),
+            ).toBeInTheDocument();
+        }
+    });
 });

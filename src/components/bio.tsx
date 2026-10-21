@@ -30,6 +30,7 @@ const Bio = () => {
                         <a
                             href={`https://twitter.com/${social.twitter}`}
                             data-label="Twitter"
+                            aria-label="Twitter"
                         >
                             <span class="label">
                                 <FaBrandsTwitter />
@@ -38,6 +39,7 @@ const Bio = () => {
                         <a
                             href={`https://linkedin.com/in/${social.linkedin}`}
                             data-label="LinkedIn"
+                            aria-label="LinkedIn"
                         >
                             <span class="label">
                                 <FaBrandsLinkedin />
@@ -46,6 +48,7 @@ const Bio = () => {
                         <a
                             href={`https://youtube.com/${social.youtube}`}
                             data-label="YouTube"
+                            aria-label="YouTube"
                         >
                             <span class="label">
                                 <FaBrandsYoutube />
@@ -54,6 +57,7 @@ const Bio = () => {
                         <a
                             href={`https://github.com/${social.github}`}
                             data-label="GitHub"
+                            aria-label="GitHub"
                         >
                             <span class="label">
                                 <FaBrandsGithub />

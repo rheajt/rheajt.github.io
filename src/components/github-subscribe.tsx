@@ -1,4 +1,4 @@
-import { onMount } from "solid-js";
+import { onMount, onCleanup } from "solid-js";
 
 export const GithubSubscribe = () => {
     onMount(() => {
@@ -7,6 +7,7 @@ export const GithubSubscribe = () => {
         script.async = true;
         script.defer = true;
         document.head.appendChild(script);
+        onCleanup(() => script.remove());
     });
     return (
         <a

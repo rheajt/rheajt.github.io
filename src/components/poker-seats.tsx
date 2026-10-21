@@ -1,4 +1,4 @@
-import { For } from "solid-js";
+import { Index } from "solid-js";
 import { styled } from "solid-styled-components";
 import type { PokerSeat } from "../utils/pokerReducer";
 
@@ -11,15 +11,16 @@ interface Props {
 const PokerSeats = (props: Props) => {
     return (
         <StyledSeats>
-            <For each={props.seats}>
+            <Index each={props.seats}>
                 {(seat, idx) => (
                     <div class="seat">
                         <input
                             type="text"
                             placeholder="Name"
-                            value={seat.name}
+                            aria-label={`Player ${idx + 1} name`}
+                            value={seat().name}
                             onInput={e =>
-                                props.handleUpdateSeat(idx(), {
+                                props.handleUpdateSeat(idx, {
                                     name: e.currentTarget.value,
                                 })
                             }
@@ -27,9 +28,10 @@ const PokerSeats = (props: Props) => {
                         <input
                             type="number"
                             placeholder="In"
-                            value={seat.in ?? 0}
+                            aria-label={`Player ${idx + 1} buy-in`}
+                            value={seat().in ?? 0}
                             onInput={e =>
-                                props.handleUpdateSeat(idx(), {
+                                props.handleUpdateSeat(idx, {
                                     in: Number(e.currentTarget.value),
                                 })
                             }
@@ -37,9 +39,10 @@ const PokerSeats = (props: Props) => {
                         <input
                             type="number"
                             placeholder="Out"
-                            value={seat.out ?? 0}
+                            aria-label={`Player ${idx + 1} cash-out`}
+                            value={seat().out ?? 0}
                             onInput={e =>
-                                props.handleUpdateSeat(idx(), {
+                                props.handleUpdateSeat(idx, {
                                     out: Number(e.currentTarget.value),
                                 })
                             }
@@ -47,9 +50,10 @@ const PokerSeats = (props: Props) => {
                         <label>
                             <input
                                 type="checkbox"
-                                checked={seat.hero}
+                                aria-label={`Player ${idx + 1} hero`}
+                                checked={seat().hero}
                                 onChange={e =>
-                                    props.handleUpdateSeat(idx(), {
+                                    props.handleUpdateSeat(idx, {
                                         hero: e.currentTarget.checked,
                                     })
                                 }
@@ -58,7 +62,7 @@ const PokerSeats = (props: Props) => {
                         </label>
                     </div>
                 )}
-            </For>
+            </Index>
             <button onClick={() => props.handleAddSeat()}>Add Seat</button>
         </StyledSeats>
     );

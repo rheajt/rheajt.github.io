@@ -5,7 +5,9 @@ import Seo from "~/components/seo";
 import { layoutShell } from "~/components/layout-shell";
 
 export default function PrototypeEditorial() {
-    const [viewState, setViewState] = createSignal<"content" | "404">("content");
+    const [viewState, setViewState] = createSignal<"content" | "404">(
+        "content",
+    );
 
     // Mock Sanity post
     const mockPost = {
@@ -16,27 +18,38 @@ export default function PrototypeEditorial() {
         category: "Case Study",
         mainImage: {
             url: "https://via.placeholder.com/1200x630",
-            caption: "Early wireframes and structural explorations for the Focus Tool dashboard."
+            caption:
+                "Early wireframes and structural explorations for the Focus Tool dashboard.",
         },
-        tags: ["UI/UX", "SolidJS", "Product Design"]
+        tags: ["UI/UX", "SolidJS", "Product Design"],
     };
 
     return (
         <Layout>
-            <Seo 
-                title="Prototype: Editorial Narrative" 
-                image={mockPost.mainImage ? mockPost.mainImage.url : undefined} 
+            <Seo
+                title="Prototype: Editorial Narrative"
+                image={mockPost.mainImage ? mockPost.mainImage.url : undefined}
             />
             <PrototypeControls>
                 <div class="pill">PROTOTYPE</div>
-                <button onClick={() => setViewState("content")} class={viewState() === "content" ? "active" : ""}>Article View</button>
-                <button onClick={() => setViewState("404")} class={viewState() === "404" ? "active" : ""}>404 View</button>
+                <button
+                    onClick={() => setViewState("content")}
+                    class={viewState() === "content" ? "active" : ""}
+                >
+                    Article View
+                </button>
+                <button
+                    onClick={() => setViewState("404")}
+                    class={viewState() === "404" ? "active" : ""}
+                >
+                    404 View
+                </button>
             </PrototypeControls>
 
             <Show when={viewState() === "404"}>
                 <NotFoundState />
             </Show>
-            
+
             <Show when={viewState() === "content"}>
                 <ArticleState post={mockPost} />
             </Show>
@@ -50,8 +63,13 @@ function NotFoundState() {
             <ContextLink href="/projects">← Back to projects</ContextLink>
             <div class="content">
                 <h1>Project Not Found</h1>
-                <p>The project you're looking for doesn't exist or has been removed.</p>
-                <a href="/projects" class="btn">View all projects</a>
+                <p>
+                    The project you're looking for doesn't exist or has been
+                    removed.
+                </p>
+                <a href="/projects" class="btn">
+                    View all projects
+                </a>
             </div>
         </NotFoundContainer>
     );
@@ -59,13 +77,30 @@ function NotFoundState() {
 
 function ArticleState(props: { post: any }) {
     const { post } = props;
-    
+    let code: HTMLElement | undefined;
+    const [copyState, setCopyState] = createSignal("Copy code");
+    const [copyError, setCopyError] = createSignal("");
+    const copyCode = async () => {
+        if (copyState() === "Copying…") return;
+        setCopyState("Copying…");
+        setCopyError("");
+        try {
+            await navigator.clipboard.writeText(code?.textContent ?? "");
+            setCopyState("Copied");
+        } catch {
+            setCopyState("Copy code");
+            setCopyError(
+                "Could not copy. Select the code and copy it manually, or try again.",
+            );
+        }
+    };
+
     return (
         <ArticleContainer>
             <ContextNav>
                 <ContextLink href="/projects">← Back to projects</ContextLink>
             </ContextNav>
-            
+
             <ArticleHero>
                 <div class="metadata">
                     <time dateTime={post.date}>{post.formattedDate}</time>
@@ -87,16 +122,25 @@ function ArticleState(props: { post: any }) {
 
             <ArticleBody>
                 <p class="dropcap">
-                    Every digital tool claims to save time, but very few ask what we do with the time we save. When starting this project, the primary directive wasn't speed, but intentionality.
+                    Every digital tool claims to save time, but very few ask
+                    what we do with the time we save. When starting this
+                    project, the primary directive wasn't speed, but
+                    intentionality.
                 </p>
 
                 <h2>A Shift in Paradigm</h2>
                 <p>
-                    Most focus apps use guilt as a motivator—red timers, strict blocking, and aggressive notifications. We wanted to build something that felt like a quiet room instead of a prison cell. This required a completely different approach to the user interface.
+                    Most focus apps use guilt as a motivator—red timers, strict
+                    blocking, and aggressive notifications. We wanted to build
+                    something that felt like a quiet room instead of a prison
+                    cell. This required a completely different approach to the
+                    user interface.
                 </p>
-                
+
                 <p>
-                    To achieve this, we stripped away the typical dashboard metrics. No productivity scores, no streaks. Just the work, and the tools to do it.
+                    To achieve this, we stripped away the typical dashboard
+                    metrics. No productivity scores, no streaks. Just the work,
+                    and the tools to do it.
                 </p>
 
                 <MediaEmbed>
@@ -104,20 +148,45 @@ function ArticleState(props: { post: any }) {
                         <div class="play-btn">▶</div>
                         <span>Interaction Demo (YouTube)</span>
                     </div>
-                    <figcaption>A walkthrough of the core focus-session interaction.</figcaption>
+                    <figcaption>
+                        A walkthrough of the core focus-session interaction.
+                    </figcaption>
                 </MediaEmbed>
 
                 <h2>Technical Implementation</h2>
                 <p>
-                    Building a distraction-free environment on the web is inherently paradoxical. The browser is an engine of distraction. We relied heavily on the Fullscreen API and aggressive service worker caching to ensure the environment felt native and unbroken.
+                    Building a distraction-free environment on the web is
+                    inherently paradoxical. The browser is an engine of
+                    distraction. We relied heavily on the Fullscreen API and
+                    aggressive service worker caching to ensure the environment
+                    felt native and unbroken.
                 </p>
 
                 <CodeBlock>
                     <div class="header">
                         <span class="lang">typescript</span>
-                        <button class="copy-btn">Copy code</button>
+                        <button
+                            type="button"
+                            class="copy-btn"
+                            onClick={copyCode}
+                            disabled={copyState() === "Copying…"}
+                            aria-live="polite"
+                        >
+                            {copyState()}
+                        </button>
                     </div>
-                    <pre><code>{`async function enterFocusMode(element: HTMLElement) {
+                    <Show when={copyError()}>
+                        <p
+                            role="alert"
+                            style={{ color: "#fff", padding: "1rem" }}
+                        >
+                            {copyError()}
+                        </p>
+                    </Show>
+                    <pre>
+                        <code
+                            ref={code}
+                        >{`async function enterFocusMode(element: HTMLElement) {
     if (!document.fullscreenElement) {
         try {
             await element.requestFullscreen();
@@ -131,14 +200,19 @@ function ArticleState(props: { post: any }) {
             console.error(\`Error attempting to enable focus mode: \${err.message}\`);
         }
     }
-}`}</code></pre>
+}`}</code>
+                    </pre>
                 </CodeBlock>
 
                 <p>
-                    The outcome was a tool that users didn't just use to work, but used to <em>prepare</em> to work. The friction we introduced—a deliberate two-second delay before opening external links—proved to be the most loved feature in our beta testing.
+                    The outcome was a tool that users didn't just use to work,
+                    but used to <em>prepare</em> to work. The friction we
+                    introduced—a deliberate two-second delay before opening
+                    external links—proved to be the most loved feature in our
+                    beta testing.
                 </p>
             </ArticleBody>
-            
+
             <ArticleFooter>
                 <div class="tags">
                     <For each={post.tags}>
@@ -161,7 +235,7 @@ const PrototypeControls = styled.div`
     gap: var(--spacing-2);
     align-items: center;
     z-index: 100;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
 
     .pill {
         color: #ff4785;
@@ -203,19 +277,19 @@ const NotFoundContainer = styled.div`
 
     .content {
         margin: auto 0;
-        
+
         h1 {
             font-size: var(--fontSize-6);
             margin-bottom: var(--spacing-4);
             color: var(--color-heading-black);
         }
-        
+
         p {
             font-size: var(--fontSize-3);
             color: var(--color-text-light);
             margin-bottom: var(--spacing-8);
         }
-        
+
         .btn {
             display: inline-block;
             background: var(--color-primary);
@@ -225,7 +299,7 @@ const NotFoundContainer = styled.div`
             text-decoration: none;
             font-weight: 600;
             transition: transform 0.2s;
-            
+
             &:hover {
                 transform: translateY(-2px);
             }
@@ -274,7 +348,7 @@ const ArticleHero = styled.header`
         .divider {
             color: var(--color-accent);
         }
-        
+
         .category {
             color: var(--color-text-light);
         }
@@ -298,7 +372,7 @@ const ArticleHero = styled.header`
 
 const HeroImage = styled.figure`
     margin: 0 0 var(--spacing-12);
-    
+
     .placeholder-img {
         width: 100%;
         aspect-ratio: 16/9;
@@ -370,7 +444,7 @@ const MediaEmbed = styled.figure`
         .play-btn {
             width: 64px;
             height: 64px;
-            background: rgba(255,255,255,0.2);
+            background: rgba(255, 255, 255, 0.2);
             border-radius: 50%;
             display: grid;
             place-items: center;
@@ -398,7 +472,7 @@ const CodeBlock = styled.div`
     background: #1a1a1a;
     border-radius: 8px;
     overflow: hidden;
-    
+
     .header {
         display: flex;
         justify-content: space-between;
@@ -406,14 +480,14 @@ const CodeBlock = styled.div`
         padding: var(--spacing-2) var(--spacing-4);
         background: #2a2a2a;
         border-bottom: 1px solid #333;
-        
+
         .lang {
             color: #888;
             font-size: 0.75rem;
             font-family: monospace;
             text-transform: uppercase;
         }
-        
+
         .copy-btn {
             background: transparent;
             border: 1px solid #555;
@@ -423,7 +497,7 @@ const CodeBlock = styled.div`
             font-size: 0.75rem;
             cursor: pointer;
             transition: all 0.2s;
-            
+
             &:hover {
                 background: #444;
                 color: #fff;
@@ -435,9 +509,9 @@ const CodeBlock = styled.div`
         margin: 0;
         padding: var(--spacing-4);
         overflow-x: auto;
-        
+
         code {
-            font-family: 'Courier New', Courier, monospace;
+            font-family: "Courier New", Courier, monospace;
             font-size: 0.9rem;
             color: #e6e6e6;
             line-height: 1.5;

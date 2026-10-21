@@ -2,6 +2,7 @@ import { describe, expect, it, vi } from "vitest";
 import { render, screen } from "@solidjs/testing-library";
 import { Router } from "@solidjs/router";
 import { MetaProvider } from "@solidjs/meta";
+import { ErrorBoundary } from "solid-js";
 
 vi.mock("~/lib/sanity", () => ({
     fetchPosts: vi.fn(() =>
@@ -52,4 +53,31 @@ describe("Projects route", () => {
             await screen.findByText(/failed to load projects/i),
         ).toBeInTheDocument();
     });
+
+    it.each([undefined, null, "invalid"])(
+        "renders an undated project without a time element: %s",
+        async publishedAt => {
+            vi.mocked(fetchPosts).mockResolvedValueOnce([
+                {
+                    _id: "undated",
+                    title: "Undated Project",
+                    slug: { current: "undated" },
+                    publishedAt,
+                    imageUrl: "/image.png",
+                    tags: [{ label: "Solid", slug: { current: "solid" } }],
+                },
+            ]);
+            const { container } = renderInRouter(() => (
+                <ErrorBoundary fallback={<p>Render failed</p>}>
+                    <Projects />
+                </ErrorBoundary>
+            ));
+
+            expect(
+                await screen.findByRole("heading", { name: "Undated Project" }),
+            ).toBeInTheDocument();
+            expect(screen.getByText("Solid")).toBeInTheDocument();
+            expect(container.querySelector("time")).toBeNull();
+        },
+    );
 });
