@@ -5,6 +5,9 @@ export const hasStaticNotFoundMarker = () =>
 
 export function mountClient() {
     if (hasStaticNotFoundMarker()) {
+        document
+            .querySelectorAll(".page-loader")
+            .forEach(loader => loader.remove());
         return;
     }
 

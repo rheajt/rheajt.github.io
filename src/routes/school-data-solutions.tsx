@@ -2,9 +2,12 @@ import { createResource, createSignal, For, Show, Suspense } from "solid-js";
 import { styled } from "~/lib/styled";
 import Layout from "~/components/layout";
 import { LinkButton } from "~/components/link-button";
+import { ProjectCard } from "~/components/project-card";
+import { Loader } from "~/components/loader";
 import Seo from "~/components/seo";
 import { Section } from "~/components/section";
 import { fetchPosts, type SanityPost } from "~/lib/sanity";
+import { fetchSchoolDraftPosts } from "~/lib/school-drafts";
 
 const projectTags = (project: SanityPost) => [
     ...new Set(
@@ -17,14 +20,20 @@ const projectTags = (project: SanityPost) => [
 export default function SchoolDataSolutions() {
     const [state] = createResource(async () => {
         try {
+            const posts = import.meta.env.DEV
+                ? await fetchSchoolDraftPosts()
+                : await fetchPosts(undefined, "schooldata.solutions");
             return {
-                posts: await fetchPosts(undefined, null),
+                posts: posts.filter(
+                    post => post.category === "schooldata.solutions",
+                ),
                 error: false,
             };
         } catch {
             return { posts: [] as SanityPost[], error: true };
         }
     });
+
     const [tag, setTag] = createSignal<string | null>(null);
     const tags = () =>
         [...new Set((state()?.posts ?? []).flatMap(projectTags))].sort();
@@ -52,20 +61,9 @@ export default function SchoolDataSolutions() {
                                 day.
                             </p>
                             <p class="intro-copy">
-                                I build tools for school teams working with
-                                schedules, imports, and everyday information.
-                                Here are examples across PowerSchool, ManageBac,
-                                Google Workspace, and Microsoft 365.
+                                Start with the task. Work with the systems.
+                                Build what’s needed.
                             </p>
-                            <aside class="aside">
-                                <span class="eyebrow">
-                                    A focused starting point
-                                </span>
-                                <p>
-                                    Start with the task. Work with the systems.
-                                    Build what’s needed.
-                                </p>
-                            </aside>
                             <div class="actions">
                                 <a
                                     class="primary-link"
@@ -96,30 +94,27 @@ export default function SchoolDataSolutions() {
                 </Section>
 
                 <Section id="project-highlights" className="projects">
-                    <p class="eyebrow">Projects</p>
-                    <h2>All projects</h2>
-                    <p>All published projects.</p>
-                    <Suspense
-                        fallback={
-                            <p class="project-message" role="status">
-                                Loading projects…
-                            </p>
-                        }
-                    >
+                    <p class="eyebrow">School Data Solutions Projects</p>
+                    <p>
+                        All of the projects I have been working on for building
+                        custom tools for schools.
+                    </p>
+                    <Suspense fallback={<Loader label="Loading projects…" />}>
                         <Show when={state()?.error}>
                             <p class="project-message" role="alert">
                                 Projects couldn’t be loaded. Please try again
                                 later, or get in touch below.
                             </p>
                         </Show>
+
                         <Show
                             when={
                                 !state()?.error && state()?.posts.length === 0
                             }
                         >
                             <p class="project-message" role="status">
-                                No published projects are available yet. Get in
-                                touch below to discuss your school’s needs.
+                                No projects are available yet. Get in touch
+                                below to discuss your school’s needs.
                             </p>
                         </Show>
                         <Show when={(state()?.posts.length ?? 0) > 0}>
@@ -165,37 +160,7 @@ export default function SchoolDataSolutions() {
                             </p>
                             <div id="project-list" class="project-grid">
                                 <For each={filteredProjects()}>
-                                    {project => (
-                                        <article class="project-card">
-                                            <Show when={project.imageUrl}>
-                                                <img
-                                                    class="project-image"
-                                                    src={project.imageUrl}
-                                                    alt={
-                                                        project.imageAlt ??
-                                                        project.title
-                                                    }
-                                                    loading="lazy"
-                                                />
-                                            </Show>
-                                            <Show
-                                                when={
-                                                    projectTags(project)
-                                                        .length > 0
-                                                }
-                                            >
-                                                <p class="platform-label">
-                                                    {projectTags(project).join(
-                                                        " / ",
-                                                    )}
-                                                </p>
-                                            </Show>
-                                            <h3>{project.title}</h3>
-                                            <Show when={project.summary}>
-                                                <p>{project.summary}</p>
-                                            </Show>
-                                        </article>
-                                    )}
+                                    {project => <ProjectCard post={project} />}
                                 </For>
                             </div>
                         </Show>
@@ -239,7 +204,6 @@ const Page = styled.div`
         height: auto;
     }
     .eyebrow,
-    .platform-label,
     .result-count {
         font-family: var(--fontFamily-mono);
         font-size: var(--fontSize-0);
@@ -363,34 +327,6 @@ const Page = styled.div`
         grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: var(--spacing-4);
         align-items: start;
-    }
-    .project-card {
-        background: #fbfbf8;
-        border: 1px solid var(--color-accent);
-        border-top: 3px solid var(--color-primary);
-        padding: var(--spacing-4);
-    }
-    .platform-label {
-        color: var(--color-primary);
-        margin-bottom: var(--spacing-3);
-    }
-    .project-card h3 {
-        font-size: var(--fontSize-3);
-        margin: 0 0 var(--spacing-3);
-    }
-    .project-card {
-        overflow-wrap: anywhere;
-    }
-    .project-card > :last-child {
-        margin-bottom: 0;
-    }
-    .project-image {
-        display: block;
-        width: 100%;
-        aspect-ratio: 16 / 10;
-        object-fit: contain;
-        background: #fff;
-        margin-bottom: var(--spacing-4);
     }
     .project-message {
         border-left: 2px solid var(--color-primary);

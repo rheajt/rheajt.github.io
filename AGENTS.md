@@ -8,7 +8,7 @@
 
 ## Verified commands
 
-- Dev server: `bun run dev` (Vite/SolidStart on port `4444`).
+- Dev server: `bun run dev` (Vite/SolidStart; the port is set in `package.json`).
 - Static production build: `bun run build`.
 - Full test suite: `bun run test`.
 - Focused test: `bun run test -- src/__tests__/header.test.tsx`.
@@ -31,10 +31,13 @@
 
 ## Sanity content
 
-- Sanity client and GROQ live in `src/lib/sanity.ts`.
+- Sanity client and GROQ live in `src/lib/sanity.ts`; it reads the `published` perspective and carries no token.
 - Project listings default to `category == "jordanrhea.com"` via `SITE_PROJECT_CATEGORY`.
+- The school site filters on the exact category `schooldata.solutions`.
 - Project card images are projected from `image`, `mainImage`, `coverImage`, or image blocks in `body`; preserve that fallback chain.
-- Homepage projects render via `src/components/projects-section.tsx`; `/projects` renders via `src/routes/projects.tsx`.
+- Homepage projects render via `src/components/projects-section.tsx`; `/projects` renders via `src/routes/projects/index.tsx`.
+- All three listings render cards through `src/components/project-card.tsx`.
+- School drafts are development-only and token-gated; see `docs/school-draft-preview.md`.
 
 ## Resume data
 
@@ -47,6 +50,8 @@
 
 - Vitest runs in jsdom with setup at `src/__tests__/setup.ts`.
 - Canvas APIs are limited in jsdom; `BarCanvas` intentionally skips drawing under jsdom while still rendering a `<canvas>` for tests.
+- Vitest has no SolidStart transform, so `vitest.config.ts` stubs the `server-only` marker; the real dev/build plugin still enforces that boundary.
+- The static build smoke test is `bun run test:build-smoke`; it asserts the public output carries no draft code or token markers.
 
 ## Agent skills
 
@@ -61,3 +66,6 @@ Default triage labels are used; see `docs/agents/triage-labels.md`.
 ### Domain docs
 
 Single-context layout using root `CONTEXT.md` and `docs/adr/`; see `docs/agents/domain.md`.
+
+- Read `CONTEXT.md` before working on project listings, drafts, or content categories.
+- Read the ADRs in `docs/adr/` before changing the page loader or the draft preview path.

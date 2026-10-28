@@ -6,9 +6,11 @@ import {
     onCleanup,
     For,
     Show,
+    type Component,
 } from "solid-js";
 import { styled } from "~/lib/styled";
 import { Dynamic } from "solid-js/web";
+import type { IconProps } from "solid-icons";
 import {
     getNavigationSocialLinks,
     standalonePages,
@@ -49,6 +51,10 @@ export const BasicHeader = () => {
 
 type HeaderProps = { pathname: string; showLinks?: boolean };
 
+// solid-icons' IconProps omits SVG's legacy `focusable` attribute, but the
+// icon component forwards unknown props to the <svg> element at runtime.
+type FocusableIcon = Component<IconProps & { focusable?: "true" | "false" }>;
+
 function LocalLink(props: {
     href: string;
     label: string;
@@ -82,7 +88,7 @@ function ConnectLinks() {
                         style={{ "--social-color": link.color }}
                     >
                         <Dynamic
-                            component={link.icon}
+                            component={link.icon as FocusableIcon}
                             size={20}
                             aria-hidden="true"
                             focusable="false"

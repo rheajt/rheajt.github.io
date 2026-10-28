@@ -39,7 +39,7 @@ describe("unhydrated recovery HTML", () => {
     });
     afterAll(async () => server?.close());
 
-    it("emits functional recovery controls and visible loading text without scripts", async () => {
+    it("emits functional recovery controls and a fail-open loading indicator without scripts", async () => {
         const { StaticNotFoundHeader } = await server.ssrLoadModule(
             "/src/components/static-not-found-header.tsx",
         );
@@ -59,6 +59,7 @@ describe("unhydrated recovery HTML", () => {
             expect(doc.querySelector('[role="status"]')?.textContent).toBe(
                 "Loading…",
             );
+            expect(doc.querySelector(".page-loader__spinner")).not.toBeNull();
             const details = doc.querySelector("details")!;
             expect(details.open).toBe(false);
             details.querySelector("summary")!.click();

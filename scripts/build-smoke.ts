@@ -64,6 +64,9 @@ const build = Bun.spawn(["./node_modules/.bin/vite", "build"], {
     // Nitro 3 prerenders in a Node worker; preload the mock in that worker too.
     env: {
         ...process.env,
+        // A static production build must never need draft credentials, even if
+        // the developer has a token in their shell or an ignored env file.
+        SANITY_READ_TOKEN: "",
         NODE_OPTIONS: `${process.env.NODE_OPTIONS ?? ""} --import=${pathToFileURL(resolve("scripts/mock-sanity.ts")).href}`,
     },
 });
@@ -78,6 +81,7 @@ await Promise.all(
 await assertPageHeading(projectsListingPage, "Projects");
 await assertPageHeading(notFoundPage, "404: Not Found");
 await assertSchoolDataSolutionsPage();
+await assertNoPrivateDraftCode();
 await assertProductionNavigation();
 for (const page of seededPages) {
     await assertPageHeading(
@@ -95,6 +99,48 @@ for (const path of [
         false,
         "The editorial prototype must not be published.",
     );
+}
+
+function assertInitialLoader(document: Document) {
+    const loader = document.querySelector(".page-loader");
+    if (!loader)
+        throw new Error(
+            "Static document must include the initial page loader.",
+        );
+    assert.ok(
+        loader.classList.contains("page-loader--initial"),
+        "The initial page loader must be marked for dismissal.",
+    );
+    assert.equal(
+        loader.getAttribute("role"),
+        "status",
+        "The initial page loader must expose a status role.",
+    );
+    assert.ok(
+        loader.querySelector(".page-loader__spinner"),
+        "The initial page loader must render its spinner.",
+    );
+}
+
+async function assertNoPrivateDraftCode() {
+    const assets = new Bun.Glob("**/*.{html,js,json,map}");
+    for await (const path of assets.scan({
+        cwd: publicDirectory,
+        absolute: true,
+    })) {
+        const content = await Bun.file(path).text();
+        for (const marker of [
+            "SANITY_READ_TOKEN",
+            "school-drafts.server",
+            "fetchSchoolDraftPostsFromSanity",
+            "test-only-draft-token",
+        ]) {
+            assert.ok(
+                !content.includes(marker),
+                `Public asset must not contain private draft code or test credentials: ${path}`,
+            );
+        }
+    }
 }
 
 async function assertProductionNavigation() {
@@ -116,11 +162,7 @@ async function assertProductionNavigation() {
             document.querySelector("footer"),
             `Footer on ${page.pathname}`,
         );
-        assert.equal(
-            document.querySelector("#page-loader"),
-            null,
-            "Static content must not be covered by a global loader.",
-        );
+        assertInitialLoader(document);
         if (page.pathname === "/") {
             assert.ok(
                 !Array.from(
@@ -245,8 +287,8 @@ async function assertSchoolDataSolutionsPage() {
     );
     assert.equal(
         cards.length,
-        projectDetailPages.length + 1,
-        "School page must render every published fixture across categories.",
+        1,
+        "School page must render only the published school-category fixture.",
     );
     const schoolCard = Array.from(cards).find(
         card =>
@@ -266,9 +308,10 @@ async function assertSchoolDataSolutionsPage() {
         "School fixture summary must be rendered in a project card.",
     );
     assert.equal(
-        schoolCard.querySelector(".platform-label")?.textContent,
+        schoolCard.querySelector(".tags .tag")?.textContent,
         "PowerSchool",
     );
+    assert.equal(schoolCard.querySelector("a"), null);
 
     const logo = document.querySelector("main .hero-heading img.brand-logo");
     assert.equal(
@@ -285,10 +328,10 @@ async function assertSchoolDataSolutionsPage() {
 
     for (const project of projectDetailPages) {
         assert.ok(
-            Array.from(cards).some(
+            !Array.from(cards).some(
                 card => card.querySelector("h3")?.textContent === project.title,
             ),
-            `School page must render a project card from every category: ${project.title}`,
+            `School page must exclude other categories: ${project.title}`,
         );
         assert.ok(
             projectTitles.includes(project.title),
@@ -348,7 +391,7 @@ async function assertProjectDetailPage(project: {
             document.querySelector("footer"),
             `Footer on ${project.path}`,
         );
-        assert.equal(document.querySelector("#page-loader"), null);
+        assertInitialLoader(document);
     } finally {
         dom.window.close();
     }
@@ -377,7 +420,7 @@ async function assertPageHeading(
             document.querySelector("footer"),
             `Footer on ${path}`,
         );
-        assert.equal(document.querySelector("#page-loader"), null);
+        assertInitialLoader(document);
     } finally {
         dom.window.close();
     }

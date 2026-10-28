@@ -3,6 +3,7 @@ import { createResource, Show, For } from "solid-js";
 import { styled } from "~/lib/styled";
 import { fetchPosts, type SanityPost } from "~/lib/sanity";
 import { formatPublishedDate } from "~/utils/formatPublishedDate";
+import { Loader } from "~/components/loader";
 import { layoutShell } from "./layout-shell";
 
 const HOME_POST_LIMIT = 4;
@@ -25,7 +26,7 @@ export const ProjectsSection = () => {
         <StyledSection>
             <h2 class="section-title">Latest Projects</h2>
             <Show when={state.loading}>
-                <p style={{ "text-align": "center" }}>Loading...</p>
+                <Loader label="Loading projects…" />
             </Show>
             <Show when={hasError()}>
                 <p style={{ "text-align": "center" }}>

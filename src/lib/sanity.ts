@@ -5,12 +5,15 @@ export const sanityClient = createClient({
     dataset: "production",
     apiVersion: "2026-04-19",
     useCdn: true,
+    perspective: "published",
     // Keep the native fetch transport shared by browser, SSR, and build mocks.
     resolveFetch: () => globalThis.fetch,
 });
 
 export interface SanityPost {
     _id: string;
+    _originalId?: string;
+    _type?: string;
     title: string;
     slug: { current: string };
     summary?: string;
@@ -65,15 +68,17 @@ function normalizePost(value: unknown): SanityPost | null {
     } as SanityPost;
 }
 
-function normalizePosts(value: unknown): SanityPost[] {
+export function normalizePosts(value: unknown): SanityPost[] {
     if (!Array.isArray(value)) return [];
     return value
         .map(normalizePost)
         .filter((post): post is SanityPost => post !== null);
 }
 
-const postCardProjection = `{
+export const postCardProjection = `{
   _id,
+  _originalId,
+  _type,
   title,
   slug,
   summary,
@@ -101,18 +106,21 @@ export async function fetchPosts(
 ): Promise<SanityPost[]> {
     const slice = typeof limit === "number" ? `[0...$limit]` : "";
 
-    try {
-        const posts = await sanityClient.fetch<unknown>(
-            `*[
+    const query = `*[
           _type == "post" &&
           defined(slug.current) &&
           slug.current != "" &&
           !(_id in path("drafts.**")) &&
           draft != true &&
           ($category == null || category == $category)
-        ] | order(publishedAt desc)${slice} ${postCardProjection}`,
-            { category, limit },
-        );
+        ] | order(publishedAt desc)${slice} ${postCardProjection}`;
+
+    try {
+        const posts = await sanityClient.fetch<unknown>(query, {
+            category,
+            limit,
+        });
+
         return normalizePosts(posts);
     } catch (error) {
         console.error("Failed to fetch projects from Sanity", error);

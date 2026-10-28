@@ -9,7 +9,7 @@
     "node": "^24.15.0 || >=26.0.0"
   },
   "scripts": {
-    "dev": "vite dev --port 4444",
+    "dev": "vite dev --port 5555",
     "build": "vite build",
     "start": "vite preview",
     "test": "vitest run",

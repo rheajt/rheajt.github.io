@@ -15,16 +15,20 @@ describe("entry client", () => {
         mount.mockClear();
     });
 
-    it("leaves static 404 markup untouched and skips mounting at unknown paths", () => {
+    it("removes the initial loader and leaves static 404 markup untouched", () => {
         window.history.replaceState({}, "", "/unknown-fallback-path");
         document.body.innerHTML = `
+            <div class="page-loader page-loader--initial"><div class="page-loader__spinner"></div></div>
             <div id="app"><div data-static-404><a href="/">Home</a></div></div>
         `;
-        const markup = document.body.innerHTML;
 
         mountClient();
 
-        expect(document.body.innerHTML).toBe(markup);
+        expect(document.querySelector(".page-loader")).toBeNull();
+        expect(document.querySelector("[data-static-404]")).not.toBeNull();
+        expect(
+            document.querySelector('[data-static-404] a[href="/"]'),
+        ).not.toBeNull();
         expect(mount).not.toHaveBeenCalled();
         window.history.replaceState({}, "", "/");
     });

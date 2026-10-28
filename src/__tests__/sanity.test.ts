@@ -1,7 +1,15 @@
-import { beforeEach, describe, expect, it, vi } from "vitest";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
+import type { ClientConfig } from "@sanity/client";
+
+const { clientConfigs } = vi.hoisted(() => ({
+    clientConfigs: [] as ClientConfig[],
+}));
 
 vi.mock("@sanity/client", () => ({
-    createClient: () => ({ fetch: vi.fn() }),
+    createClient: (config: ClientConfig) => {
+        clientConfigs.push(config);
+        return { fetch: vi.fn() };
+    },
 }));
 
 import {
@@ -26,6 +34,26 @@ const validPost = {
 describe("Sanity post boundary", () => {
     beforeEach(() => {
         vi.mocked(sanityClient.fetch).mockReset();
+    });
+
+    afterEach(() => vi.restoreAllMocks());
+
+    it("uses the published perspective without credentials and preserves native fetch", () => {
+        const [config] = clientConfigs;
+        expect(config).toMatchObject({
+            perspective: "published",
+            useCdn: true,
+            apiVersion: "2026-04-19",
+        });
+        expect(config).not.toHaveProperty("token");
+        expect(config.resolveFetch?.()).toBe(globalThis.fetch);
+    });
+
+    it("does not log fetched project payloads", async () => {
+        const log = vi.spyOn(console, "log").mockImplementation(() => {});
+        vi.mocked(sanityClient.fetch).mockResolvedValueOnce([validPost]);
+        await fetchPosts();
+        expect(log).not.toHaveBeenCalled();
     });
 
     describe.each([
@@ -56,7 +84,7 @@ describe("Sanity post boundary", () => {
   )`);
         });
 
-        it("preserves the all-category school listing option", async () => {
+        it("preserves the explicit all-category listing option", async () => {
             vi.mocked(sanityClient.fetch).mockResolvedValueOnce([]);
             await fetchListing(6, null);
 
@@ -65,6 +93,17 @@ describe("Sanity post boundary", () => {
             expect(query).toContain(
                 "($category == null || category == $category)",
             );
+        });
+
+        it("parameterizes category values rather than interpolating GROQ", async () => {
+            const category = 'schooldata.solutions" || true || "';
+            vi.mocked(sanityClient.fetch).mockResolvedValueOnce([]);
+            await fetchListing(undefined, category);
+
+            const [query, params] = vi.mocked(sanityClient.fetch).mock.calls[0];
+            expect(params).toMatchObject({ category });
+            expect(query).toContain("category == $category");
+            expect(query).not.toContain(category);
         });
 
         it("drops invalid records, retains missing dates, and removes null tag references", async () => {
@@ -79,6 +118,7 @@ describe("Sanity post boundary", () => {
                 {},
                 { ...validPost, _id: null },
                 { ...validPost, title: null },
+                { ...validPost, title: "   " },
                 { ...validPost, slug: undefined },
                 { ...validPost, slug: null },
                 { ...validPost, slug: {} },

@@ -24,9 +24,7 @@ Blog and projects pages had placeholder text ("coming soon"). **Status: Fixed** 
 
 ### 4. Loader Component Blocks Entire Page
 
-`src/components/loader.tsx` renders a full-screen black overlay with a spinner for 700ms on every page load. This hurts perceived performance and provides no benefit for a static site.
-
-- **Recommendation**: Remove the `<Loader />` component from `src/routes/index.tsx` entirely. If a loading state is needed, use skeleton placeholders for async content only.
+**Status: Restored intentionally.** The initial purple spinner is back at the user's request. It is server-rendered, fades immediately after hydration, and has a CSS-only fail-open hide so prerendered pages that never hydrate (notably the static 404) are not permanently covered. Keep the overlay duration minimal.
 
 ### 5. Canvas Animations Run Continuously
 
@@ -208,7 +206,6 @@ The site uses `preset: "static"` but the new Sanity integration fetches data cli
 
 | #   | Improvement                  | Effort |
 | --- | ---------------------------- | ------ |
-| 4   | Remove Loader component      | 5 min  |
 | 8   | Delete dead SCSS files       | 10 min |
 | 18  | Create blog post detail page | 30 min |
 | 19  | Create project detail page   | 30 min |
