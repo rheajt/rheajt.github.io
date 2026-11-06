@@ -73,3 +73,9 @@ yarn-error.log
 
 # Local orchestration progress
 .slim/deepwork/
+
+# Impeccable local runtime and downloaded platform binaries
+.impeccable/config.local.json
+.impeccable/live/
+.agents/skills/impeccable/scripts/bin/
+.opencode/skills/impeccable/scripts/bin/
