@@ -1,0 +1,1 @@
+import{E as e,I as t,L as n,M as r,X as i,k as a,w as o}from"./routing-1Zagr2Ci.js";var s=n(`<section>`),c=n=>(()=>{var c=e(s);return a(c,()=>n.children),i(e=>{var i=[`layout-section`,n.className].filter(Boolean).join(` `),a=n.id,s=n.style;return i!==e.e&&o(c,e.e=i),a!==e.t&&r(c,`id`,e.t=a),e.a=t(c,s,e.a),e},{e:void 0,t:void 0,a:void 0}),c})();export{c as t};

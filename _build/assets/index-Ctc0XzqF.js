@@ -1,0 +1,6 @@
+import{A as e,E as t,K as n,L as r,U as i,V as a,W as o,Z as s}from"./routing-1Zagr2Ci.js";import{l as c,r as l,t as u}from"./seo-BWNfLqpV.js";import{t as d}from"./loader-gSDbXzSr.js";import{t as f}from"./section-CtxWtUEy.js";import{r as p}from"./formatPublishedDate-Df2GwpgK.js";import{t as m}from"./project-card-ClSkKOu6.js";var h=r(`<h1>Projects`),g=r(`<p>Failed to load projects. Please try again later.`),_=r(`<p>No projects found.`);function v(){let[r]=s(async()=>{try{return{posts:await p(),error:null}}catch(e){return{posts:[],error:e}}}),c=()=>!!r()?.error,v=()=>(r()?.posts??[]).length>0;return n(o,{get fallback(){return n(d,{})},get children(){return n(l,{get children(){return[n(u,{title:`Projects`}),n(f,{get children(){return[t(h),n(i,{get when(){return c()},get children(){return t(g)}}),n(i,{get when(){return v()},get children(){return n(y,{get children(){return n(a,{get each(){return r()?.posts},children:e=>n(m,{post:e,get href(){return`/projects/${e.slug.current}`}})})}})}}),n(i,{get when(){return e(()=>!(r.loading||c()))()&&!v()},get children(){return t(_)}})]}})]}})}})}var y=c.div`
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(280px, 100%), 1fr));
+    gap: var(--spacing-8);
+    margin-top: var(--spacing-8);
+`;export{v as default};
