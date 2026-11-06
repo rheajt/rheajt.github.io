@@ -1,0 +1,220 @@
+{
+    "schemaVersion": 2,
+    "generatedAt": "2026-11-05T00:00:00.000Z",
+    "title": "Design System: Jordan Rhea",
+    "extensions": {
+        "colorMeta": {
+            "primary": {
+                "role": "primary",
+                "displayName": "Notebook Blue",
+                "canonical": "#283597",
+                "tonalRamp": [
+                    "#101336",
+                    "#191f55",
+                    "#222a75",
+                    "#283597",
+                    "#4d58ad",
+                    "#7780c4",
+                    "#aab0dc",
+                    "#e0e2f4"
+                ]
+            },
+            "paper": {
+                "role": "neutral",
+                "displayName": "Graph Paper",
+                "canonical": "#fbfbf8",
+                "tonalRamp": [
+                    "#292927",
+                    "#4e4e49",
+                    "#73736d",
+                    "#989891",
+                    "#b5b5ae",
+                    "#cecec7",
+                    "#e5e5de",
+                    "#fbfbf8"
+                ]
+            },
+            "text": {
+                "role": "neutral",
+                "displayName": "Working Ink",
+                "canonical": "#2e353f",
+                "tonalRamp": [
+                    "#111417",
+                    "#1c2127",
+                    "#262c34",
+                    "#2e353f",
+                    "#515761",
+                    "#777c84",
+                    "#a3a6ab",
+                    "#dedfe1"
+                ]
+            },
+            "text-light": {
+                "role": "neutral",
+                "displayName": "Soft Ink",
+                "canonical": "#4f5969",
+                "tonalRamp": [
+                    "#20242a",
+                    "#303742",
+                    "#404958",
+                    "#4f5969",
+                    "#707988",
+                    "#9299a4",
+                    "#b8bdc4",
+                    "#e3e5e8"
+                ]
+            },
+            "heading": {
+                "role": "neutral",
+                "displayName": "Heading Ink",
+                "canonical": "#1a202c",
+                "tonalRamp": [
+                    "#0b0d12",
+                    "#10141c",
+                    "#151a24",
+                    "#1a202c",
+                    "#3c414b",
+                    "#686c74",
+                    "#9a9ca2",
+                    "#dedfe1"
+                ]
+            },
+            "accent": {
+                "role": "neutral",
+                "displayName": "Pale Rule",
+                "canonical": "#d1dce5",
+                "tonalRamp": [
+                    "#34373a",
+                    "#565c61",
+                    "#7e878f",
+                    "#a9b4bd",
+                    "#d1dce5",
+                    "#dce4ea",
+                    "#e8edf1",
+                    "#f8fafb"
+                ]
+            },
+            "white": {
+                "role": "neutral",
+                "displayName": "Card White",
+                "canonical": "#ffffff",
+                "tonalRamp": [
+                    "#292929",
+                    "#505050",
+                    "#777777",
+                    "#a0a0a0",
+                    "#c7c7c7",
+                    "#dedede",
+                    "#eeeeee",
+                    "#ffffff"
+                ]
+            },
+            "nav-line": {
+                "role": "neutral",
+                "displayName": "Navigation Line",
+                "canonical": "#d9dce8",
+                "tonalRamp": [
+                    "#35363a",
+                    "#585a61",
+                    "#81838c",
+                    "#adb0bb",
+                    "#d9dce8",
+                    "#e2e4ed",
+                    "#eceef3",
+                    "#fafbfc"
+                ]
+            }
+        },
+        "typographyMeta": {
+            "display": {
+                "displayName": "Geometric Display",
+                "purpose": "Headings and brand text; Space Grotesk carries the system's distinctive voice."
+            },
+            "body": {
+                "displayName": "Practical Sans",
+                "purpose": "Paragraphs and interface text in Work Sans."
+            }
+        },
+        "shadows": [
+            {
+                "name": "navigation-frame",
+                "value": "0 4px 16px #28359706",
+                "purpose": "Barely visible separation around the navigation masthead."
+            },
+            {
+                "name": "navigation-panel",
+                "value": "0 16px 32px #20284714",
+                "purpose": "Elevates the open navigation panel on wide screens."
+            },
+            {
+                "name": "project-card-hover",
+                "value": "0 6px 20px rgba(0, 0, 0, 0.08)",
+                "purpose": "Adds restrained depth as a linked project card lifts on hover."
+            }
+        ],
+        "motion": [
+            {
+                "name": "navigation-state",
+                "value": "160ms ease",
+                "purpose": "Transitions navigation color and background states; disabled for reduced-motion preferences."
+            },
+            {
+                "name": "card-lift",
+                "value": "150ms ease",
+                "purpose": "Transitions linked project-card lift and shadow on hover."
+            }
+        ],
+        "breakpoints": [
+            { "name": "navigation-small", "value": "720px" },
+            { "name": "layout-small", "value": "768px" },
+            { "name": "navigation-wide", "value": "1200px" }
+        ]
+    },
+    "components": [
+        {
+            "name": "Navigation link",
+            "kind": "nav",
+            "refersTo": "nav-link",
+            "description": "Compact, accessible navigation link with current-page and hover states.",
+            "html": "<a class=\"ds-nav-link\" href=\"#\" aria-current=\"page\">Projects</a>",
+            "css": ".ds-nav-link { min-height: 44px; display: inline-flex; align-items: center; padding: 8px 12px; color: #2e353f; background: transparent; border: 0; border-radius: 2px; text-decoration: none; font: 400 13px/1.5 Work Sans, system-ui, sans-serif; transition: background 160ms ease, color 160ms ease; } .ds-nav-link:hover, .ds-nav-link[aria-current=\"page\"] { background: #2835970a; color: #283597; } .ds-nav-link[aria-current=\"page\"] { font-weight: 600; } .ds-nav-link:focus-visible { outline: 2px solid #283597; outline-offset: 3px; }"
+        },
+        {
+            "name": "Contact link",
+            "kind": "button",
+            "refersTo": "nav-contact",
+            "description": "Primary navigation action for starting a conversation.",
+            "html": "<a class=\"ds-contact\" href=\"#\">Contact</a>",
+            "css": ".ds-contact { min-height: 44px; display: inline-flex; align-items: center; padding: 8px 16px; color: #fff; background: #283597; border-radius: 2px; text-decoration: none; font: 600 13px/1.5 Work Sans, system-ui, sans-serif; transition: background 160ms ease, color 160ms ease; } .ds-contact:hover { background: #1e2874; } .ds-contact:focus-visible { outline: 2px solid #283597; outline-offset: 3px; }"
+        },
+        {
+            "name": "Project card",
+            "kind": "card",
+            "refersTo": "project-card",
+            "description": "Border-led project container with image, metadata, and a restrained hover lift.",
+            "html": "<a class=\"ds-project-card\" href=\"#\"><div class=\"ds-project-image\">Project image</div><div class=\"ds-project-body\"><time>Project</time><h3>Project title</h3><p>Short project summary.</p><span class=\"ds-tag\">Education</span></div></a>",
+            "css": ".ds-project-card { display: flex; flex-direction: column; min-width: 0; overflow: hidden; color: #2e353f; background: #fff; border: 1px solid #d1dce5; border-radius: 4px; text-decoration: none; transition: transform 150ms ease, box-shadow 150ms ease; } .ds-project-card:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08); } .ds-project-card:focus-visible { outline: 3px solid #283597; outline-offset: 4px; } .ds-project-image { display: grid; place-items: center; aspect-ratio: 16 / 10; background: #eef6ff; color: #283597; font: 700 1.2rem/1.25 \"Space Grotesk\", system-ui, sans-serif; } .ds-project-body { padding: 1.5rem; } .ds-project-body h3 { margin: 0 0 0.75rem; color: #1a202c; font: 600 1.44rem/1.25 \"Space Grotesk\", system-ui, sans-serif; } .ds-project-body time, .ds-project-body p { color: #4f5969; font: 400 0.833rem/1.5 Work Sans, system-ui, sans-serif; } .ds-tag { display: inline-block; padding: 0.15em 0.5em; color: #283597; background: rgba(40, 53, 151, 0.08); border-radius: 3px; font: 500 0.75rem/1.5 Work Sans, system-ui, sans-serif; }"
+        }
+    ],
+    "narrative": {
+        "northStar": "The Quiet Technical Notebook",
+        "overview": "This is a practical, clear visual system: a pale graph-paper ground, restrained deep-blue signals, and structured content that makes education and technology work easy to scan. Space Grotesk gives headings a distinct geometric voice; Work Sans keeps longer reading comfortable. The mood is capable and approachable without relying on decorative effects to create personality.\n\nThe design stays mostly flat. Fine borders, spacing, typography, and small state changes provide structure, while occasional soft shadows distinguish an open navigation panel or an interactive card. The same foundation supports the portfolio and its project-focused pages; the separate School Data Solutions identity remains its own brand rather than a visual synonym.",
+        "keyCharacteristics": [
+            "Pale graph-paper canvas and a consistent 24px rhythm.",
+            "Deep blue used as a focused navigation and emphasis color.",
+            "Geometric display headings paired with readable sans-serif body copy.",
+            "Border-led components with restrained, state-driven depth."
+        ],
+        "rules": [],
+        "dos": [
+            "Do use the graph-paper surface as a subtle backdrop, not as a substitute for clear content hierarchy.",
+            "Do reserve Notebook Blue for navigation, focus, and meaningful emphasis.",
+            "Do keep most surfaces flat and use borders to establish structure.",
+            "Do retain the Space Grotesk and Work Sans role pairing and the 24px spacing rhythm."
+        ],
+        "donts": [
+            "Don't spread shadows across every component; the incumbent uses them selectively for interactive depth.",
+            "Don't treat the distinct School Data Solutions identity as interchangeable with the portfolio brand."
+        ]
+    }
+}

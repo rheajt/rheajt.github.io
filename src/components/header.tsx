@@ -155,7 +155,7 @@ export const Header = (props: HeaderProps) => {
                             alt=""
                         />
                         <span>
-                            Jordan Rhea<small>Education & technology</small>
+                            Jordan Rhea<small>Education &amp; technology</small>
                         </span>
                     </a>
                     <Show when={props.showLinks !== false}>

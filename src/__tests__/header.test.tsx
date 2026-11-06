@@ -17,6 +17,8 @@ import { getResumeLinks } from "~/utils/yaml";
 
 const standalonePages = [
     { name: "Home", href: "/" },
+    { name: "School Data Solutions", href: "/school-data-solutions" },
+    { name: "Projects", href: "/projects" },
     { name: "Resume", href: "/resume" },
     { name: "About", href: "/about" },
     { name: "Language Learning", href: "/language-learning" },
@@ -74,9 +76,17 @@ describe("Header", () => {
             const link = panel.querySelector(`a[href="${page.href}"]`);
             expect(link).toBeInTheDocument();
             expect(link).toHaveTextContent(page.name);
-            expect(
-                screen.queryByRole("link", { name: page.name, exact: true }),
-            ).not.toBeInTheDocument();
+            if (
+                page.href !== "/school-data-solutions" &&
+                page.href !== "/projects"
+            ) {
+                expect(
+                    screen.queryByRole("link", {
+                        name: page.name,
+                        exact: true,
+                    }),
+                ).not.toBeInTheDocument();
+            }
         }
     });
 

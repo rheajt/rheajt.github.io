@@ -198,28 +198,29 @@
         }
     }
     @media (max-width: 720px) {
-        padding-top: 0;
+        position: sticky;
+        top: 0;
+        padding-top: env(safe-area-inset-top, 0px);
+        background: var(--nav-paper);
+
+        .nav-work {
+            display: none;
+        }
+
         .nav-masthead {
-            flex-wrap: wrap;
-            gap: 12px;
+            flex-wrap: nowrap;
+            gap: 8px;
+            padding-block: 6px;
         }
         .nav-brand {
-            font-size: 15px;
+            font-size: 14px;
+        }
+        .nav-brand img {
+            width: 30px;
+            height: 30px;
         }
         .nav-brand small {
             font-size: 9px;
-        }
-        .nav-work {
-            order: 3;
-            width: 100%;
-            border-top: 1px solid var(--nav-line);
-            padding-top: 10px;
-            justify-content: space-between;
-            gap: 0;
-        }
-        .nav-work a {
-            padding-inline: 6px;
-            font-size: 12px;
         }
         .nav-panel {
             position: static;
