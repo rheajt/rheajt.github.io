@@ -1,4 +1,4 @@
-import{$ as e,A as t,E as n,K as r,L as i,M as a,N as o,R as s,T as c,U as l,V as u,X as d,j as f,k as p,w as m}from"./routing-1Zagr2Ci.js";import{c as h,l as g,r as _,t as v}from"./seo-BWNfLqpV.js";var y=i(`<div class=pill>PROTOTYPE`),b=i(`<button>Article View`),x=i(`<button>404 View`),S=i(`<div class=content><h1>Project Not Found</h1><p>The project you're looking for doesn't exist or has been removed.</p><a href=/projects class=btn>View all projects`),C=i(`<div class=metadata><time></time><span class=divider>•</span><span class=category>`),w=i(`<h1 class=title>`),T=i(`<p class=dek>`),E=i(`<div class=placeholder-img>`),D=i(`<figcaption>`),O=i(`<p class=dropcap>Every digital tool claims to save time, but very few ask what we do with the time we save. When starting this project, the primary directive wasn't speed, but intentionality.`),k=i(`<h2>A Shift in Paradigm`),A=i(`<p>Most focus apps use guilt as a motivator—red timers, strict blocking, and aggressive notifications. We wanted to build something that felt like a quiet room instead of a prison cell. This required a completely different approach to the user interface.`),j=i(`<p>To achieve this, we stripped away the typical dashboard metrics. No productivity scores, no streaks. Just the work, and the tools to do it.`),M=i(`<div class=youtube-placeholder><div class=play-btn>▶</div><span>Interaction Demo (YouTube)`),N=i(`<figcaption>A walkthrough of the core focus-session interaction.`),P=i(`<h2>Technical Implementation`),ee=i(`<p>Building a distraction-free environment on the web is inherently paradoxical. The browser is an engine of distraction. We relied heavily on the Fullscreen API and aggressive service worker caching to ensure the environment felt native and unbroken.`),F=i(`<div class=header><span class=lang>typescript</span><button type=button class=copy-btn aria-live=polite>`),I=i(`<p role=alert style=color:#fff;padding:1rem>`),L=i(`<pre><code>async function enterFocusMode(element: HTMLElement) {
+import{$ as e,A as t,E as n,K as r,L as i,M as a,N as o,R as s,T as c,U as l,V as u,X as d,j as f,k as p,w as m}from"./routing-1Zagr2Ci.js";import{l as h,r as g,t as _,u as v}from"./seo-DvJ6QEDt.js";var y=i(`<div class=pill>PROTOTYPE`),b=i(`<button>Article View`),x=i(`<button>404 View`),S=i(`<div class=content><h1>Project Not Found</h1><p>The project you're looking for doesn't exist or has been removed.</p><a href=/projects class=btn>View all projects`),C=i(`<div class=metadata><time></time><span class=divider>•</span><span class=category>`),w=i(`<h1 class=title>`),T=i(`<p class=dek>`),E=i(`<div class=placeholder-img>`),D=i(`<figcaption>`),O=i(`<p class=dropcap>Every digital tool claims to save time, but very few ask what we do with the time we save. When starting this project, the primary directive wasn't speed, but intentionality.`),k=i(`<h2>A Shift in Paradigm`),A=i(`<p>Most focus apps use guilt as a motivator—red timers, strict blocking, and aggressive notifications. We wanted to build something that felt like a quiet room instead of a prison cell. This required a completely different approach to the user interface.`),j=i(`<p>To achieve this, we stripped away the typical dashboard metrics. No productivity scores, no streaks. Just the work, and the tools to do it.`),M=i(`<div class=youtube-placeholder><div class=play-btn>▶</div><span>Interaction Demo (YouTube)`),N=i(`<figcaption>A walkthrough of the core focus-session interaction.`),P=i(`<h2>Technical Implementation`),ee=i(`<p>Building a distraction-free environment on the web is inherently paradoxical. The browser is an engine of distraction. We relied heavily on the Fullscreen API and aggressive service worker caching to ensure the environment felt native and unbroken.`),F=i(`<div class=header><span class=lang>typescript</span><button type=button class=copy-btn aria-live=polite>`),I=i(`<p role=alert style=color:#fff;padding:1rem>`),L=i(`<pre><code>async function enterFocusMode(element: HTMLElement) {
     if (!document.fullscreenElement) {
         try {
             await element.requestFullscreen();
@@ -12,7 +12,7 @@ import{$ as e,A as t,E as n,K as r,L as i,M as a,N as o,R as s,T as c,U as l,V a
             console.error(\`Error attempting to enable focus mode: \${err.message}\`);
         }
     }
-}`),R=i(`<p>The outcome was a tool that users didn't just use to work, but used to <em>prepare</em> to work. The friction we introduced—a deliberate two-second delay before opening external links—proved to be the most loved feature in our beta testing.`),z=i(`<div class=tags>`),B=i(`<span class=tag>`);function V(){let[i,a]=e(`content`),o={title:`The Art of Distraction: Building a Modern Focus Tool`,dek:`An exploration of how intentional friction and bold typography can reshape our relationship with digital workspaces.`,date:`2026-07-22`,formattedDate:`July 22, 2026`,category:`Case Study`,mainImage:{url:`https://via.placeholder.com/1200x630`,caption:`Early wireframes and structural explorations for the Focus Tool dashboard.`},tags:[`UI/UX`,`SolidJS`,`Product Design`]};return r(_,{get children(){return[r(v,{title:`Prototype: Editorial Narrative`,get image(){return t(()=>!!o.mainImage)()?o.mainImage.url:void 0}}),r(W,{get children(){return[n(y),(()=>{var e=n(b);return e.$$click=()=>a(`content`),d(()=>m(e,i()===`content`?`active`:``)),f(),e})(),(()=>{var e=n(x);return e.$$click=()=>a(`404`),d(()=>m(e,i()===`404`?`active`:``)),f(),e})()]}}),r(l,{get when(){return i()===`404`},get children(){return r(H,{})}}),r(l,{get when(){return i()===`content`},get children(){return r(U,{post:o})}})]}})}function H(){return r(G,{get children(){return[r(J,{href:`/projects`,children:`← Back to projects`}),n(S)]}})}function U(t){let{post:i}=t,c,[m,h]=e(`Copy code`),[g,_]=e(``),v=async()=>{if(m()!==`Copying…`){h(`Copying…`),_(``);try{await navigator.clipboard.writeText(c?.textContent??``),h(`Copied`)}catch{h(`Copy code`),_(`Could not copy. Select the code and copy it manually, or try again.`)}}};return r(K,{get children(){return[r(q,{get children(){return r(J,{href:`/projects`,children:`← Back to projects`})}}),r(Y,{get children(){return[(()=>{var e=n(C),t=e.firstChild,r=t.nextSibling.nextSibling;return p(t,()=>i.formattedDate),p(r,()=>i.category),d(()=>a(t,`datetime`,i.date)),e})(),(()=>{var e=n(w);return p(e,()=>i.title),e})(),(()=>{var e=n(T);return p(e,()=>i.dek),e})()]}}),r(l,{get when(){return i.mainImage},get children(){return r(X,{get children(){return[n(E),r(l,{get when(){return i.mainImage.caption},get children(){var e=n(D);return p(e,()=>i.mainImage.caption),e}})]}})}}),r(Z,{get children(){return[n(O),n(k),n(A),n(j),r(Q,{get children(){return[n(M),n(N)]}}),n(P),n(ee),r($,{get children(){return[(()=>{var e=n(F),t=e.firstChild.nextSibling;return t.$$click=v,p(t,m),d(()=>o(t,`disabled`,m()===`Copying…`)),f(),e})(),r(l,{get when(){return g()},get children(){var e=n(I);return p(e,g),e}}),(()=>{var e=n(L),t=e.firstChild,r=c;return typeof r==`function`?s(r,t):c=t,e})()]}}),n(R)]}}),r(te,{get children(){var e=n(z);return p(e,r(u,{get each(){return i.tags},children:e=>(()=>{var t=n(B);return p(t,e),t})()})),e}})]}})}var W=g.div`
+}`),R=i(`<p>The outcome was a tool that users didn't just use to work, but used to <em>prepare</em> to work. The friction we introduced—a deliberate two-second delay before opening external links—proved to be the most loved feature in our beta testing.`),z=i(`<div class=tags>`),B=i(`<span class=tag>`);function V(){let[i,a]=e(`content`),o={title:`The Art of Distraction: Building a Modern Focus Tool`,dek:`An exploration of how intentional friction and bold typography can reshape our relationship with digital workspaces.`,date:`2026-07-22`,formattedDate:`July 22, 2026`,category:`Case Study`,mainImage:{url:`https://via.placeholder.com/1200x630`,caption:`Early wireframes and structural explorations for the Focus Tool dashboard.`},tags:[`UI/UX`,`SolidJS`,`Product Design`]};return r(g,{get children(){return[r(_,{title:`Prototype: Editorial Narrative`,get image(){return t(()=>!!o.mainImage)()?o.mainImage.url:void 0}}),r(W,{get children(){return[n(y),(()=>{var e=n(b);return e.$$click=()=>a(`content`),d(()=>m(e,i()===`content`?`active`:``)),f(),e})(),(()=>{var e=n(x);return e.$$click=()=>a(`404`),d(()=>m(e,i()===`404`?`active`:``)),f(),e})()]}}),r(l,{get when(){return i()===`404`},get children(){return r(H,{})}}),r(l,{get when(){return i()===`content`},get children(){return r(U,{post:o})}})]}})}function H(){return r(G,{get children(){return[r(J,{href:`/projects`,children:`← Back to projects`}),n(S)]}})}function U(t){let{post:i}=t,c,[m,h]=e(`Copy code`),[g,_]=e(``),v=async()=>{if(m()!==`Copying…`){h(`Copying…`),_(``);try{await navigator.clipboard.writeText(c?.textContent??``),h(`Copied`)}catch{h(`Copy code`),_(`Could not copy. Select the code and copy it manually, or try again.`)}}};return r(K,{get children(){return[r(q,{get children(){return r(J,{href:`/projects`,children:`← Back to projects`})}}),r(Y,{get children(){return[(()=>{var e=n(C),t=e.firstChild,r=t.nextSibling.nextSibling;return p(t,()=>i.formattedDate),p(r,()=>i.category),d(()=>a(t,`datetime`,i.date)),e})(),(()=>{var e=n(w);return p(e,()=>i.title),e})(),(()=>{var e=n(T);return p(e,()=>i.dek),e})()]}}),r(l,{get when(){return i.mainImage},get children(){return r(X,{get children(){return[n(E),r(l,{get when(){return i.mainImage.caption},get children(){var e=n(D);return p(e,()=>i.mainImage.caption),e}})]}})}}),r(Z,{get children(){return[n(O),n(k),n(A),n(j),r(Q,{get children(){return[n(M),n(N)]}}),n(P),n(ee),r($,{get children(){return[(()=>{var e=n(F),t=e.firstChild.nextSibling;return t.$$click=v,p(t,m),d(()=>o(t,`disabled`,m()===`Copying…`)),f(),e})(),r(l,{get when(){return g()},get children(){var e=n(I);return p(e,g),e}}),(()=>{var e=n(L),t=e.firstChild,r=c;return typeof r==`function`?s(r,t):c=t,e})()]}}),n(R)]}}),r(te,{get children(){var e=n(z);return p(e,r(u,{get each(){return i.tags},children:e=>(()=>{var t=n(B);return p(t,e),t})()})),e}})]}})}var W=v.div`
     position: fixed;
     bottom: var(--spacing-4);
     right: var(--spacing-4);
@@ -54,7 +54,7 @@ import{$ as e,A as t,E as n,K as r,L as i,M as a,N as o,R as s,T as c,U as l,V a
             border-color: #555;
         }
     }
-`,G=g.div`
+`,G=v.div`
     ${h}
     padding-block: var(--spacing-10);
     min-height: 60vh;
@@ -91,12 +91,12 @@ import{$ as e,A as t,E as n,K as r,L as i,M as a,N as o,R as s,T as c,U as l,V a
             }
         }
     }
-`,K=g.article`
+`,K=v.article`
     ${h}
     padding-block: var(--spacing-8) var(--spacing-20);
-`,q=g.nav`
+`,q=v.nav`
     margin-bottom: var(--spacing-10);
-`,J=g.a`
+`,J=v.a`
     color: var(--color-text-light);
     text-decoration: none;
     font-size: var(--fontSize-1);
@@ -108,7 +108,7 @@ import{$ as e,A as t,E as n,K as r,L as i,M as a,N as o,R as s,T as c,U as l,V a
     &:hover {
         color: var(--color-primary);
     }
-`,Y=g.header`
+`,Y=v.header`
     margin-bottom: var(--spacing-10);
 
     .metadata {
@@ -146,7 +146,7 @@ import{$ as e,A as t,E as n,K as r,L as i,M as a,N as o,R as s,T as c,U as l,V a
         color: var(--color-text-light);
         max-width: 35ch;
     }
-`,X=g.figure`
+`,X=v.figure`
     margin: 0 0 var(--spacing-12);
 
     .placeholder-img {
@@ -163,7 +163,7 @@ import{$ as e,A as t,E as n,K as r,L as i,M as a,N as o,R as s,T as c,U as l,V a
         color: var(--color-text-light);
         font-style: italic;
     }
-`,Z=g.div`
+`,Z=v.div`
     max-width: 65ch;
     margin: 0 auto;
     font-size: var(--fontSize-2);
@@ -188,7 +188,7 @@ import{$ as e,A as t,E as n,K as r,L as i,M as a,N as o,R as s,T as c,U as l,V a
         margin-top: var(--spacing-12);
         margin-bottom: var(--spacing-5);
     }
-`,Q=g.figure`
+`,Q=v.figure`
     margin: var(--spacing-10) 0;
 
     .youtube-placeholder {
@@ -237,7 +237,7 @@ import{$ as e,A as t,E as n,K as r,L as i,M as a,N as o,R as s,T as c,U as l,V a
         color: var(--color-text-light);
         text-align: center;
     }
-`,$=g.div`
+`,$=v.div`
     margin: var(--spacing-8) 0;
     background: #1a1a1a;
     border-radius: 8px;
@@ -287,7 +287,7 @@ import{$ as e,A as t,E as n,K as r,L as i,M as a,N as o,R as s,T as c,U as l,V a
             line-height: 1.5;
         }
     }
-`,te=g.footer`
+`,te=v.footer`
     max-width: 65ch;
     margin: var(--spacing-12) auto 0;
     padding-top: var(--spacing-8);

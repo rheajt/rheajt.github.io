@@ -1,0 +1,4422 @@
+import{$ as e,A as t,D as n,E as r,K as i,L as a,M as o,N as s,T as c,U as l,V as u,X as d,Y as f,j as p,k as m,w as h}from"./routing-1Zagr2Ci.js";import{r as g,s as _,t as v}from"./seo-DvJ6QEDt.js";import{t as y}from"./section-CtxWtUEy.js";var b=`books:
+- level: 1
+  book: YCT Standard Course 1
+  source_file: YCT_1_book.pdf
+  scope: Vocabulary and key sentences from the opening pages of Lessons 1-11. Lesson
+    12 is review-only.
+  notes:
+  - pdf_page numbers are 1-based; textbook_page numbers are the printed page numbers.
+  - Vocabulary includes the illustrated labeled words and the main Let's learn word
+    tables on lesson-opening pages.
+  - Vocabulary examples are usage words or phrases printed with entries on the lesson-opening
+    pages, not newly authored sentences.
+  - An empty example list means the source page does not provide a separate usage
+    example for that entry.
+  - starred_in_textbook preserves asterisks shown beside selected words in the original.
+  - English translations of key sentences follow the textbook wording.
+  - The number chart in Lesson 5 is an exercise for counting 1-100, not a list of
+    100 separately labeled vocabulary words.
+  chapters:
+  - number: 1
+    chapter: 你好！
+    english_title: Hello!
+    pdf_page: 3
+    textbook_page: 1
+    example_sentences:
+    - chinese: 你好！
+      pinyin: Nǐ hǎo!
+      english: Hello!
+    - chinese: 再见！
+      pinyin: Zàijiàn!
+      english: Goodbye!
+    vocabulary:
+    - chinese: 一
+      pinyin: yī
+      english: one
+      example: []
+    - chinese: 二
+      pinyin: èr
+      english: two
+      example: []
+    - chinese: 三
+      pinyin: sān
+      english: three
+      example: []
+    - chinese: 四
+      pinyin: sì
+      english: four
+      example: []
+    - chinese: 五
+      pinyin: wǔ
+      english: five
+      example: []
+    - chinese: 六
+      pinyin: liù
+      english: six
+      example: []
+    - chinese: 七
+      pinyin: qī
+      english: seven
+      example: []
+    - chinese: 八
+      pinyin: bā
+      english: eight
+      example: []
+    - chinese: 九
+      pinyin: jiǔ
+      english: nine
+      example: []
+    - chinese: 十
+      pinyin: shí
+      english: ten
+      example: []
+    - chinese: 你
+      pinyin: nǐ
+      english: you (singular)
+      example:
+      - sentence: 你好
+    - chinese: 好
+      pinyin: hǎo
+      english: good
+      example:
+      - sentence: 你好
+    - chinese: 老师
+      pinyin: lǎoshī
+      english: teacher
+      example:
+      - sentence: 老师好
+    - chinese: 再见
+      pinyin: zàijiàn
+      english: goodbye
+      example: []
+  - number: 2
+    chapter: 你叫什么？
+    english_title: What's your name?
+    pdf_page: 7
+    textbook_page: 5
+    example_sentences:
+    - chinese: 你叫什么？
+      pinyin: Nǐ jiào shénme?
+      english: What's your name?
+    - chinese: 你认识她吗？
+      pinyin: Nǐ rènshi tā ma?
+      english: Do you know her?
+    vocabulary:
+    - chinese: 我
+      pinyin: wǒ
+      english: I, me
+      example:
+      - sentence: 我叫星星
+    - chinese: 叫
+      pinyin: jiào
+      english: to be called
+      example:
+      - sentence: 我叫月月
+    - chinese: 什么
+      pinyin: shénme
+      english: what
+      example:
+      - sentence: 你叫什么？
+    - chinese: 认识
+      pinyin: rènshi
+      english: to know
+      example:
+      - sentence: 认识你
+    - chinese: 很
+      pinyin: hěn
+      english: very
+      example:
+      - sentence: 很好
+    - chinese: 高兴
+      pinyin: gāoxìng
+      english: glad
+      example:
+      - sentence: 很高兴
+    - chinese: 她
+      pinyin: tā
+      english: she, her
+      example:
+      - sentence: 认识她
+    - chinese: 吗
+      pinyin: ma
+      english: (a question particle)
+      example:
+      - sentence: 你认识她吗？
+    - chinese: 不
+      pinyin: bù
+      english: no, not
+      example:
+      - sentence: 不认识
+  - number: 3
+    chapter: 他是谁？
+    english_title: Who is he?
+    pdf_page: 11
+    textbook_page: 9
+    example_sentences:
+    - chinese: 他是谁？
+      pinyin: Tā shì shéi?
+      english: Who is he?
+    - chinese: 成龙是哪国人？
+      pinyin: Chéng Lóng shì nǎ guó rén?
+      english: What is Jackie Chan's nationality?
+    vocabulary:
+    - chinese: 他
+      pinyin: tā
+      english: he, him
+      example:
+      - sentence: 他是成龙。
+    - chinese: 是
+      pinyin: shì
+      english: am, is, are
+      example:
+      - sentence: 他是成龙。
+    - chinese: 谁
+      pinyin: shéi
+      english: who, whom
+      example:
+      - sentence: 他是谁？
+    - chinese: 哪
+      pinyin: nǎ
+      english: which
+      example:
+      - sentence: 哪国人
+    - chinese: 国
+      pinyin: guó
+      english: country
+      example:
+      - sentence: 中国
+    - chinese: 人
+      pinyin: rén
+      english: person
+      example:
+      - sentence: 中国人
+    - chinese: 中国人
+      pinyin: Zhōngguó rén
+      english: Chinese people
+      example:
+      - sentence: 他是中国人。
+  - number: 4
+    chapter: 我家有四口人。
+    english_title: There are four people in my family.
+    pdf_page: 16
+    textbook_page: 14
+    example_sentences:
+    - chinese: 你家有几口人？
+      pinyin: Nǐ jiā yǒu jǐ kǒu rén?
+      english: How many people are there in your family?
+    - chinese: 你有姐姐吗？
+      pinyin: Nǐ yǒu jiějie ma?
+      english: Do you have big sisters?
+    vocabulary:
+    - chinese: 爸爸
+      pinyin: bàba
+      english: father
+      example: []
+    - chinese: 妈妈
+      pinyin: māma
+      english: mother
+      example: []
+    - chinese: 家
+      pinyin: jiā
+      english: family
+      example: []
+    - chinese: 哥哥
+      pinyin: gēge
+      english: big brother
+      example: []
+    - chinese: 姐姐
+      pinyin: jiějie
+      english: big sister
+      example: []
+    - chinese: 妹妹
+      pinyin: mèimei
+      english: little sister
+      example: []
+      starred_in_textbook: true
+    - chinese: 有
+      pinyin: yǒu
+      english: to have
+      example:
+      - sentence: 有哥哥
+    - chinese: 几
+      pinyin: jǐ
+      english: how many (within 10)
+      example:
+      - sentence: 几口人，几个
+    - chinese: 口
+      pinyin: kǒu
+      english: (a measure word for family members)
+      example:
+      - sentence: 四口人
+    - chinese: 和
+      pinyin: hé
+      english: and
+      example:
+      - sentence: 爸爸和妈妈
+    - chinese: 没有
+      pinyin: méiyǒu
+      english: don't have
+      example:
+      - sentence: 没有哥哥
+      starred_in_textbook: true
+    - chinese: 个
+      pinyin: ge
+      english: (a measure word for general use)
+      example:
+      - sentence: 一个姐姐，哪个
+  - number: 5
+    chapter: 我6岁。
+    english_title: I'm 6 years old.
+    pdf_page: 21
+    textbook_page: 19
+    example_sentences:
+    - chinese: 你几岁？
+      pinyin: Nǐ jǐ suì?
+      english: How old are you?
+    - chinese: 你哥哥多大？
+      pinyin: Nǐ gēge duō dà?
+      english: How old is your big brother?
+    vocabulary:
+    - chinese: 岁
+      pinyin: suì
+      english: year(s) old
+      example:
+      - sentence: 几岁
+    - chinese: 多大
+      pinyin: duō dà
+      english: how old
+      example:
+      - sentence: 你多大？
+      starred_in_textbook: true
+    - chinese: 也
+      pinyin: yě
+      english: also, too
+      example:
+      - sentence: 他也6岁。
+      starred_in_textbook: true
+  - number: 6
+    chapter: 你的个子真高！
+    english_title: You're so tall!
+    pdf_page: 26
+    textbook_page: 24
+    example_sentences:
+    - chinese: 妹妹的眼睛很小。
+      pinyin: Mèimei de yǎnjing hěn xiǎo.
+      english: Little sister's eyes are small.
+    - chinese: 你的个子真高！
+      pinyin: Nǐ de gèzi zhēn gāo!
+      english: You're so tall!
+    vocabulary:
+    - chinese: 头发
+      pinyin: tóufa
+      english: hair
+      example: []
+    - chinese: 鼻子
+      pinyin: bízi
+      english: nose
+      example: []
+    - chinese: 手
+      pinyin: shǒu
+      english: hand
+      example: []
+    - chinese: 眼睛
+      pinyin: yǎnjing
+      english: eye
+      example: []
+    - chinese: 耳朵
+      pinyin: ěrduo
+      english: ear
+      example: []
+    - chinese: 的
+      pinyin: de
+      english: (indicating a possessive relationship)
+      example:
+      - sentence: 妹妹的眼睛
+    - chinese: 小
+      pinyin: xiǎo
+      english: small
+      example:
+      - sentence: 很小
+    - chinese: 大
+      pinyin: dà
+      english: big
+      example:
+      - sentence: 很大
+    - chinese: 长
+      pinyin: cháng
+      english: long
+      example:
+      - sentence: 不长
+    - chinese: 个子
+      pinyin: gèzi
+      english: height (for people)
+      example:
+      - sentence: 你的个子，个子很高
+    - chinese: 真
+      pinyin: zhēn
+      english: really
+      example:
+      - sentence: 真长
+      starred_in_textbook: true
+    - chinese: 高
+      pinyin: gāo
+      english: tall
+      example:
+      - sentence: 真高
+  - number: 7
+    chapter: 这是谁的狗？
+    english_title: Whose dog is this?
+    pdf_page: 31
+    textbook_page: 29
+    example_sentences:
+    - chinese: 这是谁的狗？
+      pinyin: Zhè shì shéi de gǒu?
+      english: Whose dog is this?
+    - chinese: 这儿有很多小鱼。
+      pinyin: Zhèr yǒu hěn duō xiǎo yú.
+      english: There are lots of fish here.
+    vocabulary:
+    - chinese: 猫
+      pinyin: māo
+      english: cat
+      example: []
+    - chinese: 狗
+      pinyin: gǒu
+      english: dog
+      example: []
+    - chinese: 鱼
+      pinyin: yú
+      english: fish
+      example: []
+    - chinese: 鸟
+      pinyin: niǎo
+      english: bird
+      example: []
+    - chinese: 这
+      pinyin: zhè
+      english: this
+      example:
+      - sentence: 这是谁的狗？
+    - chinese: 那
+      pinyin: nà
+      english: that
+      example:
+      - sentence: 那是谁的狗？
+    - chinese: 看
+      pinyin: kàn
+      english: to look
+      example:
+      - sentence: 看这儿
+    - chinese: 这儿
+      pinyin: zhèr
+      english: here
+      example:
+      - sentence: 这儿有很多小鱼。
+    - chinese: 多
+      pinyin: duō
+      english: many, much
+      example:
+      - sentence: 很多
+    - chinese: 那儿
+      pinyin: nàr
+      english: there
+      example:
+      - sentence: 那儿有很多小鸟。
+  - number: 8
+    chapter: 我去商店。
+    english_title: I'm going to the store.
+    pdf_page: 36
+    textbook_page: 34
+    example_sentences:
+    - chinese: 你姐姐在家吗？
+      pinyin: Nǐ jiějie zài jiā ma?
+      english: Is your big sister at home?
+    - chinese: 我去商店。
+      pinyin: Wǒ qù shāngdiàn.
+      english: I'm going to the store.
+    vocabulary:
+    - chinese: 学校
+      pinyin: xuéxiào
+      english: school
+      example: []
+    - chinese: 商店
+      pinyin: shāngdiàn
+      english: store
+      example: []
+    - chinese: 在
+      pinyin: zài
+      english: in, at
+      example:
+      - sentence: 在商店
+    - chinese: 谢谢
+      pinyin: xièxie
+      english: to thank, thanks
+      example:
+      - sentence: 谢谢你们。
+    - chinese: 去
+      pinyin: qù
+      english: to go
+      example:
+      - sentence: 去学校
+    - chinese: 你们
+      pinyin: nǐmen
+      english: you (plural)
+      example:
+      - sentence: 你们去吗？
+    - chinese: 我们
+      pinyin: wǒmen
+      english: we
+      example:
+      - sentence: 我们在家。
+    - chinese: 哪儿
+      pinyin: nǎr
+      english: where
+      example:
+      - sentence: 去哪儿
+  - number: 9
+    chapter: 今天星期几？
+    english_title: What day is it today?
+    pdf_page: 41
+    textbook_page: 39
+    example_sentences:
+    - chinese: 你的生日是几月几号？
+      pinyin: Nǐ de shēngrì shì jǐ yuè jǐ hào?
+      english: When is your birthday?
+    - chinese: 今天星期几？
+      pinyin: Jīntiān xīngqī jǐ?
+      english: What day is it today?
+    vocabulary:
+    - chinese: 星期一
+      pinyin: xīngqīyī
+      english: Monday
+      example: []
+    - chinese: 星期二
+      pinyin: xīngqīèr
+      english: Tuesday
+      example: []
+    - chinese: 星期三
+      pinyin: xīngqīsān
+      english: Wednesday
+      example: []
+    - chinese: 星期四
+      pinyin: xīngqīsì
+      english: Thursday
+      example: []
+    - chinese: 星期五
+      pinyin: xīngqīwǔ
+      english: Friday
+      example: []
+    - chinese: 星期六
+      pinyin: xīngqīliù
+      english: Saturday
+      example: []
+    - chinese: 星期天
+      pinyin: xīngqītiān
+      english: Sunday
+      example: []
+    - chinese: 生日
+      pinyin: shēngrì
+      english: birthday
+      example:
+      - sentence: 你的生日
+      starred_in_textbook: true
+    - chinese: 月
+      pinyin: yuè
+      english: month
+      example:
+      - sentence: 几月，1月
+    - chinese: 号
+      pinyin: hào
+      english: date
+      example:
+      - sentence: 几号，3号
+    - chinese: 今天
+      pinyin: jīntiān
+      english: today
+      example:
+      - sentence: 今天星期几？
+    - chinese: 星期
+      pinyin: xīngqī
+      english: week
+      example:
+      - sentence: 今天星期五。
+    - chinese: 明天
+      pinyin: míngtiān
+      english: tomorrow
+      example:
+      - sentence: 明天星期六。
+    - chinese: 喜欢
+      pinyin: xǐhuan
+      english: to like
+      example:
+      - sentence: 不喜欢，很喜欢
+  - number: 10
+    chapter: 现在几点？
+    english_title: What time is it?
+    pdf_page: 46
+    textbook_page: 44
+    example_sentences:
+    - chinese: 现在几点？
+      pinyin: Xiànzài jǐ diǎn?
+      english: What time is it?
+    - chinese: 明天5点见。
+      pinyin: Míngtiān wǔ diǎn jiàn.
+      english: Let's meet at 5 o'clock tomorrow.
+    vocabulary:
+    - chinese: 5点
+      pinyin: wǔ diǎn
+      english: five o'clock
+      example: []
+    - chinese: 12点
+      pinyin: shí'èr diǎn
+      english: twelve o'clock
+      example: []
+    - chinese: 1点10分
+      pinyin: yī diǎn shí fēn
+      english: one ten
+      example: []
+    - chinese: 现在
+      pinyin: xiànzài
+      english: now
+      example:
+      - sentence: 现在几点？
+    - chinese: 点
+      pinyin: diǎn
+      english: o'clock
+      example:
+      - sentence: 几点，12点
+    - chinese: 分
+      pinyin: fēn
+      english: minute
+      example:
+      - sentence: 11点10分
+      starred_in_textbook: true
+    - chinese: 见
+      pinyin: jiàn
+      english: to meet
+      example:
+      - sentence: 6点见
+      starred_in_textbook: true
+    - chinese: 早上
+      pinyin: zǎoshang
+      english: morning
+      example:
+      - sentence: 早上5点
+      starred_in_textbook: true
+    - chinese: 太早了
+      pinyin: tài zǎo le
+      english: it's too early!
+      example: []
+      starred_in_textbook: true
+  - number: 11
+    chapter: 你吃什么？
+    english_title: What would you like to eat?
+    pdf_page: 51
+    textbook_page: 49
+    example_sentences:
+    - chinese: 你吃什么？
+      pinyin: Nǐ chī shénme?
+      english: What would you like to eat?
+    - chinese: 我爱吃蛋糕。
+      pinyin: Wǒ ài chī dàngāo.
+      english: I like to eat cakes.
+    vocabulary:
+    - chinese: 米饭
+      pinyin: mǐfàn
+      english: rice
+      example: []
+    - chinese: 面条
+      pinyin: miàntiáo
+      english: noodle
+      example: []
+    - chinese: 苹果
+      pinyin: píngguǒ
+      english: apple
+      example: []
+    - chinese: 牛奶
+      pinyin: niúnǎi
+      english: milk
+      example: []
+    - chinese: 水
+      pinyin: shuǐ
+      english: water
+      example: []
+    - chinese: 吃
+      pinyin: chī
+      english: to eat
+      example:
+      - sentence: 吃什么，吃苹果
+    - chinese: 喝
+      pinyin: hē
+      english: to drink
+      example:
+      - sentence: 喝牛奶
+    - chinese: 爱
+      pinyin: ài
+      english: to love
+      example:
+      - sentence: 爱吃面条
+    - chinese: 蛋糕
+      pinyin: dàngāo
+      english: cake
+      example:
+      - sentence: 爱吃蛋糕
+      starred_in_textbook: true
+  - number: 12
+    chapter: 复习
+    english_title: Review
+    pdf_page: 56
+    textbook_page: 54
+    example_sentences: []
+    vocabulary: []
+- level: 2
+  book: YCT Standard Course 2
+  source_file: YCT2_standard_course.pdf
+  scope: Vocabulary and key sentences from the opening pages of Lessons 1-10; Lesson
+    11 opening page is absent from the uploaded scan; Lesson 12 is review-only.
+  notes:
+  - pdf_page numbers are 1-based; textbook_page numbers are the printed page numbers.
+  - Chinese examples inside vocabulary entries are usage words or phrases printed
+    beneath vocabulary items on the lesson page, not newly authored sentences.
+  - An empty example list means the lesson-opening page did not provide a usage example
+    for that entry.
+  - starred_in_textbook preserves asterisks shown on selected vocabulary entries.
+  - English translations of key sentences follow the textbook wording.
+  - The scan skips printed page 53, containing the Lesson 11 opening page. The chapter
+    title is available from the table of contents, but its key sentences and vocabulary
+    cannot be transcribed from this source.
+  chapters:
+  - number: 1
+    chapter: 我可以坐这儿吗？
+    english_title: May I sit here?
+    pdf_page: 5
+    textbook_page: 3
+    example_sentences:
+    - chinese: 我可以坐这儿吗？
+      pinyin: Wǒ kěyǐ zuò zhèr ma?
+      english: May I sit here?
+    - chinese: 请不要说话。
+      pinyin: Qǐng bú yào shuōhuà.
+      english: Please be quiet.
+    vocabulary:
+    - chinese: 可以
+      pinyin: kěyǐ
+      english: may
+      example:
+      - sentence: 不可以
+    - chinese: 坐
+      pinyin: zuò
+      english: sit
+      example:
+      - sentence: 坐这儿
+    - chinese: 请
+      pinyin: qǐng
+      english: please
+      example:
+      - sentence: 请坐
+    - chinese: 不客气
+      pinyin: bú kèqi
+      english: you're welcome
+      example: []
+    - chinese: 不要
+      pinyin: bú yào
+      english: don't
+      example:
+      - sentence: 请不要说话
+    - chinese: 说话
+      pinyin: shuōhuà
+      english: to talk, to speak
+      example:
+      - sentence: 不说话
+    - chinese: 对不起
+      pinyin: duìbuqǐ
+      english: I'm sorry
+      example: []
+    - chinese: 没关系
+      pinyin: méi guānxi
+      english: never mind
+      example: []
+  - number: 2
+    chapter: 你早上几点起床？
+    english_title: When do you get up in the morning?
+    pdf_page: 10
+    textbook_page: 8
+    example_sentences:
+    - chinese: 我早上七点起床。
+      pinyin: Wǒ zǎoshang qī diǎn qǐchuáng.
+      english: I get up at seven o'clock in the morning.
+    - chinese: 今天晚上我可以不睡觉吗？
+      pinyin: Jīntiān wǎnshang wǒ kěyǐ bù shuìjiào ma?
+      english: Can I not go to bed tonight?
+    vocabulary:
+    - chinese: 起床
+      pinyin: qǐchuáng
+      english: get up
+      example: []
+    - chinese: 睡觉
+      pinyin: shuìjiào
+      english: sleep, go to bed
+      example: []
+    - chinese: 早上
+      pinyin: zǎoshang
+      english: morning
+      example: []
+    - chinese: 晚上
+      pinyin: wǎnshang
+      english: night, evening
+      example: []
+    - chinese: 到
+      pinyin: dào
+      english: up to, until
+      example:
+      - sentence: 三点到五点，星期一到星期五
+      starred_in_textbook: true
+    - chinese: 呢
+      pinyin: ne
+      english: (a modal particle)
+      example:
+      - sentence: 我是中国人，你呢？
+    - chinese: 要
+      pinyin: yào
+      english: to want, would like
+      example:
+      - sentence: 你要做什么？我要喝水。
+  - number: 3
+    chapter: 你的铅笔呢？
+    english_title: Where is your pencil?
+    pdf_page: 15
+    textbook_page: 13
+    example_sentences:
+    - chinese: 你的铅笔呢？
+      pinyin: Nǐ de qiānbǐ ne?
+      english: Where is your pencil?
+    - chinese: 我的书包在桌子上。
+      pinyin: Wǒ de shūbāo zài zhuōzi shang.
+      english: My schoolbag is on the table.
+    vocabulary:
+    - chinese: 床
+      pinyin: chuáng
+      english: bed
+      example: []
+      starred_in_textbook: true
+    - chinese: 房间
+      pinyin: fángjiān
+      english: room
+      example: []
+    - chinese: 电视
+      pinyin: diànshì
+      english: television
+      example: []
+    - chinese: 桌子
+      pinyin: zhuōzi
+      english: table
+      example: []
+    - chinese: 椅子
+      pinyin: yǐzi
+      english: chair
+      example: []
+    - chinese: 铅笔
+      pinyin: qiānbǐ
+      english: pencil
+      example: []
+    - chinese: 书包
+      pinyin: shūbāo
+      english: schoolbag
+      example: []
+    - chinese: 里（面）
+      pinyin: lǐ (miàn)
+      english: in, inside
+      example:
+      - sentence: 在里面；书包里
+    - chinese: 上（边）
+      pinyin: shàng (bian)
+      english: 'on'
+      example:
+      - sentence: 在上边；桌子上
+    - chinese: 矮
+      pinyin: ǎi
+      english: short, dwarf
+      example:
+      - sentence: 小矮人
+      starred_in_textbook: true
+  - number: 4
+    chapter: 书包里有两本书。
+    english_title: There are two books in the schoolbag.
+    pdf_page: 20
+    textbook_page: 18
+    example_sentences:
+    - chinese: 一只是绿色的。
+      pinyin: Yì zhī shì lǜsè de.
+      english: One is green.
+    - chinese: 书包里有两本书。
+      pinyin: Shūbāo lǐ yǒu liǎng běn shū.
+      english: There are two books in the schoolbag.
+    vocabulary:
+    - chinese: 红色
+      pinyin: hóngsè
+      english: red
+      example: []
+    - chinese: 黄色
+      pinyin: huángsè
+      english: yellow
+      example: []
+    - chinese: 绿色
+      pinyin: lǜsè
+      english: green
+      example: []
+    - chinese: 只
+      pinyin: zhī
+      english: (a measure word for some animals and some body parts)
+      example:
+      - sentence: 一只猫，一只眼睛
+    - chinese: 名字
+      pinyin: míngzi
+      english: name
+      example:
+      - sentence: 名字叫豆豆
+    - chinese: 漂亮
+      pinyin: piàoliang
+      english: beautiful
+      example:
+      - sentence: 很漂亮
+    - chinese: 颜色
+      pinyin: yánsè
+      english: color
+      example:
+      - sentence: 书包是什么颜色的？
+    - chinese: 两
+      pinyin: liǎng
+      english: two
+      example:
+      - sentence: 两个苹果
+    - chinese: 本
+      pinyin: běn
+      english: (a measure word for books)
+      example:
+      - sentence: 两本书
+      starred_in_textbook: true
+  - number: 5
+    chapter: 你会不会做饭？
+    english_title: Can you cook?
+    pdf_page: 25
+    textbook_page: 23
+    example_sentences:
+    - chinese: 你会不会做饭？
+      pinyin: Nǐ huì bu huì zuò fàn?
+      english: Can you cook?
+    - chinese: 你妈妈是不是厨师？
+      pinyin: Nǐ māma shì bu shì chúshī?
+      english: Is your mother a chef?
+    vocabulary:
+    - chinese: 包子
+      pinyin: bāozi
+      english: baozi
+      example: []
+    - chinese: 医生
+      pinyin: yīshēng
+      english: doctor
+      example: []
+    - chinese: 厨师
+      pinyin: chúshī
+      english: chef, cook
+      example: []
+      starred_in_textbook: true
+    - chinese: 会
+      pinyin: huì
+      english: can
+      example:
+      - sentence: 会做饭，不会做包子
+    - chinese: 做
+      pinyin: zuò
+      english: to do
+      example:
+      - sentence: 做饭
+    - chinese: 真
+      pinyin: zhēn
+      english: really, real
+      example:
+      - sentence: 真大，真漂亮
+    - chinese: 好吃
+      pinyin: hǎochī
+      english: delicious
+      example:
+      - sentence: 很好吃，不好吃
+  - number: 6
+    chapter: 包子多少钱一个？
+    english_title: How much is one baozi?
+    pdf_page: 30
+    textbook_page: 28
+    example_sentences:
+    - chinese: 包子多少钱一个？
+      pinyin: Bāozi duōshao qián yí ge?
+      english: How much is one baozi?
+    - chinese: 两块钱一个。
+      pinyin: Liǎng kuài qián yí ge.
+      english: Two kuai for one baozi.
+    vocabulary:
+    - chinese: 钱
+      pinyin: qián
+      english: money
+      example: []
+    - chinese: 茶
+      pinyin: chá
+      english: tea
+      example: []
+    - chinese: 买
+      pinyin: mǎi
+      english: to buy
+      example:
+      - sentence: 买包子
+    - chinese: 多少
+      pinyin: duōshao
+      english: how much, how many
+      example:
+      - sentence: 多少钱，多少本书
+    - chinese: 块
+      pinyin: kuài
+      english: kuai (a unit of RMB)
+      example:
+      - sentence: 两块钱
+    - chinese: 杯
+      pinyin: bēi
+      english: cup (a measure word for drinks)
+      example:
+      - sentence: 一杯茶
+      starred_in_textbook: true
+    - chinese: 太贵了！
+      pinyin: Tài guì le!
+      english: It's too expensive!
+      example: []
+      starred_in_textbook: true
+  - number: 7
+    chapter: 今天比昨天热。
+    english_title: Today is hotter than yesterday.
+    pdf_page: 35
+    textbook_page: 33
+    example_sentences:
+    - chinese: 北京天气怎么样？
+      pinyin: Běijīng tiānqì zěnmeyàng?
+      english: How is the weather in Beijing?
+    - chinese: 今天比昨天热。
+      pinyin: Jīntiān bǐ zuótiān rè.
+      english: Today is hotter than yesterday.
+    vocabulary:
+    - chinese: 冷
+      pinyin: lěng
+      english: cold
+      example: []
+    - chinese: 热
+      pinyin: rè
+      english: hot
+      example: []
+    - chinese: 北京
+      pinyin: Běijīng
+      english: Beijing
+      example: []
+    - chinese: 纽约
+      pinyin: Niǔyuē
+      english: New York
+      example: []
+      starred_in_textbook: true
+    - chinese: 冰水
+      pinyin: bīng shuǐ
+      english: ice water
+      example: []
+      starred_in_textbook: true
+    - chinese: 天气
+      pinyin: tiānqì
+      english: weather
+      example:
+      - sentence: 天气很好
+    - chinese: 怎么样
+      pinyin: zěnmeyàng
+      english: how
+      example:
+      - sentence: 天气怎么样？
+    - chinese: 比
+      pinyin: bǐ
+      english: than
+      example:
+      - sentence: 今天比昨天热。
+    - chinese: 昨天
+      pinyin: zuótiān
+      english: yesterday
+      example:
+      - sentence: 昨天很热；我昨天去商店了。
+    - chinese: 觉得
+      pinyin: juéde
+      english: to feel, to think
+      example:
+      - sentence: 觉得很热，觉得很好
+    - chinese: 好喝
+      pinyin: hǎohē
+      english: good to drink, drinkable
+      example:
+      - sentence: 很好喝
+  - number: 8
+    chapter: 马丁比我大三岁。
+    english_title: Martin is three years older than me.
+    pdf_page: 40
+    textbook_page: 38
+    example_sentences:
+    - chinese: 他们也是小学生。
+      pinyin: Tāmen yě shì xiǎoxuéshēng.
+      english: They are elementary school students, too.
+    - chinese: 马丁比我大三岁。
+      pinyin: Mǎdīng bǐ wǒ dà sān suì.
+      english: Martin is three years older than me.
+    vocabulary:
+    - chinese: 弟弟
+      pinyin: dìdi
+      english: little brother
+      example: []
+    - chinese: 妹妹
+      pinyin: mèimei
+      english: little sister
+      example: []
+    - chinese: 朋友
+      pinyin: péngyou
+      english: friend
+      example:
+      - sentence: 好朋友
+    - chinese: 同学
+      pinyin: tóngxué
+      english: classmate
+      example:
+      - sentence: 我的同学
+    - chinese: 也
+      pinyin: yě
+      english: also, too
+      example:
+      - sentence: 我也是学生。
+    - chinese: 学生
+      pinyin: xuésheng
+      english: student
+      example:
+      - sentence: 小学生
+  - number: 9
+    chapter: 你今天做什么了？
+    english_title: What did you do today?
+    pdf_page: 45
+    textbook_page: 43
+    example_sentences:
+    - chinese: 我吃了一个苹果和一个香蕉。
+      pinyin: Wǒ chī le yí ge píngguǒ hé yí ge xiāngjiāo.
+      english: I ate an apple and a banana.
+    - chinese: 我没画熊猫。
+      pinyin: Wǒ méi huà xióngmāo.
+      english: I didn't draw a panda.
+    vocabulary:
+    - chinese: 香蕉
+      pinyin: xiāngjiāo
+      english: banana
+      example: []
+    - chinese: 熊猫
+      pinyin: xióngmāo
+      english: panda
+      example: []
+    - chinese: 水果
+      pinyin: shuǐguǒ
+      english: fruit
+      example:
+      - sentence: 吃水果，很多水果
+      starred_in_textbook: true
+    - chinese: 了
+      pinyin: le
+      english: (perfective particle)
+      example:
+      - sentence: 你吃什么了？
+    - chinese: 画
+      pinyin: huà
+      english: to draw, to paint; picture, drawing
+      example:
+      - sentence: 画小鸟，画画儿
+    - chinese: 没（有）
+      pinyin: méi (yǒu)
+      english: didn't (do), haven't (done)
+      example:
+      - sentence: 我没吃香蕉。
+  - number: 10
+    chapter: 你怎么了？
+    english_title: What's wrong with you?
+    pdf_page: 49
+    textbook_page: 48
+    example_sentences:
+    - chinese: 你怎么了？
+      pinyin: Nǐ zěnme le?
+      english: What's wrong with you?
+    - chinese: 现在我手不疼了。
+      pinyin: Xiànzài wǒ shǒu bù téng le.
+      english: My hand doesn't hurt now.
+    vocabulary:
+    - chinese: 脚
+      pinyin: jiǎo
+      english: foot
+      example: []
+    - chinese: 医院
+      pinyin: yīyuàn
+      english: hospital
+      example: []
+    - chinese: 怎么了
+      pinyin: zěnme le
+      english: what's wrong with…
+      example:
+      - sentence: 手怎么了？
+    - chinese: 疼
+      pinyin: téng
+      english: painful
+      example:
+      - sentence: 很疼，不疼
+      starred_in_textbook: true
+  - number: 11
+    chapter: 我来北京一年了。
+    english_title: I've been in Beijing for one year.
+    pdf_page: null
+    textbook_page: 53
+    example_sentences: []
+    vocabulary: []
+    extraction_status: missing_opening_page
+    source_note: The uploaded PDF jumps from printed page 52 (Lesson 10 test) to printed
+      page 54 (Lesson 11 reading). The Lesson 11 title is visible in the contents,
+      but its first page with key sentences and vocabulary is missing.
+  - number: 12
+    chapter: 复习
+    english_title: Review
+    pdf_page: 57
+    textbook_page: 58
+    example_sentences: []
+    vocabulary: []
+- level: 3
+  book: YCT Standard Course 3
+  source_file: YCT3_standart_course.pdf
+  scope: Vocabulary and key sentences transcribed from the opening page of Lessons
+    1-11. Lesson 12 is review-only.
+  notes:
+  - pdf_page numbers are 1-based; textbook_page numbers are the printed page numbers.
+  - Chinese examples inside vocabulary entries are usage words or phrases printed
+    beneath vocabulary items on the lesson page, not newly authored sentences.
+  - An empty example list means the opening page did not supply a usage example for
+    that entry.
+  - starred_in_textbook preserves the asterisk shown beside selected terms in the
+    original.
+  - English translations of key sentences follow the textbook wording.
+  chapters:
+  - number: 1
+    chapter: 我三年级。
+    english_title: I'm in the third grade.
+    pdf_page: 5
+    textbook_page: 3
+    example_sentences:
+    - chinese: 我们都有汉语课。
+      pinyin: Wǒmen dōu yǒu Hànyǔ kè.
+      english: We all have Chinese classes.
+    - chinese: 还有一个是女老师。
+      pinyin: Hái yǒu yí ge shì nǚ lǎoshī.
+      english: And the other one is a female teacher.
+    vocabulary:
+    - chinese: 年级
+      pinyin: niánjí
+      english: grade
+      example:
+      - sentence: 几年级
+    - chinese: 课
+      pinyin: kè
+      english: class, lesson
+      example:
+      - sentence: 汉语课
+    - chinese: 都
+      pinyin: dōu
+      english: both, all
+      example:
+      - sentence: 都有，都是
+    - chinese: 班
+      pinyin: bān
+      english: class
+      example:
+      - sentence: 我们班
+    - chinese: 张
+      pinyin: Zhāng
+      english: Zhang (a Chinese surname)
+      example:
+      - sentence: 张老师
+      starred_in_textbook: true
+    - chinese: 还
+      pinyin: hái
+      english: also, too
+      example:
+      - sentence: 还有，还要
+    - chinese: 新
+      pinyin: xīn
+      english: new
+      example:
+      - sentence: 新老师，新的
+    - chinese: 男
+      pinyin: nán
+      english: man, male
+      example: []
+    - chinese: 女
+      pinyin: nǚ
+      english: woman, female
+      example: []
+  - number: 2
+    chapter: 你喜欢什么运动？
+    english_title: What's your favorite sport?
+    pdf_page: 10
+    textbook_page: 8
+    example_sentences:
+    - chinese: 太好了！
+      pinyin: Tài hǎo le!
+      english: Great!
+    - chinese: 我和你们一起踢，好吗？
+      pinyin: Wǒ hé nǐmen yìqǐ tī, hǎo ma?
+      english: Can I play football with you?
+    vocabulary:
+    - chinese: 运动
+      pinyin: yùndòng
+      english: sport
+      example: []
+    - chinese: 游泳
+      pinyin: yóuyǒng
+      english: swim
+      example: []
+    - chinese: 打篮球
+      pinyin: dǎ lánqiú
+      english: play basketball
+      example: []
+    - chinese: 踢足球
+      pinyin: tī zúqiú
+      english: play soccer, play football
+      example: []
+    - chinese: 太
+      pinyin: tài
+      english: too, extremely
+      example:
+      - sentence: 太好了，太大了
+    - chinese: 每
+      pinyin: měi
+      english: every, each
+      example:
+      - sentence: 每天，每个人
+    - chinese: 一起
+      pinyin: yìqǐ
+      english: together
+      example:
+      - sentence: 一起玩，一起学习
+    - chinese: 欢迎
+      pinyin: huānyíng
+      english: to welcome
+      example:
+      - sentence: 欢迎你
+  - number: 3
+    chapter: 我在画画儿呢。
+    english_title: I'm drawing a picture.
+    pdf_page: 15
+    textbook_page: 13
+    example_sentences:
+    - chinese: 我在画画儿呢。
+      pinyin: Wǒ zài huà huàr ne.
+      english: I'm drawing a picture.
+    - chinese: 让我看看。
+      pinyin: Ràng wǒ kànkan.
+      english: Let me have a look.
+    vocabulary:
+    - chinese: 太阳
+      pinyin: tàiyáng
+      english: sun
+      example: []
+    - chinese: 月亮
+      pinyin: yuèliang
+      english: moon
+      example: []
+    - chinese: 跑步
+      pinyin: pǎobù
+      english: run, jog
+      example: []
+    - chinese: 爷爷
+      pinyin: yéye
+      english: grandfather
+      example: []
+    - chinese: 奶奶
+      pinyin: nǎinai
+      english: grandmother
+      example: []
+    - chinese: 唱歌
+      pinyin: chànggē
+      english: sing
+      example: []
+    - chinese: 跳舞
+      pinyin: tiàowǔ
+      english: dance
+      example: []
+    - chinese: 让
+      pinyin: ràng
+      english: to let, to allow or to make (somebody do something)
+      example:
+      - sentence: 让我说，让我看看
+  - number: 4
+    chapter: 喂，您好！
+    english_title: Hello!
+    pdf_page: 20
+    textbook_page: 18
+    example_sentences:
+    - chinese: 喂，您好！
+      pinyin: Wèi, nín hǎo!
+      english: Hello! (on the telephone)
+    - chinese: 我找我妈妈。
+      pinyin: Wǒ zhǎo wǒ māma.
+      english: I'm looking for my mom.
+    vocabulary:
+    - chinese: 喂
+      pinyin: wèi
+      english: Hello! (on the telephone)
+      example:
+      - sentence: 喂，您好！
+    - chinese: 您
+      pinyin: nín
+      english: you (polite)
+      example:
+      - sentence: 您好！
+    - chinese: 找
+      pinyin: zhǎo
+      english: to look for
+      example:
+      - sentence: 你找谁？
+    - chinese: 回
+      pinyin: huí
+      english: to return, to go back
+      example:
+      - sentence: 回家
+    - chinese: 问题
+      pinyin: wèntí
+      english: question
+      example:
+      - sentence: 我有一个问题。
+    - chinese: 问
+      pinyin: wèn
+      english: to ask
+      example:
+      - sentence: 问老师，问问题
+  - number: 5
+    chapter: 再吃几个。
+    english_title: Have some more.
+    pdf_page: 25
+    textbook_page: 23
+    example_sentences:
+    - chinese: 我最爱吃饺子。
+      pinyin: Wǒ zuì ài chī jiǎozi.
+      english: I like Chinese dumplings the best.
+    - chinese: 再吃几个。
+      pinyin: Zài chī jǐ ge.
+      english: Have some more.
+    vocabulary:
+    - chinese: 面条儿
+      pinyin: miàntiáor
+      english: noodles
+      example: []
+    - chinese: 饺子
+      pinyin: jiǎozi
+      english: Chinese dumplings
+      example: []
+    - chinese: 饿
+      pinyin: è
+      english: hungry
+      example:
+      - sentence: 我饿了。
+    - chinese: 想
+      pinyin: xiǎng
+      english: to think
+      example:
+      - sentence: 想吃
+    - chinese: 最
+      pinyin: zuì
+      english: best
+      example:
+      - sentence: 最爱吃饺子
+    - chinese: 给
+      pinyin: gěi
+      english: to give
+      example:
+      - sentence: 给你
+    - chinese: 再
+      pinyin: zài
+      english: again
+      example:
+      - sentence: 再吃一个。
+    - chinese: 饱
+      pinyin: bǎo
+      english: full (after eating)
+      example:
+      - sentence: 我饱了。
+  - number: 6
+    chapter: 我能自己穿。
+    english_title: I can put it on by myself.
+    pdf_page: 30
+    textbook_page: 28
+    example_sentences:
+    - chinese: 我帮你，好不好？
+      pinyin: Wǒ bāng nǐ, hǎo bu hǎo?
+      english: Can I help you?
+    - chinese: 我能自己穿。
+      pinyin: Wǒ néng zìjǐ chuān.
+      english: I can put it on by myself.
+    vocabulary:
+    - chinese: 衣服
+      pinyin: yīfu
+      english: clothes
+      example: []
+    - chinese: 帮（助）
+      pinyin: bāng (zhù)
+      english: to help
+      example:
+      - sentence: 我帮你。
+      starred_in_textbook: true
+    - chinese: 穿
+      pinyin: chuān
+      english: to wear, to put on
+      example:
+      - sentence: 穿衣服，穿鞋
+    - chinese: 能
+      pinyin: néng
+      english: can
+      example:
+      - sentence: 能不能
+    - chinese: 自己
+      pinyin: zìjǐ
+      english: oneself
+      example:
+      - sentence: 自己穿，我自己
+    - chinese: 鞋
+      pinyin: xié
+      english: shoes
+      example: []
+  - number: 7
+    chapter: 生日快乐！
+    english_title: Happy birthday!
+    pdf_page: 35
+    textbook_page: 33
+    example_sentences:
+    - chinese: 我们给妈妈做一个蛋糕吧。
+      pinyin: Wǒmen gěi māma zuò yí ge dàngāo ba.
+      english: Let's make a cake for mom.
+    - chinese: 我不会做蛋糕，但是我会画蛋糕。
+      pinyin: Wǒ bú huì zuò dàngāo, dànshì wǒ huì huà dàngāo.
+      english: I don't know how to make a cake, but I know how to draw a cake.
+    vocabulary:
+    - chinese: 礼物
+      pinyin: lǐwù
+      english: gift, present
+      example: []
+    - chinese: 花
+      pinyin: huā
+      english: flower
+      example: []
+    - chinese: 蛋糕
+      pinyin: dàngāo
+      english: cake
+      example: []
+    - chinese: 生日
+      pinyin: shēngrì
+      english: birthday
+      example:
+      - sentence: 你的生日
+    - chinese: 送
+      pinyin: sòng
+      english: to give (a gift)
+      example:
+      - sentence: 送你一个礼物
+    - chinese: 给
+      pinyin: gěi
+      english: for, to
+      example:
+      - sentence: 给妈妈做蛋糕，给他打电话
+    - chinese: 吧
+      pinyin: ba
+      english: (used at the end of a sentence to indicate a mild suggestion)
+      example:
+      - sentence: 说吧，来吧
+    - chinese: 但是
+      pinyin: dànshì
+      english: but, however
+      example:
+      - sentence: 这个蛋糕好吃，但是不好看。
+    - chinese: 快乐
+      pinyin: kuàilè
+      english: happy
+      example:
+      - sentence: 生日快乐！
+  - number: 8
+    chapter: 下雪了。
+    english_title: It's snowing.
+    pdf_page: 40
+    textbook_page: 38
+    example_sentences:
+    - chinese: 外面很冷吧？
+      pinyin: Wàimian hěn lěng ba?
+      english: It's very cold outside, isn't it?
+    - chinese: 别出去跑步了。
+      pinyin: Bié chūqu pǎobù le.
+      english: Don't go out jogging.
+    vocabulary:
+    - chinese: 下雪
+      pinyin: xiàxuě
+      english: to snow
+      example: []
+    - chinese: 听
+      pinyin: tīng
+      english: to listen
+      example: []
+    - chinese: 下雨
+      pinyin: xiàyǔ
+      english: to rain
+      example: []
+      starred_in_textbook: true
+    - chinese: 外面
+      pinyin: wàimian
+      english: outside
+      example:
+      - sentence: 在外面
+    - chinese: 出
+      pinyin: chū
+      english: to go/come out
+      example:
+      - sentence: 出去，出来
+    - chinese: 别
+      pinyin: bié
+      english: don't
+      example:
+      - sentence: 别吃，别跑
+    - chinese: 作业
+      pinyin: zuòyè
+      english: homework
+      example:
+      - sentence: 做作业
+  - number: 9
+    chapter: 笑一笑！
+    english_title: Smile!
+    pdf_page: 45
+    textbook_page: 43
+    example_sentences:
+    - chinese: 什么东西丢了？
+      pinyin: Shénme dōngxi diū le?
+      english: What is lost?
+    - chinese: 笑一笑！
+      pinyin: Xiào yi xiào!
+      english: Smile!
+    vocabulary:
+    - chinese: 哭
+      pinyin: kū
+      english: to cry
+      example: []
+    - chinese: 笑
+      pinyin: xiào
+      english: to smile
+      example: []
+    - chinese: 东西
+      pinyin: dōngxi
+      english: thing
+      example:
+      - sentence: 买东西，找东西
+    - chinese: 丢
+      pinyin: diū
+      english: to lose
+      example:
+      - sentence: 东西丢了
+    - chinese: 到
+      pinyin: dào
+      english: (used after a verb to indicate result)
+      example:
+      - sentence: 看到，找到
+  - number: 10
+    chapter: 谁跑得快？
+    english_title: Who runs fast?
+    pdf_page: 50
+    textbook_page: 48
+    example_sentences:
+    - chinese: 谁跑得快？
+      pinyin: Shéi pǎo de kuài?
+      english: Who runs fast?
+    - chinese: 胖的第一。
+      pinyin: Pàng de dì yī.
+      english: The fat one is first.
+    vocabulary:
+    - chinese: 老虎
+      pinyin: lǎohǔ
+      english: tiger
+      example: []
+    - chinese: 第一
+      pinyin: dì yī
+      english: the first
+      example: []
+    - chinese: 胖
+      pinyin: pàng
+      english: fat
+      example: []
+      starred_in_textbook: true
+    - chinese: 瘦
+      pinyin: shòu
+      english: thin
+      example: []
+      starred_in_textbook: true
+    - chinese: 些
+      pinyin: xiē
+      english: some
+      example:
+      - sentence: 这些，那些，一些
+    - chinese: 得
+      pinyin: de
+      english: (a structural particle)
+      example:
+      - sentence: 吃得多，说得很好
+    - chinese: 快
+      pinyin: kuài
+      english: fast
+      example:
+      - sentence: 跑得快
+    - chinese: 知道
+      pinyin: zhīdào
+      english: to know
+      example:
+      - sentence: 你知道吗？不知道。
+  - number: 11
+    chapter: 妈妈把糖给弟弟了。
+    english_title: Mom has given the candy to your brother.
+    pdf_page: 55
+    textbook_page: 53
+    example_sentences:
+    - chinese: 把西瓜给我。
+      pinyin: Bǎ xīguā gěi wǒ.
+      english: Pass me the watermelon.
+    - chinese: 妈妈把糖给弟弟了。
+      pinyin: Māma bǎ táng gěi dìdi le.
+      english: Mom has given the candy to your brother.
+    vocabulary:
+    - chinese: 水果
+      pinyin: shuǐguǒ
+      english: fruit
+      example: []
+    - chinese: 糖
+      pinyin: táng
+      english: candy
+      example: []
+      starred_in_textbook: true
+    - chinese: 西瓜
+      pinyin: xīguā
+      english: watermelon
+      example: []
+    - chinese: 鸡蛋
+      pinyin: jīdàn
+      english: egg
+      example: []
+    - chinese: 把
+      pinyin: bǎ
+      english: (indicating a thing is disposed of)
+      example:
+      - sentence: 把面包给妈妈
+  - number: 12
+    chapter: 复习
+    english_title: Review
+    pdf_page: 60
+    textbook_page: 58
+    example_sentences: []
+    vocabulary: []
+- level: 4
+  book: YCT Standard Course 4
+  source_file: YCT4_standart_course.pdf
+  scope: Vocabulary and key sentences transcribed from the opening page of Lessons
+    1-11. Lesson 12 is review-only.
+  notes:
+  - pdf_page numbers are 1-based; textbook_page numbers are the printed page numbers.
+  - Chinese examples inside vocabulary entries are the usage words or phrases printed
+    beneath vocabulary items on the lesson page, not newly authored sentences.
+  - An empty example list means the opening page did not supply a usage example for
+    that entry.
+  - English translations of the key sentences retain the textbook wording, including
+    any printing errors.
+  chapters:
+  - number: 1
+    chapter: 我们有一百零八个学生。
+    english_title: We have 108 students.
+    pdf_page: 10
+    textbook_page: 3
+    example_sentences:
+    - chinese: 我们有一百零八个学生。
+      pinyin: Wǒmen yǒu yì bǎi líng bā ge xuésheng.
+      english: We have 108 students.
+    - chinese: 我们学校有一千八百多个学生。
+      pinyin: Wǒmen xuéxiào yǒu yì qiān bā bǎi duō ge xuésheng.
+      english: There are more than 1 800 students in our school.
+    vocabulary:
+    - chinese: 手机
+      pinyin: shǒujī
+      english: mobile phone
+      example: []
+    - chinese: 电脑
+      pinyin: diànnǎo
+      english: computer
+      example: []
+    - chinese: 零
+      pinyin: líng
+      english: zero
+      example: []
+    - chinese: 上网
+      pinyin: shàngwǎng
+      english: go online
+      example: []
+    - chinese: 百
+      pinyin: bǎi
+      english: hundred
+      example:
+      - sentence: 一百，二百
+    - chinese: 千
+      pinyin: qiān
+      english: thousand
+      example:
+      - sentence: 三千，四千
+    - chinese: 少
+      pinyin: shǎo
+      english: less
+      example:
+      - sentence: 太少了
+  - number: 2
+    chapter: 你学汉语多长时间了？
+    english_title: How long have you been learning Chinese?
+    pdf_page: 15
+    textbook_page: 8
+    example_sentences:
+    - chinese: 你学汉语多长时间了？
+      pinyin: Nǐ xué Hànyǔ duō cháng shíjiān le?
+      english: How long have you been learning Chinese?
+    - chinese: 一个半小时是90分钟。
+      pinyin: Yí ge bàn xiǎoshí shì jiǔshí fēnzhōng.
+      english: One and a half hours is 90 minutes.
+    vocabulary:
+    - chinese: 时间
+      pinyin: shíjiān
+      english: time
+      example:
+      - sentence: 时间长，有时间
+    - chinese: 半
+      pinyin: bàn
+      english: half
+      example:
+      - sentence: 半年，一个半
+    - chinese: 读
+      pinyin: dú
+      english: to read
+      example: []
+    - chinese: 难
+      pinyin: nán
+      english: difficult
+      example:
+      - sentence: 不难，太难，很难
+    - chinese: 小时
+      pinyin: xiǎoshí
+      english: hour
+      example:
+      - sentence: 一个小时，一个半小时
+    - chinese: 题
+      pinyin: tí
+      english: question
+      example:
+      - sentence: 这个题，什么题？
+    - chinese: 懂
+      pinyin: dǒng
+      english: to understand
+      example:
+      - sentence: 不懂，懂了吗？
+  - number: 3
+    chapter: 早上八点半就开门。
+    english_title: It opens as early as 8:30 in the morning.
+    pdf_page: 20
+    textbook_page: 13
+    example_sentences:
+    - chinese: 早上八点半就开门。
+      pinyin: Zǎoshang bā diǎn bàn jiù kāimén.
+      english: It opens as early as 8:30 in the morning.
+    - chinese: 老虎杯子都卖完了。
+      pinyin: Lǎohǔ bēizi dōu mài wán le.
+      english: The tiger mugs are sold out.
+    vocabulary:
+    - chinese: 开
+      pinyin: kāi
+      english: open
+      example: []
+    - chinese: 关
+      pinyin: guān
+      english: close
+      example: []
+    - chinese: 门
+      pinyin: mén
+      english: door
+      example: []
+    - chinese: 杯子
+      pinyin: bēizi
+      english: cup, glass, mug
+      example: []
+    - chinese: 中午
+      pinyin: zhōngwǔ
+      english: noon
+      example:
+      - sentence: 今天中午
+    - chinese: 卖
+      pinyin: mài
+      english: to sell
+      example:
+      - sentence: 这个商店卖什么？
+    - chinese: 完
+      pinyin: wán
+      english: over, finished
+      example:
+      - sentence: 卖完了，做完了
+    - chinese: 就
+      pinyin: jiù
+      english: as early as, just
+      example:
+      - sentence: 六点就起床
+  - number: 4
+    chapter: 我感冒了。
+    english_title: I have a cold.
+    pdf_page: 25
+    textbook_page: 18
+    example_sentences:
+    - chinese: 我感冒了。
+      pinyin: Wǒ gǎnmào le.
+      english: I have a cold.
+    - chinese: 我吃了一点儿面包，喝了一点儿水。
+      pinyin: Wǒ chī le yìdiǎnr miànbāo, hē le yìdiǎnr shuǐ.
+      english: I ate a little bread and drank a little water.
+    vocabulary:
+    - chinese: 身体
+      pinyin: shēntǐ
+      english: body, health
+      example:
+      - sentence: 身体好
+    - chinese: 舒服
+      pinyin: shūfu
+      english: comfortable
+      example:
+      - sentence: 不舒服
+    - chinese: 生病
+      pinyin: shēngbìng
+      english: sick
+      example:
+      - sentence: 他生病了。
+    - chinese: 感冒
+      pinyin: gǎnmào
+      english: have a cold
+      example:
+      - sentence: 我感冒了。
+    - chinese: 休息
+      pinyin: xiūxi
+      english: have a rest
+      example:
+      - sentence: 休息十分钟
+    - chinese: 疼
+      pinyin: téng
+      english: hurt, ache
+      example:
+      - sentence: 脚疼
+    - chinese: 药
+      pinyin: yào
+      english: medicine
+      example:
+      - sentence: 吃药
+    - chinese: 一点儿
+      pinyin: yìdiǎnr
+      english: a little, a bit
+      example:
+      - sentence: 吃一点儿药
+  - number: 5
+    chapter: 把门关上。
+    english_title: Close the door.
+    pdf_page: 30
+    textbook_page: 23
+    example_sentences:
+    - chinese: 请进，快把门关上。
+      pinyin: Qǐng jìn, kuài bǎ mén guānshang.
+      english: Come in please and close the door.
+    - chinese: 不好，小猫把鱼吃了！
+      pinyin: Bù hǎo, xiǎo māo bǎ yú chī le!
+      english: Oh no, the cat ate the fish!
+    vocabulary:
+    - chinese: 鱼
+      pinyin: yú
+      english: fish
+      example:
+      - sentence: 小鱼，大鱼
+    - chinese: 菜
+      pinyin: cài
+      english: a dish of cooked food
+      example:
+      - sentence: 中国菜
+    - chinese: 果汁
+      pinyin: guǒzhī
+      english: juice
+      example:
+      - sentence: 喝果汁
+    - chinese: 洗澡
+      pinyin: xǐzǎo
+      english: take a shower or bath
+      example:
+      - sentence: 爱洗澡
+    - chinese: 进
+      pinyin: jìn
+      english: come in, go in
+      example:
+      - sentence: 进门，进来
+    - chinese: 它
+      pinyin: tā
+      english: it
+      example:
+      - sentence: 它们，它的
+  - number: 6
+    chapter: 你去过我们的新教室吗？
+    english_title: Have you been to our new classroom?
+    pdf_page: 35
+    textbook_page: 28
+    example_sentences:
+    - chinese: 你去过我们的新教室吗？
+      pinyin: Nǐ qùguo wǒmen de xīn jiàoshì ma?
+      english: Have you been to our new classroom?
+    - chinese: 前边都是新教室。
+      pinyin: Qiánbian dōu shì xīn jiàoshì.
+      english: The classrooms in front of us are all new.
+    vocabulary:
+    - chinese: 左
+      pinyin: zuǒ
+      english: left
+      example: []
+    - chinese: 前
+      pinyin: qián
+      english: front
+      example: []
+    - chinese: 右
+      pinyin: yòu
+      english: right
+      example: []
+    - chinese: 后
+      pinyin: hòu
+      english: behind
+      example: []
+    - chinese: 教室
+      pinyin: jiàoshì
+      english: classroom
+      example:
+      - sentence: 新教室，汉语教室
+    - chinese: 走
+      pinyin: zǒu
+      english: go
+      example:
+      - sentence: 快走，慢走，我们走吧！
+    - chinese: 过
+      pinyin: guo
+      english: used after a verb to indicate past experience
+      example:
+      - sentence: 去过，吃过
+  - number: 7
+    chapter: 你们每天怎么去学校？
+    english_title: How do you go to school every day?
+    pdf_page: 40
+    textbook_page: 33
+    example_sentences:
+    - chinese: 去动物园走这条路，对吗？
+      pinyin: Qù dòngwùyuán zǒu zhè tiáo lù, duì ma?
+      english: This is the way to the zoo, isn’t it?
+    - chinese: 我坐公共汽车去学校，哥哥自己开车去学校。
+      pinyin: Wǒ zuò gōnggòng qìchē qù xuéxiào, gēge zìjǐ kāichē qù xuéxiào.
+      english: I go to school by bus and my brother drives to school.
+    vocabulary:
+    - chinese: 公共汽车
+      pinyin: gōnggòng qìchē
+      english: bus
+      example:
+      - sentence: 坐公共汽车
+    - chinese: 动物园
+      pinyin: dòngwùyuán
+      english: zoo
+      example:
+      - sentence: 去动物园
+    - chinese: 车站
+      pinyin: chēzhàn
+      english: bus stop
+      example:
+      - sentence: 在车站
+    - chinese: 开
+      pinyin: kāi
+      english: drive
+      example:
+      - sentence: 开车
+    - chinese: 对
+      pinyin: duì
+      english: right
+      example:
+      - sentence: 对吗？不对
+    - chinese: 路
+      pinyin: lù
+      english: road
+      example:
+      - sentence: 大路，小路
+    - chinese: 远
+      pinyin: yuǎn
+      english: far
+      example:
+      - sentence: 很远，不远
+    - chinese: 近
+      pinyin: jìn
+      english: near
+      example:
+      - sentence: 很近，不近
+    - chinese: 旁边
+      pinyin: pángbiān
+      english: beside
+      example:
+      - sentence: 学校旁边
+    - chinese: 条
+      pinyin: tiáo
+      english: a measure word
+      example:
+      - sentence: 一条路
+  - number: 8
+    chapter: 要下雨了。
+    english_title: It’s going to rain.
+    pdf_page: 45
+    textbook_page: 38
+    example_sentences:
+    - chinese: 要下雨了。
+      pinyin: Yào xià yǔ le.
+      english: It’s going to rain.
+    - chinese: 要迟到了。
+      pinyin: Yào chídào le.
+      english: I’ll be late.
+    vocabulary:
+    - chinese: 雨伞
+      pinyin: yǔsǎn
+      english: umbrella
+      example:
+      - sentence: 漂亮的雨伞
+    - chinese: 拿
+      pinyin: ná
+      english: take
+      example:
+      - sentence: 拿雨伞
+    - chinese: 蓝
+      pinyin: lán
+      english: blue
+      example:
+      - sentence: 蓝色的花
+    - chinese: 坏
+      pinyin: huài
+      english: bad, broken
+      example:
+      - sentence: 雨伞坏了
+    - chinese: 慢
+      pinyin: màn
+      english: slow
+      example:
+      - sentence: 太慢，慢一点儿
+    - chinese: 迟到
+      pinyin: chídào
+      english: late
+      example:
+      - sentence: 要迟到了
+  - number: 9
+    chapter: 你是什么时候去的？
+    english_title: When did you go there?
+    pdf_page: 50
+    textbook_page: 43
+    example_sentences:
+    - chinese: 我是去年8月去的。
+      pinyin: Wǒ shì qùnián bā yuè qù de.
+      english: I went there in August last year.
+    - chinese: 我们是坐飞机去的。
+      pinyin: Wǒmen shì zuò fēijī qù de.
+      english: We went there by plane.
+    vocabulary:
+    - chinese: 飞机
+      pinyin: fēijī
+      english: plane
+      example:
+      - sentence: 坐飞机，大飞机
+    - chinese: 累
+      pinyin: lèi
+      english: tired
+      example:
+      - sentence: 很累
+    - chinese: 时候
+      pinyin: shíhou
+      english: time
+      example:
+      - sentence: 什么时候
+    - chinese: 去年
+      pinyin: qùnián
+      english: last year
+      example:
+      - sentence: 去年8月
+    - chinese: 次
+      pinyin: cì
+      english: time (occurrence)
+      example:
+      - sentence: 第一次，几次
+  - number: 10
+    chapter: 爸爸为什么不休息？
+    english_title: Why doesn’t Dad have a rest?
+    pdf_page: 55
+    textbook_page: 48
+    example_sentences:
+    - chinese: 因为爸爸有很多事情，所以很忙。
+      pinyin: Yīnwèi bàba yǒu hěn duō shìqing, suǒyǐ hěn máng.
+      english: Because Dad has a lot of things to do, he is very busy.
+    - chinese: 我是在电脑上看的。
+      pinyin: Wǒ shì zài diànnǎo shang kàn de.
+      english: I saw it on the computer.
+    vocabulary:
+    - chinese: 电影
+      pinyin: diànyǐng
+      english: film, movie
+      example:
+      - sentence: 看电影，电影院
+    - chinese: 为什么
+      pinyin: wèishénme
+      english: why
+      example:
+      - sentence: 为什么不休息？
+    - chinese: 忙
+      pinyin: máng
+      english: busy
+      example:
+      - sentence: 很忙，太忙了
+    - chinese: 事情
+      pinyin: shìqing
+      english: thing
+      example:
+      - sentence: 很多事情，好事情
+    - chinese: 意思
+      pinyin: yìsi
+      english: meaning
+      example:
+      - sentence: 什么意思
+    - chinese: 因为……所以……
+      pinyin: yīnwèi ... suǒyǐ ...
+      english: because ... (so) ...
+      example:
+      - sentence: 因为忙，所以没有去。
+  - number: 11
+    chapter: 它长得很快。
+    english_title: It grows really fast.
+    pdf_page: 60
+    textbook_page: 53
+    example_sentences:
+    - chinese: 它长得很快。
+      pinyin: Tā zhǎng de hěn kuài.
+      english: It grows really fast.
+    - chinese: 今天你穿哪件衣服？
+      pinyin: Jīntiān nǐ chuān nǎ jiàn yīfu?
+      english: What clothes are you going to you wear today?
+    vocabulary:
+    - chinese: 裙子
+      pinyin: qúnzi
+      english: dress, skirt
+      example:
+      - sentence: 白裙子
+    - chinese: 裤子
+      pinyin: kùzi
+      english: trousers
+      example:
+      - sentence: 黑裤子
+    - chinese: 白
+      pinyin: bái
+      english: white
+      example:
+      - sentence: 白色
+    - chinese: 黑
+      pinyin: hēi
+      english: black
+      example:
+      - sentence: 黑色
+    - chinese: 可爱
+      pinyin: kě’ài
+      english: cute, lovely
+      example:
+      - sentence: 真可爱
+    - chinese: 长
+      pinyin: zhǎng
+      english: grow
+      example:
+      - sentence: 长得很快，长大
+    - chinese: 出生
+      pinyin: chūshēng
+      english: birth
+      example:
+      - sentence: 你是哪年出生的？
+    - chinese: 件
+      pinyin: jiàn
+      english: a measure word
+      example:
+      - sentence: 一件，哪件
+  - number: 12
+    chapter: 复习
+    english_title: Review
+    pdf_page: 65
+    textbook_page: 58
+    example_sentences: []
+    vocabulary: []
+- level: 5
+  book: YCT Standard Course 5
+  source_file: YCT5标准教程.pdf
+  scope: Vocabulary and key sentences transcribed from the opening page of Lessons
+    1-14. Lesson 15 is review-only.
+  notes:
+  - pdf_page numbers are 1-based; textbook_page numbers are the printed page numbers.
+  - Chinese examples inside vocabulary entries are the usage words or phrases printed
+    beneath vocabulary items on the lesson page, not newly authored sentences.
+  - An empty example list means the opening page did not supply a usage example for
+    that entry.
+  - starred_in_textbook preserves the asterisk shown beside selected terms in the
+    original.
+  chapters:
+  - number: 1
+    chapter: 你对中国功夫感兴趣吗？
+    english_title: Are you interested in Chinese kung fu?
+    pdf_page: 8
+    textbook_page: 3
+    example_sentences:
+    - chinese: 你对中国功夫感兴趣吗？
+      pinyin: Nǐ duì Zhōngguó gōngfu gǎn xìngqù ma?
+      english: Are you interested in Chinese kung fu?
+    - chinese: 我也想和阿宝一样。
+      pinyin: Wǒ yě xiǎng hé Ābǎo yíyàng.
+      english: I want to be like Po, too.
+    vocabulary:
+    - chinese: 功夫
+      pinyin: gōngfu
+      english: kung fu
+      example:
+      - sentence: 中国功夫，学功夫
+    - chinese: 对……感兴趣
+      pinyin: duì ... gǎn xìngqù
+      english: be interested in
+      example:
+      - sentence: 对中国功夫很感兴趣
+    - chinese: 非常
+      pinyin: fēicháng
+      english: very much
+      example:
+      - sentence: 非常好，非常漂亮
+    - chinese: 飞
+      pinyin: fēi
+      english: fly
+      example:
+      - sentence: 会飞，飞得很高
+      starred_in_textbook: true
+    - chinese: 当然
+      pinyin: dāngrán
+      english: of course
+      example:
+      - sentence: 当然可以，当然知道
+    - chinese: 特别
+      pinyin: tèbié
+      english: especially; special
+      example:
+      - sentence: 特别高兴，很特别
+    - chinese: 厉害
+      pinyin: lìhai
+      english: awesome, fierce
+      example:
+      - sentence: 真厉害，变得很厉害
+    - chinese: （和……）一样
+      pinyin: (hé ...) yíyàng
+      english: the same ... (as)
+      example:
+      - sentence: 我和他一样高。我想和爸爸一样，做个医生。
+    - chinese: 帮助
+      pinyin: bāngzhù
+      english: to help; help
+      example:
+      - sentence: 帮助朋友，谢谢你的帮助
+    - chinese: 别人
+      pinyin: biérén
+      english: other people
+      example:
+      - sentence: 帮助别人，别人不知道
+    - chinese: 阿宝
+      pinyin: Ābǎo
+      english: Po (Kung Fu Panda's name)
+      example: []
+      starred_in_textbook: true
+  - number: 2
+    chapter: 兔子更可爱。
+    english_title: Rabbits are even cuter.
+    pdf_page: 16
+    textbook_page: 11
+    example_sentences:
+    - chinese: 大象的鼻子长长的。
+      pinyin: Dàxiàng de bízi chángcháng de.
+      english: Elephants have long noses.
+    - chinese: 兔子更可爱。
+      pinyin: Tùzi gèng kě’ài.
+      english: Rabbits are even cuter.
+    vocabulary:
+    - chinese: 大象
+      pinyin: dàxiàng
+      english: elephant
+      example: []
+    - chinese: 兔子
+      pinyin: tùzi
+      english: rabbit, bunny
+      example: []
+    - chinese: 蝴蝶
+      pinyin: húdié
+      english: butterfly
+      example: []
+    - chinese: 虫子
+      pinyin: chóngzi
+      english: bug, insect
+      example: []
+    - chinese: 尾巴
+      pinyin: wěiba
+      english: tail
+      example: []
+      starred_in_textbook: true
+    - chinese: 矮
+      pinyin: ǎi
+      english: short (in height)
+      example: []
+    - chinese: 胖
+      pinyin: pàng
+      english: fat
+      example: []
+    - chinese: 短
+      pinyin: duǎn
+      english: short (in length)
+      example: []
+    - chinese: 更
+      pinyin: gèng
+      english: more
+      example:
+      - sentence: 更多，更喜欢
+    - chinese: 讨厌
+      pinyin: tǎoyàn
+      english: hate, dislike; annoying
+      example:
+      - sentence: 讨厌虫子，很讨厌
+    - chinese: 告诉
+      pinyin: gàosu
+      english: tell
+      example:
+      - sentence: 告诉老师
+    - chinese: 将来
+      pinyin: jiānglái
+      english: future
+      example:
+      - sentence: 将来的事情
+  - number: 3
+    chapter: 电梯坏了。
+    english_title: There is something wrong with the elevator.
+    pdf_page: 24
+    textbook_page: 19
+    example_sentences:
+    - chinese: 你住3层还是4层？
+      pinyin: Nǐ zhù sān céng háishi sì céng?
+      english: Do you live on the 3rd floor or the 4th floor?
+    - chinese: 窗户下边放了一个大沙发。
+      pinyin: Chuānghu xiàbian fàng le yí ge dà shāfā.
+      english: There is a big sofa below the window.
+    vocabulary:
+    - chinese: 楼
+      pinyin: lóu
+      english: building
+      example: []
+    - chinese: 电梯
+      pinyin: diàntī
+      english: elevator
+      example: []
+    - chinese: 空调
+      pinyin: kōngtiáo
+      english: air-conditioner
+      example: []
+    - chinese: 窗户
+      pinyin: chuānghu
+      english: window
+      example: []
+    - chinese: 沙发
+      pinyin: shāfā
+      english: sofa
+      example: []
+    - chinese: 洗手间
+      pinyin: xǐshǒujiān
+      english: bathroom
+      example: []
+    - chinese: 等
+      pinyin: děng
+      english: wait
+      example:
+      - sentence: 我等你，等一下儿
+    - chinese: 住
+      pinyin: zhù
+      english: live
+      example:
+      - sentence: 你住哪儿？住得很远
+    - chinese: 层
+      pinyin: céng
+      english: floor, storey
+      example:
+      - sentence: 我住3层。
+    - chinese: 还是
+      pinyin: háishi
+      english: or (used in an alternative question)
+      example:
+      - sentence: 吃面条还是米饭？
+    - chinese: 啊
+      pinyin: a
+      english: ah (an interjection word for surprise)
+      example: []
+    - chinese: 放
+      pinyin: fàng
+      english: put
+      example:
+      - sentence: 把书放在桌子上
+  - number: 4
+    chapter: 每个人都有自己的习惯。
+    english_title: Everyone has their own habits.
+    pdf_page: 32
+    textbook_page: 27
+    example_sentences:
+    - chinese: 她每天早上弹一会儿钢琴。
+      pinyin: Tā měitiān zǎoshang tán yíhuìr gāngqín.
+      english: She plays the piano for a while every morning.
+    - chinese: 每个人都有自己的习惯。
+      pinyin: Měi ge rén dōu yǒu zìjǐ de xíguàn.
+      english: Everyone has their own habits.
+    vocabulary:
+    - chinese: 邻居
+      pinyin: línjū
+      english: neighbor
+      example:
+      - sentence: 我的邻居
+    - chinese: 习惯
+      pinyin: xíguàn
+      english: habit; get used to
+      example:
+      - sentence: 好习惯，习惯了
+    - chinese: 一会儿
+      pinyin: yíhuìr
+      english: a little while
+      example:
+      - sentence: 玩一会儿，弹一会儿钢琴
+    - chinese: 以前
+      pinyin: yǐqián
+      english: before
+      example:
+      - sentence: 十二点以前，以前的事情
+    - chinese: 周末
+      pinyin: zhōumò
+      english: weekend
+      example:
+      - sentence: 这个周末，上周末
+    - chinese: 带
+      pinyin: dài
+      english: take, bring
+      example:
+      - sentence: 带书，带我去爬山
+    - chinese: 奇怪
+      pinyin: qíguài
+      english: strange, weird
+      example:
+      - sentence: 很奇怪
+    - chinese: 咖啡
+      pinyin: kāfēi
+      english: coffee
+      example:
+      - sentence: 一杯咖啡
+      starred_in_textbook: true
+    - chinese: 弹钢琴
+      pinyin: tán gāngqín
+      english: play the piano
+      example: []
+    - chinese: 公园
+      pinyin: gōngyuán
+      english: park
+      example: []
+    - chinese: 散步
+      pinyin: sànbù
+      english: take a walk
+      example: []
+    - chinese: 爬山
+      pinyin: páshān
+      english: climb a mountain
+      example: []
+  - number: 5
+    chapter: 他们多么年轻啊！
+    english_title: They’re so young!
+    pdf_page: 40
+    textbook_page: 35
+    example_sentences:
+    - chinese: 这张照片是二十年前照的。
+      pinyin: Zhè zhāng zhàopiàn shì èrshí nián qián zhào de.
+      english: This photo was taken 20 years ago.
+    - chinese: 他们多么年轻啊！
+      pinyin: Tāmen duōme niánqīng a!
+      english: How young they were back then!
+    vocabulary:
+    - chinese: 儿子
+      pinyin: érzi
+      english: son
+      example:
+      - sentence: 这是我儿子。
+    - chinese: 阿姨
+      pinyin: āyí
+      english: aunt
+      example:
+      - sentence: 这是李阿姨。
+    - chinese: 帅
+      pinyin: shuài
+      english: handsome
+      example:
+      - sentence: 很帅
+      starred_in_textbook: true
+    - chinese: 女儿
+      pinyin: nǚ’ér
+      english: daughter
+      example:
+      - sentence: 这是你女儿吗？
+    - chinese: 年轻
+      pinyin: niánqīng
+      english: young
+      example:
+      - sentence: 很年轻，年轻人
+    - chinese: 照相
+      pinyin: zhàoxiàng
+      english: take a photo
+      example:
+      - sentence: 帮我照张相
+    - chinese: 张
+      pinyin: zhāng
+      english: piece (a measure word for flat things such as paper)
+      example:
+      - sentence: 一张照片，这张桌子
+    - chinese: 照片
+      pinyin: zhàopiàn
+      english: photo
+      example:
+      - sentence: 这些照片，小时候的照片
+    - chinese: 多么
+      pinyin: duōme
+      english: so
+      example:
+      - sentence: 多么年轻
+    - chinese: 孩子
+      pinyin: háizi
+      english: child
+      example:
+      - sentence: 可爱的孩子
+    - chinese: 叔叔
+      pinyin: shūshu
+      english: uncle
+      example:
+      - sentence: 我叔叔，王叔叔
+    - chinese: 孙子
+      pinyin: sūnzi
+      english: grandson
+      example:
+      - sentence: 我爷爷有两个孙子。
+  - number: 6
+    chapter: 站着的还是坐着的？
+    english_title: The one standing or the one sitting?
+    pdf_page: 48
+    textbook_page: 43
+    example_sentences:
+    - chinese: 站着的还是坐着的？
+      pinyin: Zhànzhe de háishi zuòzhe de?
+      english: The one standing or the one sitting?
+    - chinese: 上面写着“多多”。
+      pinyin: Shàngmian xiězhe “Duōduō”.
+      english: It’s got the word “Duoduo” written on it.
+    vocabulary:
+    - chinese: 站
+      pinyin: zhàn
+      english: stand
+      example:
+      - sentence: 站在桌子上
+    - chinese: 着
+      pinyin: zhe
+      english: (indicating that the action is in progress)
+      example:
+      - sentence: 坐着，穿着红衣服
+    - chinese: 戴
+      pinyin: dài
+      english: wear (for accessories, such as glasses)
+      example:
+      - sentence: 戴眼镜
+    - chinese: 眼镜
+      pinyin: yǎnjìng
+      english: glasses
+      example:
+      - sentence: 一副眼镜，眼镜坏了
+    - chinese: 错
+      pinyin: cuò
+      english: wrong
+      example:
+      - sentence: 错了，没错
+    - chinese: 大家
+      pinyin: dàjiā
+      english: everyone
+      example:
+      - sentence: 大家好，大家的作业
+    - chinese: （看）见
+      pinyin: (kàn) jiàn
+      english: see
+      example:
+      - sentence: 看见了一只小狗，没看见车
+      starred_in_textbook: true
+    - chinese: 项圈
+      pinyin: xiàngquān
+      english: necklet
+      example:
+      - sentence: 黄色的项圈，戴着项圈
+      starred_in_textbook: true
+    - chinese: 联系
+      pinyin: liánxì
+      english: contact; connection
+      example:
+      - sentence: 和朋友联系，和……有联系
+    - chinese: 号码
+      pinyin: hàomǎ
+      english: number
+      example:
+      - sentence: 电话号码，号码是多少
+  - number: 7
+    chapter: 我经常去体育馆锻炼身体。
+    english_title: I often go to the gym to work out.
+    pdf_page: 56
+    textbook_page: 51
+    example_sentences:
+    - chinese: 我经常去体育馆锻炼身体。
+      pinyin: Wǒ jīngcháng qù tǐyùguǎn duànliàn shēntǐ.
+      english: I often go to the gym to work out.
+    - chinese: 运动不但让我有健康的身体，而且让我有快乐的心情。
+      pinyin: Yùndòng bùdàn ràng wǒ yǒu jiànkāng de shēntǐ, érqiě ràng wǒ yǒu kuàilè
+        de xīnqíng.
+      english: Playing sports not only keeps me healthy, it also puts me in a good
+        mood.
+    vocabulary:
+    - chinese: 选（择）
+      pinyin: xuǎn (zé)
+      english: choose
+      example:
+      - sentence: 你选哪一个？很难选择
+    - chinese: 经常
+      pinyin: jīngcháng
+      english: often
+      example:
+      - sentence: 经常打篮球，经常生病
+    - chinese: 锻炼
+      pinyin: duànliàn
+      english: work out, exercise
+      example:
+      - sentence: 锻炼身体
+    - chinese: 不但……而且……
+      pinyin: bùdàn ... érqiě ...
+      english: not only ... but also ...
+      example:
+      - sentence: 不但很漂亮，而且很便宜。
+    - chinese: 健康
+      pinyin: jiànkāng
+      english: healthy; health
+      example:
+      - sentence: 健康的身体
+    - chinese: 心情
+      pinyin: xīnqíng
+      english: mood
+      example:
+      - sentence: 快乐的心情，心情不太好
+    - chinese: 流汗
+      pinyin: liúhàn
+      english: sweat
+      example:
+      - sentence: 流了很多汗
+    - chinese: 网球
+      pinyin: wǎngqiú
+      english: tennis
+      example: []
+    - chinese: 排球
+      pinyin: páiqiú
+      english: volleyball
+      example: []
+    - chinese: 乒乓球
+      pinyin: pīngpāngqiú
+      english: table tennis
+      example: []
+    - chinese: 体育馆
+      pinyin: tǐyùguǎn
+      english: gym
+      example: []
+  - number: 8
+    chapter: 北京一共有四个季节。
+    english_title: Beijing has four seasons altogether.
+    pdf_page: 64
+    textbook_page: 59
+    example_sentences:
+    - chinese: 北京一共有春、夏、秋、冬四个季节。
+      pinyin: Běijīng yígòng yǒu chūn, xià, qiū, dōng sì ge jìjié.
+      english: 'Beijing has four seasons altogether: spring, summer, fall and winter.'
+    - chinese: 到处都是花。
+      pinyin: Dàochù dōu shì huā.
+      english: There are flowers everywhere.
+    vocabulary:
+    - chinese: 晴
+      pinyin: qíng
+      english: sunny
+      example: []
+    - chinese: 阴
+      pinyin: yīn
+      english: overcast
+      example: []
+      starred_in_textbook: true
+    - chinese: 刮风
+      pinyin: guāfēng
+      english: (of the wind) blow
+      example: []
+    - chinese: 春（天）
+      pinyin: chūn (tiān)
+      english: spring
+      example: []
+    - chinese: 夏（天）
+      pinyin: xià (tiān)
+      english: summer
+      example: []
+    - chinese: 秋（天）
+      pinyin: qiū (tiān)
+      english: fall, autumn
+      example: []
+    - chinese: 冬（天）
+      pinyin: dōng (tiān)
+      english: winter
+      example: []
+    - chinese: 变化
+      pinyin: biànhuà
+      english: change
+      example:
+      - sentence: 变化很大，有变化
+    - chinese: 一共
+      pinyin: yígòng
+      english: altogether
+      example:
+      - sentence: 一共五块钱，一共三十人
+    - chinese: 季节
+      pinyin: jìjié
+      english: season
+      example:
+      - sentence: 四个季节
+      starred_in_textbook: true
+    - chinese: 暖和
+      pinyin: nuǎnhuo
+      english: warm
+      example:
+      - sentence: 天气很暖和。
+    - chinese: 到处
+      pinyin: dàochù
+      english: everywhere
+      example:
+      - sentence: 到处都是花。
+    - chinese: 凉快
+      pinyin: liángkuai
+      english: cool (of weather)
+      example:
+      - sentence: 天气很凉快
+    - chinese: 堆雪人
+      pinyin: duī xuěrén
+      english: make a snowman
+      example:
+      - sentence: 喜欢堆雪人
+      starred_in_textbook: true
+  - number: 9
+    chapter: 冰激凌既好吃又便宜。
+    english_title: The ice cream is delicious and cheap.
+    pdf_page: 72
+    textbook_page: 67
+    example_sentences:
+    - chinese: 去年我们已经送他手表了。
+      pinyin: Qùnián wǒmen yǐjīng sòng tā shǒubiǎo le.
+      english: We already gave him a watch last year.
+    - chinese: 冰激凌既好吃又便宜。
+      pinyin: Bīngjīlíng jì hǎochī yòu piányi.
+      english: The ice cream is delicious and cheap.
+    vocabulary:
+    - chinese: 饮料
+      pinyin: yǐnliào
+      english: beverage
+      example: []
+    - chinese: 巧克力
+      pinyin: qiǎokèlì
+      english: chocolate
+      example: []
+    - chinese: 饼干
+      pinyin: bǐnggān
+      english: cookie
+      example: []
+    - chinese: 冰激凌
+      pinyin: bīngjīlíng
+      english: ice cream
+      example: []
+    - chinese: 玩具
+      pinyin: wánjù
+      english: toy
+      example: []
+    - chinese: 超市
+      pinyin: chāoshì
+      english: supermarket
+      example: []
+    - chinese: 手表
+      pinyin: shǒubiǎo
+      english: watch
+      example:
+      - sentence: 一块手表
+    - chinese: 记得
+      pinyin: jìde
+      english: remember
+      example:
+      - sentence: 你记得吗？不记得了
+    - chinese: 已经
+      pinyin: yǐjīng
+      english: already
+      example:
+      - sentence: 已经来了，已经说过
+    - chinese: 办法
+      pinyin: bànfǎ
+      english: way (of doing something)
+      example:
+      - sentence: 有办法，想办法，好办法
+    - chinese: 尝
+      pinyin: cháng
+      english: taste
+      example:
+      - sentence: 尝一尝
+    - chinese: 既……又……
+      pinyin: jì ... yòu ...
+      english: both ... and ...
+      example:
+      - sentence: 既好吃又便宜
+    - chinese: 便宜
+      pinyin: piányi
+      english: cheap
+      example:
+      - sentence: 很便宜
+  - number: 10
+    chapter: 你的汉语会越来越好。
+    english_title: Your Chinese will get better and better.
+    pdf_page: 80
+    textbook_page: 75
+    example_sentences:
+    - chinese: 只要努力，就会有好成绩。
+      pinyin: Zhǐyào nǔlì, jiù huì yǒu hǎo chéngjì.
+      english: As long as you work hard, you will get good grades.
+    - chinese: 你的汉语会越来越好。
+      pinyin: Nǐ de Hànyǔ huì yuè lái yuè hǎo.
+      english: Your Chinese will get better and better.
+    vocabulary:
+    - chinese: 考试
+      pinyin: kǎoshì
+      english: take a test, test
+      example: []
+    - chinese: 成绩
+      pinyin: chéngjì
+      english: grade, score
+      example: []
+    - chinese: 聊天儿
+      pinyin: liáotiānr
+      english: chat
+      example: []
+    - chinese: 复习
+      pinyin: fùxí
+      english: review
+      example:
+      - sentence: 复习汉语
+    - chinese: 准备
+      pinyin: zhǔnbèi
+      english: prepare, plan; preparation
+      example:
+      - sentence: 准备礼物，准备回家，做准备
+    - chinese: 努力
+      pinyin: nǔlì
+      english: (to do something) hard
+      example:
+      - sentence: 很努力，努力学习
+    - chinese: 一定
+      pinyin: yídìng
+      english: definitely
+      example:
+      - sentence: 一定可以，不一定
+    - chinese: 只要……就……
+      pinyin: zhǐyào ... jiù ...
+      english: as long as
+      example:
+      - sentence: 只要有时间就去运动。
+    - chinese: 认真
+      pinyin: rènzhēn
+      english: (to take something) seriously
+      example:
+      - sentence: 很认真，认真学习
+    - chinese: 练习
+      pinyin: liànxí
+      english: exercise; to practice
+      example:
+      - sentence: 做练习，练习跳舞
+    - chinese: 越来越
+      pinyin: yuè lái yuè
+      english: more and more
+      example:
+      - sentence: 越来越好
+    - chinese: 相信
+      pinyin: xiāngxìn
+      english: believe
+      example:
+      - sentence: 相信自己
+      starred_in_textbook: true
+  - number: 11
+    chapter: 来一盘羊肉饺子。
+    english_title: I’d like a plate of lamb dumplings.
+    pdf_page: 88
+    textbook_page: 83
+    example_sentences:
+    - chinese: 来一盘羊肉饺子。
+      pinyin: Lái yì pán yángròu jiǎozi.
+      english: I’d like a plate of lamb dumplings.
+    - chinese: 回家以后我想练习练习。
+      pinyin: Huí jiā yǐhòu wǒ xiǎng liànxí liànxí.
+      english: I want to practice after I get home.
+    vocabulary:
+    - chinese: 烤鸭
+      pinyin: kǎoyā
+      english: roast duck
+      example: []
+    - chinese: 服务员
+      pinyin: fúwùyuán
+      english: waiter, waitress
+      example: []
+    - chinese: 盘（子）
+      pinyin: pán (zi)
+      english: plate
+      example: []
+    - chinese: 碗
+      pinyin: wǎn
+      english: bowl
+      example: []
+      starred_in_textbook: true
+    - chinese: 筷子
+      pinyin: kuàizi
+      english: chopsticks
+      example: []
+    - chinese: 叉子
+      pinyin: chāzi
+      english: fork
+      example: []
+      starred_in_textbook: true
+    - chinese: 羊肉
+      pinyin: yángròu
+      english: lamb
+      example:
+      - sentence: 羊肉饺子
+    - chinese: 汤
+      pinyin: tāng
+      english: soup
+      example:
+      - sentence: 饺子汤，喝汤
+    - chinese: 其他
+      pinyin: qítā
+      english: other
+      example:
+      - sentence: 其他人，其他地方
+    - chinese: 用
+      pinyin: yòng
+      english: use
+      example:
+      - sentence: 用筷子吃饭，用笔写字
+    - chinese: 离开
+      pinyin: líkāi
+      english: leave
+      example:
+      - sentence: 离开中国，离开家
+    - chinese: 双
+      pinyin: shuāng
+      english: pair (a measure word for chopsticks)
+      example:
+      - sentence: 一双筷子
+  - number: 12
+    chapter: 坐飞机或者坐火车都可以。
+    english_title: You can either take the plane or the train.
+    pdf_page: 96
+    textbook_page: 91
+    example_sentences:
+    - chinese: 如果想快一点儿，那么就坐地铁吧。
+      pinyin: Rúguǒ xiǎng kuài yìdiǎnr, nàme jiù zuò dìtiě ba.
+      english: Take the subway if you want to get there quicker.
+    - chinese: 坐飞机或者坐火车都可以。
+      pinyin: Zuò fēijī huòzhě zuò huǒchē dōu kěyǐ.
+      english: You can either take the plane or the train.
+    vocabulary:
+    - chinese: 地铁
+      pinyin: dìtiě
+      english: subway
+      example: []
+    - chinese: 火车
+      pinyin: huǒchē
+      english: train
+      example: []
+    - chinese: 上海
+      pinyin: Shànghǎi
+      english: Shanghai
+      example: []
+    - chinese: 或者
+      pinyin: huòzhě
+      english: or (used in a statement)
+      example:
+      - sentence: 茶或者咖啡都可以
+    - chinese: 方便
+      pinyin: fāngbiàn
+      english: convenient
+      example:
+      - sentence: 很方便
+    - chinese: 可能
+      pinyin: kěnéng
+      english: probably
+      example:
+      - sentence: 可能会下雨，不可能下雨
+    - chinese: 担心
+      pinyin: dānxīn
+      english: worry
+      example:
+      - sentence: 非常担心，别担心
+    - chinese: 如果……那么……
+      pinyin: rúguǒ ... nàme ...
+      english: if ... then ...
+      example:
+      - sentence: 如果你不喜欢帮助别人，那么别人也不会帮助你。
+    - chinese: 工作
+      pinyin: gōngzuò
+      english: to work; work
+      example:
+      - sentence: 在医院工作，工作很忙
+    - chinese: 出差
+      pinyin: chūchāi
+      english: go on a business trip
+      example:
+      - sentence: 经常出差，去上海出差
+      starred_in_textbook: true
+    - chinese: 安全
+      pinyin: ānquán
+      english: safe
+      example:
+      - sentence: 火车很安全。
+    - chinese: 准时
+      pinyin: zhǔnshí
+      english: punctual
+      example:
+      - sentence: 不但很安全而且很准时
+  - number: 13
+    chapter: 我先帮你补牙。
+    english_title: I’ll do the filling for you first.
+    pdf_page: 104
+    textbook_page: 99
+    example_sentences:
+    - chinese: 我先帮你补牙，一会儿护士教你怎么刷牙。
+      pinyin: Wǒ xiān bāng nǐ bǔyá, yíhuìr hùshi jiāo nǐ zěnme shuāyá.
+      english: I’ll do the filling for you first, and then the nurse will come to
+        show you how to brush your teeth correctly.
+    - chinese: 我不想一直在床上躺着！
+      pinyin: Wǒ bù xiǎng yìzhí zài chuáng shang tǎngzhe!
+      english: I don’t want to lie in bed all the time!
+    vocabulary:
+    - chinese: 刷牙
+      pinyin: shuāyá
+      english: brush the teeth
+      example: []
+    - chinese: 护士
+      pinyin: hùshi
+      english: nurse
+      example: []
+    - chinese: 肚子
+      pinyin: dùzi
+      english: stomach, belly
+      example: []
+    - chinese: 发烧
+      pinyin: fāshāo
+      english: have a fever
+      example: []
+    - chinese: 打针
+      pinyin: dǎzhēn
+      english: have/give an injection
+      example: []
+    - chinese: 先
+      pinyin: xiān
+      english: first
+      example:
+      - sentence: 先喝杯咖啡，吃饭以前先洗手
+    - chinese: 补牙
+      pinyin: bǔyá
+      english: have a (dental) filling
+      example:
+      - sentence: 得补牙
+      starred_in_textbook: true
+    - chinese: 教
+      pinyin: jiāo
+      english: teach
+      example:
+      - sentence: 教汉语，老师教我汉语
+    - chinese: 突然
+      pinyin: tūrán
+      english: suddenly; sudden
+      example:
+      - sentence: 突然生病了，很突然
+    - chinese: 马上
+      pinyin: mǎshàng
+      english: immediately
+      example:
+      - sentence: 马上回家
+    - chinese: 开药
+      pinyin: kāiyào
+      english: prescribe (medicines)
+      example:
+      - sentence: 医生给他开药，开了很多药
+      starred_in_textbook: true
+    - chinese: 一直
+      pinyin: yìzhí
+      english: all the time, always
+      example:
+      - sentence: 一直休息
+    - chinese: 躺
+      pinyin: tǎng
+      english: lie
+      example:
+      - sentence: 在床上躺着，躺了一会儿
+  - number: 14
+    chapter: 我打算去中国旅游。
+    english_title: I’m planning to go travelling in China.
+    pdf_page: 112
+    textbook_page: 107
+    example_sentences:
+    - chinese: 除了上海，南方还有哪些有名的地方？
+      pinyin: Chúle Shànghǎi, nánfāng hái yǒu nǎxiē yǒumíng de dìfang?
+      english: What other famous places are there in the South, besides Shanghai?
+    - chinese: 我想先去北京爬长城，然后去上海吃小笼包。
+      pinyin: Wǒ xiǎng xiān qù Běijīng pá Chángchéng, ránhòu qù Shànghǎi chī Xiǎolóngbāo.
+      english: First I want to go to Beijing to climb the Great Wall, and then go
+        to Shanghai to eat Xiaolongbao.
+    vocabulary:
+    - chinese: 地图
+      pinyin: dìtú
+      english: map
+      example: []
+    - chinese: 长城
+      pinyin: Chángchéng
+      english: the Great Wall
+      example: []
+    - chinese: 小笼包
+      pinyin: Xiǎolóngbāo
+      english: Xiaolongbao (a kind of small steamed bun)
+      example: []
+      starred_in_textbook: true
+    - chinese: 寒假
+      pinyin: hánjià
+      english: winter holiday
+      example:
+      - sentence: 放寒假
+    - chinese: 打算
+      pinyin: dǎsuàn
+      english: to plan; plan
+      example:
+      - sentence: 打算做什么，有什么打算
+    - chinese: 旅游
+      pinyin: lǚyóu
+      english: travel
+      example:
+      - sentence: 去中国旅游
+    - chinese: 南方
+      pinyin: nánfāng
+      english: south
+      example:
+      - sentence: 南方人，南方的天气
+    - chinese: 北方
+      pinyin: běifāng
+      english: north
+      example:
+      - sentence: 北方人，去北方
+    - chinese: 除了
+      pinyin: chúle
+      english: except for, besides
+      example:
+      - sentence: 除了上海，我还去过北京。
+    - chinese: 有名
+      pinyin: yǒumíng
+      english: famous
+      example:
+      - sentence: 非常有名
+    - chinese: 介绍
+      pinyin: jièshào
+      english: introduce
+      example:
+      - sentence: 介绍一下
+    - chinese: 暑假
+      pinyin: shǔjià
+      english: summer holiday
+      example:
+      - sentence: 放暑假
+    - chinese: 然后
+      pinyin: ránhòu
+      english: then, after that
+      example:
+      - sentence: 我先写作业，然后踢足球。
+  - number: 15
+    chapter: 复习
+    english_title: Review
+    pdf_page: 120
+    textbook_page: 115
+    example_sentences: []
+    vocabulary: []
+- level: 6
+  book: YCT Standard Course 6
+  source_file: YCT6标准教程.pdf
+  scope: Vocabulary and key sentences transcribed from the opening page of Lessons
+    1-14. Lesson 15 is review-only.
+  notes:
+  - pdf_page numbers are 1-based; textbook_page numbers are the printed page numbers.
+  - Chinese examples inside vocabulary entries are the words or phrases printed beneath
+    vocabulary items on the lesson page, not newly authored sentences.
+  - An empty example list means the opening page did not supply a usage example for
+    that entry.
+  - starred_in_textbook preserves the asterisk shown beside selected terms in the
+    original.
+  chapters:
+  - number: 1
+    chapter: 我属猴。
+    english_title: I was born in the year of the monkey.
+    pdf_page: 10
+    textbook_page: 5
+    example_sentences:
+    - chinese: 猴子又聪明又可爱。
+      pinyin: Hóuzi yòu cōngming yòu kě’ài.
+      english: Monkeys are both clever and cute.
+    - chinese: 姐姐拿着一只小猴子。
+      pinyin: Jiějie názhe yì zhī xiǎo hóuzi.
+      english: My elder sister was holding a little toy monkey.
+    vocabulary:
+    - chinese: 又……又……
+      pinyin: yòu ... yòu ...
+      english: both ... and ...
+      example:
+      - sentence: 又大又好
+    - chinese: 勇敢
+      pinyin: yǒnggǎn
+      english: brave
+      example:
+      - sentence: 非常勇敢
+    - chinese: 聪明
+      pinyin: cōngming
+      english: clever
+      example:
+      - sentence: 又聪明又可爱
+    - chinese: 另外
+      pinyin: lìngwài
+      english: besides
+      example:
+      - sentence: 我喜欢老虎，另外，我属虎。
+    - chinese: 属
+      pinyin: shǔ
+      english: be born in the year of
+      example:
+      - sentence: 我属猴
+      starred_in_textbook: true
+    - chinese: 收到
+      pinyin: shōudào
+      english: receive
+      example:
+      - sentence: 收到礼物
+      starred_in_textbook: true
+    - chinese: 祝贺
+      pinyin: zhùhè
+      english: congratulate
+      example:
+      - sentence: 祝贺你
+    - chinese: 初中
+      pinyin: chūzhōng
+      english: junior high school
+      example:
+      - sentence: 上初中，初中生，初中毕业
+    - chinese: 挂
+      pinyin: guà
+      english: hang
+      example:
+      - sentence: 挂灯笼
+    - chinese: 节日
+      pinyin: jiérì
+      english: festival
+      example:
+      - sentence: 节日快乐
+    - chinese: 猴子
+      pinyin: hóuzi
+      english: monkey
+      example: []
+    - chinese: 毕业
+      pinyin: bìyè
+      english: graduate
+      example: []
+    - chinese: 信封
+      pinyin: xìnfēng
+      english: envelope
+      example: []
+    - chinese: 春节
+      pinyin: Chūnjié
+      english: Spring Festival
+      example: []
+    - chinese: 灯笼
+      pinyin: dēnglong
+      english: lantern
+      example: []
+      starred_in_textbook: true
+  - number: 2
+    chapter: 他数学好极了。
+    english_title: He's really good at math.
+    pdf_page: 18
+    textbook_page: 13
+    example_sentences:
+    - chinese: 他数学好极了。
+      pinyin: Tā shùxué hǎo jí le.
+      english: He's really good at math.
+    - chinese: 他能讲明白。
+      pinyin: Tā néng jiǎng míngbai.
+      english: He can explain clearly.
+    vocabulary:
+    - chinese: 容易
+      pinyin: róngyì
+      english: easy
+      example:
+      - sentence: 很容易，汉语很容易学
+    - chinese: 刚才
+      pinyin: gāngcái
+      english: just now
+      example:
+      - sentence: 刚才的问题，你刚才去哪儿了？
+    - chinese: 极了
+      pinyin: jí le
+      english: really; very; extremely
+      example:
+      - sentence: 好极了，聪明极了
+    - chinese: 讲
+      pinyin: jiǎng
+      english: explain; tell
+      example:
+      - sentence: 讲数学题
+    - chinese: 明白
+      pinyin: míngbai
+      english: understand; clear
+      example:
+      - sentence: 明白了，讲明白
+    - chinese: 骑
+      pinyin: qí
+      english: ride
+      example:
+      - sentence: 骑自行车
+    - chinese: 希望
+      pinyin: xīwàng
+      english: hope; to hope
+      example:
+      - sentence: 有希望，我希望去中国学习。
+    - chinese: 参加
+      pinyin: cānjiā
+      english: take part in
+      example:
+      - sentence: 参加比赛
+    - chinese: 万
+      pinyin: wàn
+      english: ten thousand
+      example: []
+    - chinese: 加
+      pinyin: jiā
+      english: add (plus)
+      example: []
+    - chinese: 减
+      pinyin: jiǎn
+      english: subtract (minus)
+      example: []
+    - chinese: 数学
+      pinyin: shùxué
+      english: math
+      example: []
+      starred_in_textbook: true
+    - chinese: 自行车
+      pinyin: zìxíngchē
+      english: bicycle
+      example: []
+    - chinese: 比赛
+      pinyin: bǐsài
+      english: competition; to compete
+      example: []
+  - number: 3
+    chapter: 小鸟正在唱歌。
+    english_title: The little birds are singing.
+    pdf_page: 26
+    textbook_page: 21
+    example_sentences:
+    - chinese: 小鸟正在唱歌。
+      pinyin: Xiǎo niǎo zhèngzài chànggē.
+      english: The little birds are singing.
+    - chinese: 兔子一边吃东西一边听小鸟唱歌。
+      pinyin: Tùzi yìbiān chī dōngxi yìbiān tīng xiǎo niǎo chànggē.
+      english: The rabbits are eating while listening to the little birds singing.
+    vocabulary:
+    - chinese: 醒
+      pinyin: xǐng
+      english: wake up
+      example:
+      - sentence: 醒了，醒醒
+    - chinese: 刻
+      pinyin: kè
+      english: quarter
+      example:
+      - sentence: 8点1刻
+    - chinese: 响
+      pinyin: xiǎng
+      english: ring
+      example:
+      - sentence: 闹钟响了
+    - chinese: 开会
+      pinyin: kāihuì
+      english: have a meeting
+      example:
+      - sentence: 9点开会，去开会
+    - chinese: 着急
+      pinyin: zháojí
+      english: worry; be anxious
+      example:
+      - sentence: 别着急，很着急
+    - chinese: 来得及
+      pinyin: láidejí
+      english: have enough time (to do something)
+      example:
+      - sentence: 来得及吃早饭，来得及吗？
+    - chinese: 上班
+      pinyin: shàngbān
+      english: go to work
+      example:
+      - sentence: 星期天不上班
+    - chinese: 以为
+      pinyin: yǐwéi
+      english: think; assume
+      example:
+      - sentence: 我以为今天是星期一。
+    - chinese: 正（在）
+      pinyin: zhèng (zài)
+      english: in the process of (doing something)
+      example:
+      - sentence: 正在唱歌
+    - chinese: 安静
+      pinyin: ānjìng
+      english: quiet
+      example:
+      - sentence: 安静极了
+    - chinese: 一边……一边……
+      pinyin: yìbiān ... yìbiān ...
+      english: do one thing while doing another
+      example:
+      - sentence: 一边唱歌一边跳舞
+    - chinese: 起来
+      pinyin: qǐlái
+      english: get up
+      example: []
+    - chinese: 闹钟
+      pinyin: nàozhōng
+      english: alarm clock
+      example: []
+      starred_in_textbook: true
+    - chinese: 校园
+      pinyin: xiàoyuán
+      english: campus
+      example: []
+    - chinese: 树
+      pinyin: shù
+      english: tree
+      example: []
+    - chinese: 声音
+      pinyin: shēngyīn
+      english: sound
+      example: []
+  - number: 4
+    chapter: 你打扫一下房间好吗？
+    english_title: Can you clean the room please?
+    pdf_page: 34
+    textbook_page: 29
+    example_sentences:
+    - chinese: 我还是打扫房间吧。
+      pinyin: Wǒ háishi dǎsǎo fángjiān ba.
+      english: I would rather clean the room.
+    - chinese: 盘子洗干净了，房间也打扫干净了。
+      pinyin: Pánzi xǐ gānjìng le, fángjiān yě dǎsǎo gānjìng le.
+      english: The dishes are washed up, and the room is clean and tidy.
+    vocabulary:
+    - chinese: 面（粉）
+      pinyin: miàn (fěn)
+      english: flour
+      example:
+      - sentence: 买面
+      starred_in_textbook: true
+    - chinese: 接
+      pinyin: jiē
+      english: pick (someone) up
+      example:
+      - sentence: 接孩子，接电话
+    - chinese: 够
+      pinyin: gòu
+      english: enough
+      example:
+      - sentence: 够了，不够
+    - chinese: 打扫
+      pinyin: dǎsǎo
+      english: clean; sweep
+      example:
+      - sentence: 打扫房间，打扫教室
+    - chinese: 一下
+      pinyin: yíxià
+      english: a moment; briefly
+      example:
+      - sentence: 尝一下，打扫一下
+    - chinese: 干净
+      pinyin: gānjìng
+      english: clean
+      example:
+      - sentence: 很干净，洗干净
+    - chinese: 修剪
+      pinyin: xiūjiǎn
+      english: mow; trim
+      example:
+      - sentence: 修剪草地
+      starred_in_textbook: true
+    - chinese: 照顾
+      pinyin: zhàogù
+      english: take care of
+      example:
+      - sentence: 照顾孩子，照顾小猫
+    - chinese: 睡着
+      pinyin: shuìzháo
+      english: fall asleep
+      example:
+      - sentence: 睡着了，没睡着
+    - chinese: 互相
+      pinyin: hùxiāng
+      english: each other
+      example:
+      - sentence: 互相认识，互相帮助
+    - chinese: 生活
+      pinyin: shēnghuó
+      english: life; to live
+      example:
+      - sentence: 快乐的生活，在中国生活
+    - chinese: 斤
+      pinyin: jīn
+      english: half kilogram
+      example: []
+    - chinese: 葡萄
+      pinyin: pútao
+      english: grape
+      example: []
+    - chinese: 草地
+      pinyin: cǎodì
+      english: lawn; meadow
+      example: []
+  - number: 5
+    chapter: 你太马虎了！
+    english_title: You are so careless!
+    pdf_page: 42
+    textbook_page: 37
+    example_sentences:
+    - chinese: 句子写错了。
+      pinyin: Jùzi xiě cuò le.
+      english: I wrote the wrong sentence.
+    - chinese: 妈妈生气地说：“你太马虎了！”
+      pinyin: 'Māma shēngqì de shuō: “Nǐ tài mǎhu le!”'
+      english: My mom said angrily, “You are so careless!”
+    vocabulary:
+    - chinese: 表扬
+      pinyin: biǎoyáng
+      english: praise
+      example:
+      - sentence: 老师表扬学生
+      starred_in_textbook: true
+    - chinese: 句子
+      pinyin: jùzi
+      english: sentence
+      example:
+      - sentence: 一个句子
+    - chinese: 有意思
+      pinyin: yǒu yìsi
+      english: interesting
+      example:
+      - sentence: 真有意思，有意思的事
+    - chinese: 从
+      pinyin: cóng
+      english: from
+      example:
+      - sentence: 从家到学校，从9点到10点
+    - chinese: 马虎
+      pinyin: mǎhu
+      english: careless
+      example:
+      - sentence: 太马虎了，马虎的人
+    - chinese: 才
+      pinyin: cái
+      english: just; only then
+      example:
+      - sentence: 他十点才起床。
+    - chinese: 想起来
+      pinyin: xiǎng qǐlái
+      english: remember; recall
+      example:
+      - sentence: 想起来了，没想起来
+    - chinese: 忘（记）
+      pinyin: wàng (jì)
+      english: forget
+      example:
+      - sentence: 忘了，没忘
+    - chinese: 地
+      pinyin: de
+      english: adverbial particle
+      example:
+      - sentence: 生气地说，高兴地唱歌
+    - chinese: 错
+      pinyin: cuò
+      english: wrong
+      example: []
+    - chinese: 渴
+      pinyin: kě
+      english: thirsty
+      example: []
+    - chinese: 停
+      pinyin: tíng
+      english: stop
+      example: []
+    - chinese: 钥匙
+      pinyin: yàoshi
+      english: key
+      example: []
+    - chinese: 生气
+      pinyin: shēngqì
+      english: angry
+      example: []
+  - number: 6
+    chapter: 你表演什么？
+    english_title: What role did you play?
+    pdf_page: 50
+    textbook_page: 45
+    example_sentences:
+    - chinese: 大家都说我很漂亮，应该当演员。
+      pinyin: Dàjiā dōu shuō wǒ hěn piàoliang, yīnggāi dāng yǎnyuán.
+      english: Everyone says that I am beautiful, and I should be an actress.
+    - chinese: 大家一看见我就叫我“电灯”。
+      pinyin: Dàjiā yí kànjiàn wǒ jiù jiào wǒ “diàndēng”.
+      english: Everyone calls me “lamp” whenever they see me.
+    vocabulary:
+    - chinese: 警察
+      pinyin: jǐngchá
+      english: policeman; policewoman
+      example: []
+    - chinese: 售票员
+      pinyin: shòupiàoyuán
+      english: ticket seller
+      example: []
+    - chinese: 记者
+      pinyin: jìzhě
+      english: reporter; journalist
+      example: []
+      starred_in_textbook: true
+    - chinese: 演员
+      pinyin: yǎnyuán
+      english: actor; actress
+      example: []
+    - chinese: 表演
+      pinyin: biǎoyǎn
+      english: perform; performance
+      example:
+      - sentence: 表演得很好，参加表演
+    - chinese: 节目
+      pinyin: jiémù
+      english: show; programme
+      example:
+      - sentence: 表演节目
+    - chinese: 受欢迎
+      pinyin: shòu huānyíng
+      english: be well liked; popular
+      example:
+      - sentence: 很受欢迎
+    - chinese: 猜
+      pinyin: cāi
+      english: guess
+      example:
+      - sentence: 你猜，猜错了
+    - chinese: 电灯
+      pinyin: diàndēng
+      english: electric lamp
+      example:
+      - sentence: 电灯坏了
+    - chinese: 当
+      pinyin: dāng
+      english: become; act as
+      example:
+      - sentence: 当老师
+      starred_in_textbook: true
+    - chinese: 重要
+      pinyin: zhòngyào
+      english: important
+      example:
+      - sentence: 很重要
+    - chinese: 新闻
+      pinyin: xīnwén
+      english: news
+      example:
+      - sentence: 一条新闻
+    - chinese: 应该
+      pinyin: yīnggāi
+      english: should; ought to
+      example:
+      - sentence: 应该互相帮助
+    - chinese: 一……就……
+      pinyin: yī ... jiù ...
+      english: as soon as; whenever
+      example:
+      - sentence: 回家就睡觉，一看见蛋糕就想吃
+    - chinese: 看见
+      pinyin: kànjiàn
+      english: see
+      example:
+      - sentence: 没看见
+      starred_in_textbook: true
+  - number: 7
+    chapter: 他们不是双胞胎。
+    english_title: They are not twins.
+    pdf_page: 58
+    textbook_page: 53
+    example_sentences:
+    - chinese: 他们俩虽然不是双胞胎，但是很像。
+      pinyin: Tāmen liǎ suīrán bú shì shuāngbāotāi, dànshì hěn xiàng.
+      english: Although they are not twins, they look very much alike.
+    - chinese: 为了让大家知道他们不是双胞胎，张先生挂了一个牌子。
+      pinyin: Wèile ràng dàjiā zhīdào tāmen bú shì shuāngbāotāi, Zhāng xiānsheng guà
+        le yí ge páizi.
+      english: To let people know that they are not twins, Mr. Zhang hung a sign.
+    vocabulary:
+    - chinese: 词典
+      pinyin: cídiǎn
+      english: dictionary
+      example: []
+    - chinese: 脸
+      pinyin: liǎn
+      english: face
+      example: []
+    - chinese: 圆
+      pinyin: yuán
+      english: round
+      example: []
+    - chinese: 先生
+      pinyin: xiānsheng
+      english: Mr.; sir
+      example: []
+    - chinese: 双胞胎
+      pinyin: shuāngbāotāi
+      english: twins
+      example: []
+    - chinese: 儿童车
+      pinyin: értóngchē
+      english: baby stroller
+      example: []
+      starred_in_textbook: true
+    - chinese: 还
+      pinyin: huán
+      english: return
+      example:
+      - sentence: 还书，还钱
+    - chinese: 借
+      pinyin: jiè
+      english: borrow; lend
+      example:
+      - sentence: 借词典，借给她钱
+    - chinese: 页
+      pinyin: yè
+      english: page
+      example:
+      - sentence: 第一页，多少页
+    - chinese: 俩
+      pinyin: liǎ
+      english: two (people)
+      example:
+      - sentence: 你们俩
+    - chinese: 像
+      pinyin: xiàng
+      english: be like; resemble
+      example:
+      - sentence: 很像
+    - chinese: 虽然……但是……
+      pinyin: suīrán ... dànshì ...
+      english: although ... (but) ...
+      example:
+      - sentence: 他们虽然不是双胞胎，但是很像。
+    - chinese: 为了
+      pinyin: wèile
+      english: in order to
+      example:
+      - sentence: 为了学功夫，他去了中国。
+    - chinese: 牌子
+      pinyin: páizi
+      english: sign; board
+      example:
+      - sentence: 一个牌子，牌子上
+      starred_in_textbook: true
+  - number: 8
+    chapter: 小鱼被小猫吃了。
+    english_title: The little fish was eaten by the kitten.
+    pdf_page: 66
+    textbook_page: 61
+    example_sentences:
+    - chinese: 小鱼被小猫吃了。
+      pinyin: Xiǎoyú bèi xiǎomāo chī le.
+      english: The little fish was eaten by the kitten.
+    - chinese: 我今天又被老师批评了。
+      pinyin: Wǒ jīntiān yòu bèi lǎoshī pīpíng le.
+      english: Today I was scolded by the teacher again.
+    vocabulary:
+    - chinese: 被
+      pinyin: bèi
+      english: passive marker
+      example:
+      - sentence: 被借走了
+    - chinese: 又
+      pinyin: yòu
+      english: again
+      example:
+      - sentence: 又迟到了
+    - chinese: 鱼缸
+      pinyin: yúgāng
+      english: fishbowl; fish tank
+      example:
+      - sentence: 一个鱼缸
+      starred_in_textbook: true
+    - chinese: 种
+      pinyin: zhǒng
+      english: kind; type (measure word)
+      example:
+      - sentence: 一种冰激凌
+    - chinese: 最近
+      pinyin: zuìjìn
+      english: recently
+      example:
+      - sentence: 爸爸最近在北京。
+    - chinese: 游戏
+      pinyin: yóuxì
+      english: game
+      example:
+      - sentence: 玩游戏
+    - chinese: 不怎么样
+      pinyin: bù zěnmeyàng
+      english: not that good
+      example:
+      - sentence: 那个节目不怎么样。
+    - chinese: 批评
+      pinyin: pīpíng
+      english: scold; criticize
+      example:
+      - sentence: 批评学生
+      starred_in_textbook: true
+    - chinese: 决定
+      pinyin: juédìng
+      english: decide
+      example:
+      - sentence: 还没决定
+    - chinese: 开始
+      pinyin: kāishǐ
+      english: begin
+      example:
+      - sentence: 开始上课
+    - chinese: 破
+      pinyin: pò
+      english: broken
+      example: []
+    - chinese: 难过
+      pinyin: nánguò
+      english: sad
+      example: []
+  - number: 9
+    chapter: 他家搬到动物园附近了。
+    english_title: He moved house, near the zoo.
+    pdf_page: 74
+    textbook_page: 69
+    example_sentences:
+    - chinese: 我找得到。
+      pinyin: Wǒ zhǎo de dào.
+      english: I can find it.
+    - chinese: 如果找不到，我们给他打电话。
+      pinyin: Rúguǒ zhǎo bu dào, wǒmen gěi tā dǎ diànhuà.
+      english: If I can't find it, we can call him.
+    vocabulary:
+    - chinese: 图书馆
+      pinyin: túshūguǎn
+      english: library
+      example: []
+    - chinese: 报纸
+      pinyin: bàozhǐ
+      english: newspaper
+      example: []
+    - chinese: 杂志
+      pinyin: zázhì
+      english: magazine
+      example: []
+    - chinese: 超人
+      pinyin: chāorén
+      english: superman
+      example: []
+      starred_in_textbook: true
+    - chinese: 搬家
+      pinyin: bānjiā
+      english: move house
+      example:
+      - sentence: 搬家了
+    - chinese: 附近
+      pinyin: fùjìn
+      english: near; nearby
+      example:
+      - sentence: 动物园附近
+    - chinese: 地址
+      pinyin: dìzhǐ
+      english: address
+      example:
+      - sentence: 学校的地址
+    - chinese: 电子邮件
+      pinyin: diànzǐ yóujiàn
+      english: email
+      example:
+      - sentence: 一封电子邮件，发电子邮件
+    - chinese: 迷路
+      pinyin: mílù
+      english: get lost
+      example:
+      - sentence: 迷路了
+    - chinese: 出发
+      pinyin: chūfā
+      english: set out
+      example:
+      - sentence: 8点出发
+    - chinese: 见面
+      pinyin: jiànmiàn
+      english: meet
+      example:
+      - sentence: 在地铁站见面，和朋友见面
+    - chinese: 行
+      pinyin: xíng
+      english: OK; acceptable
+      example:
+      - sentence: 行吗？不行
+    - chinese: 故事
+      pinyin: gùshi
+      english: story
+      example:
+      - sentence: 讲故事，听故事
+    - chinese: 力气
+      pinyin: lìqi
+      english: strength
+      example:
+      - sentence: 力气特别大
+      starred_in_textbook: true
+    - chinese: 老
+      pinyin: lǎo
+      english: old
+      example:
+      - sentence: 老了，老人
+  - number: 10
+    chapter: 月亮离我们多远？
+    english_title: How far is the moon from us?
+    pdf_page: 82
+    textbook_page: 77
+    example_sentences:
+    - chinese: 月亮离我们多远？
+      pinyin: Yuèliang lí wǒmen duō yuǎn?
+      english: How far is the moon from us?
+    - chinese: 上边什么都没有。
+      pinyin: Shàngbian shénme dōu méiyǒu.
+      english: There is nothing on it.
+    vocabulary:
+    - chinese: 月饼
+      pinyin: yuèbǐng
+      english: moon cake
+      example: []
+      starred_in_textbook: true
+    - chinese: 大海
+      pinyin: dàhǎi
+      english: sea
+      example: []
+    - chinese: 草原
+      pinyin: cǎoyuán
+      english: grassland
+      example: []
+      starred_in_textbook: true
+    - chinese: 云
+      pinyin: yún
+      english: cloud
+      example: []
+    - chinese: 骑马
+      pinyin: qímǎ
+      english: ride a horse
+      example: []
+    - chinese: 星星
+      pinyin: xīngxing
+      english: stars
+      example: []
+    - chinese: 三亚
+      pinyin: Sānyà
+      english: Sanya (a city in Southern China)
+      example: []
+      starred_in_textbook: true
+    - chinese: 离
+      pinyin: lí
+      english: from; away from
+      example:
+      - sentence: 月亮离我们很远。
+    - chinese: 大概
+      pinyin: dàgài
+      english: about; approximately
+      example:
+      - sentence: 大概10分钟
+    - chinese: 公里
+      pinyin: gōnglǐ
+      english: kilometer
+      example:
+      - sentence: 30公里
+    - chinese: 藏起来
+      pinyin: cáng qǐlái
+      english: hide
+      example:
+      - sentence: 小猫藏起来了。
+      starred_in_textbook: true
+    - chinese: 国家
+      pinyin: guójiā
+      english: country
+      example:
+      - sentence: 我们国家
+  - number: 11
+    chapter: 我用帽子换你的盘子。
+    english_title: Let me swap my hat for your plate.
+    pdf_page: 90
+    textbook_page: 85
+    example_sentences:
+    - chinese: 多便宜啊！
+      pinyin: Duō piányi a!
+      english: It's really cheap!
+    - chinese: 我花了两个小时就学会了。
+      pinyin: Wǒ huā le liǎng ge xiǎoshí jiù xuéhuì le.
+      english: I learned it in two hours.
+    vocabulary:
+    - chinese: 元
+      pinyin: yuán
+      english: yuan (Chinese currency)
+      example:
+      - sentence: 一元钱
+    - chinese: 贵
+      pinyin: guì
+      english: expensive
+      example:
+      - sentence: 太贵了
+    - chinese: 花
+      pinyin: huā
+      english: spend; cost
+      example:
+      - sentence: 花了30元
+    - chinese: 帽子
+      pinyin: màozi
+      english: cap; hat
+      example:
+      - sentence: 我的帽子
+    - chinese: 换
+      pinyin: huàn
+      english: swap; change
+      example:
+      - sentence: 用帽子换盘子，换衣服
+    - chinese: 旧
+      pinyin: jiù
+      english: old; worn
+      example:
+      - sentence: 旧帽子
+    - chinese: 试
+      pinyin: shì
+      english: try
+      example:
+      - sentence: 试一下
+    - chinese: 合适
+      pinyin: héshì
+      english: fit; appropriate
+      example:
+      - sentence: 很合适
+    - chinese: 辆
+      pinyin: liàng
+      english: measure word for bicycles, cars, etc.
+      example:
+      - sentence: 一辆自行车
+    - chinese: 为
+      pinyin: wèi
+      english: for
+      example:
+      - sentence: 为妈妈准备礼物
+    - chinese: 紧张
+      pinyin: jǐnzhāng
+      english: nervous
+      example:
+      - sentence: 紧张极了
+    - chinese: 敢
+      pinyin: gǎn
+      english: dare
+      example:
+      - sentence: 不敢
+    - chinese: 害怕
+      pinyin: hàipà
+      english: fear; be afraid of
+      example:
+      - sentence: 不要害怕
+  - number: 12
+    chapter: 以后要注意。
+    english_title: Be more careful in the future.
+    pdf_page: 98
+    textbook_page: 93
+    example_sentences:
+    - chinese: 我记住了。
+      pinyin: Wǒ jìzhù le.
+      english: I'll keep it in mind.
+    - chinese: 不要从高的地方向下跳。
+      pinyin: Bú yào cóng gāo de dìfang xiàng xià tiào.
+      english: Don't jump down from high places.
+    vocabulary:
+    - chinese: 注意
+      pinyin: zhùyì
+      english: pay attention; be careful
+      example:
+      - sentence: 注意安全
+    - chinese: 记住
+      pinyin: jìzhù
+      english: remember; memorize
+      example:
+      - sentence: 记住汉字
+    - chinese: 身
+      pinyin: shēn
+      english: measure word for clothes
+      example:
+      - sentence: 一身衣服
+    - chinese: 比如
+      pinyin: bǐrú
+      english: such as; for example
+      example:
+      - sentence: 很多东西他都不能吃，比如葡萄。
+      starred_in_textbook: true
+    - chinese: 礼貌
+      pinyin: lǐmào
+      english: polite; politeness
+      example:
+      - sentence: 有礼貌
+    - chinese: 必须
+      pinyin: bìxū
+      english: must
+      example:
+      - sentence: 必须做作业
+    - chinese: 小心
+      pinyin: xiǎoxīn
+      english: be careful
+      example:
+      - sentence: 很小心，小心汽车
+    - chinese: 地方
+      pinyin: dìfang
+      english: place
+      example:
+      - sentence: 什么地方，那个地方
+    - chinese: 腿
+      pinyin: tuǐ
+      english: leg
+      example: []
+    - chinese: 危险
+      pinyin: wēixiǎn
+      english: dangerous
+      example: []
+    - chinese: 脱
+      pinyin: tuō
+      english: take (something) off
+      example: []
+    - chinese: 排队
+      pinyin: páiduì
+      english: line up
+      example: []
+    - chinese: 中间
+      pinyin: zhōngjiān
+      english: middle
+      example: []
+  - number: 13
+    chapter: 我爱吃辣的。
+    english_title: I like spicy food.
+    pdf_page: 106
+    textbook_page: 101
+    example_sentences:
+    - chinese: 我爱吃辣的，越辣越好。
+      pinyin: Wǒ ài chī là de, yuè là yuè hǎo.
+      english: I like spicy food. The spicier, the better.
+    - chinese: 如果不吃巧克力，我可能受不了。
+      pinyin: Rúguǒ bù chī qiǎokèlì, wǒ kěnéng shòubuliǎo.
+      english: I can't bear to be without chocolate.
+    vocabulary:
+    - chinese: 辣
+      pinyin: là
+      english: spicy
+      example:
+      - sentence: 很辣，越辣越好
+    - chinese: 甜
+      pinyin: tián
+      english: sweet
+      example:
+      - sentence: 很甜，越甜越好
+    - chinese: 吃不了
+      pinyin: chī bu liǎo
+      english: can't eat (something)
+      example:
+      - sentence: 我吃不了辣的。
+    - chinese: 坚持
+      pinyin: jiānchí
+      english: persevere; persist
+      example:
+      - sentence: 坚持运动
+    - chinese: 盒
+      pinyin: hé
+      english: box (measure word)
+      example:
+      - sentence: 一盒巧克力
+    - chinese: 受不了
+      pinyin: shòu bu liǎo
+      english: can't bear (something)
+      example:
+      - sentence: 真受不了了
+    - chinese: 同意
+      pinyin: tóngyì
+      english: agree
+      example:
+      - sentence: 你同意吗？
+    - chinese: 讨论
+      pinyin: tǎolùn
+      english: discuss
+      example:
+      - sentence: 大家讨论一下吧。
+    - chinese: 冰箱
+      pinyin: bīngxiāng
+      english: refrigerator
+      example: []
+    - chinese: 西红柿
+      pinyin: xīhóngshì
+      english: tomato
+      example: []
+    - chinese: 瘦
+      pinyin: shòu
+      english: thin; lean
+      example: []
+    - chinese: 糖
+      pinyin: táng
+      english: sugar; candy
+      example: []
+    - chinese: 麻婆豆腐
+      pinyin: mápó dòufu
+      english: Mapo Tofu
+      example: []
+      starred_in_textbook: true
+    - chinese: 西红柿炒鸡蛋
+      pinyin: xīhóngshì chǎo jīdàn
+      english: scrambled eggs with tomato
+      example: []
+      starred_in_textbook: true
+  - number: 14
+    chapter: 有的熊猫一直睡觉。
+    english_title: Some pandas slept all the time.
+    pdf_page: 114
+    textbook_page: 109
+    example_sentences:
+    - chinese: 我对这儿也不太熟悉。
+      pinyin: Wǒ duì zhèr yě bú tài shúxi.
+      english: I am not very familiar with this part of town.
+    - chinese: 有的熊猫一直睡觉。
+      pinyin: Yǒude xióngmāo yìzhí shuìjiào.
+      english: Some pandas slept all the time.
+    vocabulary:
+    - chinese: 打扰
+      pinyin: dǎrǎo
+      english: excuse me; bother
+      example:
+      - sentence: 打扰一下
+    - chinese: 参观
+      pinyin: cānguān
+      english: visit
+      example:
+      - sentence: 参观熊猫馆
+    - chinese: 熟悉
+      pinyin: shúxi
+      english: be familiar with
+      example:
+      - sentence: 对这儿很熟悉
+    - chinese: 往
+      pinyin: wǎng
+      english: to; towards
+      example:
+      - sentence: 往东走
+      starred_in_textbook: true
+    - chinese: 转
+      pinyin: zhuǎn
+      english: turn
+      example:
+      - sentence: 向右转
+      starred_in_textbook: true
+    - chinese: 有的……有的……
+      pinyin: yǒude ... yǒude ...
+      english: some ... some ...
+      example:
+      - sentence: 有的睡觉，有的吃竹子
+    - chinese: 看起来
+      pinyin: kàn qǐlái
+      english: it looks; look like
+      example:
+      - sentence: 看起来很好吃
+      starred_in_textbook: true
+    - chinese: 关于
+      pinyin: guānyú
+      english: about
+      example:
+      - sentence: 关于熊猫的知识
+    - chinese: 知识
+      pinyin: zhīshi
+      english: knowledge
+      example:
+      - sentence: 学习知识
+    - chinese: 清楚
+      pinyin: qīngchu
+      english: clear
+      example:
+      - sentence: 很清楚，不清楚
+    - chinese: 小姐
+      pinyin: xiǎojiě
+      english: Miss
+      example: []
+    - chinese: 东
+      pinyin: dōng
+      english: east
+      example: []
+    - chinese: 西
+      pinyin: xī
+      english: west
+      example: []
+    - chinese: 竹子
+      pinyin: zhúzi
+      english: bamboo
+      example: []
+      starred_in_textbook: true
+  - number: 15
+    chapter: 复习
+    english_title: Review
+    pdf_page: 122
+    textbook_page: 117
+    type: review
+    example_sentences: []
+    vocabulary: []
+    note: Review lesson; the opening page has no new 'Let's learn' vocabulary list.
+`,x=a(`<details class=book-notes><summary>Book notes <span>(<!$><!/>)</span></summary><ul>`),S=a(`<ul class=dictionary-results aria-live=polite>`),C=a(`<div class=language-learning><header class=learning-heading><p class=learning-eyebrow>YCT VOCABULARY · SOURCE NOTES</p><h1></h1><p class=learning-current-lesson><!$><!/><!$><!/></p><div class=source-context><p></p><p class=source-file>Source: <!$><!/></p><!$><!/><!$><!/></div></header><div class=learning-grid><section class=practice-panel aria-labelledby=practice-title><div class=panel-heading><div><p class=learning-eyebrow>01 / PRACTICE</p><h2 id=practice-title>Your study cards</h2></div></div><div class=selectors><label>Book<select aria-label=Book></select></label><label>Lesson<select aria-label=Lesson><option value=all>All lessons</option><!$><!/></select></label></div><!$><!/><div class=card-controls><button type=button aria-label="Previous card">← <span>Previous</span></button><p></p><button type=button aria-label="Next card"><span>Next</span> →</button></div><!$><!/></section><section class=dictionary-panel aria-labelledby=dictionary-title><div class=panel-heading><div><p class=learning-eyebrow>02 / LOOK UP</p><h2 id=dictionary-title>The dictionary</h2></div><span class=entry-count><!$><!/> entries</span></div><label class=search-label for=dictionary-search>Search dictionary</label><div class=search-wrap><span aria-hidden=true>⌕</span><input id=dictionary-search aria-label="Search dictionary"type=search placeholder="Chinese, pinyin, or English…"></div><p class=search-note>Search all <!$><!/> books · tone marks optional</p><!$><!/></section></div><div class=learning-footer>WORD BY WORD <span>·</span> YCT STANDARD COURSE`),w=a(`<span> · <!$><!/>`),T=a(`<li>`),ee=a(`<span>Textbook p. <!$><!/>`),te=a(`<span>PDF p. <!$><!/>`),ne=a(`<span>Page details not provided in source`),re=a(`<p class=lesson-source-note>`),ie=a(`<ul class=lesson-notes>`),ae=a(`<div class=lesson-source><p class=lesson-pages><span>Lesson <!$><!/> source pages</span><!$><!/><!$><!/><!$><!/></p><!$><!/><!$><!/>`),E=a(`<option>`),D=a(`<option><!$><!/> — <!$><!/>`),O=a(`<div class=empty-card><span aria-hidden=true>空</span><h3></h3><p>`),oe=a(`<button type=button><span class=card-topline><span></span><span><!$><!/> · <!$><!/></span></span><span class=card-content aria-live=polite></span><span class=card-hint>Click to turn <span aria-hidden=true>↗`),se=a(`<span class=card-english>`),ce=a(`<span class=card-chinese>`),le=a(`<span class=card-pinyin>`),ue=a(`<strong>`),de=a(`<span> / <!$><!/>`),fe=a(`<span> / 0`),pe=a(`<p class=lesson-context>Lesson <!$><!/> · <!$><!/> <span>`),me=a(`<div class=dictionary-prompt><span aria-hidden=true>字</span><p>Find a word in Chinese, pinyin, or English.</p><small>Results are independent of your selected book and lesson.`),he=a(`<p class=no-results>No matches for “<!$><!/>”. Try another spelling or language.`),ge=a(`<li><div class=result-word><strong></strong><span></span></div><div class=result-meaning><span></span><small>Book <!$><!/> · Lesson <!$><!/> · <!$><!/>`),k=_(b).books,A=k.flatMap(e=>e.chapters.flatMap(t=>t.vocabulary.map(n=>({...n,level:e.level,book:e.book,lesson:t.number,title:t.english_title})))),j=e=>e.normalize(`NFD`).replace(/[\u0300-\u036f]/g,``).toLocaleLowerCase();function M(){let[a,c]=e(`1`),[g,_]=e(`1`),[v,y]=e(0),[b,M]=e(!1),[N,_e]=e(``),P=f(()=>k.find(e=>String(e.level)===a())),F=f(()=>P().chapters.find(e=>String(e.number)===g())),I=f(()=>g()===`all`?P().chapters.flatMap(e=>e.vocabulary):F()?.vocabulary??[]),L=f(()=>{let e=j(N().trim());return e?A.filter(t=>j(`${t.chinese} ${t.pinyin} ${t.english}`).includes(e)):[]}),R=()=>{y(0),M(!1)},ve=e=>{c(e),_(`1`),R()},z=e=>{y(t=>Math.max(0,Math.min(I().length-1,t+e))),M(!1)},ye=()=>I()[v()];return(()=>{var e=r(C),c=e.firstChild,y=c.firstChild.nextSibling,j=y.nextSibling,be=j.firstChild,[B,xe]=n(be.nextSibling),Se=B.nextSibling,[Ce,we]=n(Se.nextSibling),V=j.nextSibling,H=V.firstChild,U=H.nextSibling,Te=U.firstChild.nextSibling,[Ee,De]=n(Te.nextSibling),Oe=U.nextSibling,[W,ke]=n(Oe.nextSibling),Ae=W.nextSibling,[je,Me]=n(Ae.nextSibling),G=c.nextSibling.firstChild,K=G.firstChild.nextSibling,q=K.firstChild,J=q.firstChild.nextSibling,Y=q.nextSibling.firstChild.nextSibling,Ne=Y.firstChild,Pe=Ne.nextSibling,[Fe,Ie]=n(Pe.nextSibling),Le=K.nextSibling,[Re,ze]=n(Le.nextSibling),Be=Re.nextSibling,X=Be.firstChild,Ve=X.nextSibling,He=Ve.nextSibling,Ue=Be.nextSibling,[We,Ge]=n(Ue.nextSibling),Ke=G.nextSibling,Z=Ke.firstChild,qe=Z.firstChild.nextSibling,Je=qe.firstChild,[Ye,Xe]=n(Je.nextSibling);Ye.nextSibling;var Ze=Z.nextSibling.nextSibling,Qe=Ze.firstChild.nextSibling,Q=Ze.nextSibling,$e=Q.firstChild.nextSibling,[$,et]=n($e.nextSibling);$.nextSibling;var tt=Q.nextSibling,[nt,rt]=n(tt.nextSibling);return m(y,()=>P().book),m(j,(()=>{var e=t(()=>!!F());return()=>e()?`Lesson ${F().number} · ${F().english_title}`:`All lessons`})(),B,xe),m(j,i(l,{get when(){return F()},children:e=>(()=>{var t=r(w),i=t.firstChild.nextSibling,[a,o]=n(i.nextSibling);return m(t,()=>e().chapter,a,o),t})()}),Ce,we),m(H,()=>P().scope),m(U,()=>P().source_file,Ee,De),m(V,i(l,{get when(){return P().notes.length>0},get children(){var e=r(x),t=e.firstChild,a=t.firstChild.nextSibling,o=a.firstChild.nextSibling,[s,c]=n(o.nextSibling);s.nextSibling;var l=t.nextSibling;return m(a,()=>P().notes.length,s,c),m(l,i(u,{get each(){return P().notes},children:e=>(()=>{var t=r(T);return m(t,e),t})()})),e}}),W,ke),m(V,i(l,{get when(){return F()},children:e=>(()=>{var a=r(ae),o=a.firstChild,s=o.firstChild,c=s.firstChild.nextSibling,[d,f]=n(c.nextSibling);d.nextSibling;var p=s.nextSibling,[h,g]=n(p.nextSibling),_=h.nextSibling,[v,y]=n(_.nextSibling),b=v.nextSibling,[x,S]=n(b.nextSibling),C=o.nextSibling,[w,E]=n(C.nextSibling),D=w.nextSibling,[O,oe]=n(D.nextSibling);return m(s,()=>e().number,d,f),m(o,i(l,{get when(){return e().textbook_page!=null},get children(){var t=r(ee),i=t.firstChild.nextSibling,[a,o]=n(i.nextSibling);return m(t,()=>e().textbook_page,a,o),t}}),h,g),m(o,i(l,{get when(){return e().pdf_page!=null},get children(){var t=r(te),i=t.firstChild.nextSibling,[a,o]=n(i.nextSibling);return m(t,()=>e().pdf_page,a,o),t}}),v,y),m(o,i(l,{get when(){return t(()=>e().pdf_page==null)()&&e().textbook_page==null},get children(){return r(ne)}}),x,S),m(a,i(l,{get when(){return e().source_note||e().extraction_status===`missing_opening_page`},get children(){var t=r(re);return m(t,()=>e().source_note??`The lesson opening page is missing from the available source.`),t}}),w,E),m(a,i(l,{get when(){return e().notes?.length},get children(){var t=r(ie);return m(t,i(u,{get each(){return e().notes},children:e=>(()=>{var t=r(T);return m(t,e),t})()})),t}}),O,oe),a})()}),je,Me),J.addEventListener(`change`,e=>ve(e.currentTarget.value)),m(J,i(u,{each:k,children:e=>(()=>{var t=r(E);return m(t,()=>e.book),d(()=>s(t,`value`,String(e.level))),t})()})),Y.addEventListener(`change`,e=>{_(e.currentTarget.value),R()}),m(Y,i(u,{get each(){return P().chapters},children:e=>(()=>{var t=r(D),i=t.firstChild,[a,o]=n(i.nextSibling),c=a.nextSibling.nextSibling,[l,u]=n(c.nextSibling);return m(t,()=>e.number,a,o),m(t,()=>e.english_title,l,u),d(()=>s(t,`selected`,g()===String(e.number))),d(()=>s(t,`value`,String(e.number))),t})()}),Fe,Ie),m(G,i(l,{get when(){return ye()},get fallback(){return(()=>{var e=r(O),n=e.firstChild.nextSibling,i=n.nextSibling;return m(n,()=>F()?.extraction_status===`missing_opening_page`?`Lesson vocabulary unavailable`:`No vocabulary cards here yet`),m(i,(()=>{var e=t(()=>g()===`all`);return()=>e()?`This book has no vocabulary entries in the source.`:F()?.extraction_status===`missing_opening_page`?`The source scan does not include this lesson’s opening page. Choose another lesson to keep practicing.`:`There are no vocabulary entries in the source for this lesson. Choose another lesson to keep practicing.`})()),e})()},children:e=>{let i=f(e);return(()=>{var e=r(oe),a=e.firstChild,s=a.firstChild,c=s.nextSibling,l=c.firstChild,[u,f]=n(l.nextSibling),_=u.nextSibling.nextSibling,[v,y]=n(_.nextSibling),x=a.nextSibling;return e.$$click=()=>M(e=>!e),m(s,()=>b()?`MEANING`:`WORD`),m(c,()=>P().book,u,f),m(c,(()=>{var e=t(()=>g()===`all`);return()=>e()?`All lessons`:`Lesson ${g()}`})(),v,y),m(x,(()=>{var e=t(()=>!!b());return()=>e()?(()=>{var e=r(se);return m(e,()=>i().english),e})():[(()=>{var e=r(ce);return m(e,()=>i().chinese),e})(),(()=>{var e=r(le);return m(e,()=>i().pinyin),e})()]})()),d(t=>{var n=`flashcard ${b()?`is-flipped`:``}`,r=`Flip card: ${b()?`show Chinese`:`show English`}`,i=b();return n!==t.e&&h(e,t.e=n),r!==t.t&&o(e,`aria-label`,t.t=r),i!==t.a&&o(e,`aria-pressed`,t.a=i),t},{e:void 0,t:void 0,a:void 0}),p(),e})()}}),Re,ze),X.$$click=()=>z(-1),m(Ve,(()=>{var e=t(()=>!!I().length);return()=>e()?[(()=>{var e=r(ue);return m(e,()=>v()+1),e})(),(()=>{var e=r(de),t=e.firstChild.nextSibling,[i,a]=n(t.nextSibling);return m(e,()=>I().length,i,a),e})()]:[`0 `,r(fe)]})()),He.$$click=()=>z(1),m(G,i(l,{get when(){return t(()=>g()!==`all`)()&&F()},children:e=>(()=>{var t=r(pe),i=t.firstChild.nextSibling,[a,o]=n(i.nextSibling),s=a.nextSibling.nextSibling,[c,l]=n(s.nextSibling),u=c.nextSibling.nextSibling;return m(t,()=>e().number,a,o),m(t,()=>e().chapter,c,l),m(u,()=>e().english_title),t})()}),We,Ge),m(qe,()=>A.length,Ye,Xe),Qe.$$input=e=>_e(e.currentTarget.value),m(Q,()=>k.length,$,et),m(Ke,i(l,{get when(){return N().trim()},get fallback(){return r(me)},get children(){return i(l,{get when(){return L().length},get fallback(){return(()=>{var e=r(he),t=e.firstChild.nextSibling,[i,a]=n(t.nextSibling);return i.nextSibling,m(e,N,i,a),e})()},get children(){var e=r(S);return m(e,i(u,{get each(){return L()},children:e=>(()=>{var t=r(ge),i=t.firstChild,a=i.firstChild,o=a.nextSibling,s=i.nextSibling.firstChild,c=s.nextSibling,l=c.firstChild.nextSibling,[u,d]=n(l.nextSibling),f=u.nextSibling.nextSibling,[p,h]=n(f.nextSibling),g=p.nextSibling.nextSibling,[_,v]=n(g.nextSibling);return m(a,()=>e.chinese),m(o,()=>e.pinyin),m(s,()=>e.english),m(c,()=>e.level,u,d),m(c,()=>e.lesson,p,h),m(c,()=>e.title,_,v),t})()})),e}})}}),nt,rt),d(e=>{var t=g()===`all`,n=!I().length||v()===0,r=!I().length||v()>=I().length-1;return t!==e.e&&s(Ne,`selected`,e.e=t),n!==e.t&&s(X,`disabled`,e.t=n),r!==e.a&&s(He,`disabled`,e.a=r),e},{e:void 0,t:void 0,a:void 0}),d(()=>s(J,`value`,a())),d(()=>s(Y,`value`,g())),d(()=>s(Qe,`value`,N())),p(),e})()}c([`click`,`input`]);function N(){return i(g,{get children(){return[i(v,{title:`Language Learning`}),i(y,{get children(){return i(M,{})}})]}})}export{M as LanguageLearningPractice,N as default};

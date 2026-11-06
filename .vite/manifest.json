@@ -6,11 +6,11 @@
       "_routing-1Zagr2Ci.js"
     ]
   },
-  "_fa-DS4io27x.js": {
-    "file": "_build/assets/fa-DS4io27x.js",
+  "_fa-CCP0LpJz.js": {
+    "file": "_build/assets/fa-CCP0LpJz.js",
     "name": "fa",
     "imports": [
-      "_seo-BWNfLqpV.js"
+      "_seo-DvJ6QEDt.js"
     ]
   },
   "_formatPublishedDate-Df2GwpgK.js": {
@@ -47,12 +47,12 @@
     "file": "_build/assets/preload-helper-BZ1Pz5am.js",
     "name": "preload-helper"
   },
-  "_project-card-ClSkKOu6.js": {
-    "file": "_build/assets/project-card-ClSkKOu6.js",
+  "_project-card-CgB2mWs9.js": {
+    "file": "_build/assets/project-card-CgB2mWs9.js",
     "name": "project-card",
     "imports": [
       "_routing-1Zagr2Ci.js",
-      "_seo-BWNfLqpV.js",
+      "_seo-DvJ6QEDt.js",
       "_formatPublishedDate-Df2GwpgK.js"
     ]
   },
@@ -71,8 +71,8 @@
       "_routing-1Zagr2Ci.js"
     ]
   },
-  "_seo-BWNfLqpV.js": {
-    "file": "_build/assets/seo-BWNfLqpV.js",
+  "_seo-DvJ6QEDt.js": {
+    "file": "_build/assets/seo-DvJ6QEDt.js",
     "name": "seo",
     "imports": [
       "_routing-1Zagr2Ci.js"
@@ -89,12 +89,12 @@
     "file": "_build/assets/shared-HaDM3B57.js",
     "name": "shared"
   },
-  "_static-not-found-header-SFIB1DBx.js": {
-    "file": "_build/assets/static-not-found-header-SFIB1DBx.js",
+  "_static-not-found-header-Bija7Yt8.js": {
+    "file": "_build/assets/static-not-found-header-Bija7Yt8.js",
     "name": "static-not-found-header",
     "imports": [
       "_routing-1Zagr2Ci.js",
-      "_seo-BWNfLqpV.js"
+      "_seo-DvJ6QEDt.js"
     ]
   },
   "node_modules/@sanity/client/dist/browserUpload-BTQyjHMj.js": {
@@ -156,7 +156,7 @@
     ]
   },
   "src/entry-client.tsx": {
-    "file": "_build/assets/entry-client-DDBZn6J4.js",
+    "file": "_build/assets/entry-client-BTpdD9PW.js",
     "name": "entry-client",
     "src": "src/entry-client.tsx",
     "isEntry": true,
@@ -179,7 +179,7 @@
       "src/routes/school-data-solutions.tsx?pick=default&pick=$css&lang.tsx",
       "src/routes/terms.tsx?pick=default&pick=$css&lang.tsx",
       "src/routes/language-learning/dictionary.tsx?pick=default&pick=$css&lang.tsx",
-      "src/routes/language-learning/index.tsx?pick=default&pick=$css&lang.tsx",
+      "src/routes/language-learning/index.tsx?pick=LanguageLearningPractice&pick=default&pick=$css&lang.tsx",
       "src/routes/poker/index.tsx?pick=default&pick=$css&lang.tsx",
       "src/routes/projects/[slug].tsx?pick=default&pick=$css&lang.tsx",
       "src/routes/projects/index.tsx?pick=default&pick=$css&lang.tsx",
@@ -190,199 +190,202 @@
     ]
   },
   "src/routes/[...404].tsx?pick=default&pick=$css&lang.tsx": {
-    "file": "_build/assets/_...404_-Bgd4yGeG.js",
+    "file": "_build/assets/_...404_-DiNvqLWo.js",
     "name": "_...404_",
     "src": "src/routes/[...404].tsx?pick=default&pick=$css&lang.tsx",
     "isEntry": true,
     "imports": [
       "_routing-1Zagr2Ci.js",
-      "_seo-BWNfLqpV.js",
+      "_seo-DvJ6QEDt.js",
       "_HttpStatusCode-ZE4m9Yy5.js",
-      "_static-not-found-header-SFIB1DBx.js",
+      "_static-not-found-header-Bija7Yt8.js",
       "_section-CtxWtUEy.js"
     ]
   },
   "src/routes/about.tsx?pick=default&pick=$css&lang.tsx": {
-    "file": "_build/assets/about-BqUCxXhL.js",
+    "file": "_build/assets/about-Bb2POkVE.js",
     "name": "about",
     "src": "src/routes/about.tsx?pick=default&pick=$css&lang.tsx",
     "isEntry": true,
     "imports": [
       "_routing-1Zagr2Ci.js",
-      "_seo-BWNfLqpV.js",
+      "_seo-DvJ6QEDt.js",
       "_section-CtxWtUEy.js"
     ]
   },
   "src/routes/contact.tsx?pick=default&pick=$css&lang.tsx": {
-    "file": "_build/assets/contact-DeaPqIDA.js",
+    "file": "_build/assets/contact-vrCoa0yk.js",
     "name": "contact",
     "src": "src/routes/contact.tsx?pick=default&pick=$css&lang.tsx",
     "isEntry": true,
     "imports": [
       "_routing-1Zagr2Ci.js",
-      "_seo-BWNfLqpV.js",
+      "_seo-DvJ6QEDt.js",
       "_section-CtxWtUEy.js",
-      "_fa-DS4io27x.js"
+      "_fa-CCP0LpJz.js"
     ]
   },
   "src/routes/index.tsx?pick=default&pick=$css&lang.tsx": {
-    "file": "_build/assets/index-ChFuzhiH.js",
+    "file": "_build/assets/index-BjkonZeh.js",
     "name": "index",
     "src": "src/routes/index.tsx?pick=default&pick=$css&lang.tsx",
     "isEntry": true,
     "imports": [
       "_routing-1Zagr2Ci.js",
-      "_seo-BWNfLqpV.js",
+      "_seo-DvJ6QEDt.js",
       "_loader-gSDbXzSr.js",
       "_section-CtxWtUEy.js",
       "_formatPublishedDate-Df2GwpgK.js"
     ]
   },
   "src/routes/language-learning/dictionary.tsx?pick=default&pick=$css&lang.tsx": {
-    "file": "_build/assets/dictionary-BLC7OOKf.js",
+    "file": "_build/assets/dictionary-CKMux44T.js",
     "name": "dictionary",
     "src": "src/routes/language-learning/dictionary.tsx?pick=default&pick=$css&lang.tsx",
     "isEntry": true,
     "imports": [
       "_routing-1Zagr2Ci.js",
-      "_seo-BWNfLqpV.js",
+      "_seo-DvJ6QEDt.js",
       "_section-CtxWtUEy.js"
     ]
   },
-  "src/routes/language-learning/index.tsx?pick=default&pick=$css&lang.tsx": {
-    "file": "_build/assets/index-D1Fqd_xd.js",
+  "src/routes/language-learning/index.tsx?pick=LanguageLearningPractice&pick=default&pick=$css&lang.tsx": {
+    "file": "_build/assets/index-O-TXL0GA.js",
     "name": "index",
-    "src": "src/routes/language-learning/index.tsx?pick=default&pick=$css&lang.tsx",
+    "src": "src/routes/language-learning/index.tsx?pick=LanguageLearningPractice&pick=default&pick=$css&lang.tsx",
     "isEntry": true,
     "imports": [
       "_routing-1Zagr2Ci.js",
-      "_seo-BWNfLqpV.js",
+      "_seo-DvJ6QEDt.js",
       "_section-CtxWtUEy.js"
+    ],
+    "css": [
+      "_build/assets/index-DnAmR8Ng.css"
     ]
   },
   "src/routes/poker/index.tsx?pick=default&pick=$css&lang.tsx": {
-    "file": "_build/assets/index-CRuYhalw.js",
+    "file": "_build/assets/index-CgGlvTlY.js",
     "name": "index",
     "src": "src/routes/poker/index.tsx?pick=default&pick=$css&lang.tsx",
     "isEntry": true,
     "imports": [
       "_routing-1Zagr2Ci.js",
-      "_seo-BWNfLqpV.js",
+      "_seo-DvJ6QEDt.js",
       "_section-CtxWtUEy.js"
     ]
   },
   "src/routes/privacy.tsx?pick=default&pick=$css&lang.tsx": {
-    "file": "_build/assets/privacy-xLYNssgg.js",
+    "file": "_build/assets/privacy-BDonw9l5.js",
     "name": "privacy",
     "src": "src/routes/privacy.tsx?pick=default&pick=$css&lang.tsx",
     "isEntry": true,
     "imports": [
       "_routing-1Zagr2Ci.js",
-      "_seo-BWNfLqpV.js",
+      "_seo-DvJ6QEDt.js",
       "_section-CtxWtUEy.js"
     ]
   },
   "src/routes/projects/[slug].tsx?pick=default&pick=$css&lang.tsx": {
-    "file": "_build/assets/_slug_-CTmhXx73.js",
+    "file": "_build/assets/_slug_-DFN5KOMU.js",
     "name": "_slug_",
     "src": "src/routes/projects/[slug].tsx?pick=default&pick=$css&lang.tsx",
     "isEntry": true,
     "imports": [
       "_rolldown-runtime-CbXtAM7H.js",
       "_routing-1Zagr2Ci.js",
-      "_seo-BWNfLqpV.js",
+      "_seo-DvJ6QEDt.js",
       "_loader-gSDbXzSr.js",
       "_HttpStatusCode-ZE4m9Yy5.js",
-      "_static-not-found-header-SFIB1DBx.js",
+      "_static-not-found-header-Bija7Yt8.js",
       "_section-CtxWtUEy.js",
       "_formatPublishedDate-Df2GwpgK.js"
     ]
   },
   "src/routes/projects/index.tsx?pick=default&pick=$css&lang.tsx": {
-    "file": "_build/assets/index-Ctc0XzqF.js",
+    "file": "_build/assets/index-BZieJtAB.js",
     "name": "index",
     "src": "src/routes/projects/index.tsx?pick=default&pick=$css&lang.tsx",
     "isEntry": true,
     "imports": [
       "_routing-1Zagr2Ci.js",
-      "_seo-BWNfLqpV.js",
+      "_seo-DvJ6QEDt.js",
       "_loader-gSDbXzSr.js",
       "_section-CtxWtUEy.js",
       "_formatPublishedDate-Df2GwpgK.js",
-      "_project-card-ClSkKOu6.js"
+      "_project-card-CgB2mWs9.js"
     ]
   },
   "src/routes/prototype-editorial.tsx?pick=default&pick=$css&lang.tsx": {
-    "file": "_build/assets/prototype-editorial-ErkSkUVc.js",
+    "file": "_build/assets/prototype-editorial-DGYeZtAf.js",
     "name": "prototype-editorial",
     "src": "src/routes/prototype-editorial.tsx?pick=default&pick=$css&lang.tsx",
     "isEntry": true,
     "imports": [
       "_routing-1Zagr2Ci.js",
-      "_seo-BWNfLqpV.js"
+      "_seo-DvJ6QEDt.js"
     ]
   },
   "src/routes/resume.tsx?pick=default&pick=$css&lang.tsx": {
-    "file": "_build/assets/resume-DpMOuHsm.js",
+    "file": "_build/assets/resume-b5z4kh3P.js",
     "name": "resume",
     "src": "src/routes/resume.tsx?pick=default&pick=$css&lang.tsx",
     "isEntry": true,
     "imports": [
       "_routing-1Zagr2Ci.js",
-      "_seo-BWNfLqpV.js",
+      "_seo-DvJ6QEDt.js",
       "_preload-helper-BZ1Pz5am.js",
       "_section-CtxWtUEy.js",
-      "_fa-DS4io27x.js"
+      "_fa-CCP0LpJz.js"
     ],
     "dynamicImports": [
       "node_modules/jspdf/dist/jspdf.es.min.js"
     ]
   },
   "src/routes/schedule.tsx?pick=default&pick=$css&lang.tsx": {
-    "file": "_build/assets/schedule-CW_yPA_u.js",
+    "file": "_build/assets/schedule-D3Ph-9Tq.js",
     "name": "schedule",
     "src": "src/routes/schedule.tsx?pick=default&pick=$css&lang.tsx",
     "isEntry": true,
     "imports": [
       "_routing-1Zagr2Ci.js",
-      "_seo-BWNfLqpV.js",
+      "_seo-DvJ6QEDt.js",
       "_section-CtxWtUEy.js"
     ]
   },
   "src/routes/school-data-solutions.tsx?pick=default&pick=$css&lang.tsx": {
-    "file": "_build/assets/school-data-solutions-q65VOmvs.js",
+    "file": "_build/assets/school-data-solutions-BlAFjc16.js",
     "name": "school-data-solutions",
     "src": "src/routes/school-data-solutions.tsx?pick=default&pick=$css&lang.tsx",
     "isEntry": true,
     "imports": [
       "_routing-1Zagr2Ci.js",
-      "_seo-BWNfLqpV.js",
+      "_seo-DvJ6QEDt.js",
       "_loader-gSDbXzSr.js",
       "_shared-HaDM3B57.js",
       "_section-CtxWtUEy.js",
       "_formatPublishedDate-Df2GwpgK.js",
-      "_project-card-ClSkKOu6.js"
+      "_project-card-CgB2mWs9.js"
     ]
   },
   "src/routes/terms.tsx?pick=default&pick=$css&lang.tsx": {
-    "file": "_build/assets/terms-D1viWekh.js",
+    "file": "_build/assets/terms-CHcxFsr8.js",
     "name": "terms",
     "src": "src/routes/terms.tsx?pick=default&pick=$css&lang.tsx",
     "isEntry": true,
     "imports": [
       "_routing-1Zagr2Ci.js",
-      "_seo-BWNfLqpV.js",
+      "_seo-DvJ6QEDt.js",
       "_section-CtxWtUEy.js"
     ]
   },
   "src/routes/vexillology/index.tsx?pick=default&pick=$css&lang.tsx": {
-    "file": "_build/assets/index-BcazXRPo.js",
+    "file": "_build/assets/index-J5P5xIYQ.js",
     "name": "index",
     "src": "src/routes/vexillology/index.tsx?pick=default&pick=$css&lang.tsx",
     "isEntry": true,
     "imports": [
       "_routing-1Zagr2Ci.js",
-      "_seo-BWNfLqpV.js",
+      "_seo-DvJ6QEDt.js",
       "_section-CtxWtUEy.js"
     ]
   }
